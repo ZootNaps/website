@@ -46,11 +46,11 @@ const FaqSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-gray-50">
+    <section id="faq" className="py-20 bg-light">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray max-w-2xl mx-auto">
             Find answers to common questions about our services and how we can help your business.
           </p>
         </div>
@@ -67,9 +67,9 @@ const FaqSection = () => {
               >
                 <span>{item.question}</span>
                 {activeIndex === index ? (
-                  <FaChevronUp className="text-blue-600" />
+                  <FaChevronUp className="text-secondary" />
                 ) : (
-                  <FaChevronDown className="text-gray-400" />
+                  <FaChevronDown className="text-gray-dark" />
                 )}
               </button>
               
@@ -78,19 +78,19 @@ const FaqSection = () => {
                   activeIndex === index ? 'max-h-96 pb-6' : 'max-h-0'
                 }`}
               >
-                <p className="text-gray-600">{item.answer}</p>
+                <p className="text-gray">{item.answer}</p>
               </div>
             </div>
           ))}
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray mb-4">
             Still have questions? We are here to help.
           </p>
           <a 
             href="/contact" 
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md transition"
+            className="inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition"
           >
             Contact Us
           </a>

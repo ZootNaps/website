@@ -42,9 +42,9 @@ const ClientLogoSection = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-light">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold text-center mb-8">Trusted by Companies Worldwide</h2>
+        <h2 className="text-2xl font-bold text-primary text-center mb-8">Trusted by Companies Worldwide</h2>
         
         <div className="relative overflow-hidden">
           <div className="flex overflow-x-hidden">
@@ -52,7 +52,7 @@ const ClientLogoSection = () => {
               {logos.map((logo) => (
                 <div key={logo.id} className="flex-shrink-0 flex items-center justify-center h-16 w-40 bg-white rounded-lg shadow-sm">
                   {/* Replace with actual logo images */}
-                  <span className="text-gray-400">{logo.name}</span>
+                  <span className="text-gray">{logo.name}</span>
                 </div>
               ))}
             </div>
@@ -62,16 +62,16 @@ const ClientLogoSection = () => {
         
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="p-6 bg-white rounded-lg shadow-sm">
-            <div className="text-3xl font-bold text-blue-600 mb-2">98%</div>
-            <p className="text-gray-600">Customer Satisfaction</p>
+            <div className="text-3xl font-bold text-secondary mb-2">98%</div>
+            <p className="text-gray">Customer Satisfaction</p>
           </div>
           <div className="p-6 bg-white rounded-lg shadow-sm">
-            <div className="text-3xl font-bold text-blue-600 mb-2">250+</div>
-            <p className="text-gray-600">Projects Completed</p>
+            <div className="text-3xl font-bold text-secondary mb-2">250+</div>
+            <p className="text-gray">Projects Completed</p>
           </div>
           <div className="p-6 bg-white rounded-lg shadow-sm">
-            <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
-            <p className="text-gray-600">Years of Experience</p>
+            <div className="text-3xl font-bold text-secondary mb-2">15+</div>
+            <p className="text-gray">Years of Experience</p>
           </div>
         </div>
       </div>
