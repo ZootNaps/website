@@ -1,0 +1,49 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+
+const HeroSection = () => {
+  return (
+    <section id="home" className="pt-28 pb-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center">
+          <div className="lg:w-1/2 mb-12 lg:mb-0">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              Transform Your Business With Our Solutions
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-xl">
+              We help businesses like yours overcome challenges and achieve growth with our custom solutions and expert guidance.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href="/contact" 
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md text-center transition"
+              >
+                Get Started
+              </Link>
+              <button 
+                onClick={() => {
+                  document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 px-8 rounded-md text-center transition"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+          <div className="lg:w-1/2 relative">
+            <div className="relative w-full h-[400px] md:h-[500px]">
+              {/* Placeholder for hero image - replace with your actual image */}
+              <div className="absolute inset-0 bg-blue-200 rounded-lg flex items-center justify-center">
+                <span className="text-blue-800 font-medium">Hero Image</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection; 
