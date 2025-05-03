@@ -10,8 +10,8 @@ import CtaSection from '@/components/home/CtaSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home | Your Business Name",
-  description: "Transform your business with our comprehensive solutions tailored to your needs. Discover how we help businesses overcome challenges and achieve growth.",
+  title: "South Lamar Studios | B2B Podcast Production",
+  description: "Expert podcast production services for B2B businesses. Generate leads and close deals with our proven process.",
 };
 
 export default function Home() {

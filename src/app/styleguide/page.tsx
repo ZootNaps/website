@@ -8,37 +8,51 @@ import LogoCarousel from '@/components/LogoCarousel';
 // Sample logos for the styleguide
 const clientLogos = [
   {
-    src: '/images/logos/client-logo-1.svg',
+    src: '/images/logos/openphone.svg',
     alt: 'OpenPhone',
     url: 'https://openphone.com',
     width: 160,
     height: 80
   },
   {
-    src: '/images/logos/client-logo-2.svg',
-    alt: 'EVREST',
-    url: 'https://example.com/evrest',
+    src: '/images/logos/fermat.svg',
+    alt: 'FERMAT',
+    url: 'https://fermatcommerce.com',
     width: 160,
     height: 80
   },
   {
-    src: '/images/logos/client-logo-3.svg',
-    alt: 'VLR',
-    url: 'https://example.com/vlr',
-    width: 160,
-    height: 80
-  },
-  {
-    src: '/images/logos/client-logo-4.svg',
-    alt: 'DBEX',
-    url: 'https://example.com/dbex',
-    width: 160,
-    height: 80
-  },
-  {
-    src: '/images/logos/client-logo-5.svg',
-    alt: 'REFOUND',
+    src: '/images/logos/refound.svg',
+    alt: 'Refound',
     url: 'https://refound.com',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/copenhagen-atomics.svg',
+    alt: 'Copenhagen Atomics',
+    url: 'https://copenhagenatomics.com',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/marketing-examined.svg',
+    alt: 'Marketing Examined',
+    url: 'https://marketingexamined.com',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/dieux.svg',
+    alt: 'Dieux',
+    url: 'https://dieux.com',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/vie.svg',
+    alt: 'Vie',
+    url: 'https://viecard.io',
     width: 160,
     height: 80
   }
