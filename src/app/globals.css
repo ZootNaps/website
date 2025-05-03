@@ -43,11 +43,7 @@
 
 .animate-scroll {
   animation: scroll 60s linear infinite;
-  /* Make animation super smooth */
   will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-font-smoothing: antialiased;
 }
 
 @layer base {

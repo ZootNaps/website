@@ -31,30 +31,13 @@ export default function LogoCarousel({
   monochrome = false,
   className = '',
 }: LogoCarouselProps) {
+  // Ensure smooth looping by duplicating logos
+  // We'll duplicate it multiple times to ensure there's enough content for continuous scrolling
   const carouselRef = useRef<HTMLDivElement>(null);
   
-  // Create exact duplicates of the logos to ensure seamless looping
-  // The key is to duplicate exactly the right amount for the animation to loop perfectly
-  const duplicatedLogos = [...logos, ...logos];
-  
-  // This useEffect ensures the animation resets properly to avoid the jump
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-    
-    const handleAnimationIteration = () => {
-      // Reset to start position instantly when animation completes
-      carousel.style.animation = 'none';
-      carousel.offsetHeight; // Trigger reflow
-      carousel.style.animation = ''; // Restore animation
-    };
-    
-    carousel.addEventListener('animationiteration', handleAnimationIteration);
-    
-    return () => {
-      carousel.removeEventListener('animationiteration', handleAnimationIteration);
-    };
-  }, []);
+  // Create a set of duplicated logos that's exactly enough to fill the container twice
+  // This ensures smooth looping with precise animation timing
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
   
   return (
     <Section 
@@ -83,11 +66,13 @@ export default function LogoCarousel({
       )}
       
       <div className="relative px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden">
-          <div 
-            ref={carouselRef}
-            className="animate-scroll flex items-center gap-12 w-max"
-          >
+        {/* Outer container with padding to prevent edge-to-edge appearance */}
+        <div 
+          ref={carouselRef}
+          className="overflow-hidden"
+        >
+          {/* Inner container that animates */}
+          <div className="animate-scroll flex items-center gap-12 w-max">
             {duplicatedLogos.map((logo, index) => (
               <div 
                 key={`${logo.alt}-${index}`} 
