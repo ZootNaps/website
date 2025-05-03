@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="80" viewBox="0 0 160 80">
+  <rect width="160" height="80" fill="none"/>
+  <ellipse cx="40" cy="40" rx="30" ry="20" fill="#4a5568"/>
+  <text x="70" y="45" font-family="Arial" font-size="24" font-weight="bold" fill="#4a5568">Company 4</text>
+</svg> 

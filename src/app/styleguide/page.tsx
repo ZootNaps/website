@@ -3,6 +3,46 @@ import Button from '@/components/ui/Button';
 import Typography from '@/components/ui/Typography';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import LogoCarousel from '@/components/LogoCarousel';
+
+// Sample logos for the styleguide
+const clientLogos = [
+  {
+    src: '/images/logos/client-logo-1.svg',
+    alt: 'OpenPhone',
+    url: 'https://openphone.com',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/client-logo-2.svg',
+    alt: 'EVREST',
+    url: 'https://example.com/evrest',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/client-logo-3.svg',
+    alt: 'VLR',
+    url: 'https://example.com/vlr',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/client-logo-4.svg',
+    alt: 'DBEX',
+    url: 'https://example.com/dbex',
+    width: 160,
+    height: 80
+  },
+  {
+    src: '/images/logos/client-logo-5.svg',
+    alt: 'REFOUND',
+    url: 'https://refound.com',
+    width: 160,
+    height: 80
+  }
+];
 
 export default function StyleGuidePage() {
   return (
@@ -56,6 +96,48 @@ export default function StyleGuidePage() {
             <div>
               <Typography variant="small">Small Text</Typography>
               <Typography variant="small" className="text-gray">text-sm leading-normal</Typography>
+            </div>
+          </div>
+        </div>
+      </Section>
+      
+      {/* Logo Carousel Section */}
+      <Section background="primary" spacing="md">
+        <Typography variant="h2" color="white" className="mb-8">Logo Carousel</Typography>
+        
+        <div className="space-y-12">
+          <div>
+            <Typography variant="h3" color="white" className="mb-6 text-center">Client Logos</Typography>
+            <div className="bg-white p-8 rounded-lg">
+              <LogoCarousel 
+                logos={clientLogos} 
+                title="Trusted by industry leaders" 
+                description="We've helped these companies achieve impressive results through strategic podcasting." 
+                background="white"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <Typography variant="h3" color="white" className="mb-6 text-center">Monochrome Logos</Typography>
+            <div className="bg-white p-8 rounded-lg">
+              <LogoCarousel 
+                logos={clientLogos} 
+                title="Our clients include" 
+                background="white"
+                monochrome={true}
+              />
+            </div>
+          </div>
+          
+          <div>
+            <Typography variant="h3" color="white" className="mb-6 text-center">Secondary Background</Typography>
+            <div className="bg-secondary p-8 rounded-lg">
+              <LogoCarousel 
+                logos={clientLogos} 
+                title="Featured in" 
+                background="secondary"
+              />
             </div>
           </div>
         </div>
