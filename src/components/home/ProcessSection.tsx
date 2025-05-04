@@ -1,16 +1,21 @@
 'use client';
 
-import { useState } from 'react';
-import { FaCheck } from 'react-icons/fa';
+import { useState, useEffect, useRef } from 'react';
+import { FaCheck, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const ProcessSection = () => {
   const [activeTab, setActiveTab] = useState<string>('discovery');
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+  const [contentVisible, setContentVisible] = useState<boolean>(true);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const transitionTime = 1000; // Transition time in milliseconds - slowed down from 600ms to 1000ms
+  const visibleTime = 5000; // Time content is fully visible in milliseconds
   
   const tabs = [
-    { id: 'discovery', name: 'Discovery' },
-    { id: 'strategy', name: 'Strategy' },
-    { id: 'implementation', name: 'Implementation' },
-    { id: 'optimization', name: 'Optimization' }
+    { id: 'discovery', step: 'ONE', name: 'Discovery' },
+    { id: 'strategy', step: 'TWO', name: 'Strategy' },
+    { id: 'implementation', step: 'THREE', name: 'Implementation' },
+    { id: 'optimization', step: 'FOUR', name: 'Optimization' }
   ];
   
   const tabContent = {
@@ -56,50 +61,158 @@ const ProcessSection = () => {
     }
   };
 
+  // Navigate to the next or previous step with transition
+  const navigate = (direction: 'next' | 'prev') => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setContentVisible(false);
+    
+    // Wait for fade out transition to complete
+    setTimeout(() => {
+      const currentIndex = tabs.findIndex(tab => tab.id === activeTab);
+      let nextIndex;
+      
+      if (direction === 'next') {
+        nextIndex = (currentIndex + 1) % tabs.length;
+      } else {
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      }
+      
+      setActiveTab(tabs[nextIndex].id);
+      
+      // Wait a small amount of time to ensure the DOM has updated
+      setTimeout(() => {
+        setContentVisible(true);
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, transitionTime);
+      }, 50);
+    }, transitionTime);
+  };
+  
+  // Manual tab switching with transition
+  const handleTabClick = (tabId: string) => {
+    if (isTransitioning || tabId === activeTab) return;
+    
+    setIsTransitioning(true);
+    setContentVisible(false);
+    
+    setTimeout(() => {
+      setActiveTab(tabId);
+      setTimeout(() => {
+        setContentVisible(true);
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, transitionTime);
+      }, 50);
+    }, transitionTime);
+  };
+  
+  // Auto-cycle through tabs
+  useEffect(() => {
+    if (isTransitioning) return;
+    
+    autoPlayRef.current = setTimeout(() => {
+      navigate('next');
+    }, visibleTime);
+    
+    return () => {
+      if (autoPlayRef.current) {
+        clearTimeout(autoPlayRef.current);
+      }
+    };
+  }, [activeTab, isTransitioning]);
+
   return (
-    <section id="process" className="py-20 bg-light">
+    <section id="process" className="py-20 bg-light border border-gray-200 rounded-lg shadow-md">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Proven Process</h2>
           <p className="text-lg text-gray max-w-2xl mx-auto">
             We follow a structured approach to ensure successful outcomes for your business.
           </p>
         </div>
         
-        <div className="flex flex-wrap mb-8">
-          <div className="w-full">
-            <div className="flex flex-col md:flex-row border-b">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 py-4 px-6 text-center font-medium text-lg transition-colors
-                    ${activeTab === tab.id ? 'border-b-2 border-secondary text-secondary' : 'text-gray-dark hover:text-secondary'}`}
+        <div className="border-t border-b border-gray-200 py-8 mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-primary">
+            The process fueling your story.
+          </h3>
+          
+          {/* Desktop progress indicator - hidden on mobile */}
+          <div className="hidden md:flex justify-between items-center mb-12 px-8">
+            {tabs.map((tab, index) => (
+              <button
+                key={tab.id}
+                onClick={() => handleTabClick(tab.id)}
+                className="text-center font-medium flex-1"
+              >
+                <span 
+                  className={`transition-all duration-1000 ease-in-out ${
+                    activeTab === tab.id ? 'text-secondary font-bold' : 'text-primary'
+                  }`}
                 >
                   {tab.name}
-                </button>
-              ))}
-            </div>
+                </span>
+                <div className={`h-1 mt-2 rounded transition-all duration-1000 ease-in-out ${
+                  activeTab === tab.id ? 'bg-secondary' : 'bg-gray-200'
+                }`}></div>
+              </button>
+            ))}
           </div>
-        </div>
-        
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <div className="flex flex-col md:flex-row items-center md:items-start">
-            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-              <h3 className="text-2xl font-bold mb-4 text-primary">{tabContent[activeTab as keyof typeof tabContent].title}</h3>
-              <p className="text-gray mb-6">{tabContent[activeTab as keyof typeof tabContent].description}</p>
-              <ul className="space-y-3">
-                {tabContent[activeTab as keyof typeof tabContent].points.map((point, index) => (
-                  <li key={index} className="flex items-start">
-                    <FaCheck className="text-secondary mt-1 mr-3 flex-shrink-0" size={16} />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="md:w-1/2">
-              <div className="bg-light rounded-lg h-80 flex items-center justify-center">
-                <span className="text-gray-dark font-medium">Process Illustration {activeTab === 'discovery' ? '1' : activeTab === 'strategy' ? '2' : activeTab === 'implementation' ? '3' : '4'}</span>
+          
+          {/* Content container with navigation */}
+          <div className="relative">
+            {/* Content area */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 md:p-10 rounded-lg shadow-sm">
+              {/* Left side: Content */}
+              <div className={`transition-all duration-1000 ease-in-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="md:hidden mb-6">
+                  <span className="text-sm font-bold text-secondary">STEP {tabs.find(tab => tab.id === activeTab)?.step}</span>
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-primary">
+                  {tabContent[activeTab as keyof typeof tabContent].title}
+                </h3>
+                
+                <p className="text-gray mb-6">
+                  {tabContent[activeTab as keyof typeof tabContent].description}
+                </p>
+                
+                <ul className="space-y-4">
+                  {tabContent[activeTab as keyof typeof tabContent].points.map((point, index) => (
+                    <li key={index} className="flex items-start">
+                      <FaCheck className="text-secondary mt-1 mr-3 flex-shrink-0" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              {/* Right side: Illustration */}
+              <div className={`relative bg-light rounded-lg flex items-center justify-center p-8 h-80 transition-all duration-1000 ease-in-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
+                {/* Mobile navigation buttons - positioned on the illustration */}
+                <div className="md:hidden flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 z-10 px-4 w-full">
+                  <button 
+                    onClick={() => navigate('prev')} 
+                    disabled={isTransitioning}
+                    className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
+                      isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
+                    }`}
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button 
+                    onClick={() => navigate('next')} 
+                    disabled={isTransitioning}
+                    className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
+                      isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
+                    }`}
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+                <span className="text-gray-dark font-medium">Process Illustration {tabs.findIndex(tab => tab.id === activeTab) + 1}</span>
               </div>
             </div>
           </div>
