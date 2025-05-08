@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   // Handle scroll effect
   useEffect(() => {
@@ -19,19 +20,36 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle smooth scroll to sections on the homepage
+  // Handle navigation and smooth scroll to sections
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
     
     if (pathname !== '/') {
-      return; // Don't scroll if not on homepage
+      // If not on homepage, navigate to homepage with hash
+      router.push(`/#${id}`);
+      return;
     }
     
+    // If already on homepage, just scroll
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Effect to handle hash scrolling after navigation
+  useEffect(() => {
+    if (pathname === '/' && window.location.hash) {
+      const id = window.location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        // Small timeout to ensure the page has loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [pathname]);
 
   return (
     <header
