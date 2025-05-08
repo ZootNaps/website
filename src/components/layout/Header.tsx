@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -8,8 +8,11 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
   const router = useRouter();
+  // Ref to track the last update time for throttling
+  const lastUpdateTimeRef = useRef(0);
 
   // Handle scroll effect
   useEffect(() => {
@@ -19,6 +22,57 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Set up scroll event to detect which section is most centered in the viewport
+  useEffect(() => {
+    if (pathname !== '/') return;
+
+    const sections = ['home', 'features', 'process', 'pricing', 'faq'];
+    
+    // Function to find the most centered section in the viewport
+    const findCenteredSection = () => {
+      // Get the current time to implement throttling
+      const now = Date.now();
+      // Throttle updates to prevent rapid changes (wait at least 300ms between updates)
+      if (now - lastUpdateTimeRef.current < 300) return;
+      
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = window.scrollY + (viewportHeight / 2);
+      
+      let closestSection = null;
+      let closestDistance = Infinity;
+      
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (!element) return;
+        
+        const rect = element.getBoundingClientRect();
+        const sectionTop = window.scrollY + rect.top;
+        const sectionCenter = sectionTop + (rect.height / 2);
+        const distance = Math.abs(viewportCenter - sectionCenter);
+        
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = sectionId;
+        }
+      });
+      
+      if (closestSection && closestSection !== activeSection) {
+        setActiveSection(closestSection);
+        lastUpdateTimeRef.current = now;
+      }
+    };
+    
+    // Initial check
+    findCenteredSection();
+    
+    // Set up the scroll event listener
+    window.addEventListener('scroll', findCenteredSection);
+    
+    return () => {
+      window.removeEventListener('scroll', findCenteredSection);
+    };
+  }, [pathname, activeSection]);
 
   // Handle navigation and smooth scroll to sections
   const scrollToSection = (id: string) => {
@@ -51,6 +105,20 @@ const Header = () => {
     }
   }, [pathname]);
 
+  // Helper function to determine nav item style
+  const getNavItemStyle = (sectionId: string): string => {
+    return activeSection === sectionId && pathname === '/' 
+      ? "text-secondary font-bold" 
+      : "text-gray-dark hover:text-secondary";
+  };
+
+  // Helper function for Blog and Podcast links
+  const getLinkStyle = (pagePath: string): string => {
+    return pathname === pagePath
+      ? "text-secondary font-bold"
+      : "text-gray-dark hover:text-secondary";
+  };
+
   return (
     <header
       className={`fixed w-full z-30 transition-all duration-300 ${
@@ -71,43 +139,43 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getNavItemStyle('home')} transition`}
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('features')}
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getNavItemStyle('features')} transition`}
             >
               Features
             </button>
             <button 
               onClick={() => scrollToSection('process')}
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getNavItemStyle('process')} transition`}
             >
               Process
             </button>
             <button 
               onClick={() => scrollToSection('pricing')}
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getNavItemStyle('pricing')} transition`}
             >
               Pricing
             </button>
             <button 
               onClick={() => scrollToSection('faq')}
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getNavItemStyle('faq')} transition`}
             >
               FAQ
             </button>
             <Link 
               href="/blog" 
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getLinkStyle('/blog')} transition`}
             >
               Blog
             </Link>
             <Link 
               href="/podcast" 
-              className="text-gray-dark hover:text-secondary transition"
+              className={`${getLinkStyle('/podcast')} transition`}
             >
               Podcast
             </Link>
@@ -116,7 +184,7 @@ const Header = () => {
           {/* CTA Button */}
           <Link 
             href="/contact" 
-            className="hidden md:inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition"
+            className={`hidden md:inline-block ${pathname === '/contact' ? 'bg-primary' : 'bg-secondary'} hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition`}
           >
             Contact Us
           </Link>
@@ -137,49 +205,49 @@ const Header = () => {
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getNavItemStyle('home')} transition py-2`}
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('features')}
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getNavItemStyle('features')} transition py-2`}
             >
               Features
             </button>
             <button 
               onClick={() => scrollToSection('process')}
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getNavItemStyle('process')} transition py-2`}
             >
               Process
             </button>
             <button 
               onClick={() => scrollToSection('pricing')}
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getNavItemStyle('pricing')} transition py-2`}
             >
               Pricing
             </button>
             <button 
               onClick={() => scrollToSection('faq')}
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getNavItemStyle('faq')} transition py-2`}
             >
               FAQ
             </button>
             <Link 
               href="/blog" 
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getLinkStyle('/blog')} transition py-2`}
             >
               Blog
             </Link>
             <Link 
               href="/podcast" 
-              className="text-gray-dark hover:text-secondary transition py-2"
+              className={`${getLinkStyle('/podcast')} transition py-2`}
             >
               Podcast
             </Link>
             <Link 
               href="/contact" 
-              className="bg-secondary hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md text-center transition"
+              className={`${pathname === '/contact' ? 'bg-primary' : 'bg-secondary'} hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md text-center transition`}
             >
               Contact Us
             </Link>
