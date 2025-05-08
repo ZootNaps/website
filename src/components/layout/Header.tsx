@@ -6,8 +6,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
+  // Initialize scrolled state based on current window scroll position
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(typeof window !== 'undefined' ? window.scrollY > 10 : false);
   const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
   const router = useRouter();
@@ -16,9 +17,13 @@ const Header = () => {
 
   // Handle scroll effect
   useEffect(() => {
+    // Check scroll position immediately on mount
+    setScrolled(window.scrollY > 10);
+    
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -122,7 +127,7 @@ const Header = () => {
   return (
     <header
       className={`fixed w-full z-30 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        scrolled || pathname !== '/' ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4">
