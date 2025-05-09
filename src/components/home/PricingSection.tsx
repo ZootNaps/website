@@ -3,28 +3,36 @@
 import { FaCheck } from 'react-icons/fa';
 
 const PricingSection = () => {
+  // Format price with comma for thousands
+  const formatPrice = (price: number) => {
+    return price >= 1000 ? price.toLocaleString() : price;
+  };
+
   const plans = [
     {
-      name: 'Basic',
-      description: 'Perfect for small businesses and startups',
-      price: 79,
+      name: 'Sales Core',
+      description: 'The complete Podcast for Sales system',
+      price: 8999,
       features: [
-        'Core service features',
+        'Dedicated customer outreach manager',
+        ,
+        '2 podcast episodes / month',
         'Email support',
         'Basic reporting',
         'Up to 5 users',
         '5GB storage'
       ],
       isPopular: false,
+      isBestValue: false,
       buttonText: 'Get Started',
       buttonLink: '/contact'
     },
     {
-      name: 'Professional',
-      description: 'Ideal for growing businesses with more needs',
-      price: 159,
+      name: 'Sales Premium',
+      description: 'More episodes, more outreach, and more opportunities to close',
+      price: 11999,
       features: [
-        'All Basic features',
+        'All Sales Core features',
         'Priority support',
         'Advanced reporting',
         'Up to 20 users',
@@ -33,15 +41,16 @@ const PricingSection = () => {
         'Custom integrations'
       ],
       isPopular: true,
+      isBestValue: false,
       buttonText: 'Get Started',
       buttonLink: '/contact'
     },
     {
-      name: 'Enterprise',
-      description: 'For large organizations with complex requirements',
-      price: 319,
+      name: 'Sales + Marketing',
+      description: "Maximize your podcast impact with premium content marketing for social, SEO, and more.",
+      price: 16999,
       features: [
-        'All Professional features',
+        'All Sales Premium features',
         '24/7 premium support',
         'Comprehensive reporting',
         'Unlimited users',
@@ -51,6 +60,7 @@ const PricingSection = () => {
         'Custom development'
       ],
       isPopular: false,
+      isBestValue: true,
       buttonText: 'Contact Sales',
       buttonLink: '/contact'
     }
@@ -60,9 +70,9 @@ const PricingSection = () => {
     <section id="pricing" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Simple, Transparent Pricing</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Packages and Pricing</h2>
           <p className="text-lg text-gray max-w-2xl mx-auto">
-            Choose the plan that's right for your business. All plans include a 6-month commitment.
+            Choose the plan that's right for you.
           </p>
         </div>
         
@@ -82,16 +92,21 @@ const PricingSection = () => {
                 </div>
               )}
               
+              {plan.isBestValue && (
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <span className="bg-primary text-white text-xs font-semibold py-1 px-4 rounded-full">
+                    Best Value
+                  </span>
+                </div>
+              )}
+              
               <div className="p-8 flex-grow flex flex-col">
                 <div>
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-gray mb-6">{plan.description}</p>
                   
                   <div className="mb-6">
-                    <div className="text-4xl font-bold">${plan.price}<span className="text-xl text-gray-500 font-medium">/mo</span></div>
-                    <div className="text-sm text-gray-500 mt-1">
-                      Billed annually (${plan.price * 12}/year)
-                    </div>
+                    <div className="text-4xl font-bold">${formatPrice(plan.price)}<span className="text-xl text-gray-500 font-medium">/mo</span></div>
                   </div>
                   
                   <ul className="mb-8 space-y-4">
@@ -123,7 +138,7 @@ const PricingSection = () => {
         
         <div className="mt-12 text-center">
           <p className="text-gray">
-            Need a custom plan? <a className="text-secondary font-medium" href="/contact">Contact us</a> for a tailored solution.
+            Not sure what to choose? <a className="text-secondary font-medium" href="/contact">Contact us</a> for a personalized recommendation.
           </p>
         </div>
       </div>
