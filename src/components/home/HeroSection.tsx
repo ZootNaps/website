@@ -9,12 +9,14 @@ const HeroSection = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-12 lg:mb-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-primary">
-              Transform Your Business With Our Solutions
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary">
+              Podcasts that sell.
             </h1>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-primary">
+              Zero audience required.
+            </h2>
             <p className="text-lg md:text-xl text-gray mb-8 max-w-xl">
-              We help businesses like yours overcome challenges and achieve growth with our custom solutions and expert guidance.
-            </p>
+            Our end-to-end B2B Podcast solution gives you 1 on 1 facetime with decision makers at your most sought-after clients. Connect, impress, and convert with our proven Podcast for Sales system.            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/contact" 
@@ -32,12 +34,18 @@ const HeroSection = () => {
               </button>
             </div>
           </div>
-          <div className="lg:w-1/2 relative">
-            <div className="relative w-full h-[400px] md:h-[500px]">
-              {/* Placeholder for hero image - replace with your actual image */}
-              <div className="absolute inset-0 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
-                <span className="text-primary font-medium">Hero Image</span>
-              </div>
+          <div className="lg:w-1/2 relative w-full">
+            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px]">
+              {/* Replace with the actual image file name */}
+              <Image 
+                src="/Images/hero-image.png"
+                alt="B2B podcast sales solution helping businesses connect with and sell to their top customers"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover rounded-lg"
+                quality={85}
+              />
             </div>
           </div>
         </div>
