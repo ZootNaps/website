@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -135,9 +136,17 @@ const Header = () => {
           {/* Logo */}
           <Link 
             href="/" 
-            className="text-2xl font-bold text-primary"
+            className="text-2xl font-bold text-primary flex items-center"
           >
-            YourLogo
+            <Image 
+              src="/images/sls-logos/sls-logo-default.png"
+              alt="SLS Logo"
+              width={50}
+              height={50}
+              priority
+              quality={90}
+              className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
