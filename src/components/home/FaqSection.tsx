@@ -12,8 +12,12 @@ const FaqSection = () => {
   
   const faqItems = [
     {
-      question: 'What services do you offer?',
-      answer: 'We offer a comprehensive range of services including business consulting, digital transformation, process optimization, and strategic planning. Our solutions are tailored to meet the specific needs of each client, helping them overcome challenges and achieve their business goals.'
+      question: "Is this a good fit for my particular business?",
+      answer: "This system is designed to help you close high value deals with strategically valuable customers. If your company prioritizes sales volume over deal size, this system is not a good fit. While our Podcast for Sales system can work for most businesses in most industries, our services are best suited for businesses that have a HIGH ACV (Average Contract Value), or busineses with high CLV (Customer Lifetime Value). "
+    },
+    {
+      question: 'How long before I see results?',
+      answer: 'Implementation typically takes 2-4 weeks, during which generally takes '
     },
     {
       question: 'How long does implementation typically take?',
@@ -65,7 +69,7 @@ const FaqSection = () => {
                 onClick={() => toggleFaq(index)}
                 className="w-full px-6 py-4 text-left font-medium flex justify-between items-center focus:outline-none"
               >
-                <span>{item.question}</span>
+                <span className="font-bold">{item.question}</span>
                 {activeIndex === index ? (
                   <FaChevronUp className="text-secondary" />
                 ) : (
