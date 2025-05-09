@@ -35,6 +35,8 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'plus-jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+        'outfit': ['Outfit', 'sans-serif'],
       },
       fontSize: {
         'display-lg': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],

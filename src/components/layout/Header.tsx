@@ -133,20 +133,25 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link 
-            href="/" 
-            className="text-2xl font-bold text-primary flex items-center"
-          >
+          {/* Logo - Updated to Stacked Version */}
+          <Link href="/" className="flex items-center gap-4 cursor-pointer">
             <Image 
               src="/images/sls-logos/sls-logo-default.png"
               alt="SLS Logo"
-              width={50}
-              height={50}
+              width={40}
+              height={40}
               priority
               quality={90}
               className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] object-contain"
             />
+            <div className="flex flex-col leading-tight font-['Plus_Jakarta_Sans']">
+              <span className="text-sm md:text-base font-bold tracking-wider text-primary dark:text-white transition-colors duration-300 hover:text-secondary">
+                SOUTH LAMAR
+              </span>
+              <span className="text-xs md:text-sm font-medium tracking-[0.08em] text-gray-dark dark:text-gray-300">
+                STUDIOS
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
