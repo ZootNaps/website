@@ -60,37 +60,23 @@ const clientLogos = [
 
 export default function ClientLogoSection() {
   return (
-    <Section background="light" spacing="md">
+    <Section className="bg-[#2a3d45]" spacing="md">
       <div className="container mx-auto px-4">
         <Typography 
           variant="h2" 
-          color="primary" 
+          color="white" 
           className="text-center mb-8"
         >
           Trusted By Industry Leaders
         </Typography>
         
-        <div className="mb-16">
+        <div className="mb-8">
           <LogoCarousel 
             logos={clientLogos} 
-            monochrome={true} 
-            background="light"
+            monochrome={false} 
+            background="primary"
+            className="[&_img]:brightness-0 [&_img]:invert"
           />
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="p-6 bg-white rounded-lg shadow-sm">
-            <Typography variant="h3" color="secondary" className="mb-2">98%</Typography>
-            <Typography variant="body">Customer Satisfaction</Typography>
-          </div>
-          <div className="p-6 bg-white rounded-lg shadow-sm">
-            <Typography variant="h3" color="secondary" className="mb-2">250+</Typography>
-            <Typography variant="body">Projects Completed</Typography>
-          </div>
-          <div className="p-6 bg-white rounded-lg shadow-sm">
-            <Typography variant="h3" color="secondary" className="mb-2">15+</Typography>
-            <Typography variant="body">Years of Experience</Typography>
-          </div>
         </div>
       </div>
     </Section>

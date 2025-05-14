@@ -1,6 +1,7 @@
 import MainLayout from '@/components/layout/MainLayout';
 import HeroSection from '@/components/home/HeroSection';
 import ClientLogoSection from '@/components/home/ClientLogoSection';
+import MetricsSection from '@/components/home/MetricsSection';
 import FeaturesSection from '@/components/home/FeaturesSection';
 import ProcessSection from '@/components/home/ProcessSection';
 import PricingSection from '@/components/home/PricingSection';
@@ -19,6 +20,7 @@ export default function Home() {
     <MainLayout>
       <HeroSection />
       <ClientLogoSection />
+      <MetricsSection />
       <FeaturesSection />
       <ProcessSection />
       <PricingSection />
