@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { scrollToElement } from '@/utils/scrollUtils';
 
 const HeroSection = () => {
   return (
@@ -12,11 +13,13 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary">
               Podcasts that sell.
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-primary">
+            {/* <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-primary">
               Zero audience required.
-            </h2>
+            </h2> */}
+            {/*Our end-to-end B2B Podcast solution gives you 1 on 1 facetime with decision makers at your most sought-after clients. Connect, impress, and convert with our proven Podcast for Sales system.*/}
             <p className="text-lg md:text-xl text-gray mb-8 max-w-xl">
-            Our end-to-end B2B Podcast solution gives you 1 on 1 facetime with decision makers at your most sought-after clients. Connect, impress, and convert with our proven Podcast for Sales system.            </p>
+            An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue. No audience required. 
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/contact" 
@@ -26,7 +29,7 @@ const HeroSection = () => {
               </Link>
               <button 
                 onClick={() => {
-                  document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                  scrollToElement('features');
                 }}
                 className="border border-secondary text-secondary hover:bg-light font-medium py-3 px-8 rounded-md text-center transition"
               >

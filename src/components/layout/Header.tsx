@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { scrollToElement } from '@/utils/scrollUtils';
 
 const Header = () => {
   // Initialize scrolled state based on current window scroll position
@@ -90,24 +91,18 @@ const Header = () => {
       return;
     }
     
-    // If already on homepage, just scroll
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // If already on homepage, use our custom scroll function with offset
+    scrollToElement(id);
   };
 
   // Effect to handle hash scrolling after navigation
   useEffect(() => {
     if (pathname === '/' && window.location.hash) {
       const id = window.location.hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        // Small timeout to ensure the page has loaded
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+      // Small timeout to ensure the page has loaded
+      setTimeout(() => {
+        scrollToElement(id);
+      }, 100);
     }
   }, [pathname]);
 

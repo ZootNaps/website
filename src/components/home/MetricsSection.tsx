@@ -3,8 +3,25 @@
 import React from 'react';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
+import { usePathname, useRouter } from 'next/navigation';
+import { scrollToElement } from '@/utils/scrollUtils';
 
 export default function MetricsSection() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Scroll to process section function - similar to the navigation functionality
+  const scrollToProcess = () => {
+    if (pathname !== '/') {
+      // If not on homepage, navigate to homepage with hash
+      router.push('/#process');
+      return;
+    }
+    
+    // If already on homepage, use our custom scroll function with offset
+    scrollToElement('process');
+  };
+
   return (
     <Section background="light" spacing="lg">
       <div className="container mx-auto px-4">
@@ -14,10 +31,10 @@ export default function MetricsSection() {
             color="primary" 
             className="mb-4"
           >
-            Our Impact By The Numbers
+            No Audience Required.
           </Typography>
           <Typography variant="body-lg" className="max-w-2xl mx-auto">
-            We take pride in our track record of excellence and the tangible results we deliver to our clients.
+            We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
         </div>
         
@@ -36,7 +53,7 @@ export default function MetricsSection() {
                 Direct Revenue Generated
               </Typography>
               <Typography variant="body" color="gray">
-                Driving measurable business growth for our clients
+                Revenue is our highest priority.
               </Typography>
             </div>
           </div>
@@ -55,7 +72,7 @@ export default function MetricsSection() {
                 Faster Sales Cycles
               </Typography>
               <Typography variant="body" color="gray">
-                Close deals more efficiently with our proven approach
+                Build trust, credibility, and close deals faster.
               </Typography>
             </div>
           </div>
@@ -68,25 +85,28 @@ export default function MetricsSection() {
                 color="primary" 
                 className="text-5xl md:text-6xl font-bold mb-4"
               >
-                200+
+                10x
               </Typography>
-              <Typography variant="subheading" color="secondary" className="mb-2">
-                Podcast Episodes Published
+              <Typography variant="subheading" color="secondary" className="mb-1">
+                Higher Response Rates
+              </Typography>
+              <Typography variant="small" color="gray" className="mb-2 italic">
+                (vs. cold email)
               </Typography>
               <Typography variant="body" color="gray">
-                Delivering high-quality content across industries
+                Connect with executives and desicion makers directly.
               </Typography>
             </div>
           </div>
         </div>
         
         <div className="mt-12 text-center">
-          <a 
-            href="/contact" 
+          <button 
+            onClick={scrollToProcess}
             className="inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
           >
-            See How We Can Help Your Business
-          </a>
+            See Our Process
+          </button>
         </div>
       </div>
     </Section>
