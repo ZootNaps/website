@@ -67,15 +67,15 @@ export default function ClientLogoSection() {
           color="white" 
           className="text-center mb-8"
         >
-          Trusted By Industry Leaders
+          Trusted by Industry Leaders
         </Typography>
         
-        <div className="mb-8">
+        <div className="mb-8 -mx-4 md:-mx-8 lg:-mx-16 xl:-mx-24">
           <LogoCarousel 
             logos={clientLogos} 
             monochrome={false} 
             background="primary"
-            className="[&_img]:brightness-0 [&_img]:invert"
+            className="[&_img]:brightness-0 [&_img]:invert px-4 md:px-8"
           />
         </div>
       </div>
