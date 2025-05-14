@@ -45,15 +45,15 @@ export default function MetricsSection() {
               <Typography 
                 variant="h3" 
                 color="primary" 
-                className="text-5xl md:text-6xl font-bold mb-4"
+                className="text-4xl md:text-5xl font-bold mb-4"
               >
-                $1M+
+                $800,000+
               </Typography>
               <Typography variant="subheading" color="secondary" className="mb-2">
                 Direct Revenue Generated
               </Typography>
               <Typography variant="body" color="gray">
-                Revenue is our highest priority.
+                Our podcasts have generated over $200k for our clients in less than 3 months.
               </Typography>
             </div>
           </div>
