@@ -1,6 +1,7 @@
 'use client';
 
 import { FaRocket, FaChartLine, FaLightbulb, FaShieldAlt, FaClock, FaUsers } from 'react-icons/fa';
+import Link from 'next/link';
 
 const FeaturesSection = () => {
   return (
@@ -9,7 +10,7 @@ const FeaturesSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Built for Sales - Not Marketing.</h2>
           <p className="text-lg text-gray max-w-2xl mx-auto">
-            Every step of our process is purpose-built for sales - creating valuable touchpoints and customer interactions that drive real revenue.</p>
+            Every step of our process is purpose built for sales - creating valuable touchpoints and customer interactions that drive real revenue.</p>
             {/* <p>See why our sales-first approach puts our podcasts in a league of their own.
           </p> */}
         </div>
@@ -50,7 +51,7 @@ const FeaturesSection = () => {
               <FaShieldAlt className="text-secondary text-4xl mb-4" />
               <h3 className="text-xl font-bold mb-3 text-primary">High-Impact Customer Interactions</h3>
               <p className="text-gray">
-                Hour-long conversations that create lasting business relationships - and position you as a trusted advisor.
+                Hour long conversations that create lasting business relationships - and position you as a trusted advisor.
               </p>
             </div>
           </div>
@@ -60,7 +61,7 @@ const FeaturesSection = () => {
               <FaUsers className="text-secondary text-4xl mb-4" />
               <h3 className="text-xl font-bold mb-3 text-primary">Dozens of Touchpoints</h3>
               <p className="text-gray">
-                Our process creates dozens of touchpoints that keep you top-of-mind long after the interview.
+                Our process creates dozens of touchpoints that keep you top of mind for months after the interview.
               </p>
             </div>
           </div>
@@ -74,6 +75,21 @@ const FeaturesSection = () => {
               </p>
             </div>
           </div>
+        </div>
+        
+        <div className="mt-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary max-w-3xl mx-auto">
+            B2B Podcasts - Reimagined.
+          </h2>
+          <p className="text-lg text-gray max-w-2xl mx-auto mb-6">
+            Our sales-first approach prioritizes what salespeople care about - and what most agencies miss. Want to see it in action? 
+          </p>
+          <Link 
+            href="/contact" 
+            className="inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-colors duration-300"
+          >
+            Book a Demo Today
+          </Link>
         </div>
       </div>
     </section>

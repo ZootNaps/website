@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaCheck, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const ProcessSection = () => {
-  const [activeTab, setActiveTab] = useState<string>('discovery');
+  const [activeTab, setActiveTab] = useState<string>('strategy-onboarding');
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [contentVisible, setContentVisible] = useState<boolean>(true);
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -13,51 +13,51 @@ const ProcessSection = () => {
   const visibleTime = 5000; // Time content is fully visible in milliseconds
   
   const tabs = [
-    { id: 'discovery', step: 'ONE', name: 'Discovery' },
-    { id: 'strategy', step: 'TWO', name: 'Strategy' },
-    { id: 'implementation', step: 'THREE', name: 'Implementation' },
-    { id: 'optimization', step: 'FOUR', name: 'Optimization' }
+    { id: 'strategy-onboarding', step: 'ONE', name: 'Strategy & Onboarding' },
+    { id: 'process-implementation', step: 'TWO', name: 'Process Implementation' },
+    { id: 'editing-production', step: 'THREE', name: 'Editing & Production' },
+    { id: 'automation-support', step: 'FOUR', name: 'Automation & Ongoing Support' }
   ];
   
   const tabContent = {
-    discovery: {
-      title: 'Discovery',
-      description: 'We begin by understanding your business, challenges, and goals through in-depth consultations.',
+    'strategy-onboarding': {
+      title: 'Strategy & Onboarding',
+      description: 'We begin by understanding your business, your products, and most importantly - your customers.',
       points: [
-        'Initial consultation to understand your needs',
-        'Analysis of your current situation and challenges',
-        'Identification of key objectives and success metrics',
-        'Preliminary recommendations based on findings'
+        'Strategy workshop ',
+        'Customer ',
+        'Content strategy development',
+        'Setting measurable goals and success metrics'
       ]
     },
-    strategy: {
-      title: 'Strategy',
-      description: 'We develop a customized plan of action to address your specific challenges and achieve your goals.',
+    'process-implementation': {
+      title: 'Process Implementation',
+      description: 'We establish efficient workflows and systems tailored to your specific needs.',
       points: [
-        'Detailed strategic planning sessions',
-        'Prioritization of initiatives and objectives',
-        'Resource allocation and timeline planning',
-        'Risk assessment and mitigation strategies'
+        'Custom workflow creation',
+        'Team roles and responsibilities definition',
+        'Production schedule establishment',
+        'Tools and technology integration'
       ]
     },
-    implementation: {
-      title: 'Implementation',
-      description: 'We execute the agreed-upon strategy with precision and attention to detail.',
+    'editing-production': {
+      title: 'Editing & Production',
+      description: 'We handle all aspects of podcast production with meticulous attention to quality.',
       points: [
-        'Systematic execution of the strategic plan',
-        'Regular progress updates and stakeholder communication',
-        'Agile approach to adapt to changing requirements',
-        'Continuous quality assurance and testing'
+        'Professional audio editing and enhancement',
+        'Content refinement and optimization',
+        'Music and sound design integration',
+        'Final production quality control'
       ]
     },
-    optimization: {
-      title: 'Optimization',
-      description: 'We continuously monitor and refine our approach to maximize results and ROI.',
+    'automation-support': {
+      title: 'Automation & Ongoing Support',
+      description: 'We ensure smooth operations and continuous improvement of your podcast process.',
       points: [
-        'Ongoing performance analysis and reporting',
-        'Identification of improvement opportunities',
-        'Refinement of strategies based on results',
-        'Long-term support and maintenance'
+        'Process automation implementation',
+        'Regular performance analysis and reporting',
+        'Ongoing technical and strategic support',
+        'Continuous optimization based on metrics'
       ]
     }
   };
@@ -135,16 +135,15 @@ const ProcessSection = () => {
     <section id="process" className="py-20 bg-light border border-gray-200 rounded-lg shadow-md">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Sales-First Process.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary"> Built for Your Business.
+          </h2>
           <p className="text-lg text-gray max-w-2xl mx-auto">
-          From outreach to publication, and everything in between - we're more than just podcast </p>
-          <p>See why our sales-first approach puts our podcasts in a league of their own.
-          </p>
+            Every aspect of our podcast process is designed with your most valuable customers in mind. We work closely with each of our partners to ensure your success every step of the way.</p>
         </div>
         
         <div className="border-t border-b border-gray-200 py-8 mb-12">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-primary">
-            The process fueling your story.
+            Full Service from Start to Finish.
           </h3>
           
           {/* Desktop progress indicator - hidden on mobile */}
