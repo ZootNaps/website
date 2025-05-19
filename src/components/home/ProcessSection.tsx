@@ -135,9 +135,10 @@ const ProcessSection = () => {
     <section id="process" className="py-20 bg-light border border-gray-200 rounded-lg shadow-md">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Proven Process</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Sales-First Process.</h2>
           <p className="text-lg text-gray max-w-2xl mx-auto">
-            We follow a structured approach to ensure successful outcomes for your business.
+          From outreach to publication, and everything in between - we're more than just podcast </p>
+          <p>See why our sales-first approach puts our podcasts in a league of their own.
           </p>
         </div>
         
