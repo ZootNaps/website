@@ -22,7 +22,7 @@ const ProcessSection = () => {
   const tabContent = {
     'strategy-onboarding': {
       title: 'Strategy & Onboarding',
-      description: 'We begin by understanding your business, your products, and most importantly - your customers.',
+      description: 'We begin understanding your business, your products, and most importantly - your customers.',
       points: [
         'Strategy workshop ',
         'Customer ',
