@@ -1,14 +1,31 @@
 'use client';
 
-import { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { useState, useRef, useEffect } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [heights, setHeights] = useState<number[]>([]);
+  const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const toggleFaq = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  
+  // Measure all answer heights on mount and resize
+  useEffect(() => {
+    const updateHeights = () => {
+      const newHeights = answerRefs.current.map((ref) => 
+        ref ? ref.scrollHeight : 0
+      );
+      setHeights(newHeights);
+    };
+    
+    updateHeights();
+    window.addEventListener('resize', updateHeights);
+    
+    return () => window.removeEventListener('resize', updateHeights);
+  }, []);
   
   const faqItems = [
     {
@@ -63,26 +80,34 @@ const FaqSection = () => {
           {faqItems.map((item, index) => (
             <div 
               key={index} 
-              className="mb-4 border border-gray-200 rounded-lg overflow-hidden bg-white"
+              className="mb-4 border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left font-medium flex justify-between items-center focus:outline-none"
+                className="w-full px-6 py-4 text-left font-medium flex justify-between items-center focus:outline-none active:bg-gray-50 transition-colors duration-200"
+                aria-expanded={activeIndex === index}
               >
                 <span className="font-bold">{item.question}</span>
-                {activeIndex === index ? (
-                  <FaChevronUp className="text-secondary" />
-                ) : (
-                  <FaChevronDown className="text-gray-dark" />
-                )}
+                <div className={`transform transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${activeIndex === index ? 'rotate-180' : 'rotate-0'}`}>
+                  <FaChevronDown className={activeIndex === index ? "text-secondary" : "text-gray-dark"} />
+                </div>
               </button>
               
               <div 
-                className={`px-6 transition-all duration-300 ease-in-out overflow-hidden ${
-                  activeIndex === index ? 'max-h-96 pb-6' : 'max-h-0'
-                }`}
+                className="overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.2,0.82,0.2,1)]"
+                style={{ 
+                  maxHeight: activeIndex === index ? `${heights[index]}px` : '0',
+                  opacity: activeIndex === index ? 1 : 0
+                }}
               >
-                <p className="text-gray">{item.answer}</p>
+                <div 
+                  ref={(el) => {
+                    answerRefs.current[index] = el;
+                  }}
+                  className="px-6 pb-6"
+                >
+                  <p className="text-gray">{item.answer}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -94,7 +119,7 @@ const FaqSection = () => {
           </p>
           <a 
             href="/contact" 
-            className="inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition"
+            className="inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all duration-300 active:scale-98 hover:shadow-lg"
           >
             Contact Us
           </a>

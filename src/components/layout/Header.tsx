@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaTimes, FaBars } from 'react-icons/fa';
 import { scrollToElement } from '@/utils/scrollUtils';
 
 const Header = () => {
@@ -216,69 +216,95 @@ const Header = () => {
 
           {/* Mobile menu toggle */}
           <button 
-            className="md:hidden text-primary focus:outline-none"
+            className="md:hidden text-primary focus:outline-none relative h-10 w-10 flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            <div className="relative flex items-center justify-center w-6 h-6 overflow-hidden">
+              <FaBars 
+                size={20} 
+                className={`absolute transition-all duration-300 ease-[cubic-bezier(0.4,0.0,0.2,1)] ${
+                  mobileMenuOpen 
+                    ? 'opacity-0 rotate-90 scale-0' 
+                    : 'opacity-100 rotate-0 scale-100'
+                }`} 
+              />
+              <FaTimes 
+                size={20} 
+                className={`absolute text-secondary transition-all duration-300 ease-[cubic-bezier(0.4,0.0,0.2,1)] ${
+                  mobileMenuOpen 
+                    ? 'opacity-100 rotate-0 scale-100' 
+                    : 'opacity-0 -rotate-90 scale-0'
+                }`} 
+              />
+            </div>
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+      <div 
+        className={`md:hidden fixed top-[56px] left-0 w-full h-auto max-h-[calc(100vh-56px)] overflow-y-auto bg-white shadow-lg z-40 transition-all duration-500 ease-[cubic-bezier(0.34,1.16,0.64,1)] transform ${
+          mobileMenuOpen 
+            ? 'translate-y-0 opacity-100' 
+            : '-translate-y-4 opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="container mx-auto px-6 py-4 flex flex-col">
+          <div className="flex flex-col space-y-3">
             <button 
               onClick={() => scrollToSection('home')}
-              className={`${getNavItemStyle('home')} transition py-2`}
+              className={`${getNavItemStyle('home')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('features')}
-              className={`${getNavItemStyle('features')} transition py-2`}
+              className={`${getNavItemStyle('features')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               Features
             </button>
             <button 
               onClick={() => scrollToSection('process')}
-              className={`${getNavItemStyle('process')} transition py-2`}
+              className={`${getNavItemStyle('process')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               Process
             </button>
             <button 
               onClick={() => scrollToSection('pricing')}
-              className={`${getNavItemStyle('pricing')} transition py-2`}
+              className={`${getNavItemStyle('pricing')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               Pricing
             </button>
             <button 
               onClick={() => scrollToSection('faq')}
-              className={`${getNavItemStyle('faq')} transition py-2`}
+              className={`${getNavItemStyle('faq')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               FAQ
             </button>
             <Link 
               href="/blog" 
-              className={`${getLinkStyle('/blog')} transition py-2`}
+              className={`${getLinkStyle('/blog')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               Blog
             </Link>
             <Link 
               href="/podcast" 
-              className={`${getLinkStyle('/podcast')} transition py-2`}
+              className={`${getLinkStyle('/podcast')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
               Podcast
             </Link>
+          </div>
+          <div className="mt-6 mb-2">
             <Link 
               href="/contact" 
-              className={`${pathname === '/contact' ? 'bg-primary' : 'bg-secondary'} hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md text-center transition`}
+              className={`${pathname === '/contact' ? 'bg-primary' : 'bg-secondary'} w-full hover:bg-opacity-90 text-white font-medium py-3 px-6 rounded-md text-center transition-all duration-300 block`}
             >
               Contact Us
             </Link>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
