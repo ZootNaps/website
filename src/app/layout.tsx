@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/utils/analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,14 +17,14 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Business Name | Service Description",
-    template: "%s | Your Business Name",
+    default: "South Lamar Studios | B2B Podcast Production",
+    template: "%s | South Lamar Studios",
   },
-  description: "Comprehensive description of your business services and value proposition for better SEO ranking.",
-  keywords: ["keyword1", "keyword2", "your industry", "your service"],
-  authors: [{ name: "Your Name" }],
-  creator: "Your Name or Company",
-  publisher: "Your Company Name",
+  description: "An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.",
+  keywords: ["b2b podcast", "podcast production", "sales podcast", "executive interviews", "content marketing"],
+  authors: [{ name: "Gus Joseph" }],
+  creator: "South Lamar Studios",
+  publisher: "South Lamar Studios",
   robots: {
     index: true,
     follow: true,
@@ -31,16 +32,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourwebsite.com",
-    title: "Your Business Name | Service Description",
-    description: "Comprehensive description of your business services and value proposition.",
-    siteName: "Your Business Name",
+    url: "https://southlamarstudios.com",
+    title: "South Lamar Studios | B2B Podcast Production",
+    description: "An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.",
+    siteName: "South Lamar Studios",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Business Name | Service Description",
-    description: "Comprehensive description of your business services and value proposition.",
-    creator: "@yourtwitter",
+    title: "South Lamar Studios | B2B Podcast Production",
+    description: "An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.",
+    creator: "@southlamarstudios",
   },
 };
 
@@ -52,6 +53,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}>
+        {/* Google Analytics - will only load if NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         {children}
       </body>
     </html>
