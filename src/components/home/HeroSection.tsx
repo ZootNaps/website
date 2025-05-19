@@ -41,7 +41,7 @@ const HeroSection = () => {
             <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px]">
               {/* Replace with the actual image file name */}
               <Image 
-                src="/Images/hero-image.png"
+                src="/images/hero-image.png"
                 alt="B2B podcast sales solution helping businesses connect with and sell to their top customers"
                 fill
                 priority

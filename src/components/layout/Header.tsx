@@ -150,7 +150,7 @@ const Header = () => {
               quality={90}
               className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] object-contain"
             />
-            <div className="flex flex-col leading-tight font-['Plus_Jakarta_Sans']">
+            <div className="flex flex-col leading-tight font-plus-jakarta">
               <span className="text-sm md:text-base font-bold tracking-wider text-primary dark:text-white transition-colors duration-300 hover:text-secondary">
                 SOUTH LAMAR
               </span>
