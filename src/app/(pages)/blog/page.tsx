@@ -5,8 +5,24 @@ import Image from 'next/image';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Your Business Name",
-  description: "Stay updated with the latest insights, trends, and news from our team of experts.",
+  title: "B2B Podcast & Content Marketing Insights | South Lamar Studios",
+  description: "Expert tips, strategies, and case studies on B2B podcast production, content marketing, and using thought leadership to generate qualified leads and revenue.",
+  keywords: [
+    "b2b podcast insights", 
+    "content marketing strategy", 
+    "podcast production tips", 
+    "lead generation content", 
+    "thought leadership marketing",
+    "b2b content strategy",
+    "podcast ROI",
+    "business podcasting guide"
+  ],
+  openGraph: {
+    title: "B2B Podcast & Content Marketing Insights | South Lamar Studios",
+    description: "Expert tips, strategies, and case studies on B2B podcast production, content marketing, and using thought leadership to generate qualified leads and revenue.",
+    url: "https://southlamarstudios.com/blog",
+    type: "website",
+  }
 };
 
 // Placeholder blog posts until Contentful is set up

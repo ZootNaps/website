@@ -5,8 +5,23 @@ import { FaSpotify, FaApple, FaGoogle, FaYoutube } from 'react-icons/fa';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Founder Facing Podcast | Your Business Name",
-  description: "Listen to our podcast where we interview founders and business leaders about their challenges, successes, and lessons learned.",
+  title: "B2B Podcast Production | South Lamar Studios",
+  description: "Expert B2B podcast production services that help businesses generate leads and drive revenue. Listen to our showcase podcast featuring founders and business leaders sharing insights on growth, strategy, and success.",
+  keywords: [
+    "b2b podcast production", 
+    "business podcast", 
+    "founder interviews", 
+    "executive podcast", 
+    "thought leadership content",
+    "lead generation podcast",
+    "business growth stories"
+  ],
+  openGraph: {
+    title: "B2B Podcast Production | South Lamar Studios",
+    description: "Expert B2B podcast production services that help businesses generate leads and drive revenue. Listen to our showcase podcast featuring founders and business leaders.",
+    url: "https://southlamarstudios.com/podcast",
+    type: "website",
+  }
 };
 
 // Placeholder podcast episodes until integrated with a real API
