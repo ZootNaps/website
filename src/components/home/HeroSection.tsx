@@ -18,7 +18,7 @@ const HeroSection = () => {
             </h2> */}
             {/*Our end-to-end B2B Podcast solution gives you 1 on 1 facetime with decision makers at your most sought-after clients. Connect, impress, and convert with our proven Podcast for Sales system.*/}
             <p className="text-lg md:text-xl text-gray mb-8 max-w-xl">
-            An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue. No audience required. 
+            An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
