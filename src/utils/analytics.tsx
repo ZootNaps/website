@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
 // Declare gtag types
 declare global {
@@ -16,7 +16,8 @@ declare global {
   }
 }
 
-export function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID?: string }) {
+// Separate component to use navigation hooks
+function GoogleAnalyticsInner({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID?: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -34,6 +35,11 @@ export function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID?: str
     }
   }, [pathname, searchParams, GA_MEASUREMENT_ID]);
 
+  return null;
+}
+
+// Main component with Suspense
+export function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID?: string }) {
   if (!GA_MEASUREMENT_ID) return null;
 
   return (
@@ -56,6 +62,9 @@ export function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID?: str
           `,
         }}
       />
+      <Suspense fallback={null}>
+        <GoogleAnalyticsInner GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+      </Suspense>
     </>
   );
 }
