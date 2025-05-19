@@ -7,6 +7,7 @@ const ProcessSection = () => {
   const [activeTab, setActiveTab] = useState<string>('discovery');
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [contentVisible, setContentVisible] = useState<boolean>(true);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const transitionTime = 1000; // Transition time in milliseconds - slowed down from 600ms to 1000ms
   const visibleTime = 5000; // Time content is fully visible in milliseconds
@@ -61,9 +62,15 @@ const ProcessSection = () => {
     }
   };
 
+  // Set isMounted to true after client-side hydration is complete
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
+
   // Navigate to the next or previous step with transition
   const navigate = (direction: 'next' | 'prev') => {
-    if (isTransitioning) return;
+    if (!isMounted || isTransitioning) return;
     
     setIsTransitioning(true);
     setContentVisible(false);
@@ -93,7 +100,7 @@ const ProcessSection = () => {
   
   // Manual tab switching with transition
   const handleTabClick = (tabId: string) => {
-    if (isTransitioning || tabId === activeTab) return;
+    if (!isMounted || isTransitioning || tabId === activeTab) return;
     
     setIsTransitioning(true);
     setContentVisible(false);
@@ -109,9 +116,9 @@ const ProcessSection = () => {
     }, transitionTime);
   };
   
-  // Auto-cycle through tabs
+  // Auto-cycle through tabs - only run after component is mounted on client
   useEffect(() => {
-    if (isTransitioning) return;
+    if (!isMounted || isTransitioning) return;
     
     autoPlayRef.current = setTimeout(() => {
       navigate('next');
@@ -122,7 +129,7 @@ const ProcessSection = () => {
         clearTimeout(autoPlayRef.current);
       }
     };
-  }, [activeTab, isTransitioning]);
+  }, [activeTab, isTransitioning, isMounted]);
 
   return (
     <section id="process" className="py-20 bg-light border border-gray-200 rounded-lg shadow-md">

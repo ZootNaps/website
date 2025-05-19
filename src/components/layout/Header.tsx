@@ -8,17 +8,26 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { scrollToElement } from '@/utils/scrollUtils';
 
 const Header = () => {
-  // Initialize scrolled state based on current window scroll position
+  // Initialize state safely without accessing window during render
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(typeof window !== 'undefined' ? window.scrollY > 10 : false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   // Ref to track the last update time for throttling
   const lastUpdateTimeRef = useRef(0);
 
-  // Handle scroll effect
+  // Mark component as mounted on client-side
   useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
+
+  // Handle scroll effect - only runs client-side
+  useEffect(() => {
+    if (!isMounted) return;
+    
     // Check scroll position immediately on mount
     setScrolled(window.scrollY > 10);
     
@@ -28,11 +37,11 @@ const Header = () => {
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMounted]);
 
   // Set up scroll event to detect which section is most centered in the viewport
   useEffect(() => {
-    if (pathname !== '/') return;
+    if (!isMounted || pathname !== '/') return;
 
     const sections = ['home', 'features', 'process', 'pricing', 'faq'];
     
@@ -79,7 +88,20 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', findCenteredSection);
     };
-  }, [pathname, activeSection]);
+  }, [pathname, activeSection, isMounted]);
+
+  // Effect to handle hash scrolling after navigation
+  useEffect(() => {
+    if (!isMounted) return;
+    
+    if (pathname === '/' && window.location.hash) {
+      const id = window.location.hash.substring(1);
+      // Small timeout to ensure the page has loaded
+      setTimeout(() => {
+        scrollToElement(id);
+      }, 100);
+    }
+  }, [pathname, isMounted]);
 
   // Handle navigation and smooth scroll to sections
   const scrollToSection = (id: string) => {
@@ -94,17 +116,6 @@ const Header = () => {
     // If already on homepage, use our custom scroll function with offset
     scrollToElement(id);
   };
-
-  // Effect to handle hash scrolling after navigation
-  useEffect(() => {
-    if (pathname === '/' && window.location.hash) {
-      const id = window.location.hash.substring(1);
-      // Small timeout to ensure the page has loaded
-      setTimeout(() => {
-        scrollToElement(id);
-      }, 100);
-    }
-  }, [pathname]);
 
   // Helper function to determine nav item style
   const getNavItemStyle = (sectionId: string): string => {
