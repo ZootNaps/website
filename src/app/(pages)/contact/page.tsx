@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { trackEvent } from '@/utils/analytics';
 
 export default function ContactPage() {
@@ -124,21 +124,11 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="bg-blue-100 p-3 rounded-full mr-4">
-                    <FaPhone className="text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (123) 456-7890</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-blue-100 p-3 rounded-full mr-4">
                     <FaEnvelope className="text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-medium text-lg mb-1">Email</h3>
-                    <p className="text-gray-600">gus@southlamarstudios.com</p>
+                    <p className="text-gray-600">hello@southlamarstudios.com</p>
                   </div>
                 </div>
                 
@@ -148,8 +138,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium text-lg mb-1">Office</h3>
-                    <p className="text-gray-600">123 Business Street</p>
-                    <p className="text-gray-600">City, State 12345</p>
+                    <p className="text-gray-600">1701 Rogge Ln.</p>
+                    <p className="text-gray-600">Austin, TX 78723</p>
                   </div>
                 </div>
               </div>
@@ -249,28 +239,30 @@ export default function ContactPage() {
                     <textarea
                       id="message"
                       name="message"
-                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
+                      rows={4}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="Tell us more about your project, needs, and timeline..."
+                      placeholder="Tell us how we can help you..."
                       required
                     ></textarea>
                   </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={formStatus.isSubmitting}
+                    className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition ${
+                      formStatus.isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {formStatus.isSubmitting ? 'Sending...' : 'Send Message'}
+                  </button>
                   
                   {formStatus.isError && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
                       <p>{formStatus.message}</p>
                     </div>
                   )}
-                  
-                  <button
-                    type="submit"
-                    disabled={formStatus.isSubmitting}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition disabled:bg-blue-400"
-                  >
-                    {formStatus.isSubmitting ? 'Sending...' : 'Send Message'}
-                  </button>
                 </form>
               )}
             </div>
