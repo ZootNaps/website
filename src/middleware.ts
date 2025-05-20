@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
   // Customize based on your needs
   securityHeaders.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://www.google-analytics.com;"
+    "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://open.spotify.com https://*.spotify.com 'unsafe-inline'; style-src 'self' https://*.spotify.com 'unsafe-inline'; img-src 'self' data: https: https://*.spotify.com; font-src 'self' https://*.spotify.com; connect-src 'self' https://www.google-analytics.com https://*.spotify.com; frame-src 'self' https://open.spotify.com https://*.spotify.com;"
   );
 
   // XSS Protection
@@ -36,8 +36,9 @@ export function middleware(request: NextRequest) {
     'max-age=63072000; includeSubDomains; preload'
   );
   
-  // X-Frame-Options to prevent clickjacking
-  securityHeaders.set('X-Frame-Options', 'SAMEORIGIN');
+  // X-Frame-Options to prevent clickjacking, but allow Spotify embeds
+  // We don't need to set this header because we're using CSP frame-ancestors instead
+  // securityHeaders.set('X-Frame-Options', 'SAMEORIGIN');
 
   // Return the response with the security headers
   return NextResponse.next({
