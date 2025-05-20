@@ -33,13 +33,6 @@ export default function ThankYouPage() {
               >
                 Back to Home
               </Link>
-              
-              <Link 
-                href="/contact" 
-                className="border border-primary text-primary hover:bg-gray-50 font-medium py-3 px-8 rounded-md transition-all duration-300"
-              >
-                Send Another Message
-              </Link>
             </div>
           </div>
         </div>

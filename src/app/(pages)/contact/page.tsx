@@ -44,7 +44,7 @@ export default function ContactPage() {
                 <input type="hidden" name="subject" value="South Lamar Studios - New Form Submission" />
                 
                 {/* Redirect URL */}
-                <input type="hidden" name="redirect" value="/thank-you" />
+                <input type="hidden" name="redirect" value="https://southlamarstudios.com/thank-you" />
                 
                 {/* Honeypot field to prevent spam */}
                 <input type="checkbox" name="botcheck" className="hidden" />
