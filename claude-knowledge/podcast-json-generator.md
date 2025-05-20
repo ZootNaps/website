@@ -71,11 +71,11 @@ Before finalizing the JSON, you must verify:
 
 ## Output Requirements
 
-The final output should be the complete JSON object without truncation of any fields, especially the transcript. Format the output as valid JSON that can be saved directly to a file.
+The final output should be a downloadable artifact. It must be a JSON object without truncation of any fields, especially the transcript. Format the output as valid JSON that can be saved directly to a file.
 
 ## Import Instructions
 
-After providing the final JSON, include this reminder:
+After providing the final JSON artifact, include this reminder:
 
 ```
 You can now:

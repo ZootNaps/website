@@ -1,18 +1,60 @@
 require('dotenv').config({ path: '.env.local' });
 const contentful = require('contentful-management');
 const fs = require('fs');
+const path = require('path');
+const os = require('os');
 
 // Enable debug mode to see more details
 const DEBUG = true;
 
-// Read the JSON file provided as an argument
-const jsonFilePath = process.argv[2];
+// Get the Downloads directory path based on the OS
+const downloadsDir = path.join(os.homedir(), 'Downloads');
+
+// Set up data directory for podcast episodes
+const podcastDataDir = path.join(__dirname, 'data', 'podcast-episodes');
+
+// Ensure the podcast data directory exists
+if (!fs.existsSync(podcastDataDir)) {
+  fs.mkdirSync(podcastDataDir, { recursive: true });
+  console.log(`Created directory: ${podcastDataDir}`);
+}
+
+// Read the JSON file provided as an argument or use the most recent JSON in Downloads
+let jsonFilePath = process.argv[2];
+
 if (!jsonFilePath) {
-  console.error('Please provide a path to a JSON file');
+  console.log('No file path provided, looking in Downloads folder...');
+  
+  // Get all JSON files in Downloads folder
+  const files = fs.readdirSync(downloadsDir)
+    .filter(file => file.endsWith('.json'))
+    .map(file => ({
+      name: file,
+      path: path.join(downloadsDir, file),
+      mtime: fs.statSync(path.join(downloadsDir, file)).mtime
+    }))
+    .sort((a, b) => b.mtime - a.mtime); // Sort by modification time, newest first
+    
+  if (files.length === 0) {
+    console.error('No JSON files found in Downloads folder');
+    process.exit(1);
+  }
+  
+  // Use the most recently modified JSON file
+  jsonFilePath = files[0].path;
+  console.log(`Using most recent JSON file: ${files[0].name}`);
+}
+
+if (!fs.existsSync(jsonFilePath)) {
+  console.error(`File not found: ${jsonFilePath}`);
   process.exit(1);
 }
 
 const podcastData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
+
+// Save the filename to move it later
+const fileName = path.basename(jsonFilePath);
+const targetPath = path.join(podcastDataDir, fileName);
 
 // Initialize the Contentful client
 const client = contentful.createClient({
@@ -235,6 +277,18 @@ async function importPodcast() {
     console.log(`Successfully imported podcast: ${podcastData.title}`);
     console.log(`Entry ID: ${podcastEntry.sys.id}`);
     console.log(`View in Contentful: https://app.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries/${podcastEntry.sys.id}`);
+    
+    // Move the JSON file to the podcast episodes directory
+    if (jsonFilePath !== targetPath) {
+      fs.copyFileSync(jsonFilePath, targetPath);
+      console.log(`Copied JSON file to: ${targetPath}`);
+      
+      // If the file was from Downloads folder, we can optionally remove it
+      if (jsonFilePath.startsWith(downloadsDir)) {
+        fs.unlinkSync(jsonFilePath);
+        console.log(`Removed original file from Downloads folder`);
+      }
+    }
     
   } catch (error) {
     console.error('Error importing podcast:', error.message);
