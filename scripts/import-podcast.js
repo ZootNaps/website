@@ -163,10 +163,12 @@ async function importPodcast() {
     if (podcastData.spotifyEmbedUrl) {
       fields.spotifyEmbedUrl = { 'en-US': podcastData.spotifyEmbedUrl };
     }
+    // NOTE: It's expected that spotifyEmbedUrl might be empty during import
+    // and can be added manually later through the Contentful UI
     
     // Add coverArt if provided
-    // Note: The coverArt should be uploaded manually to Contentful before running the import
-    // This script will link to the existing asset, not upload it
+    // NOTE: The coverArt should be uploaded manually to Contentful before running the import
+    // or it can be left empty during import and added later through the Contentful UI
     if (podcastData.coverArtId) {
       fields.coverArt = { 
         'en-US': {
@@ -201,6 +203,11 @@ async function importPodcast() {
           ]
         }
       };
+    }
+    
+    // Add support for transcript sections as a JSON object
+    if (podcastData.transcriptSections) {
+      fields.transcriptSections = { 'en-US': podcastData.transcriptSections };
     }
     
     // Add references if they exist

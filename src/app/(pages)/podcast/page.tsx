@@ -204,14 +204,7 @@ export default async function PodcastPage() {
                     </p>
                     
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                      <div>
-                        <Link 
-                          href={`/podcast/${episode.slug}`}
-                          className="text-gray-500 hover:text-gray-700"
-                        >
-                          Play Episode
-                        </Link>
-                      </div>
+                      <div className="flex-grow"></div>
                       <Link 
                         href={`/podcast/${episode.slug}`}
                         className="text-blue-600 font-medium hover:underline"
