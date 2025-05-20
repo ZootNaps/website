@@ -1,6 +1,7 @@
 import MainLayout from '@/components/layout/MainLayout';
 import Link from 'next/link';
-import { FaSpotify, FaApple, FaGoogle, FaYoutube } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaSpotify, FaApple } from 'react-icons/fa';
 import { getPodcastEpisodes } from '@/lib/contentful/client';
 
 import type { Metadata } from "next";
@@ -40,6 +41,12 @@ export default async function PodcastPage() {
       description: "Sarah shares her journey of building a successful SaaS company, discussing challenges, fundraising, and scaling strategies.",
       publishDate: "2023-06-10",
       duration: "45 min",
+      coverArt: {
+        url: "/images/sls-Founder Facing_cover art.png",
+        title: "Default podcast cover",
+        width: 500,
+        height: 500
+      }
     },
     {
       title: "Pivoting During Uncertain Times",
@@ -49,6 +56,12 @@ export default async function PodcastPage() {
       description: "Michael discusses how his company successfully pivoted during economic downturns and emerged stronger than before.",
       publishDate: "2023-05-18",
       duration: "38 min",
+      coverArt: {
+        url: "/images/sls-Founder Facing_cover art.png",
+        title: "Default podcast cover",
+        width: 500,
+        height: 500
+      }
     },
     {
       title: "The Art of Bootstrapping",
@@ -58,6 +71,12 @@ export default async function PodcastPage() {
       description: "Amanda shares insights on growing a business without external funding and achieving profitability from day one.",
       publishDate: "2023-04-22",
       duration: "52 min",
+      coverArt: {
+        url: "/images/sls-Founder Facing_cover art.png",
+        title: "Default podcast cover",
+        width: 500,
+        height: 500
+      }
     },
     {
       title: "Building a Strong Company Culture",
@@ -67,6 +86,12 @@ export default async function PodcastPage() {
       description: "David explains how creating an engaging company culture led to better retention, productivity, and overall success.",
       publishDate: "2023-03-15",
       duration: "41 min",
+      coverArt: {
+        url: "/images/sls-Founder Facing_cover art.png",
+        title: "Default podcast cover",
+        width: 500,
+        height: 500
+      }
     },
     {
       title: "From Corporate to Entrepreneur",
@@ -76,52 +101,56 @@ export default async function PodcastPage() {
       description: "Lisa shares her journey transitioning from a corporate executive to a successful entrepreneur and the lessons learned.",
       publishDate: "2023-02-28",
       duration: "47 min",
+      coverArt: {
+        url: "/images/sls-Founder Facing_cover art.png",
+        title: "Default podcast cover",
+        width: 500,
+        height: 500
+      }
     },
   ];
 
   return (
     <MainLayout>
-      <section className="pt-28 pb-20 bg-gradient-to-br from-purple-50 to-blue-50">
+      <section className="pt-28 pb-20 bg-bg">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Founder Facing Podcast</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Conversations with founders about their challenges, successes, and lessons learned building businesses that matter.
-            </p>
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 max-w-5xl mx-auto">
+            <div className="w-full md:w-1/3 flex justify-center">
+              <div className="relative w-64 h-64 md:w-full md:h-auto aspect-square shadow-lg rounded-lg overflow-hidden">
+                <Image
+                  src="/images/sls-Founder Facing_cover art.png"
+                  alt="Founder Facing Podcast Cover"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
             
-            <div className="flex flex-wrap justify-center gap-4 mt-6">
-              <a 
-                href="https://open.spotify.com/show/3SX391bJvOrBhqP9DC8FLa" 
-                className="flex items-center bg-black text-white py-2 px-4 rounded-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaSpotify className="mr-2" /> Spotify
-              </a>
-              <a 
-                href="https://podcasts.apple.com/us/podcast/founder-facing/id1778559614" 
-                className="flex items-center bg-purple-600 text-white py-2 px-4 rounded-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaApple className="mr-2" /> Apple Podcasts
-              </a>
-              <a 
-                href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9mZDJiYTBmNC9wb2RjYXN0L3Jzcw" 
-                className="flex items-center bg-green-600 text-white py-2 px-4 rounded-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGoogle className="mr-2" /> Google Podcasts
-              </a>
-              <a 
-                href="https://www.youtube.com/@founderfacing" 
-                className="flex items-center bg-red-600 text-white py-2 px-4 rounded-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaYoutube className="mr-2" /> YouTube
-              </a>
+            <div className="w-full md:w-2/3 text-center md:text-left">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">Founder Facing Podcast</h1>
+              <p className="text-lg text-gray-600 mb-6">
+                Conversations with founders about their challenges, successes, and lessons learned building businesses that matter.
+              </p>
+              
+              <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-6">
+                <a 
+                  href="https://open.spotify.com/show/3SX391bJvOrBhqP9DC8FLa" 
+                  className="flex items-center bg-black text-white py-2 px-4 rounded-full transition-transform hover:scale-105"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaSpotify className="mr-2" /> Spotify
+                </a>
+                <a 
+                  href="https://podcasts.apple.com/us/podcast/founder-facing/id1778559614" 
+                  className="flex items-center bg-purple-600 text-white py-2 px-4 rounded-full transition-transform hover:scale-105"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaApple className="mr-2" /> Apple Podcasts
+                </a>
+              </div>
             </div>
           </div>
           
@@ -132,18 +161,31 @@ export default async function PodcastPage() {
               {podcastEpisodes.map((episode, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
                   <div className="p-6">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-xl font-bold mb-2 hover:text-blue-600 transition">
-                          <Link href={`/podcast/${episode.slug}`}>
-                            {episode.title}
-                          </Link>
-                        </h3>
-                        <p className="text-sm text-blue-600 mb-3">
-                          With {episode.guest}, {episode.guestTitle}
-                        </p>
+                    <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                      <div className="flex w-full sm:w-auto">
+                        <div className="hidden sm:block relative w-20 h-20 rounded-md overflow-hidden shrink-0 mr-4">
+                          <Image
+                            src={episode.coverArt?.url?.startsWith('http') ? episode.coverArt.url : 
+                                 episode.coverArt?.url?.startsWith('//') ? `https:${episode.coverArt.url}` : 
+                                 episode.coverArt?.url || '/images/sls-Founder Facing_cover art.png'}
+                            alt={episode.coverArt?.title || `${episode.title} cover art`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-2 hover:text-blue-600 transition">
+                            <Link href={`/podcast/${episode.slug}`}>
+                              {episode.title}
+                            </Link>
+                          </h3>
+                          <p className="text-sm text-blue-600 mb-3">
+                            With {episode.guest}, {episode.guestTitle}
+                          </p>
+                        </div>
                       </div>
-                      <div className="text-right">
+                      
+                      <div className="text-left sm:text-right w-full sm:w-auto">
                         <span className="text-sm text-gray-500 block">
                           {new Date(episode.publishDate).toLocaleDateString('en-US', {
                             month: 'long',
@@ -161,8 +203,8 @@ export default async function PodcastPage() {
                       {episode.description}
                     </p>
                     
-                    <div className="flex justify-between items-center">
-                      <div className="flex space-x-3">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                      <div>
                         <Link 
                           href={`/podcast/${episode.slug}`}
                           className="text-gray-500 hover:text-gray-700"
