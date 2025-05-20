@@ -209,7 +209,7 @@ const Header = () => {
           {/* CTA Button */}
           <Link 
             href="/contact" 
-            className={`hidden md:inline-block ${pathname === '/contact' ? 'bg-primary' : 'bg-secondary'} hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition`}
+            className="hidden md:inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-md transition"
           >
             Contact Us
           </Link>
@@ -298,7 +298,7 @@ const Header = () => {
           <div className="mt-6 mb-2">
             <Link 
               href="/contact" 
-              className={`${pathname === '/contact' ? 'bg-primary' : 'bg-secondary'} w-full hover:bg-opacity-90 text-white font-medium py-3 px-6 rounded-md text-center transition-all duration-300 block`}
+              className="bg-secondary w-full hover:bg-opacity-90 text-white font-medium py-3 px-6 rounded-md text-center transition-all duration-300 block"
             >
               Contact Us
             </Link>

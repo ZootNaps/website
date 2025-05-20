@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
 const FaqSection = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [heights, setHeights] = useState<number[]>([]);
   const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
   

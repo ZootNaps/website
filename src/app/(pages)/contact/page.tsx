@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { trackEvent } from '@/utils/analytics';
 
 export default function ContactPage() {
@@ -82,58 +81,24 @@ export default function ContactPage() {
 
   return (
     <MainLayout>
-      <section className="pt-28 pb-20 bg-gray-50">
+      <section className="pt-28 pb-20 bg-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Get in Touch</h1>
+            <p className="text-lg text-gray max-w-2xl mx-auto">
               Have questions or ready to start a project? Reach out to us and one of our experts will get back to you shortly.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 p-3 rounded-full mr-4">
-                    <FaEnvelope className="text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg mb-1">Email</h3>
-                    <p className="text-gray-600">hello@southlamarstudios.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-blue-100 p-3 rounded-full mr-4">
-                    <FaMapMarkerAlt className="text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg mb-1">Office</h3>
-                    <p className="text-gray-600">1701 Rogge Ln.</p>
-                    <p className="text-gray-600">Austin, TX 78723</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-8 h-64 w-full relative bg-gray-200 rounded-lg">
-                {/* Map placeholder - replace with actual map component */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-gray-500">Map Location</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+              <h2 className="text-2xl font-bold mb-6 text-primary">Send a Message</h2>
               
               {result.success ? (
                 <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                   <p>{result.message}</p>
                   <button
-                    className="mt-4 text-blue-600 hover:underline"
+                    className="mt-4 text-secondary hover:underline"
                     onClick={() => setResult({ success: false, error: false, message: '', loading: false })}
                   >
                     Send another message
@@ -150,7 +115,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-dark mb-1">
                         Full Name
                       </label>
                       <input
@@ -159,14 +124,14 @@ export default function ContactPage() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-secondary focus:border-secondary"
                         placeholder="John Doe"
                         required
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-dark mb-1">
                         Email Address
                       </label>
                       <input
@@ -175,7 +140,7 @@ export default function ContactPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-secondary focus:border-secondary"
                         placeholder="john@example.com"
                         required
                       />
@@ -183,7 +148,7 @@ export default function ContactPage() {
                   </div>
                   
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-dark mb-1">
                       Phone Number
                     </label>
                     <input
@@ -192,13 +157,13 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-secondary focus:border-secondary"
                       placeholder="(123) 456-7890"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-dark mb-1">
                       Subject
                     </label>
                     <input
@@ -207,14 +172,14 @@ export default function ContactPage() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-secondary focus:border-secondary"
                       placeholder="How can we help?"
                       required
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-dark mb-1">
                       Message
                     </label>
                     <textarea
@@ -223,7 +188,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-secondary focus:border-secondary"
                       placeholder="Tell us how we can help you..."
                       required
                     ></textarea>
@@ -232,7 +197,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={result.loading}
-                    className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition ${
+                    className={`w-full bg-secondary text-white py-3 px-8 rounded-md hover:bg-opacity-90 transition ${
                       result.loading ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
                   >
