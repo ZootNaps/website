@@ -5,13 +5,14 @@ import PodcastStructuredData from '@/components/seo/PodcastStructuredData';
 import { Metadata } from 'next';
 
 interface PodcastPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: PodcastPageProps): Promise<Metadata> {
-  const episode = await getPodcastEpisodeBySlug(params.slug);
+  const { slug } = await params;
+  const episode = await getPodcastEpisodeBySlug(slug);
   
   if (!episode) {
     return {
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: PodcastPageProps): Promise<Me
 }
 
 export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
-  const episode = await getPodcastEpisodeBySlug(params.slug);
+  const { slug } = await params;
+  const episode = await getPodcastEpisodeBySlug(slug);
   
   if (!episode) {
     notFound();
