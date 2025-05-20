@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    
+    <form id="form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Required: Access key -->
+        <input type="hidden" name="access_key" value="d0880bce-6a99-46c4-9618-62faa459fb07">
+        
+        <!-- Custom from name -->
+        <input type="hidden" name="from_name" value="South Lamar Studios Contact Form">
+        
+        <!-- Pre-defined subject -->
+        <input type="hidden" name="subject" value="South Lamar Studios - New Form Submission">
+        
+        <!-- Redirect URL -->
+        <input type="hidden" name="redirect" value="thank-you.html">
+        
+        <!-- Honeypot field to prevent spam -->
+        <input type="checkbox" name="botcheck" style="display: none;">
+        
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit">Send Message</button>
+    </form>
+    
+    <script>
+        window.onload = function() {
+            // Reset the form fields when the page loads
+            document.getElementById("form").reset();
+        };
+    </script>
+</body>
+</html> 

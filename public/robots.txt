@@ -1,33 +1,42 @@
-# Allow all user agents
+# *
 User-agent: *
 Allow: /
 
-# AI bots
+# GPTBot
 User-agent: GPTBot
 Allow: /
 
+# ChatGPT-User
 User-agent: ChatGPT-User
 Allow: /
 
+# Anthropic-AI
 User-agent: Anthropic-AI
 Allow: /
 
+# Claude-Web
 User-agent: Claude-Web
 Allow: /
 
+# Google-Extended
 User-agent: Google-Extended
 Allow: /
 
+# Bingbot
 User-agent: Bingbot
 Allow: /
 
+# CCBot
 User-agent: CCBot
 Allow: /
 
-# Block admin
+# *
 User-agent: *
 Disallow: /admin
 
-# Sitemap
+# Host
+Host: https://southlamarstudios.com
+
+# Sitemaps
 Sitemap: https://southlamarstudios.com/sitemap.xml
-Sitemap: https://southlamarstudios.com/server-sitemap.xml 
+Sitemap: https://southlamarstudios.com/server-sitemap.xml

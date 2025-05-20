@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           
           {/* Direct Contact Button */}
-          <a href="mailto:hello@southlamarstudios.com" className="flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 transition-all duration-300 py-3 px-4 rounded-md mb-5 w-full active:scale-98">
+          <a href="/contact" className="flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 transition-all duration-300 py-3 px-4 rounded-md mb-5 w-full active:scale-98">
             <FaEnvelope size={16} />
             <span className="text-sm font-medium">Contact Us</span>
           </a>
