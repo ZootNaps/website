@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Podcast Episode",
+  "description": "Schema for a podcast episode for import to Contentful",
+  "type": "object",
+  "required": [
+    "title",
+    "description",
+    "summary",
+    "keyTopics",
+    "guest",
+    "guestTitle",
+    "duration",
+    "fullTranscript"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the podcast episode"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief 1-2 sentence description of the episode"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Longer 3-4 sentence summary of the episode"
+    },
+    "keyTopics": {
+      "type": "array",
+      "description": "List of 4-6 key topics discussed in the episode",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "guest": {
+      "type": "string",
+      "description": "Name of the guest"
+    },
+    "guestTitle": {
+      "type": "string",
+      "description": "Title or position of the guest"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Duration of the episode (e.g., '45 min')"
+    },
+    "publishDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 formatted date-time when the episode was published"
+    },
+    "spotifyEmbedUrl": {
+      "type": "string",
+      "description": "Spotify embed URL for the episode"
+    },
+    "pullQuotes": {
+      "type": "array",
+      "description": "Notable quotes from the episode",
+      "items": {
+        "type": "object",
+        "required": ["quote", "attribution"],
+        "properties": {
+          "quote": {
+            "type": "string",
+            "description": "The quote text"
+          },
+          "attribution": {
+            "type": "string",
+            "description": "Who said the quote"
+          }
+        }
+      }
+    },
+    "resourcesMentioned": {
+      "type": "array",
+      "description": "Resources mentioned in the episode",
+      "items": {
+        "type": "object",
+        "required": ["title", "url"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Name of the resource"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the resource"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of the resource"
+          }
+        }
+      }
+    },
+    "fullTranscript": {
+      "type": "string",
+      "description": "Full transcript of the episode with Markdown formatting"
+    }
+  }
+} 
