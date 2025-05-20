@@ -25,6 +25,143 @@ export default function ContactPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  
+  // Helper function to attempt submission using fetch with FormData
+  const submitWithFormData = async (formElement: HTMLFormElement): Promise<any> => {
+    const formDataObject = new FormData(formElement);
+    
+    // Ensure phone field is included even if empty
+    if (!formDataObject.get('phone')) {
+      formDataObject.set('phone', formData.phone || '');
+    }
+    
+    // Add origin for CORS handling
+    formDataObject.append('origin', window.location.origin);
+    
+    console.log('Sending payload to Web3Forms:', Object.fromEntries(formDataObject));
+    console.log('Sending from origin:', window.location.origin);
+    
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formDataObject,
+    });
+    
+    console.log('Response status:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}. Details: ${errorText}`);
+    }
+    
+    return await response.json();
+  };
+  
+  // Helper function to attempt submission using fetch with JSON
+  const submitWithJSON = async (): Promise<any> => {
+    console.log('Trying alternative JSON approach...');
+    
+    const payload = {
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || '',
+      subject: formData.subject,
+      message: formData.message,
+      from_name: 'South Lamar Studios Contact Form',
+      botcheck: false,
+      origin: window.location.origin
+    };
+    
+    console.log('Alternative payload:', payload);
+    
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    
+    console.log('Alternative response status:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error in alternative approach! Status: ${response.status}. Details: ${errorText}`);
+    }
+    
+    return await response.json();
+  };
+  
+  // Helper function to attempt submission using XMLHttpRequest
+  const submitWithXHR = async (): Promise<any> => {
+    console.log('Trying XMLHttpRequest as last resort...');
+    
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://api.web3forms.com/submit', true);
+      
+      xhr.onload = function() {
+        if (this.status >= 200 && this.status < 300) {
+          try {
+            const result = JSON.parse(xhr.responseText);
+            resolve(result);
+          } catch (e) {
+            reject(new Error('Failed to parse response: ' + xhr.responseText));
+          }
+        } else {
+          reject(new Error('XHR failed with status: ' + this.status + ' ' + xhr.responseText));
+        }
+      };
+      
+      xhr.onerror = function() {
+        reject(new Error('Network error occurred with XMLHttpRequest'));
+      };
+      
+      // Prepare data - simple key/value pairs
+      const data = new FormData();
+      data.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('phone', formData.phone || '');
+      data.append('subject', formData.subject || 'New Contact Form Submission');
+      data.append('message', formData.message);
+      data.append('from_name', 'South Lamar Studios Contact Form');
+      data.append('botcheck', 'false');
+      
+      // Send the request
+      xhr.send(data);
+    });
+  };
+  
+  // Handle successful submission
+  const handleSuccess = (result: any) => {
+    console.log('Submission successful:', result);
+    
+    // Track successful form submission
+    trackEvent(
+      'form_submission', 
+      'contact', 
+      'Contact Form Submission',
+    );
+    
+    // Success
+    setFormStatus({
+      isSubmitting: false,
+      isSuccess: true,
+      isError: false,
+      message: 'Your message has been sent successfully! We will get back to you shortly.',
+    });
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    });
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,67 +175,48 @@ export default function ContactPage() {
     });
     
     try {
-      // Get form element and create FormData
+      // Try three different approaches in sequence if earlier ones fail
       const formElement = e.target as HTMLFormElement;
-      const formDataObject = new FormData(formElement);
       
-      // Convert to JSON
-      const object = Object.fromEntries(formDataObject);
-      const json = JSON.stringify(object);
-      
-      console.log('Sending payload to Web3Forms:', object); // Debug log for payload
-      console.log('Sending from origin:', window.location.origin); // Log the origin
-      
-      // Send form data to Web3Forms
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
-      });
-      
-      console.log('Response status:', response.status, response.statusText); // Debug log for response status
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}. Details: ${errorText}`);
-      }
-      
-      const result = await response.json();
-      console.log('Response data:', result); // Debug log for response data
-      
-      if (result.success) {
-        // Track successful form submission
-        trackEvent(
-          'form_submission', 
-          'contact', 
-          'Contact Form Submission',
-        );
-        
-        // Success
-        setFormStatus({
-          isSubmitting: false,
-          isSuccess: true,
-          isError: false,
-          message: 'Your message has been sent successfully! We will get back to you shortly.',
-        });
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
-        });
-      } else {
+      try {
+        // First try: FormData approach
+        const result = await submitWithFormData(formElement);
+        if (result.success) {
+          handleSuccess(result);
+          return;
+        }
         throw new Error(result.message || 'Failed to send message');
+      } catch (formDataError) {
+        console.error('FormData approach failed:', formDataError);
+        
+        try {
+          // Second try: JSON approach
+          const jsonResult = await submitWithJSON();
+          if (jsonResult.success) {
+            handleSuccess(jsonResult);
+            return;
+          }
+          throw new Error(jsonResult.message || 'Failed to send message');
+        } catch (jsonError) {
+          console.error('JSON approach failed:', jsonError);
+          
+          try {
+            // Third try: XHR approach
+            const xhrResult = await submitWithXHR();
+            if (xhrResult.success) {
+              handleSuccess(xhrResult);
+              return;
+            }
+            throw new Error(xhrResult.message || 'Failed to send message');
+          } catch (xhrError) {
+            console.error('XHR approach failed:', xhrError);
+            throw xhrError; // Throw the XHR error to be caught by the outer catch
+          }
+        }
       }
     } catch (error: any) {
-      // Track form submission error
-      console.error('Form submission error:', error); // Detailed error logging
+      // Final error handling for all approaches
+      console.error('All submission approaches failed:', error);
       
       trackEvent(
         'form_error', 
@@ -276,7 +394,8 @@ export default function ContactPage() {
                   
                   {formStatus.isError && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                      <p>{formStatus.message}</p>
+                      <p className="font-bold">Error: {formStatus.message}</p>
+                      <p className="text-sm mt-2">Please try again or contact us directly at hello@southlamarstudios.com</p>
                     </div>
                   )}
                 </form>
