@@ -2,6 +2,9 @@ require('dotenv').config({ path: '.env.local' });
 const contentful = require('contentful-management');
 const fs = require('fs');
 
+// Enable debug mode to see more details
+const DEBUG = true;
+
 // Read the JSON file provided as an argument
 const jsonFilePath = process.argv[2];
 if (!jsonFilePath) {
@@ -25,6 +28,19 @@ async function importPodcast() {
     const space = await client.getSpace(process.env.CONTENTFUL_SPACE_ID);
     const environment = await space.getEnvironment('master');
     console.log('Connected to Contentful successfully!');
+    
+    // First, let's try to fetch the content type to see what fields are available
+    if (DEBUG) {
+      try {
+        const contentType = await environment.getContentType('podcastEpisode');
+        console.log('Content type structure:');
+        contentType.fields.forEach(field => {
+          console.log(`- ${field.id} (${field.type}${field.required ? ', required' : ''})`);
+        });
+      } catch (e) {
+        console.error('Error fetching content type:', e.message);
+      }
+    }
     
     // Create pull quotes first (referenced content)
     console.log('Creating pull quotes...');
@@ -89,8 +105,12 @@ async function importPodcast() {
       publishDate: { 'en-US': podcastData.publishDate || new Date().toISOString() },
       duration: { 'en-US': podcastData.duration },
       guest: { 'en-US': podcastData.guest },
-      guestTitle: { 'en-US': podcastData.guestTitle },
     };
+    
+    // Conditionally add guestTitle if it exists in your data
+    if (podcastData.guestTitle) {
+      fields.guestTitle = { 'en-US': podcastData.guestTitle };
+    }
     
     // Add optional fields if they exist
     if (podcastData.spotifyEmbedUrl) {
@@ -99,7 +119,6 @@ async function importPodcast() {
     
     if (podcastData.fullTranscript) {
       // For now, we'll use a simple document with the transcript as plain text
-      // In a real implementation, you would use a proper Markdown to Rich Text converter
       fields.fullTranscript = { 
         'en-US': {
           nodeType: 'document',
@@ -131,10 +150,59 @@ async function importPodcast() {
       fields.resourcesMentioned = { 'en-US': resourceEntries };
     }
     
-    // Create the podcast episode entry
-    const podcastEntry = await environment.createEntry('podcastEpisode', {
-      fields: fields
-    });
+    if (DEBUG) {
+      console.log('Fields being sent to Contentful:');
+      console.log(JSON.stringify(Object.keys(fields), null, 2));
+    }
+    
+    // Create the podcast episode entry - try with minimal fields first if in debug mode
+    let podcastEntry;
+    
+    if (DEBUG) {
+      try {
+        // First try with just the most basic fields
+        console.log('Attempting to create entry with minimal fields...');
+        const minimalFields = {
+          title: fields.title,
+          slug: fields.slug,
+          description: fields.description, 
+          summary: fields.summary,
+          keyTopics: fields.keyTopics,
+          guest: fields.guest,
+          duration: fields.duration
+        };
+        
+        console.log('Minimal fields:', Object.keys(minimalFields));
+        
+        podcastEntry = await environment.createEntry('podcastEpisode', {
+          fields: minimalFields
+        });
+        
+        console.log('Basic entry created successfully. Adding remaining fields...');
+        
+        // Now add all the fields to the existing entry
+        for (const key of Object.keys(fields)) {
+          if (!minimalFields[key]) {
+            podcastEntry.fields[key] = fields[key];
+          }
+        }
+        
+        podcastEntry = await podcastEntry.update();
+      } catch (error) {
+        console.error('Error with minimal fields approach:', error.message);
+        
+        // Try with all fields as originally intended
+        console.log('Falling back to creating entry with all fields at once...');
+        podcastEntry = await environment.createEntry('podcastEpisode', {
+          fields: fields
+        });
+      }
+    } else {
+      // Normal non-debug approach
+      podcastEntry = await environment.createEntry('podcastEpisode', {
+        fields: fields
+      });
+    }
     
     // Publish the podcast episode
     await podcastEntry.publish();
@@ -146,7 +214,32 @@ async function importPodcast() {
   } catch (error) {
     console.error('Error importing podcast:', error.message);
     if (error.response) {
-      console.error('Response details:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response status text:', error.response.statusText);
+      
+      if (error.response.data) {
+        console.error('Error details:', JSON.stringify(error.response.data, null, 2));
+        
+        if (error.response.data.details && error.response.data.details.errors) {
+          console.error('Specific validation errors:');
+          error.response.data.details.errors.forEach((err, idx) => {
+            console.error(`Error ${idx + 1}:`, JSON.stringify(err, null, 2));
+          });
+        }
+      }
+      
+      if (error.response.config) {
+        console.error('Request URL:', error.response.config.url);
+        console.error('Request method:', error.response.config.method);
+        if (error.response.config.payloadData) {
+          try {
+            const payload = JSON.parse(error.response.config.payloadData);
+            console.error('Fields that were sent:', Object.keys(payload.fields).join(', '));
+          } catch (e) {
+            console.error('Could not parse request payload');
+          }
+        }
+      }
     }
   }
 }
