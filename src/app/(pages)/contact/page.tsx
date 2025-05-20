@@ -26,7 +26,7 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Reset status
@@ -38,8 +38,16 @@ export default function ContactPage() {
     });
     
     try {
-      // Access key from environment variable
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+      // Get form element and create FormData
+      const formElement = e.target as HTMLFormElement;
+      const formDataObject = new FormData(formElement);
+      
+      // Convert to JSON
+      const object = Object.fromEntries(formDataObject);
+      const json = JSON.stringify(object);
+      
+      console.log('Sending payload to Web3Forms:', object); // Debug log for payload
+      console.log('Sending from origin:', window.location.origin); // Log the origin
       
       // Send form data to Web3Forms
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -48,19 +56,18 @@ export default function ContactPage() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || 'Not provided',
-          subject: formData.subject || 'New Contact Form Submission',
-          message: formData.message,
-          from_name: 'South Lamar Studios Contact Form',
-          origin: window.location.origin, // For CORS handling
-        }),
+        body: json,
       });
       
+      console.log('Response status:', response.status, response.statusText); // Debug log for response status
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}. Details: ${errorText}`);
+      }
+      
       const result = await response.json();
+      console.log('Response data:', result); // Debug log for response data
       
       if (result.success) {
         // Track successful form submission
@@ -91,6 +98,8 @@ export default function ContactPage() {
       }
     } catch (error: any) {
       // Track form submission error
+      console.error('Form submission error:', error); // Detailed error logging
+      
       trackEvent(
         'form_error', 
         'contact', 
@@ -167,6 +176,13 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form className="space-y-6" onSubmit={handleSubmit}>
+                  <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY} />
+                  <input type="hidden" name="from_name" value="South Lamar Studios Contact Form" />
+                  <input type="hidden" name="subject" value="New Contact Form Submission" />
+                  
+                  {/* Honeypot field for spam protection - should remain unchecked */}
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
