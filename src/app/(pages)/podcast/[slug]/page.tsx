@@ -51,15 +51,58 @@ export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
     notFound();
   }
   
-  // Function to convert the transcript to HTML
-  const renderTranscript = () => {
-    if (!episode.fullTranscript) {
-      return <p>Transcript not available for this episode.</p>;
+  // Format the transcript content for display
+  const formatTranscriptContent = (content: string) => {
+    // Split by new lines to handle each paragraph
+    const paragraphs = content.split('\n').filter(line => line.trim().length > 0);
+    
+    return (
+      <>
+        {paragraphs.map((paragraph, index) => {
+          // Check if paragraph starts with a speaker name (e.g., "Gus:" or "Guest:")
+          const isSpeakerLine = /^([A-Za-z]+):\s/.test(paragraph);
+          
+          if (isSpeakerLine) {
+            // Split the speaker name from the rest of the text
+            const [speakerPart, ...contentParts] = paragraph.split(/:\s(.+)/);
+            const speaker = speakerPart;
+            const text = contentParts.join(': ');
+            
+            return (
+              <p key={index} className="mb-4">
+                <span className="font-bold">{speaker}: </span>
+                {text}
+              </p>
+            );
+          }
+          
+          // Regular paragraph
+          return <p key={index} className="mb-4">{paragraph}</p>;
+        })}
+      </>
+    );
+  };
+  
+  // Find pull quotes that best match a section
+  const findPullQuotesForSection = (sectionTitle: string, sectionIndex: number) => {
+    // If we have just as many pull quotes as sections, distribute them 1:1
+    if (episode.pullQuotes.length === episode.transcriptSections?.length) {
+      return [episode.pullQuotes[sectionIndex]];
     }
     
-    // This logic would need to be adjusted based on how your transcript is stored in Contentful
-    // For now, assuming it's stored as a Rich Text field that gets converted to HTML
-    return <div dangerouslySetInnerHTML={{ __html: episode.fullTranscript }} />;
+    // Try to match based on content similarity
+    const matchingQuotes = episode.pullQuotes.filter(quote => 
+      quote.quote.toLowerCase().includes(sectionTitle.toLowerCase())
+    );
+    
+    if (matchingQuotes.length > 0) {
+      return matchingQuotes;
+    }
+    
+    // Fallback: distribute quotes evenly among sections
+    return episode.pullQuotes.filter((_, index) => 
+      index % (episode.transcriptSections?.length || 1) === sectionIndex
+    );
   };
   
   return (
@@ -171,32 +214,62 @@ export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
             <h2 id="full-transcript" className="text-2xl font-bold text-[#2a3d45]">Full Transcript</h2>
             
             {/* Table of Contents */}
-            {episode.fullTranscript && (
+            {episode.transcriptSections && episode.transcriptSections.length > 0 && (
               <div className="bg-[#f8f3ed] p-5 rounded-lg mb-8">
                 <h4 className="text-lg font-semibold text-[#2a3d45] mt-0">Jump to Section:</h4>
                 <ul className="columns-2 gap-10">
-                  <li><a href="#introduction" className="text-[#e76f51] no-underline">Introduction</a></li>
-                  <li><a href="#co-founder-relationship" className="text-[#e76f51] no-underline">Co-Founder Relationship</a></li>
-                  <li><a href="#roles-responsibilities" className="text-[#e76f51] no-underline">Roles & Responsibilities</a></li>
-                  <li><a href="#first-customer" className="text-[#e76f51] no-underline">Landing the First Customer</a></li>
-                  <li><a href="#sales-marketing" className="text-[#e76f51] no-underline">Sales & Marketing Approach</a></li>
-                  <li><a href="#conclusion" className="text-[#e76f51] no-underline">Conclusion</a></li>
+                  {episode.transcriptSections.map((section, index) => (
+                    <li key={index}>
+                      <a 
+                        href={`#${section.id}`} 
+                        className="text-[#e76f51] no-underline hover:underline"
+                      >
+                        {section.title}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
             
-            {/* Pull Quotes */}
-            {episode.pullQuotes.length > 0 && episode.pullQuotes.map((quote, index) => (
-              <div key={index} className="my-10 py-8 px-6 border-l-4 border-[#e76f51] bg-[#f8f3ed]">
-                <p className="text-2xl italic text-[#2a3d45] leading-relaxed">{quote.quote}</p>
-                <p className="mt-4 text-[#e76f51] font-semibold">– {quote.attribution}</p>
+            {/* Transcript Sections with Pull Quotes */}
+            {episode.transcriptSections && episode.transcriptSections.length > 0 ? (
+              <div className="transcript-sections my-6">
+                {episode.transcriptSections.map((section, index) => (
+                  <div key={index} className="mb-12">
+                    {/* Section heading with ID for jump links */}
+                    <h3 
+                      id={section.id} 
+                      className="text-xl font-bold text-[#2a3d45] mb-4 pb-2 border-b border-gray-200"
+                    >
+                      {section.title}
+                    </h3>
+                    
+                    {/* Section content */}
+                    <div className="prose max-w-none prose-headings:text-[#2a3d45] prose-a:text-[#e76f51]">
+                      {formatTranscriptContent(section.content)}
+                    </div>
+                    
+                    {/* Pull Quotes for this section */}
+                    {findPullQuotesForSection(section.title, index).map((quote, qIndex) => (
+                      <div key={qIndex} className="my-10 py-8 px-6 border-l-4 border-[#e76f51] bg-[#f8f3ed]">
+                        <p className="text-2xl italic text-[#2a3d45] leading-relaxed">{quote.quote}</p>
+                        <p className="mt-4 text-[#e76f51] font-semibold">– {quote.attribution}</p>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
-            ))}
-            
-            {/* Transcript Content */}
-            <div className="transcript-content my-6">
-              {renderTranscript()}
-            </div>
+            ) : (
+              // Fallback to the old fullTranscript display if no sections are available
+              <div className="transcript-content my-6">
+                {episode.fullTranscript ? (
+                  <div dangerouslySetInnerHTML={{ __html: episode.fullTranscript }} />
+                ) : (
+                  <p>Transcript not available for this episode.</p>
+                )}
+              </div>
+            )}
             
             {/* Resources Section */}
             {episode.resourcesMentioned.length > 0 && (

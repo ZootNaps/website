@@ -41,6 +41,7 @@ export interface PodcastEpisode {
   fullTranscript: any; // Rich text content
   pullQuotes: PullQuote[];
   resourcesMentioned: Resource[];
+  transcriptSections?: TranscriptSection[];
   coverArt?: {
     url: string;
     title: string;
@@ -59,6 +60,13 @@ interface Resource {
   title: string;
   url: string;
   description?: string;
+}
+
+// Interface for transcript sections
+interface TranscriptSection {
+  title: string;
+  content: string;
+  id: string;
 }
 
 // Client configuration
@@ -187,6 +195,7 @@ export async function getPodcastEpisodes(): Promise<PodcastEpisode[]> {
           url: resource.fields.url,
           description: resource.fields.description,
         })) || [],
+        transcriptSections: fields.transcriptSections || [],
         coverArt: fields.coverArt ? {
           url: fields.coverArt.fields.file.url,
           title: fields.coverArt.fields.title,
@@ -237,6 +246,7 @@ export async function getPodcastEpisodeBySlug(slug: string): Promise<PodcastEpis
         url: resource.fields.url,
         description: resource.fields.description,
       })) || [],
+      transcriptSections: fields.transcriptSections || [],
       coverArt: fields.coverArt ? {
         url: fields.coverArt.fields.file.url,
         title: fields.coverArt.fields.title,
