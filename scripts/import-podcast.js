@@ -112,9 +112,29 @@ async function importPodcast() {
       fields.guestTitle = { 'en-US': podcastData.guestTitle };
     }
     
+    // Add episodeNumber if it exists
+    if (podcastData.episodeNumber) {
+      fields.episodeNumber = { 'en-US': podcastData.episodeNumber };
+    }
+    
     // Add optional fields if they exist
     if (podcastData.spotifyEmbedUrl) {
       fields.spotifyEmbedUrl = { 'en-US': podcastData.spotifyEmbedUrl };
+    }
+    
+    // Add coverArt if provided
+    // Note: The coverArt should be uploaded manually to Contentful before running the import
+    // This script will link to the existing asset, not upload it
+    if (podcastData.coverArtId) {
+      fields.coverArt = { 
+        'en-US': {
+          sys: {
+            type: 'Link',
+            linkType: 'Asset',
+            id: podcastData.coverArtId
+          }
+        } 
+      };
     }
     
     if (podcastData.fullTranscript) {
@@ -171,6 +191,11 @@ async function importPodcast() {
           guest: fields.guest,
           duration: fields.duration
         };
+        
+        // Add episodeNumber to minimal fields if it exists
+        if (fields.episodeNumber) {
+          minimalFields.episodeNumber = fields.episodeNumber;
+        }
         
         console.log('Minimal fields:', Object.keys(minimalFields));
         

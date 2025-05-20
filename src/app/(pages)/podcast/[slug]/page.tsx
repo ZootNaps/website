@@ -3,6 +3,7 @@ import { getPodcastEpisodeBySlug } from '@/lib/contentful/client';
 import MainLayout from '@/components/layout/MainLayout';
 import PodcastStructuredData from '@/components/seo/PodcastStructuredData';
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 interface PodcastPageProps {
   params: Promise<{
@@ -22,14 +23,22 @@ export async function generateMetadata({ params }: PodcastPageProps): Promise<Me
   }
   
   return {
-    title: `${episode.title} | Founder Facing Podcast`,
+    title: `${episode.episodeNumber ? `#${episode.episodeNumber}: ` : ''}${episode.title} | Founder Facing Podcast`,
     description: episode.description,
     openGraph: {
-      title: `${episode.title} | Founder Facing Podcast`,
+      title: `${episode.episodeNumber ? `#${episode.episodeNumber}: ` : ''}${episode.title} | Founder Facing Podcast`,
       description: episode.description,
       url: `https://southlamarstudios.com/podcast/${episode.slug}`,
       type: 'article',
       publishedTime: episode.publishDate,
+      images: episode.coverArt ? [
+        {
+          url: `https:${episode.coverArt.url}`,
+          width: episode.coverArt.width,
+          height: episode.coverArt.height,
+          alt: episode.coverArt.title || episode.title,
+        }
+      ] : undefined,
     },
   };
 }
@@ -57,17 +66,56 @@ export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
     <MainLayout>
       <div className="pt-28 pb-20">
         <div className="container mx-auto px-4 max-w-4xl">
-          {/* Episode Summary Section */}
+          {/* Episode Header */}
+          <div className="mb-8 text-center">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#2a3d45] mb-2">
+              {episode.episodeNumber && <span className="text-[#e76f51]">#{episode.episodeNumber}: </span>}
+              {episode.title}
+            </h1>
+            <p className="text-gray-600">
+              With {episode.guest}{episode.guestTitle ? `, ${episode.guestTitle}` : ''}
+            </p>
+            <p className="text-sm text-gray-500">
+              {new Date(episode.publishDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })} · {episode.duration}
+            </p>
+          </div>
+          
+          {/* Episode Summary Section with Cover Art */}
           <div className="bg-[#f8f3ed] p-6 rounded-xl mb-8">
-            <h2 className="text-2xl font-bold text-[#2a3d45] mt-0">Episode Summary</h2>
-            <p className="text-lg leading-relaxed">{episode.summary}</p>
-            
-            <h3 className="text-xl font-semibold text-[#2a3d45] mt-6">Key Topics</h3>
-            <ul className="list-disc pl-6">
-              {episode.keyTopics.map((topic, index) => (
-                <li key={index} className="mb-2">{topic}</li>
-              ))}
-            </ul>
+            <div className="flex flex-col md:flex-row gap-6">
+              {/* Cover Art */}
+              {episode.coverArt && (
+                <div className="md:w-1/3 flex-shrink-0">
+                  <div className="relative rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src={`https:${episode.coverArt.url}`}
+                      alt={episode.coverArt.title || episode.title}
+                      width={episode.coverArt.width}
+                      height={episode.coverArt.height}
+                      className="w-full h-auto"
+                      priority
+                    />
+                  </div>
+                </div>
+              )}
+              
+              {/* Summary and Key Topics */}
+              <div className={episode.coverArt ? "md:w-2/3" : "w-full"}>
+                <h2 className="text-2xl font-bold text-[#2a3d45] mt-0">Episode Summary</h2>
+                <p className="text-lg leading-relaxed">{episode.summary}</p>
+                
+                <h3 className="text-xl font-semibold text-[#2a3d45] mt-6">Key Topics</h3>
+                <ul className="list-disc pl-6">
+                  {episode.keyTopics.map((topic, index) => (
+                    <li key={index} className="mb-2">{topic}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
           
           {/* Player Section */}
@@ -178,7 +226,9 @@ export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
         duration={episode.duration}
         guest={episode.guest}
         guestTitle={episode.guestTitle}
+        episodeNumber={episode.episodeNumber}
         episodeUrl={`https://southlamarstudios.com/podcast/${episode.slug}`}
+        imageUrl={episode.coverArt ? `https:${episode.coverArt.url}` : undefined}
       />
     </MainLayout>
   );

@@ -1,0 +1,42 @@
+{
+  "title": "How We Built Our SaaS Platform",
+  "slug": "how-we-built-our-saas-platform",
+  "episodeNumber": "42",
+  "description": "In this episode, we talk with Jane Smith about building a successful SaaS business from scratch.",
+  "summary": "Jane Smith, the founder of TechCloud, shares her journey from idea to successful SaaS platform. She discusses fundraising challenges, technical decisions, and scaling strategies that helped her company grow to serve over 10,000 customers.",
+  "keyTopics": [
+    "SaaS business models",
+    "Early-stage fundraising",
+    "Technical architecture decisions",
+    "Finding product-market fit",
+    "Scaling a development team"
+  ],
+  "publishDate": "2023-06-15",
+  "duration": "45 min",
+  "guest": "Jane Smith",
+  "guestTitle": "Founder & CEO, TechCloud",
+  "spotifyEmbedUrl": "https://open.spotify.com/embed/episode/REPLACE_WITH_ACTUAL_ID",
+  "coverArtId": "REPLACE_WITH_CONTENTFUL_ASSET_ID",
+  "fullTranscript": "This is where the full transcript text would go. For actual use, this would be much longer and contain the entire conversation...",
+  "pullQuotes": [
+    {
+      "quote": "The most important decision we made was to focus relentlessly on solving one specific problem better than anyone else.",
+      "attribution": "Jane Smith"
+    },
+    {
+      "quote": "We said no to 90% of feature requests, even when they came from our biggest customers. That discipline kept our product focused.",
+      "attribution": "Jane Smith"
+    }
+  ],
+  "resourcesMentioned": [
+    {
+      "title": "The SaaS Playbook",
+      "url": "https://example.com/saas-playbook",
+      "description": "Jane's recommended guide for SaaS founders"
+    },
+    {
+      "title": "TechCloud",
+      "url": "https://techcloud-example.com"
+    }
+  ]
+} 

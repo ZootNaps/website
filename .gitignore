@@ -63,3 +63,8 @@ next-env.d.ts
 **/public/sw.js.map
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
+
+# Content import data (but allow templates and READMEs)
+scripts/data/**/*.json
+!scripts/data/**/*.template
+!scripts/data/**/README.md

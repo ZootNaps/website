@@ -9,6 +9,7 @@ interface PodcastEpisodeProps {
   duration: string;
   guest: string;
   guestTitle: string;
+  episodeNumber?: string;
   episodeUrl: string;
   imageUrl?: string;
 }
@@ -20,6 +21,7 @@ export default function PodcastStructuredData({
   duration,
   guest,
   guestTitle,
+  episodeNumber,
   episodeUrl,
   imageUrl = 'https://southlamarstudios.com/images/podcast-cover.jpg'
 }: PodcastEpisodeProps) {
@@ -36,6 +38,7 @@ export default function PodcastStructuredData({
     "description": description,
     "url": episodeUrl,
     "image": imageUrl,
+    "episodeNumber": episodeNumber,
     "offers": {
       "@type": "Offer",
       "price": "0",

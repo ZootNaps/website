@@ -18,6 +18,14 @@
       "type": "string",
       "description": "Title of the podcast episode"
     },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly version of the title (auto-generated if not provided)"
+    },
+    "episodeNumber": {
+      "type": "string",
+      "description": "Sequential number of the episode (e.g., '42')"
+    },
     "description": {
       "type": "string",
       "description": "Brief 1-2 sentence description of the episode"
@@ -54,6 +62,10 @@
     "spotifyEmbedUrl": {
       "type": "string",
       "description": "Spotify embed URL for the episode"
+    },
+    "coverArtId": {
+      "type": "string",
+      "description": "Contentful Asset ID for the episode cover art image"
     },
     "pullQuotes": {
       "type": "array",

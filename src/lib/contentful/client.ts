@@ -36,10 +36,18 @@ export interface PodcastEpisode {
   duration: string;
   guest: string;
   guestTitle: string;
+  episodeNumber: string;
   spotifyEmbedUrl: string;
   fullTranscript: any; // Rich text content
   pullQuotes: PullQuote[];
   resourcesMentioned: Resource[];
+  coverArt?: {
+    url: string;
+    title: string;
+    description?: string;
+    width: number;
+    height: number;
+  };
 }
 
 interface PullQuote {
@@ -167,6 +175,7 @@ export async function getPodcastEpisodes(): Promise<PodcastEpisode[]> {
         duration: fields.duration,
         guest: fields.guest,
         guestTitle: fields.guestTitle,
+        episodeNumber: fields.episodeNumber,
         spotifyEmbedUrl: fields.spotifyEmbedUrl,
         fullTranscript: fields.fullTranscript,
         pullQuotes: fields.pullQuotes?.map((quote: any) => ({
@@ -178,6 +187,13 @@ export async function getPodcastEpisodes(): Promise<PodcastEpisode[]> {
           url: resource.fields.url,
           description: resource.fields.description,
         })) || [],
+        coverArt: fields.coverArt ? {
+          url: fields.coverArt.fields.file.url,
+          title: fields.coverArt.fields.title,
+          description: fields.coverArt.fields.description,
+          width: fields.coverArt.fields.file.details.image.width,
+          height: fields.coverArt.fields.file.details.image.height,
+        } : undefined,
       };
     });
   } catch (error) {
@@ -209,6 +225,7 @@ export async function getPodcastEpisodeBySlug(slug: string): Promise<PodcastEpis
       duration: fields.duration,
       guest: fields.guest,
       guestTitle: fields.guestTitle,
+      episodeNumber: fields.episodeNumber,
       spotifyEmbedUrl: fields.spotifyEmbedUrl,
       fullTranscript: fields.fullTranscript,
       pullQuotes: fields.pullQuotes?.map((quote: any) => ({
@@ -220,6 +237,13 @@ export async function getPodcastEpisodeBySlug(slug: string): Promise<PodcastEpis
         url: resource.fields.url,
         description: resource.fields.description,
       })) || [],
+      coverArt: fields.coverArt ? {
+        url: fields.coverArt.fields.file.url,
+        title: fields.coverArt.fields.title,
+        description: fields.coverArt.fields.description,
+        width: fields.coverArt.fields.file.details.image.width,
+        height: fields.coverArt.fields.file.details.image.height,
+      } : undefined,
     };
   } catch (error) {
     console.error('Error fetching podcast episode from Contentful:', error);
