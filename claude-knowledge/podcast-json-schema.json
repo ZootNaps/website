@@ -11,7 +11,7 @@
     "guest",
     "guestTitle",
     "duration",
-    "fullTranscript"
+    "transcriptSections"
   ],
   "properties": {
     "title": {
@@ -110,7 +110,29 @@
     },
     "fullTranscript": {
       "type": "string",
-      "description": "Full transcript of the episode with Markdown formatting"
+      "description": "Full transcript of the episode with Markdown formatting. This is optional as it can be generated programmatically from transcriptSections if needed."
+    },
+    "transcriptSections": {
+      "type": "array",
+      "description": "Structured sections of the transcript following a framework of Introduction, Background, Main Topics, Challenges, and Conclusion, adapted to the specific content of the episode",
+      "items": {
+        "type": "object",
+        "required": ["title", "content"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Descriptive section title reflecting the specific content discussed (e.g., 'Finding Product-Market Fit', 'Scaling Remote Teams')"
+          },
+          "content": {
+            "type": "string",
+            "description": "Markdown formatted content with speaker names in bold format. Host is always 'Gus'"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this section in kebab-case, used for jump links (auto-generated if not provided)"
+          }
+        }
+      }
     }
   }
 } 
