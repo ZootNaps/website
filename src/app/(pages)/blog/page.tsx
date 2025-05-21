@@ -2,7 +2,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
-import { getAllBlogPosts, transformBlogPost } from '@/lib/contentful';
+import { getBlogPosts } from '@/lib/contentful/client';
 
 import type { Metadata } from "next";
 
@@ -54,12 +54,8 @@ export const revalidate = 3600; // Revalidate at most once per hour
 
 export default async function BlogPage() {
   // Fetch blog posts from Contentful
-  const posts = await getAllBlogPosts();
+  const blogPosts = await getBlogPosts();
   
-  // Transform Contentful data to our format
-  const blogPosts = posts.map(post => transformBlogPost(post))
-    .filter((post): post is NonNullable<ReturnType<typeof transformBlogPost>> => post !== null);
-
   // Update schema with actual posts
   const blogSchemaWithPosts = {
     ...blogSchema,
@@ -70,7 +66,7 @@ export default async function BlogPage() {
         "@id": `https://southlamarstudios.com/blog/${post.slug}`
       },
       "headline": post.title,
-      "image": post.featuredImage || "",
+      "image": post.featuredImage?.url ? `https:${post.featuredImage.url}` : "",
       "datePublished": post.publishDate,
       "dateModified": post.publishDate,
       "author": {
@@ -108,12 +104,12 @@ export default async function BlogPage() {
           {blogPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.map((post) => (
-                <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <article key={post.slug} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
                   <div className="h-48 bg-gray-200 relative">
                     {post.featuredImage ? (
                       <Image 
-                        src={post.featuredImage}
-                        alt={post.title}
+                        src={`https:${post.featuredImage.url}`}
+                        alt={post.featuredImage.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover"
@@ -126,7 +122,7 @@ export default async function BlogPage() {
                   </div>
                   <div className="p-6">
                     <div className="flex justify-between items-center mb-3 text-sm">
-                      <span className="text-blue-600 font-medium">{post.category}</span>
+                      <span className="text-blue-600 font-medium">Blog</span>
                     </div>
                     <h2 className="text-xl font-bold mb-2 hover:text-blue-600 transition">
                       <Link href={`/blog/${post.slug}`}>

@@ -3,20 +3,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
-import { getBlogPostBySlug, getAllBlogPosts, transformBlogPost } from '@/lib/contentful';
+import { getBlogPostBySlug, getBlogPosts } from '@/lib/contentful/client';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
+
+// Define the page props interface similar to the podcast page
+interface BlogPostPageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
 
 // Generate static params for all blog posts (builds all blog posts at build time)
 export async function generateStaticParams() {
   try {
-    const posts = await getAllBlogPosts();
+    const posts = await getBlogPosts();
     return posts
-      .filter(post => post?.fields?.slug) // Only include posts with a valid slug
+      .filter(post => post.slug) // Only include posts with a valid slug
       .map(post => ({
-        slug: String(post.fields?.slug || ''),
+        slug: post.slug,
       }));
   } catch (error) {
     console.error('Error generating static params:', error);
@@ -24,19 +31,13 @@ export async function generateStaticParams() {
   }
 }
 
-// Define the page params interface
-interface PageParams {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
 // Generate metadata for the page
 export async function generateMetadata(
-  { params }: PageParams,
-  parent: ResolvingMetadata
+  { params }: BlogPostPageProps
 ): Promise<Metadata> {
   try {
-    const post = await getBlogPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getBlogPostBySlug(slug);
     
     if (!post) {
       return {
@@ -45,18 +46,7 @@ export async function generateMetadata(
       };
     }
 
-    const transformedPost = transformBlogPost(post);
-
-    if (!transformedPost) {
-      return {
-        title: 'Blog Post Not Found',
-        description: 'The requested blog post could not be found.',
-      };
-    }
-
-    const { title, excerpt, featuredImage } = transformedPost;
-    const parentMetadata = await parent;
-    const previousKeywords = parentMetadata.keywords || [];
+    const { title, excerpt, featuredImage } = post;
 
     return {
       title: `${title} | South Lamar Studios`,
@@ -64,11 +54,15 @@ export async function generateMetadata(
       openGraph: {
         title: `${title} | South Lamar Studios`,
         description: excerpt,
-        url: `https://southlamarstudios.com/blog/${params.slug}`,
+        url: `https://southlamarstudios.com/blog/${slug}`,
         type: 'article',
-        images: featuredImage ? [{ url: featuredImage }] : [],
+        images: featuredImage ? [{
+          url: `https:${featuredImage.url}`,
+          width: featuredImage.width,
+          height: featuredImage.height,
+          alt: featuredImage.title,
+        }] : [],
       },
-      keywords: [...previousKeywords],
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
@@ -114,22 +108,12 @@ const richTextOptions = {
   },
 };
 
-// Define the component with proper params typing
-interface BlogPostPageProps {
-  params: { slug: string };
-}
-
-async function BlogPostPage({ params }: PageParams) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   try {
-    const post = await getBlogPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = await getBlogPostBySlug(slug);
     
     if (!post) {
-      notFound();
-    }
-
-    const blogPost = transformBlogPost(post);
-    
-    if (!blogPost) {
       notFound();
     }
 
@@ -139,12 +123,12 @@ async function BlogPostPage({ params }: PageParams) {
       "@type": "BlogPosting",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://southlamarstudios.com/blog/${blogPost.slug}`,
+        "@id": `https://southlamarstudios.com/blog/${post.slug}`,
       },
-      "headline": blogPost.title,
-      "image": blogPost.featuredImage || "",
-      "datePublished": blogPost.publishDate,
-      "dateModified": blogPost.publishDate,
+      "headline": post.title,
+      "image": post.featuredImage ? `https:${post.featuredImage.url}` : "",
+      "datePublished": post.publishDate,
+      "dateModified": post.publishDate,
       "author": {
         "@type": "Organization",
         "name": "South Lamar Studios",
@@ -157,7 +141,7 @@ async function BlogPostPage({ params }: PageParams) {
           "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png",
         },
       },
-      "description": blogPost.excerpt,
+      "description": post.excerpt,
     };
 
     return (
@@ -181,19 +165,19 @@ async function BlogPostPage({ params }: PageParams) {
                   <span className="mx-2">/</span>
                 </li>
                 <li className="text-gray-700 font-medium truncate max-w-xs">
-                  {blogPost.title}
+                  {post.title}
                 </li>
               </ul>
             </nav>
 
             {/* Blog post header */}
             <header className="mb-8 max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">{blogPost.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
               <div className="flex justify-center items-center space-x-4 text-gray-500 mb-4">
-                <span>{blogPost.category}</span>
+                <span>Blog</span>
                 <span>•</span>
-                <time dateTime={blogPost.publishDate}>
-                  {new Date(blogPost.publishDate).toLocaleDateString('en-US', {
+                <time dateTime={post.publishDate}>
+                  {new Date(post.publishDate).toLocaleDateString('en-US', {
                     month: 'long',
                     day: 'numeric',
                     year: 'numeric',
@@ -203,11 +187,11 @@ async function BlogPostPage({ params }: PageParams) {
             </header>
 
             {/* Featured image */}
-            {blogPost.featuredImage && (
+            {post.featuredImage && (
               <div className="mb-10 relative h-[400px] max-w-4xl mx-auto">
                 <Image
-                  src={blogPost.featuredImage}
-                  alt={blogPost.title}
+                  src={`https:${post.featuredImage.url}`}
+                  alt={post.featuredImage.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 85vw, 75vw"
                   className="object-cover rounded-lg"
@@ -220,31 +204,31 @@ async function BlogPostPage({ params }: PageParams) {
             <div className="max-w-3xl mx-auto">
               {/* Excerpt as introduction */}
               <p className="text-xl text-gray-600 mb-8 font-light leading-relaxed">
-                {blogPost.excerpt}
+                {post.excerpt}
               </p>
 
               {/* Rich text content */}
               <div className="prose prose-lg max-w-none mb-10">
-                {documentToReactComponents(blogPost.content, richTextOptions)}
+                {documentToReactComponents(post.content, richTextOptions)}
               </div>
 
               {/* Share buttons */}
               <div className="border-t border-gray-200 pt-6 mt-10">
                 <h3 className="font-bold mb-4">Share this article</h3>
                 <div className="flex space-x-4">
-                  <a href={`https://twitter.com/intent/tweet?url=https://southlamarstudios.com/blog/${blogPost.slug}&text=${encodeURIComponent(blogPost.title)}`} 
+                  <a href={`https://twitter.com/intent/tweet?url=https://southlamarstudios.com/blog/${post.slug}&text=${encodeURIComponent(post.title)}`} 
                      target="_blank" 
                      rel="noopener noreferrer"
                      className="text-gray-500 hover:text-blue-400">
                     Twitter
                   </a>
-                  <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://southlamarstudios.com/blog/${blogPost.slug}&title=${encodeURIComponent(blogPost.title)}&summary=${encodeURIComponent(blogPost.excerpt)}`} 
+                  <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://southlamarstudios.com/blog/${post.slug}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.excerpt)}`} 
                      target="_blank" 
                      rel="noopener noreferrer"
                      className="text-gray-500 hover:text-blue-700">
                     LinkedIn
                   </a>
-                  <a href={`https://www.facebook.com/sharer/sharer.php?u=https://southlamarstudios.com/blog/${blogPost.slug}`} 
+                  <a href={`https://www.facebook.com/sharer/sharer.php?u=https://southlamarstudios.com/blog/${post.slug}`} 
                      target="_blank" 
                      rel="noopener noreferrer"
                      className="text-gray-500 hover:text-blue-900">
@@ -262,6 +246,4 @@ async function BlogPostPage({ params }: PageParams) {
     notFound();
     return null;
   }
-}
-
-export default BlogPostPage; 
+} 
