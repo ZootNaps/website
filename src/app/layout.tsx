@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from 'next/script';
 import { GoogleTagManager } from '@/utils/gtm';
+import { Suspense } from 'react';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -118,7 +119,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}>
         {/* Google Tag Manager (noscript part is inside this component too) */}
-        <GoogleTagManager GTM_ID={process.env.NEXT_PUBLIC_GTM_ID} />
+        <Suspense fallback={null}>
+          <GoogleTagManager GTM_ID={process.env.NEXT_PUBLIC_GTM_ID} />
+        </Suspense>
 
         {/* Google Analytics - will only load if NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
         {/* <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} /> */}
