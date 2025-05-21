@@ -11,11 +11,11 @@ import CtaSection from '@/components/home/CtaSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "B2B Podcast Production That Generates Leads | South Lamar Studios",
-  description: "South Lamar Studios provides end-to-end B2B podcast production services that turn executive interviews into qualified leads and sales revenue. Full-service podcast production, distribution, and audience growth strategies.",
+  title: "Podcast for Sales Service: B2B Lead Generation | South Lamar Studios",
+  description: "Tired of podcasts that don't drive revenue? South Lamar Studios' B2B podcast for sales service turns your show into a powerful lead generation engine. Get started!",
   openGraph: {
-    title: "B2B Podcast Production That Generates Leads | South Lamar Studios",
-    description: "South Lamar Studios provides end-to-end B2B podcast production services that turn executive interviews into qualified leads and sales revenue. Full-service podcast production, distribution, and audience growth strategies.",
+    title: "Podcast for Sales Service: B2B Lead Generation | South Lamar Studios",
+    description: "Tired of podcasts that don't drive revenue? South Lamar Studios' B2B podcast for sales service turns your show into a powerful lead generation engine. Get started!",
     url: "https://southlamarstudios.com",
     type: "website",
   }

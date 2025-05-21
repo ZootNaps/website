@@ -82,37 +82,35 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "South Lamar Studios",
-              "url": "https://southlamarstudios.com",
-              "logo": "https://southlamarstudios.com/images/logo.png",
-              "description": "End-to-end B2B podcast production service that transforms executive interviews into qualified leads and sales revenue.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Austin",
-                "addressRegion": "TX",
-                "addressCountry": "US"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-512-555-1234",
-                "contactType": "customer service"
-              },
-              "sameAs": [
-                "https://twitter.com/southlamarstudios",
-                "https://www.linkedin.com/company/south-lamar-studios",
-                "https://www.facebook.com/southlamarstudios"
-              ],
-              "service": {
-                "@type": "Service",
-                "name": "B2B Podcast Production",
-                "description": "End-to-end podcast production service that turns executive interviews into qualified leads and direct sales revenue.",
-                "provider": {
+              "@graph": [
+                {
                   "@type": "Organization",
-                  "name": "South Lamar Studios"
+                  "name": "South Lamar Studios",
+                  "url": "https://www.southlamarstudios.com",
+                  "logo": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png",
+                  "description": "South Lamar Studios\' B2B podcast for sales service turns your show into a powerful lead generation engine, helping you connect with executives and drive revenue.",
+                  "sameAs": [
+                    "https://www.linkedin.com/company/southlamarstudios"
+                    // Add other official social profiles here from existing if accurate:
+                    // e.g., "https://twitter.com/southlamarstudios",
+                    // "https://www.facebook.com/southlamarstudios"
+                  ]
                 },
-                "serviceType": "Podcast Production"
-              }
+                {
+                  "@type": "WebSite",
+                  "url": "https://www.southlamarstudios.com",
+                  "name": "South Lamar Studios",
+                  "description": "Official website for South Lamar Studios. We provide B2B podcast for sales services designed to generate leads and drive revenue.",
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "South Lamar Studios",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+                    }
+                  }
+                }
+              ]
             })
           }}
         />

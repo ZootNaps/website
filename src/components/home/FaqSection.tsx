@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
+import Script from 'next/script';
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -66,8 +67,27 @@ const FaqSection = () => {
     }
   ];
 
+  // Construct FAQ schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <section id="faq" className="py-20 bg-light">
+      <Script 
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Frequently Asked Questions</h2>
