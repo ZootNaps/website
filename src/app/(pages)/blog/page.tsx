@@ -2,6 +2,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
+import { getAllBlogPosts, transformBlogPost } from '@/lib/contentful';
 
 import type { Metadata } from "next";
 
@@ -26,99 +27,54 @@ export const metadata: Metadata = {
   }
 };
 
-// Placeholder blog posts until Contentful is set up
-const placeholderPosts = [
-  {
-    id: 1,
-    title: "Understanding the Importance of Digital Transformation",
-    slug: "understanding-digital-transformation",
-    excerpt: "Digital transformation is reshaping how businesses operate and deliver value to customers. Learn why it's essential for modern businesses.",
-    publishDate: "2023-06-15",
-    readTime: "5 min read",
-    category: "Business Strategy",
-  },
-  {
-    id: 2,
-    title: "5 Ways to Improve Your Business Efficiency",
-    slug: "improve-business-efficiency",
-    excerpt: "Efficiency is key to business success. Discover practical strategies to streamline your operations and boost productivity.",
-    publishDate: "2023-05-22",
-    readTime: "4 min read",
-    category: "Productivity",
-  },
-  {
-    id: 3,
-    title: "The Future of Remote Work: Trends and Predictions",
-    slug: "future-of-remote-work",
-    excerpt: "Remote work has become a permanent fixture in the business landscape. Explore emerging trends and what they mean for your organization.",
-    publishDate: "2023-04-10",
-    readTime: "6 min read",
-    category: "Workplace",
-  },
-  {
-    id: 4,
-    title: "Building a Customer-Centric Business Strategy",
-    slug: "customer-centric-business-strategy",
-    excerpt: "Putting customers at the heart of your business is more important than ever. Learn how to develop a truly customer-centric approach.",
-    publishDate: "2023-03-18",
-    readTime: "7 min read",
-    category: "Customer Experience",
-  },
-  {
-    id: 5,
-    title: "Leveraging Data Analytics for Better Decision Making",
-    slug: "data-analytics-decision-making",
-    excerpt: "Data-driven decisions lead to better outcomes. Discover how to effectively use analytics to guide your business strategy.",
-    publishDate: "2023-02-05",
-    readTime: "5 min read",
-    category: "Data & Analytics",
-  },
-  {
-    id: 6,
-    title: "Sustainable Business Practices for the Modern Era",
-    slug: "sustainable-business-practices",
-    excerpt: "Sustainability is no longer optional. Explore how implementing eco-friendly practices can benefit your business and the planet.",
-    publishDate: "2023-01-20",
-    readTime: "6 min read",
-    category: "Sustainability",
-  },
-];
-
-// Construct Blog schema data (will be incomplete until live data is available)
+// Construct Blog schema data
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "South Lamar Studios Blog",
-  "description": metadata.description, // Using existing metadata description
-  "url": metadata.openGraph?.url, // Using existing OG url
+  "description": metadata.description,
+  "url": metadata.openGraph?.url,
   "publisher": {
     "@type": "Organization",
     "name": "South Lamar Studios",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png" // From layout.tsx
+      "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
     }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": metadata.openGraph?.url // Using existing OG url
+    "@id": metadata.openGraph?.url
   },
-  // blogPost will be populated dynamically when live data is available
-  // Example for one post:
-  /*
-  "blogPost": [
-    {
+  "blogPost": []
+};
+
+// Make page dynamic to fetch fresh data on each request
+export const revalidate = 3600; // Revalidate at most once per hour
+
+export default async function BlogPage() {
+  // Fetch blog posts from Contentful
+  const posts = await getAllBlogPosts();
+  
+  // Transform Contentful data to our format
+  const blogPosts = posts.map(post => transformBlogPost(post))
+    .filter((post): post is NonNullable<ReturnType<typeof transformBlogPost>> => post !== null);
+
+  // Update schema with actual posts
+  const blogSchemaWithPosts = {
+    ...blogSchema,
+    blogPost: blogPosts.map(post => ({
       "@type": "BlogPosting",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://southlamarstudios.com/blog/understanding-digital-transformation" // Example, replace with actual post URL
+        "@id": `https://southlamarstudios.com/blog/${post.slug}`
       },
-      "headline": "Understanding the Importance of Digital Transformation",
-      "image": "https://southlamarstudios.com/images/blog/digital-transformation.jpg", // Example, replace with actual image
-      "datePublished": "2023-06-15",
-      "dateModified": "2023-06-15", // Replace with actual modification date
+      "headline": post.title,
+      "image": post.featuredImage || "",
+      "datePublished": post.publishDate,
+      "dateModified": post.publishDate,
       "author": {
-        "@type": "Organization", // Or "Person" if you have individual authors
+        "@type": "Organization",
         "name": "South Lamar Studios"
       },
       "publisher": {
@@ -129,78 +85,16 @@ const blogSchema = {
           "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
         }
       },
-      "description": "Digital transformation is reshaping how businesses operate and deliver value to customers. Learn why it's essential for modern businesses."
-    }
-    // ... more posts
-  ]
-  */
-  "blogPost": [] // Empty for now, to be filled dynamically
-};
+      "description": post.excerpt
+    }))
+  };
 
-export default function BlogPage() {
-  // Re-populate placeholderPosts if it was elided in the edit display
-  const currentPosts = placeholderPosts.length > 0 ? placeholderPosts : [
-    {
-      id: 1,
-      title: "Understanding the Importance of Digital Transformation",
-      slug: "understanding-digital-transformation",
-      excerpt: "Digital transformation is reshaping how businesses operate and deliver value to customers. Learn why it's essential for modern businesses.",
-      publishDate: "2023-06-15",
-      readTime: "5 min read",
-      category: "Business Strategy",
-    },
-    {
-      id: 2,
-      title: "5 Ways to Improve Your Business Efficiency",
-      slug: "improve-business-efficiency",
-      excerpt: "Efficiency is key to business success. Discover practical strategies to streamline your operations and boost productivity.",
-      publishDate: "2023-05-22",
-      readTime: "4 min read",
-      category: "Productivity",
-    },
-    {
-      id: 3,
-      title: "The Future of Remote Work: Trends and Predictions",
-      slug: "future-of-remote-work",
-      excerpt: "Remote work has become a permanent fixture in the business landscape. Explore emerging trends and what they mean for your organization.",
-      publishDate: "2023-04-10",
-      readTime: "6 min read",
-      category: "Workplace",
-    },
-    {
-      id: 4,
-      title: "Building a Customer-Centric Business Strategy",
-      slug: "customer-centric-business-strategy",
-      excerpt: "Putting customers at the heart of your business is more important than ever. Learn how to develop a truly customer-centric approach.",
-      publishDate: "2023-03-18",
-      readTime: "7 min read",
-      category: "Customer Experience",
-    },
-    {
-      id: 5,
-      title: "Leveraging Data Analytics for Better Decision Making",
-      slug: "data-analytics-decision-making",
-      excerpt: "Data-driven decisions lead to better outcomes. Discover how to effectively use analytics to guide your business strategy.",
-      publishDate: "2023-02-05",
-      readTime: "5 min read",
-      category: "Data & Analytics",
-    },
-    {
-      id: 6,
-      title: "Sustainable Business Practices for the Modern Era",
-      slug: "sustainable-business-practices",
-      excerpt: "Sustainability is no longer optional. Explore how implementing eco-friendly practices can benefit your business and the planet.",
-      publishDate: "2023-01-20",
-      readTime: "6 min read",
-      category: "Sustainability",
-    },
-  ];
   return (
     <MainLayout>
       <Script 
         id="blog-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchemaWithPosts) }}
       />
       <section className="pt-28 pb-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -211,47 +105,61 @@ export default function BlogPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {currentPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-                <div className="h-48 bg-gray-200 relative">
-                  {/* Image placeholder - replace with actual blog post image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-gray-500">Featured Image</span>
+          {blogPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                  <div className="h-48 bg-gray-200 relative">
+                    {post.featuredImage ? (
+                      <Image 
+                        src={post.featuredImage}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-gray-500">Featured Image</span>
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-3 text-sm">
-                    <span className="text-blue-600 font-medium">{post.category}</span>
-                    <span className="text-gray-500">{post.readTime}</span>
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-3 text-sm">
+                      <span className="text-blue-600 font-medium">{post.category}</span>
+                    </div>
+                    <h2 className="text-xl font-bold mb-2 hover:text-blue-600 transition">
+                      <Link href={`/blog/${post.slug}`}>
+                        {post.title}
+                      </Link>
+                    </h2>
+                    <p className="text-gray-600 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-500">
+                        {new Date(post.publishDate).toLocaleDateString('en-US', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric'
+                        })}
+                      </span>
+                      <Link 
+                        href={`/blog/${post.slug}`}
+                        className="text-blue-600 font-medium hover:underline"
+                      >
+                        Read More
+                      </Link>
+                    </div>
                   </div>
-                  <h2 className="text-xl font-bold mb-2 hover:text-blue-600 transition">
-                    <Link href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
-                  </h2>
-                  <p className="text-gray-600 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">
-                      {new Date(post.publishDate).toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}
-                    </span>
-                    <Link 
-                      href={`/blog/${post.slug}`}
-                      className="text-blue-600 font-medium hover:underline"
-                    >
-                      Read More
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-lg text-gray-600">No blog posts found. Check back soon for new content!</p>
+            </div>
+          )}
         </div>
       </section>
     </MainLayout>

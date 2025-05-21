@@ -5,23 +5,23 @@ This document outlines the steps needed to successfully transition your website 
 ## Before Redirecting Domain
 
 ### DNS and Domain Setup
-- [ ] Configure DNS records in your domain registrar to point to Vercel
-- [ ] Set up domain in Vercel dashboard
-- [ ] Ensure SSL/HTTPS is properly configured (Vercel handles this automatically)
-- [ ] Test the site on Vercel's default domain before transferring your primary domain
+- [x] Configure DNS records in your domain registrar to point to Vercel
+- [x] Set up domain in Vercel dashboard
+- [x] Ensure SSL/HTTPS is properly configured (Vercel handles this automatically)
+- [x] Test the site on Vercel's default domain before transferring your primary domain
 
 ### Contact Form Setup
-- [ ] Sign up for a free account at [Web3Forms](https://web3forms.com/)
-- [ ] Get your access key from the Web3Forms dashboard
-- [ ] Add your Web3Forms access key to your environment variables:
+- [x] Sign up for a free account at [Web3Forms](https://web3forms.com/)
+- [x] Get your access key from the Web3Forms dashboard
+- [x] Add your Web3Forms access key to your environment variables:
   ```
   NEXT_PUBLIC_WEB3FORMS_KEY=your_access_key_here
   ```
-- [ ] Test the contact form submission to verify emails are delivered to gus@southlamarstudios.com
+- [x] Test the contact form submission to verify emails are delivered to gus@southlamarstudios.com
 
 ### Analytics & Tracking
-- [ ] Set up Google Analytics 4 property
-- [ ] Add your Google Analytics Measurement ID to `.env`:
+- [x] Set up Google Analytics 4 property
+- [x] Add your Google Analytics Measurement ID to `.env`:
   ```
   NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
   ```
