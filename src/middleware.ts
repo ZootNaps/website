@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
   // Customize based on your needs
   securityHeaders.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://open.spotify.com https://*.spotify.com 'unsafe-inline'; style-src 'self' https://*.spotify.com 'unsafe-inline'; img-src 'self' data: https: https://*.spotify.com; font-src 'self' https://*.spotify.com; connect-src 'self' https://www.google-analytics.com https://*.spotify.com; frame-src 'self' https://open.spotify.com https://*.spotify.com;"
+    "default-src 'self'; script-src 'self' https://*.googletagmanager.com https://tagassistant.google.com https://*.google.com https://open.spotify.com https://*.spotify.com 'unsafe-inline'; style-src 'self' https://*.spotify.com 'unsafe-inline'; img-src 'self' data: https: https://*.spotify.com; font-src 'self' https://*.spotify.com; connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.spotify.com; frame-src 'self' https://open.spotify.com https://*.spotify.com https://tagassistant.google.com;"
   );
 
   // XSS Protection
