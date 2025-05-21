@@ -1,5 +1,15 @@
 import MainLayout from '@/components/layout/MainLayout';
 import Link from 'next/link';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Message Sent | South Lamar Studios",
+  description: "Thank you for contacting South Lamar Studios. We will be in touch shortly.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ThankYouPage() {
   return (

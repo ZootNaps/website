@@ -25,7 +25,7 @@ const ProcessSection = () => {
       description: 'We begin understanding your business, your products, and most importantly - your customers.',
       points: [
         'Strategy workshop ',
-        'Customer ',
+        'Customer Persona Development',
         'Content strategy development',
         'Setting measurable goals and success metrics'
       ]
@@ -203,6 +203,7 @@ const ProcessSection = () => {
                   <button 
                     onClick={() => navigate('prev')} 
                     disabled={isTransitioning}
+                    aria-label="Previous Step"
                     className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
                       isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
                     }`}
@@ -212,6 +213,7 @@ const ProcessSection = () => {
                   <button 
                     onClick={() => navigate('next')} 
                     disabled={isTransitioning}
+                    aria-label="Next Step"
                     className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
                       isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
                     }`}

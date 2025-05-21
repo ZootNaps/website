@@ -35,7 +35,7 @@ const FaqSection = () => {
     },
     {
       question: 'How long before I see results?',
-      answer: 'Implementation typically takes 2-4 weeks, during which generally takes '
+      answer: 'Implementation typically takes 2-4 weeks. The time to see tangible results, such as qualified leads, can vary based on your specific market and sales cycle, but many clients start seeing positive signals within the first few months post-launch.'
     },
     {
       question: 'How long does implementation typically take?',

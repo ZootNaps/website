@@ -39,4 +39,3 @@ Host: https://southlamarstudios.com
 
 # Sitemaps
 Sitemap: https://southlamarstudios.com/sitemap.xml
-Sitemap: https://southlamarstudios.com/server-sitemap.xml

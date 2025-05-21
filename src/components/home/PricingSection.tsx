@@ -15,7 +15,6 @@ const PricingSection = () => {
       price: 8999,
       features: [
         'Dedicated customer outreach manager',
-        ,
         '2 podcast episodes / month',
         'Email support',
         'Basic reporting',

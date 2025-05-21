@@ -47,7 +47,7 @@ export default function PodcastStructuredData({
     },
     "partOfSeries": {
       "@type": "PodcastSeries",
-      "name": "South Lamar Studios Podcast",
+      "name": "Founder Facing Podcast",
       "url": "https://southlamarstudios.com/podcast"
     },
     "actor": {
