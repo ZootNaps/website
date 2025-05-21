@@ -33,6 +33,7 @@ Allow: /
 # *
 User-agent: *
 Disallow: /admin
+Disallow: /tmp/
 
 # Host
 Host: https://southlamarstudios.com

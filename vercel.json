@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/home-1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/our-work",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cart",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
