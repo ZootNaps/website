@@ -30,40 +30,44 @@ const FaqSection = () => {
   
   const faqItems = [
     {
-      question: "Is this a good fit for my particular business?",
-      answer: "This system is designed to help you close high value deals with strategically valuable customers. If your company prioritizes sales volume over deal size, this system is not a good fit. While our Podcast for Sales system can work for most businesses in most industries, our services are best suited for businesses that have a HIGH ACV (Average Contract Value), or busineses with high CLV (Customer Lifetime Value). "
+      question: "What is a \"Podcast for Sales\" vs. a regular B2B podcast?",
+      answer: "Our \"Podcast for Sales\" is a B2B client acquisition tool. Unlike typical podcasts, it uses executive interviews for direct outreach and lead qualification, effective even without a large audience. We turn conversations into qualified leads."
     },
     {
-      question: 'How long before I see results?',
-      answer: 'Implementation typically takes 2-4 weeks. The time to see tangible results, such as qualified leads, can vary based on your specific market and sales cycle, but many clients start seeing positive signals within the first few months post-launch.'
+      question: "We tried podcasting, but it didn't generate leads. How are you different?",
+      answer: "Many podcasts lack sales integration. Our proprietary \"B2B Podcast for Sales\" system aligns podcasting directly with your sales process, from guest strategy to using content for targeted outreach, ensuring a clear ROI."
     },
     {
-      question: 'How long does implementation typically take?',
-      answer: 'Implementation timelines vary based on the complexity of your project and specific requirements. A simple implementation may take 2-4 weeks, while more complex projects can take 2-3 months. During our initial consultation, we will provide you with a detailed timeline specific to your needs.'
+      question: "Do I need a large audience for this to work?",
+      answer: "No. The primary value comes from strategic interactions with guests (potential clients) and using the content in direct sales engagement, making it effective even with zero initial listeners."
     },
     {
-      question: 'Do you offer ongoing support after implementation?',
-      answer: 'Yes, we provide comprehensive ongoing support for all our implementations. Our support options include regular check-ins, technical assistance, updates, and optimization recommendations. We offer various support packages to meet different needs and budgets.'
+      question: "What's involved in your system? What do you handle vs. what do we do?",
+      answer: "We offer a done-for-you service: strategy, guest identification support, prep, professional recording/editing, and sales leverage guidance. Your main role is approving guests and conducting interviews."
     },
     {
-      question: 'How do you measure success?',
-      answer: 'We measure success based on the specific goals and KPIs established at the start of your project. These may include ROI, efficiency improvements, cost savings, revenue growth, or other metrics relevant to your business objectives. We provide regular reporting on these metrics to track progress.'
+      question: "Who is an ideal guest for a \"Podcast for Sales\"?",
+      answer: "Decision-makers at companies fitting your ideal customer profile (e.g., CEOs, CMOs in B2B SaaS). We help you target these executives, making the interview a key sales touchpoint."
     },
     {
-      question: 'Can you integrate with our existing systems?',
-      answer: 'Yes, our solutions are designed to integrate seamlessly with most existing systems and platforms. We conduct a thorough assessment of your current technology stack during the discovery phase to ensure compatibility and develop integration strategies as needed.'
+      question: "How do you help turn podcast guests into clients?",
+      answer: "We structure interviews to build rapport and uncover needs. The high-quality content then serves as a powerful, non-salesy follow-up, creating a warm foundation for sales conversations with promising guests."
     },
     {
-      question: 'What makes your company different from competitors?',
-      answer: 'Our approach combines deep industry expertise with personalized attention to each client\'s unique needs. We pride ourselves on transparent communication, measurable results, and long-term partnerships rather than one-off transactions. Our proven methodology and track record of success across various industries set us apart.'
+      question: "How much of my team's time will this take per week/month?",
+      answer: "Minimal. After initial setup (a few hours total), expect ~2-4 hours/month for 2 episodes, or ~4-8 hours/month for 4 episodes, mainly for interview prep and recording. We handle the rest."
     },
     {
-      question: 'Do you offer customized solutions?',
-      answer: 'Absolutely. We recognize that every business has unique challenges and objectives. Our solutions are fully customized based on your specific requirements, industry context, business size, and goals. We do not believe in one-size-fits-all approaches.'
+      question: "What kind of ROI can we expect?",
+      answer: "ROI is measured by qualified leads, shorter sales cycles, and new revenue. With a focus on high-value B2B deals (e.g., $15k+ ACV), even a few conversions deliver significant returns."
     },
     {
-      question: 'How do we get started working with you?',
-      answer: 'Getting started is simple. You can contact us through our website, email, or phone to schedule an initial consultation. During this complimentary session, we will discuss your needs, answer your questions, and explain how our services can benefit your business. From there, we will provide a proposal tailored to your requirements.'
+      question: "How long until we see results from this podcast lead generation service?",
+      answer: "Expect positive signals (e.g., better engagement from target accounts) within 2-3 months post-launch. Converting leads to sales depends on your typical sales cycle."
+    },
+    {
+      question: "We're a B2B SaaS company. How does a podcast help our business development?",
+      answer: "It's a powerful way to connect with C-level executives in target accounts, showcase thought leadership, build relationships, and create authentic content that's more effective than cold outreach."
     }
   ];
 
