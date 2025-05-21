@@ -1,6 +1,7 @@
 import MainLayout from '@/components/layout/MainLayout';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 
 import type { Metadata } from "next";
 
@@ -83,9 +84,124 @@ const placeholderPosts = [
   },
 ];
 
+// Construct Blog schema data (will be incomplete until live data is available)
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "South Lamar Studios Blog",
+  "description": metadata.description, // Using existing metadata description
+  "url": metadata.openGraph?.url, // Using existing OG url
+  "publisher": {
+    "@type": "Organization",
+    "name": "South Lamar Studios",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png" // From layout.tsx
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": metadata.openGraph?.url // Using existing OG url
+  },
+  // blogPost will be populated dynamically when live data is available
+  // Example for one post:
+  /*
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://southlamarstudios.com/blog/understanding-digital-transformation" // Example, replace with actual post URL
+      },
+      "headline": "Understanding the Importance of Digital Transformation",
+      "image": "https://southlamarstudios.com/images/blog/digital-transformation.jpg", // Example, replace with actual image
+      "datePublished": "2023-06-15",
+      "dateModified": "2023-06-15", // Replace with actual modification date
+      "author": {
+        "@type": "Organization", // Or "Person" if you have individual authors
+        "name": "South Lamar Studios"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "South Lamar Studios",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+        }
+      },
+      "description": "Digital transformation is reshaping how businesses operate and deliver value to customers. Learn why it's essential for modern businesses."
+    }
+    // ... more posts
+  ]
+  */
+  "blogPost": [] // Empty for now, to be filled dynamically
+};
+
 export default function BlogPage() {
+  // Re-populate placeholderPosts if it was elided in the edit display
+  const currentPosts = placeholderPosts.length > 0 ? placeholderPosts : [
+    {
+      id: 1,
+      title: "Understanding the Importance of Digital Transformation",
+      slug: "understanding-digital-transformation",
+      excerpt: "Digital transformation is reshaping how businesses operate and deliver value to customers. Learn why it's essential for modern businesses.",
+      publishDate: "2023-06-15",
+      readTime: "5 min read",
+      category: "Business Strategy",
+    },
+    {
+      id: 2,
+      title: "5 Ways to Improve Your Business Efficiency",
+      slug: "improve-business-efficiency",
+      excerpt: "Efficiency is key to business success. Discover practical strategies to streamline your operations and boost productivity.",
+      publishDate: "2023-05-22",
+      readTime: "4 min read",
+      category: "Productivity",
+    },
+    {
+      id: 3,
+      title: "The Future of Remote Work: Trends and Predictions",
+      slug: "future-of-remote-work",
+      excerpt: "Remote work has become a permanent fixture in the business landscape. Explore emerging trends and what they mean for your organization.",
+      publishDate: "2023-04-10",
+      readTime: "6 min read",
+      category: "Workplace",
+    },
+    {
+      id: 4,
+      title: "Building a Customer-Centric Business Strategy",
+      slug: "customer-centric-business-strategy",
+      excerpt: "Putting customers at the heart of your business is more important than ever. Learn how to develop a truly customer-centric approach.",
+      publishDate: "2023-03-18",
+      readTime: "7 min read",
+      category: "Customer Experience",
+    },
+    {
+      id: 5,
+      title: "Leveraging Data Analytics for Better Decision Making",
+      slug: "data-analytics-decision-making",
+      excerpt: "Data-driven decisions lead to better outcomes. Discover how to effectively use analytics to guide your business strategy.",
+      publishDate: "2023-02-05",
+      readTime: "5 min read",
+      category: "Data & Analytics",
+    },
+    {
+      id: 6,
+      title: "Sustainable Business Practices for the Modern Era",
+      slug: "sustainable-business-practices",
+      excerpt: "Sustainability is no longer optional. Explore how implementing eco-friendly practices can benefit your business and the planet.",
+      publishDate: "2023-01-20",
+      readTime: "6 min read",
+      category: "Sustainability",
+    },
+  ];
   return (
     <MainLayout>
+      <Script 
+        id="blog-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <section className="pt-28 pb-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -96,7 +212,7 @@ export default function BlogPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {placeholderPosts.map((post) => (
+            {currentPosts.map((post) => (
               <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
                 <div className="h-48 bg-gray-200 relative">
                   {/* Image placeholder - replace with actual blog post image */}

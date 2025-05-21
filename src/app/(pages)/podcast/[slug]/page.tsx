@@ -107,6 +107,17 @@ export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
   
   return (
     <MainLayout>
+      <PodcastStructuredData 
+        title={episode.title}
+        description={episode.description}
+        publishDate={episode.publishDate}
+        duration={episode.duration}
+        guest={episode.guest}
+        guestTitle={episode.guestTitle}
+        episodeNumber={episode.episodeNumber}
+        episodeUrl={`https://southlamarstudios.com/podcast/${episode.slug}`}
+        imageUrl={episode.coverArt ? `https:${episode.coverArt.url}` : undefined}
+      />
       <div className="pt-28 pb-20">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Episode Header */}
@@ -290,19 +301,6 @@ export default async function PodcastEpisodePage({ params }: PodcastPageProps) {
           </div>
         </div>
       </div>
-      
-      {/* Structured Data for SEO */}
-      <PodcastStructuredData
-        title={episode.title}
-        description={episode.description}
-        publishDate={episode.publishDate}
-        duration={episode.duration}
-        guest={episode.guest}
-        guestTitle={episode.guestTitle}
-        episodeNumber={episode.episodeNumber}
-        episodeUrl={`https://southlamarstudios.com/podcast/${episode.slug}`}
-        imageUrl={episode.coverArt ? `https:${episode.coverArt.url}` : undefined}
-      />
     </MainLayout>
   );
 } 

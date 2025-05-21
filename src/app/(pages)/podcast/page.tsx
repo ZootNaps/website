@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaSpotify, FaApple } from 'react-icons/fa';
 import { getPodcastEpisodes } from '@/lib/contentful/client';
+import Script from 'next/script';
 
 import type { Metadata } from "next";
 
@@ -23,6 +24,32 @@ export const metadata: Metadata = {
     description: "Expert B2B podcast production services that help businesses generate leads and drive revenue. Listen to our showcase podcast featuring founders and business leaders.",
     url: "https://southlamarstudios.com/podcast",
     type: "website",
+    images: [
+      {
+        url: "https://southlamarstudios.com/images/sls-Founder Facing_cover art.png",
+        width: 500,
+        height: 500,
+        alt: "Founder Facing Podcast Cover Art"
+      }
+    ]
+  }
+};
+
+// Construct PodcastSeries schema
+const podcastSeriesSchema = {
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "Founder Facing Podcast",
+  "description": "Conversations with founders about their challenges, successes, and lessons learned building businesses that matter.",
+  "url": metadata.openGraph?.url,
+  "image": (metadata.openGraph?.images && Array.isArray(metadata.openGraph.images) && metadata.openGraph.images[0] && typeof metadata.openGraph.images[0] === 'object' && 'url' in metadata.openGraph.images[0]) ? (metadata.openGraph.images[0] as { url: string }).url : "https://southlamarstudios.com/images/sls-Founder Facing_cover art.png",
+  "publisher": {
+      "@type": "Organization",
+      "name": "South Lamar Studios",
+      "logo": {
+          "@type": "ImageObject",
+          "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+      }
   }
 };
 
@@ -112,6 +139,11 @@ export default async function PodcastPage() {
 
   return (
     <MainLayout>
+      <Script 
+        id="podcast-series-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(podcastSeriesSchema) }}
+      />
       <section className="pt-28 pb-20 bg-bg">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 max-w-5xl mx-auto">
