@@ -14,6 +14,21 @@
       "source": "/cart",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/founderfacing-podcast",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/podcast-production",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/b2b-podcast",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
