@@ -29,6 +29,10 @@ export interface BlogPost {
   focusKeyword?: string;
   tags?: string[];
   status?: string;
+  // New fields
+  isFeatured?: boolean;
+  category?: string;
+  readingTimeMinutes?: number;
 }
 
 // Types for Contentful podcast episode entries
@@ -127,6 +131,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         focusKeyword: fields.focusKeyword || null,
         tags: fields.tags || [],
         status: fields.status || 'Published',
+        // New fields
+        isFeatured: fields.isFeatured || false,
+        category: fields.category || null,
+        readingTimeMinutes: fields.readingTimeMinutes || null,
       };
     });
   } catch (error) {
@@ -174,6 +182,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       focusKeyword: fields.focusKeyword || null,
       tags: fields.tags || [],
       status: fields.status || 'Published',
+      // New fields
+      isFeatured: fields.isFeatured || false,
+      category: fields.category || null,
+      readingTimeMinutes: fields.readingTimeMinutes || null,
     };
   } catch (error) {
     console.error('Error fetching blog post from Contentful:', error);

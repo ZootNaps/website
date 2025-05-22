@@ -283,7 +283,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <span>•</span>
                 <span className="flex items-center">
                   <FaClock className="w-3 h-3 mr-1" />
-                  {calculateReadingTime(post.content)} min read
+                  {post.readingTimeMinutes || calculateReadingTime(post.content)} min read
                 </span>
               </div>
               
