@@ -81,7 +81,7 @@ export default async function BlogPage() {
           "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
         }
       },
-      "description": post.excerpt
+      "description": post.metaDescription || post.excerpt
     }))
   };
 
@@ -132,6 +132,15 @@ export default async function BlogPage() {
                     <p className="text-gray-600 mb-4">
                       {post.excerpt}
                     </p>
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.map((tag, index) => (
+                          <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-500">
                         {new Date(post.publishDate).toLocaleDateString('en-US', {

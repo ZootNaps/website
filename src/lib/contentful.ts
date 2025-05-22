@@ -68,6 +68,12 @@ export function transformBlogPost(post: any) {
       featuredImage,
       category: fields.category || '',
       publishDate: fields.publishDate || new Date().toISOString(),
+      // SEO Fields
+      metaTitle: fields.metaTitle || '',
+      metaDescription: fields.metaDescription || '',
+      focusKeyword: fields.focusKeyword || '',
+      tags: fields.tags || [],
+      status: fields.status || 'Published',
     };
   } catch (error) {
     console.error('Error transforming blog post:', error);

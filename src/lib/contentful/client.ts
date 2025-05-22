@@ -23,6 +23,12 @@ export interface BlogPost {
       url: string;
     } | null;
   } | null;
+  // SEO Fields
+  metaTitle?: string;
+  metaDescription?: string;
+  focusKeyword?: string;
+  tags?: string[];
+  status?: string;
 }
 
 // Types for Contentful podcast episode entries
@@ -115,6 +121,12 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
             url: fields.author.fields.picture.fields.file.url,
           } : null,
         } : null,
+        // SEO Fields
+        metaTitle: fields.metaTitle || null,
+        metaDescription: fields.metaDescription || null,
+        focusKeyword: fields.focusKeyword || null,
+        tags: fields.tags || [],
+        status: fields.status || 'Published',
       };
     });
   } catch (error) {
@@ -156,6 +168,12 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
           url: fields.author.fields.picture.fields.file.url,
         } : null,
       } : null,
+      // SEO Fields
+      metaTitle: fields.metaTitle || null,
+      metaDescription: fields.metaDescription || null,
+      focusKeyword: fields.focusKeyword || null,
+      tags: fields.tags || [],
+      status: fields.status || 'Published',
     };
   } catch (error) {
     console.error('Error fetching blog post from Contentful:', error);

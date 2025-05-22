@@ -21,7 +21,7 @@ export async function generateStaticParams() {
   try {
     const posts = await getBlogPosts();
     return posts
-      .filter(post => post.slug) // Only include posts with a valid slug
+      .filter(post => post.slug && post.status === 'Published') // Only include published posts with a valid slug
       .map(post => ({
         slug: post.slug,
       }));
@@ -46,14 +46,18 @@ export async function generateMetadata(
       };
     }
 
-    const { title, excerpt, featuredImage } = post;
+    const { title, excerpt, featuredImage, metaTitle, metaDescription, focusKeyword } = post;
 
-    return {
-      title: `${title} | South Lamar Studios`,
-      description: excerpt,
+    // Use custom meta title/description if available, otherwise fall back to defaults
+    const pageTitle = metaTitle || `${title} | South Lamar Studios`;
+    const pageDescription = metaDescription || excerpt;
+
+    const metadata: Metadata = {
+      title: pageTitle,
+      description: pageDescription,
       openGraph: {
-        title: `${title} | South Lamar Studios`,
-        description: excerpt,
+        title: pageTitle,
+        description: pageDescription,
         url: `https://southlamarstudios.com/blog/${slug}`,
         type: 'article',
         images: featuredImage ? [{
@@ -64,6 +68,13 @@ export async function generateMetadata(
         }] : [],
       },
     };
+
+    // Add keywords if available
+    if (focusKeyword) {
+      metadata.keywords = [focusKeyword];
+    }
+
+    return metadata;
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
@@ -141,7 +152,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png",
         },
       },
-      "description": post.excerpt,
+      "description": post.metaDescription || post.excerpt,
+      "keywords": post.focusKeyword || "",
     };
 
     return (
@@ -206,6 +218,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xl text-gray-600 mb-8 font-light leading-relaxed">
                 {post.excerpt}
               </p>
+
+              {/* Display tags if available */}
+              {post.tags && post.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-8">
+                  <span className="font-medium text-gray-700">Tags: </span>
+                  {post.tags.map((tag, index) => (
+                    <span key={index} className="text-sm bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {/* Rich text content */}
               <div className="prose prose-lg max-w-none mb-10">
