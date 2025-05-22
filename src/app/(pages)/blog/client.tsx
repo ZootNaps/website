@@ -263,28 +263,6 @@ export default function ClientBlogPage({
           )}
         </div>
       </section>
-      
-      {/* Newsletter Signup */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-            <p className="text-lg mb-8 text-gray-200">
-              Get the latest insights on B2B podcasting and content marketing delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="px-4 py-3 rounded-lg bg-white text-gray-800 w-full sm:w-auto flex-grow max-w-md"
-              />
-              <button className="bg-secondary hover:bg-secondary-dark text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
     </MainLayout>
   );
 } 
