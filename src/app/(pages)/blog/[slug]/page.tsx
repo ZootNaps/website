@@ -5,7 +5,8 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/contentful/client';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
+import { FaClock } from 'react-icons/fa';
 
 import { Metadata } from 'next';
 
@@ -87,34 +88,116 @@ export async function generateMetadata(
 // Set revalidation time
 export const revalidate = 3600; // Revalidate at most once per hour
 
+// Calculate reading time function
+const calculateReadingTime = (content: any): number => {
+  // Extract all text from rich text content
+  const text = JSON.stringify(content);
+  // Count words (approximately)
+  const wordCount = text.split(/\s+/).length;
+  // Assume average reading speed of 225 words per minute
+  const readingTime = Math.ceil(wordCount / 225);
+  return readingTime || 1; // Minimum 1 minute
+};
+
+// Table of Contents Component
+const TableOfContents = ({ content }: { content: any }) => {
+  // Extract headings from rich text content
+  const headings = content?.content?.filter(
+    (item: any) => item.nodeType === 'heading-2'
+  );
+  
+  if (!headings || headings.length < 3) return null;
+  
+  return (
+    <div className="bg-bg border border-bg-dark rounded-lg p-6 mb-10 max-w-3xl mx-auto">
+      <h3 className="text-xl font-semibold mb-4 text-primary">Table of Contents</h3>
+      <nav>
+        <ul className="space-y-2">
+          {headings.map((heading: any, index: number) => {
+            const text = heading.content[0].value;
+            const slug = text.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+            
+            return (
+              <li key={index} className="border-l-2 border-gray-200 pl-4 hover:border-secondary transition-colors duration-300">
+                <a 
+                  href={`#${slug}`}
+                  className="text-gray-700 hover:text-secondary block py-1 transition-colors duration-300"
+                >
+                  {text}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </div>
+  );
+};
+
 // Rich text renderer options
 const richTextOptions = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-      <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>
+      <p className="mb-6 text-gray-700 leading-relaxed text-lg max-w-prose">{children}</p>
     ),
-    [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => (
-      <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>
-    ),
+    [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => {
+      const text = node.content[0]?.value || '';
+      const slug = text.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+      return (
+        <h2 id={slug} className="text-2xl md:text-3xl font-bold mt-12 mb-6 text-primary border-b border-gray-200 pb-2">
+          {children}
+        </h2>
+      );
+    },
     [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
-      <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>
+      <h3 className="text-xl md:text-2xl font-semibold mt-10 mb-4 text-primary">
+        {children}
+      </h3>
+    ),
+    [BLOCKS.HEADING_4]: (node: any, children: React.ReactNode) => (
+      <h4 className="text-lg md:text-xl font-medium mt-8 mb-3 text-primary">
+        {children}
+      </h4>
     ),
     [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
-      <ul className="list-disc pl-6 mb-4 space-y-2">{children}</ul>
+      <ul className="list-disc pl-8 mb-6 space-y-3">
+        {children}
+      </ul>
     ),
     [BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => (
-      <ol className="list-decimal pl-6 mb-4 space-y-2">{children}</ol>
+      <ol className="list-decimal pl-8 mb-6 space-y-3">
+        {children}
+      </ol>
     ),
     [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
-      <li className="text-gray-700">{children}</li>
+      <li className="text-gray-700 pl-2">{children}</li>
     ),
     [BLOCKS.QUOTE]: (node: any, children: React.ReactNode) => (
-      <blockquote className="border-l-4 border-blue-500 pl-4 italic my-4 text-gray-600">{children}</blockquote>
+      <blockquote className="border-l-4 border-secondary pl-6 py-4 my-8 bg-bg rounded-r-lg italic text-dark-gray">
+        {children}
+      </blockquote>
+    ),
+    [BLOCKS.HR]: () => (
+      <hr className="my-10 border-t border-gray-200 w-full" />
     ),
     [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
-      <a href={node.data.uri} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+      <a 
+        href={node.data.uri} 
+        className="text-secondary hover:text-secondary-dark underline transition-colors duration-300" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
         {children}
       </a>
+    ),
+  },
+  renderMark: {
+    [MARKS.BOLD]: (text: React.ReactNode) => <strong className="font-bold text-gray-800">{text}</strong>,
+    [MARKS.ITALIC]: (text: React.ReactNode) => <em className="italic">{text}</em>,
+    [MARKS.CODE]: (text: React.ReactNode) => (
+      <code className="bg-gray-100 rounded px-1.5 py-0.5 font-mono text-sm text-secondary-dark">
+        {text}
+      </code>
     ),
   },
 };
@@ -169,11 +252,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <nav className="text-sm mb-6 text-gray-500">
               <ul className="flex flex-wrap">
                 <li>
-                  <Link href="/" className="hover:text-blue-600">Home</Link>
+                  <Link href="/" className="hover:text-secondary transition-colors duration-300">Home</Link>
                   <span className="mx-2">/</span>
                 </li>
                 <li>
-                  <Link href="/blog" className="hover:text-blue-600">Blog</Link>
+                  <Link href="/blog" className="hover:text-secondary transition-colors duration-300">Blog</Link>
                   <span className="mx-2">/</span>
                 </li>
                 <li className="text-gray-700 font-medium truncate max-w-xs">
@@ -183,9 +266,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </nav>
 
             {/* Blog post header */}
-            <header className="mb-8 max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
-              <div className="flex justify-center items-center space-x-4 text-gray-500 mb-4">
+            <header className="mb-10 max-w-3xl mx-auto text-center">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary leading-tight">
+                {post.title}
+              </h1>
+              <div className="flex flex-wrap justify-center items-center gap-2 text-gray-500 mb-6">
                 <span>Blog</span>
                 <span>•</span>
                 <time dateTime={post.publishDate}>
@@ -195,67 +280,106 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     year: 'numeric',
                   })}
                 </time>
+                <span>•</span>
+                <span className="flex items-center">
+                  <FaClock className="w-3 h-3 mr-1" />
+                  {calculateReadingTime(post.content)} min read
+                </span>
               </div>
+              
+              {/* Tags */}
+              {post.tags && post.tags.length > 0 && (
+                <div className="flex flex-wrap justify-center gap-2 mb-6">
+                  {post.tags.map((tag, index) => (
+                    <span key={index} className="text-sm bg-bg text-gray-700 px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </header>
 
             {/* Featured image */}
             {post.featuredImage && (
-              <div className="mb-10 relative h-[400px] max-w-4xl mx-auto">
+              <div className="mb-12 relative h-[450px] max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
                 <Image
                   src={`https:${post.featuredImage.url}`}
-                  alt={post.featuredImage.title}
+                  alt={post.featuredImage.title || post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 85vw, 75vw"
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                   priority
                 />
+                {post.featuredImage.description && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3 text-sm italic">
+                    {post.featuredImage.description}
+                  </div>
+                )}
               </div>
             )}
 
             {/* Blog post content */}
             <div className="max-w-3xl mx-auto">
               {/* Excerpt as introduction */}
-              <p className="text-xl text-gray-600 mb-8 font-light leading-relaxed">
+              <p className="text-xl text-gray-600 mb-10 font-light leading-relaxed border-l-4 border-secondary pl-6 py-2">
                 {post.excerpt}
               </p>
 
-              {/* Display tags if available */}
-              {post.tags && post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-8">
-                  <span className="font-medium text-gray-700">Tags: </span>
-                  {post.tags.map((tag, index) => (
-                    <span key={index} className="text-sm bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* Table of contents for longer posts */}
+              <TableOfContents content={post.content} />
 
               {/* Rich text content */}
-              <div className="prose prose-lg max-w-none mb-10">
+              <div className="prose prose-lg max-w-none mb-12">
                 {documentToReactComponents(post.content, richTextOptions)}
               </div>
 
+              {/* Author box */}
+              {post.author && (
+                <div className="mt-16 p-6 bg-bg rounded-lg border border-bg-dark">
+                  <div className="flex items-center mb-4">
+                    {post.author.picture ? (
+                      <Image 
+                        src={`https:${post.author.picture.url}`}
+                        alt={post.author.name}
+                        width={64}
+                        height={64}
+                        className="rounded-full mr-4"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 bg-gray-200 rounded-full mr-4 flex items-center justify-center">
+                        <span className="text-2xl text-gray-500">{post.author.name.charAt(0)}</span>
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-xl font-bold text-primary">{post.author.name}</h3>
+                    </div>
+                  </div>
+                  {post.author.bio && (
+                    <p className="text-gray-700">{post.author.bio}</p>
+                  )}
+                </div>
+              )}
+              
               {/* Share buttons */}
-              <div className="border-t border-gray-200 pt-6 mt-10">
-                <h3 className="font-bold mb-4">Share this article</h3>
-                <div className="flex space-x-4">
+              <div className="border-t border-gray-200 pt-6 mt-12">
+                <h3 className="font-bold mb-4 text-primary">Share this article</h3>
+                <div className="flex flex-wrap gap-4">
                   <a href={`https://twitter.com/intent/tweet?url=https://southlamarstudios.com/blog/${post.slug}&text=${encodeURIComponent(post.title)}`} 
                      target="_blank" 
                      rel="noopener noreferrer"
-                     className="text-gray-500 hover:text-blue-400">
+                     className="text-gray-600 hover:text-secondary transition-colors duration-300">
                     Twitter
                   </a>
                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://southlamarstudios.com/blog/${post.slug}&title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.excerpt)}`} 
                      target="_blank" 
                      rel="noopener noreferrer"
-                     className="text-gray-500 hover:text-blue-700">
+                     className="text-gray-600 hover:text-secondary transition-colors duration-300">
                     LinkedIn
                   </a>
                   <a href={`https://www.facebook.com/sharer/sharer.php?u=https://southlamarstudios.com/blog/${post.slug}`} 
                      target="_blank" 
                      rel="noopener noreferrer"
-                     className="text-gray-500 hover:text-blue-900">
+                     className="text-gray-600 hover:text-secondary transition-colors duration-300">
                     Facebook
                   </a>
                 </div>
