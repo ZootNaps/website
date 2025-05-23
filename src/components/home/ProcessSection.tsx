@@ -170,12 +170,37 @@ const ProcessSection = () => {
           
           {/* Content container with navigation */}
           <div className="relative">
-            {/* Content area */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 md:p-10 rounded-lg shadow-sm">
-              {/* Left side: Content */}
-              <div className={`transition-all duration-1000 ease-in-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="md:hidden mb-6">
-                  <span className="text-sm font-bold text-secondary">STEP {tabs.find(tab => tab.id === activeTab)?.step}</span>
+            {/* Content area - now full width */}
+            <div className="bg-white p-6 md:p-10 rounded-lg shadow-sm">
+              <div className={`max-w-3xl mx-auto transition-all duration-1000 ease-in-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
+                {/* Step indicator with navigation arrows on mobile */}
+                <div className="mb-6 flex items-center md:block">
+                  {/* Left arrow - mobile only */}
+                  <button 
+                    onClick={() => navigate('prev')} 
+                    disabled={isTransitioning}
+                    aria-label="Previous Step"
+                    className={`md:hidden w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
+                      isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
+                    }`}
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  
+                  {/* Centered step indicator */}
+                  <span className="text-sm font-bold text-secondary flex-grow text-center">STEP {tabs.find(tab => tab.id === activeTab)?.step}</span>
+                  
+                  {/* Right arrow - mobile only */}
+                  <button 
+                    onClick={() => navigate('next')} 
+                    disabled={isTransitioning}
+                    aria-label="Next Step"
+                    className={`md:hidden w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
+                      isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
+                    }`}
+                  >
+                    <FaChevronRight />
+                  </button>
                 </div>
                 
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-primary">
@@ -186,7 +211,7 @@ const ProcessSection = () => {
                   {tabContent[activeTab as keyof typeof tabContent].description}
                 </p>
                 
-                <ul className="space-y-4">
+                <ul className="space-y-4 grid md:grid-cols-2 md:gap-x-8 md:gap-y-4 md:space-y-0">
                   {tabContent[activeTab as keyof typeof tabContent].points.map((point, index) => (
                     <li key={index} className="flex items-start">
                       <FaCheck className="text-secondary mt-1 mr-3 flex-shrink-0" />
@@ -194,34 +219,6 @@ const ProcessSection = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-              
-              {/* Right side: Illustration */}
-              <div className={`relative bg-light rounded-lg flex items-center justify-center p-8 h-80 transition-all duration-1000 ease-in-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
-                {/* Mobile navigation buttons - positioned on the illustration */}
-                <div className="md:hidden flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 z-10 px-4 w-full">
-                  <button 
-                    onClick={() => navigate('prev')} 
-                    disabled={isTransitioning}
-                    aria-label="Previous Step"
-                    className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
-                      isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
-                    }`}
-                  >
-                    <FaChevronLeft />
-                  </button>
-                  <button 
-                    onClick={() => navigate('next')} 
-                    disabled={isTransitioning}
-                    aria-label="Next Step"
-                    className={`w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center ${
-                      isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
-                    }`}
-                  >
-                    <FaChevronRight />
-                  </button>
-                </div>
-                <span className="text-gray-dark font-medium">Process Illustration {tabs.findIndex(tab => tab.id === activeTab) + 1}</span>
               </div>
             </div>
           </div>
