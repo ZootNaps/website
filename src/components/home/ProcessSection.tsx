@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaCheck, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const ProcessSection = () => {
-  const [activeTab, setActiveTab] = useState<string>('strategy-onboarding');
+  const [activeTab, setActiveTab] = useState<string>('discovery-strategy');
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [contentVisible, setContentVisible] = useState<boolean>(true);
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -13,51 +13,51 @@ const ProcessSection = () => {
   const visibleTime = 5000; // Time content is fully visible in milliseconds
   
   const tabs = [
-    { id: 'strategy-onboarding', step: 'ONE', name: 'Strategy & Onboarding' },
-    { id: 'process-implementation', step: 'TWO', name: 'Process Implementation' },
-    { id: 'editing-production', step: 'THREE', name: 'Editing & Production' },
-    { id: 'automation-support', step: 'FOUR', name: 'Automation & Ongoing Support' }
+    { id: 'discovery-strategy', step: 'ONE', name: 'Discovery & Strategy' },
+    { id: 'guest-sourcing-qualification', step: 'TWO', name: 'Guest Prospecting & Qualification' },
+    { id: 'interview-content-production', step: 'THREE', name: 'Interview & Content Production' },
+    { id: 'distribution-sales-handoff', step: 'FOUR', name: 'Distribution & Sales Handoff' }
   ];
   
   const tabContent = {
-    'strategy-onboarding': {
-      title: 'Strategy & Onboarding',
-      description: 'We begin understanding your business, your products, and most importantly - your customers.',
+    'discovery-strategy': {
+      title: 'Discovery & Strategy',
+      description: 'We kick off by deeply understanding your business, ideal client profile, and sales objectives to co-create a podcast strategy laser-focused on generating qualified B2B leads.',
       points: [
-        'Strategy workshop ',
-        'Customer Persona Development',
-        'Content strategy development',
-        'Setting measurable goals and success metrics'
+        'Collaborative B2B podcast strategy workshop',
+        'Ideal Client Persona (ICP) refinement for targeted guest prospecting',
+        'Content and interview planning to maximize lead generation opportunities',
+        'Defining key performance indicators (KPIs) for sales pipeline impact'
       ]
     },
-    'process-implementation': {
-      title: 'Process Implementation',
-      description: 'We establish efficient workflows and systems tailored to your specific needs.',
+    'guest-sourcing-qualification': {
+      title: 'Guest Prospecting & Qualification',
+      description: 'Our unique approach involves identifying and inviting your ideal prospects to be guests on your show, followed by a qualification call with you to ensure perfect alignment.',
       points: [
-        'Custom workflow creation',
-        'Team roles and responsibilities definition',
-        'Production schedule establishment',
-        'Tools and technology integration'
+        'Targeted prospect identification mirroring your Ideal Client Profile',
+        'Personalized outreach to invite high-value potential customers as guests',
+        'Facilitated pre-interview qualification call between you and the prospect',
+        'Seamless scheduling and coordination for both you and your future guest'
       ]
     },
-    'editing-production': {
-      title: 'Editing & Production',
-      description: 'We handle all aspects of podcast production with meticulous attention to quality.',
+    'interview-content-production': {
+      title: 'Interview & Content Production',
+      description: 'We equip you with proven interview techniques for insightful conversations. After you record, our team expertly transforms the footage into a suite of compelling marketing assets.',
       points: [
-        'Professional audio editing and enhancement',
-        'Content refinement and optimization',
-        'Music and sound design integration',
-        'Final production quality control'
+        'Interview preparation: talk tracks for engaging dialogue, pain discovery, and expert positioning',
+        'You host impactful interviews (virtual recording), then hand off the raw footage',
+        'Professional audio & video editing, plus creation of clips, blog posts, LinkedIn content, etc.',
+        'Meticulous quality control for all produced assets to ensure brand excellence'
       ]
     },
-    'automation-support': {
-      title: 'Automation & Ongoing Support',
-      description: 'We ensure smooth operations and continuous improvement of your podcast process.',
+    'distribution-sales-handoff': {
+      title: 'Distribution, Engagement & Sales Handoff',
+      description: 'We strategically publish your content, empower guest promotion, and provide frameworks for you to seamlessly transition these warm conversations into your sales process.',
       points: [
-        'Process automation implementation',
-        'Regular performance analysis and reporting',
-        'Ongoing technical and strategic support',
-        'Continuous optimization based on metrics'
+        'Multi-platform publication of podcast episodes and all created assets',
+        'Delivery of handcrafted content to guests, encouraging co-promotion and expanding reach',
+        'Strategic follow-up email sequences to nurture guest relationships and initiate sales dialogues',
+        'Clear handoff and actionable insights for your sales team to convert leads'
       ]
     }
   };
