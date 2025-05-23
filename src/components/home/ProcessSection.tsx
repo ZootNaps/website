@@ -155,7 +155,7 @@ const ProcessSection = () => {
                 className="text-center font-medium flex-1"
               >
                 <span 
-                  className={`transition-all duration-1000 ease-in-out ${
+                  className={`transition-all duration-1000 ease-in-out flex items-center justify-center min-h-[48px] ${
                     activeTab === tab.id ? 'text-secondary font-bold' : 'text-primary'
                   }`}
                 >
