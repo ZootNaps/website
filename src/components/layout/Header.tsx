@@ -154,7 +154,7 @@ const Header = () => {
               <span className="text-sm md:text-base font-bold tracking-wider text-primary dark:text-white transition-colors duration-300 hover:text-secondary">
                 SOUTH LAMAR
               </span>
-              <span className="text-xs md:text-sm font-medium tracking-[0.08em] text-gray-dark dark:text-gray-300">
+              <span className="text-xs md:text-sm font-medium tracking-[0.08em] text-secondary dark:text-gray-300">
                 STUDIOS
               </span>
             </div>
