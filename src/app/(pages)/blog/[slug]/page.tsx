@@ -7,6 +7,7 @@ import { getBlogPostBySlug, getBlogPosts } from '@/lib/contentful/client';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { FaClock } from 'react-icons/fa';
+import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
 
 import { Metadata } from 'next';
 
@@ -303,12 +304,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.featuredImage && (
               <div className="mb-12 relative h-[450px] max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src={`https:${post.featuredImage.url}`}
+                  src={getOptimizedImageUrl(post.featuredImage.url, {
+                    width: 1600,
+                    format: 'webp',
+                    quality: 80
+                  })}
                   alt={post.featuredImage.title || post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 85vw, 75vw"
                   className="object-cover"
                   priority
+                  quality={80}
                 />
                 {post.featuredImage.description && (
                   <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-3 text-sm italic">

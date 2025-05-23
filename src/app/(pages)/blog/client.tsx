@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { useState, useEffect } from 'react';
 import { FaClock } from 'react-icons/fa';
+import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
 
 // Define BlogPost type for client component
 type BlogPost = {
@@ -150,12 +151,17 @@ export default function ClientBlogPage({
                     <div className="md:w-1/2 h-60 md:h-auto relative">
                       {post.featuredImage ? (
                         <Image 
-                          src={`https:${post.featuredImage.url}`}
+                          src={getOptimizedImageUrl(post.featuredImage.url, {
+                            width: 1200,
+                            format: 'webp',
+                            quality: 80
+                          })}
                           alt={post.featuredImage.title || post.title}
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover"
                           priority={index === 0}
+                          quality={80}
                         />
                       ) : (
                         <div className="bg-bg h-full w-full flex items-center justify-center">
@@ -214,11 +220,17 @@ export default function ClientBlogPage({
                     <div className="h-48 bg-gray-200 relative">
                       {post.featuredImage ? (
                         <Image 
-                          src={`https:${post.featuredImage.url}`}
+                          src={getOptimizedImageUrl(post.featuredImage.url, {
+                            width: 800,
+                            format: 'webp',
+                            quality: 80
+                          })}
                           alt={post.featuredImage.title || post.title}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover"
+                          loading="lazy"
+                          quality={80}
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
