@@ -51,6 +51,12 @@ This project is a modern website built with Next.js that appears to be for South
 - `blog/` - Blog-related components
 - `contact/` - Contact form components
 
+### Utils Directory (`src/utils/`)
+- `scrollUtils.ts` - Utility functions for scrolling behavior
+- `gtm.ts` - Google Tag Manager integration
+- `imageUtils.ts` - Image optimization utilities for Contentful images
+- Other utility files
+
 ## Key Files
 
 ### Configuration Files
@@ -110,6 +116,7 @@ Components are organized by feature/section with shared components separated.
 - `nodemailer` - Email sending
 - `next-sitemap` - Sitemap generation
 - `@vercel/analytics` & `@vercel/speed-insights` - Vercel analytics
+- `@fortawesome/fontawesome-svg-core` & related packages - Icon library
 
 ### Dev Dependencies
 - `typescript` - TypeScript language
@@ -131,6 +138,9 @@ Components are organized by feature/section with shared components separated.
 - Vercel Speed Insights for performance monitoring
 - Tailwind CSS for efficient styling
 - Support for modern image formats (AVIF, WebP)
+- Custom image optimization utilities for Contentful images
+- Dynamic image quality and format selection
+- Responsive image loading with appropriate sizing
 
 ## Code Organization Principles
 - Feature-based organization for components

@@ -68,9 +68,58 @@ JSON-LD structured data is implemented in the root layout for organization infor
 ```
 
 Additional structured data is added for specific content types such as:
-- Blog posts
-- Services
+
+- Blog posts with `BlogPosting` schema
+- Blog collection page with `Blog` schema
+- Podcast episodes with `PodcastEpisode` schema
+- Podcast series page with `PodcastSeries` schema
 - Local business information
+
+Implementation examples:
+
+**Blog Schema:**
+```tsx
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "South Lamar Studios Blog",
+  "description": metadata.description,
+  "url": metadata.openGraph?.url,
+  "publisher": {
+    "@type": "Organization",
+    "name": "South Lamar Studios",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": metadata.openGraph?.url
+  },
+  "blogPost": [] // Populated dynamically
+};
+```
+
+**Podcast Series Schema:**
+```tsx
+const podcastSeriesSchema = {
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "Founder Facing Podcast",
+  "description": "Conversations with founders about their challenges, successes, and lessons learned building businesses that matter.",
+  "url": metadata.openGraph?.url,
+  "image": "https://southlamarstudios.com/images/sls-Founder Facing_cover art.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "South Lamar Studios",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+    }
+  }
+};
+```
 
 ### Sitemap Generation
 
@@ -166,6 +215,22 @@ Images are optimized using:
 3. **Alt Text**: Descriptive alt text for all images
 
 4. **Lazy Loading**: Automatic for images below the fold
+
+5. **Utility Functions**: Custom utility functions for image optimization:
+   ```tsx
+   import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
+   
+   // Usage
+   <Image
+     src={getOptimizedImageUrl(imageUrl, {
+       width: 1200,
+       format: 'webp',
+       quality: 80
+     })}
+     sizes="(max-width: 768px) 100vw, 50vw"
+     alt="Image description"
+   />
+   ```
 
 ### Performance Optimization
 

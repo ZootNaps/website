@@ -51,6 +51,22 @@ The project follows the Next.js App Router structure:
    }
    ```
 
+### Icons and UI Elements
+
+The project uses Font Awesome 6 for icons:
+
+```tsx
+// Importing the icon component
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
+// Using in a component
+<FontAwesomeIcon icon={faCheck} className="text-green-500 mr-2" />
+```
+
+Font Awesome is configured in `src/lib/fontawesome.ts` with commonly used icons to reduce bundle size.
+
 ### Styling
 
 - Use Tailwind CSS for styling components
@@ -142,6 +158,48 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   );
 }
 ```
+
+## Working with Images
+
+### Image Optimization
+
+1. Use the Next.js Image component for all images:
+   ```tsx
+   import Image from 'next/image';
+   
+   <Image
+     src="/path/to/image.jpg"
+     alt="Descriptive alt text"
+     width={800}
+     height={600}
+     quality={80}
+     priority={isHero}
+   />
+   ```
+
+2. For Contentful images, use the utility functions in `src/utils/imageUtils.ts`:
+   ```tsx
+   import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
+   
+   <Image
+     src={getOptimizedImageUrl(contentfulImageUrl, {
+       width: 1200,
+       format: 'webp',
+       quality: 80
+     })}
+     alt="Image description"
+     sizes="(max-width: 768px) 100vw, 50vw"
+     fill
+     className="object-cover"
+   />
+   ```
+
+3. For responsive images, provide appropriate `sizes` attribute and use WebP format:
+   ```tsx
+   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+   ```
+
+4. Follow the image guidelines in `documentation/image-guidelines.md` for content images.
 
 ## Testing
 

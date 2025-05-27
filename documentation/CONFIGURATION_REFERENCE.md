@@ -359,4 +359,93 @@ Configuration values are applied in this order (later overrides earlier):
 4. **Image Optimization Issues**
    - Verify image domains are correctly configured in `next.config.ts`
    - Check image formats are supported
-   - Ensure image dimensions are properly specified 
+   - Ensure image dimensions are properly specified
+
+## CSS Configuration
+
+### Global CSS Variables
+
+The application defines CSS variables in `src/app/globals.css` for consistent theming:
+
+```css
+:root {
+  --primary: #303b42;      /* Dark blue/gray for main text and elements */
+  --primary-light: #525a66;
+  --primary-dark: #1e2428;
+  
+  --secondary: #e86a44;    /* Orange for accents and call-to-actions */
+  --secondary-light: #f08f75;
+  --secondary-dark: #d55f41;
+  
+  --tertiary: #58A4B0;     /* Teal/blue for additional accents and sections */
+  --tertiary-light: #79B9C3;
+  --tertiary-dark: #47838D;
+  
+  --bg: #f8f3ed;          /* Light beige for backgrounds */
+  --bg-dark: #e8e3dd;
+  
+  --gray: #6e7074;
+  --gray-light: #dcdcdd;
+  --gray-dark: #4e5054;
+  
+  --success: #4caf50;
+  --error: #f44336;
+  --warning: #ff9800;
+  --info: #2196f3;
+}
+```
+
+## Icons and Assets
+
+### Font Awesome Configuration
+
+The project uses Font Awesome 6 for icons, configured in `src/lib/fontawesome.ts`:
+
+```tsx
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { config } from '@fortawesome/fontawesome-svg-core';
+
+// Import solid icons
+import {
+  faCheck,
+  faChevronDown,
+  // ...other icons
+} from '@fortawesome/free-solid-svg-icons';
+
+// Import brand icons
+import {
+  faTwitter,
+  faFacebook,
+  // ...other icons
+} from '@fortawesome/free-brands-svg-icons';
+
+// Prevent FontAwesome from adding its CSS
+config.autoAddCss = false;
+
+// Add icons to the library
+library.add(
+  // Solid icons
+  faCheck,
+  faChevronDown,
+  // ...other icons
+  
+  // Brand icons
+  faTwitter,
+  faFacebook,
+  // ...other icons
+);
+
+export default library;
+```
+
+The CSS for Font Awesome is imported in the root layout:
+
+```tsx
+// src/app/layout.tsx
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import '../lib/fontawesome';
+```
+
+### Image Configuration
+
+// ... existing code ... 
