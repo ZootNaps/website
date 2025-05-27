@@ -86,7 +86,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-light">
+    <section id="faq" className="py-20 bg-bg">
       <Script 
         id="faq-schema"
         type="application/ld+json"
