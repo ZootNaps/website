@@ -78,7 +78,7 @@ const FeaturesSection = () => {
               
               <div className="flex items-start h-full">
                 <div className="mr-5 flex-shrink-0 pt-1">
-                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
+                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary transition-all duration-300">
                     <FontAwesomeIcon icon={feature.icon} className="text-2xl" aria-hidden="true" />
                   </div>
                 </div>
