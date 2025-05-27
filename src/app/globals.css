@@ -12,6 +12,10 @@
   --secondary-light: #f08f75;
   --secondary-dark: #d55f41;
   
+  --tertiary: #58A4B0;   /* Teal/blue for additional accents and sections */
+  --tertiary-light: #79B9C3;
+  --tertiary-dark: #47838D;
+  
   --bg: #f8f3ed;      /* Light beige for backgrounds */
   --bg-dark: #e8e3dd;
   
@@ -250,6 +254,10 @@
   
   .bg-secondary {
     background-color: var(--secondary);
+  }
+  
+  .bg-tertiary {
+    background-color: var(--tertiary);
   }
   
   .bg-light {
