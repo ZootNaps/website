@@ -6,7 +6,7 @@ import { scrollToElement } from '@/utils/scrollUtils';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-28 pb-20 bg-bg">
+    <section id="home" className="pt-28 pb-20 bg-light">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-12 lg:mb-0">
@@ -31,7 +31,7 @@ const HeroSection = () => {
                 onClick={() => {
                   scrollToElement('features');
                 }}
-                className="border border-secondary text-secondary hover:bg-bg font-medium py-3 px-8 rounded-md text-center transition"
+                className="border border-secondary text-secondary hover:bg-light font-medium py-3 px-8 rounded-md text-center transition"
               >
                 Learn More
               </button>

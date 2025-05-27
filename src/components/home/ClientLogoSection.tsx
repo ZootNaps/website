@@ -60,7 +60,7 @@ const clientLogos = [
 
 export default function ClientLogoSection() {
   return (
-    <Section background="primary" spacing="md">
+    <Section className="bg-[#2a3d45]" spacing="md">
       <div className="container mx-auto px-4">
         <Typography 
           variant="h2" 
