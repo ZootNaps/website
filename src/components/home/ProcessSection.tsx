@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { FaCheck, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const ProcessSection = () => {
   const [activeTab, setActiveTab] = useState<string>('discovery-strategy');
@@ -184,7 +185,7 @@ const ProcessSection = () => {
                       isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
                     }`}
                   >
-                    <FaChevronLeft />
+                    <FontAwesomeIcon icon={faChevronLeft} />
                   </button>
                   
                   {/* Centered step indicator */}
@@ -199,7 +200,7 @@ const ProcessSection = () => {
                       isTransitioning ? 'text-gray-400 cursor-not-allowed' : 'text-primary hover:text-secondary transition-colors'
                     }`}
                   >
-                    <FaChevronRight />
+                    <FontAwesomeIcon icon={faChevronRight} />
                   </button>
                 </div>
                 
@@ -214,7 +215,7 @@ const ProcessSection = () => {
                 <ul className="space-y-4 grid md:grid-cols-2 md:gap-x-8 md:gap-y-4 md:space-y-0">
                   {tabContent[activeTab as keyof typeof tabContent].points.map((point, index) => (
                     <li key={index} className="flex items-start">
-                      <FaCheck className="text-secondary mt-1 mr-3 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCheck} className="text-secondary mt-1 mr-3 flex-shrink-0" />
                       <span>{point}</span>
                     </li>
                   ))}

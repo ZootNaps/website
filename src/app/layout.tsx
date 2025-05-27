@@ -8,6 +8,10 @@ import Script from 'next/script';
 import { GoogleTagManager } from '@/utils/gtm';
 import { Suspense } from 'react';
 
+// Import FontAwesome styles and config
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import '../lib/fontawesome';
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",

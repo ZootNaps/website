@@ -6,7 +6,8 @@ import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/contentful/client';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
-import { FaClock } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
 
 import { Metadata } from 'next';
@@ -283,7 +284,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </time>
                 <span>•</span>
                 <span className="flex items-center">
-                  <FaClock className="w-3 h-3 mr-1" />
+                  <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
                   {post.readingTimeMinutes || calculateReadingTime(post.content)} min read
                 </span>
               </div>

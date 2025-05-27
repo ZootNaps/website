@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram, FaYoutube, FaChevronDown, FaChevronUp, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebook, faLinkedin, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -47,23 +49,23 @@ const Footer = () => {
           <div className="flex justify-center mb-5">
             <div className="flex gap-5">
               <a href="#" aria-label="Twitter" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25 transition-all duration-300 active:scale-95">
-                <FaTwitter size={18} />
+                <FontAwesomeIcon icon={faTwitter} size="lg" />
               </a>
               <a href="#" aria-label="Facebook" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25 transition-all duration-300 active:scale-95">
-                <FaFacebook size={18} />
+                <FontAwesomeIcon icon={faFacebook} size="lg" />
               </a>
               <a href="#" aria-label="LinkedIn" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25 transition-all duration-300 active:scale-95">
-                <FaLinkedin size={18} />
+                <FontAwesomeIcon icon={faLinkedin} size="lg" />
               </a>
               <a href="#" aria-label="Instagram" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25 transition-all duration-300 active:scale-95">
-                <FaInstagram size={18} />
+                <FontAwesomeIcon icon={faInstagram} size="lg" />
               </a>
             </div>
           </div>
           
           {/* Direct Contact Button */}
           <a href="/contact" className="flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 transition-all duration-300 py-3 px-4 rounded-md mb-5 w-full active:scale-98">
-            <FaEnvelope size={16} />
+            <FontAwesomeIcon icon={faEnvelope} size="lg" />
             <span className="text-sm font-medium">Contact Us</span>
           </a>
           
@@ -77,7 +79,7 @@ const Footer = () => {
             >
               <span className="font-semibold text-sm">About</span>
               <div className={`transform transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${expandedSection === 'about' ? 'rotate-180' : 'rotate-0'}`}>
-                <FaChevronDown size={14} />
+                <FontAwesomeIcon icon={faChevronDown} size="sm" />
               </div>
             </button>
             
@@ -93,7 +95,7 @@ const Footer = () => {
                   Empowering brands through innovative podcast production and strategic audio content solutions.
                 </p>
                 <p className="flex items-start gap-2">
-                  <FaMapMarkerAlt className="mt-1 flex-shrink-0" />
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-1 flex-shrink-0" />
                   <span>1701 Rogge Ln.<br />Austin, TX 78723</span>
                 </p>
               </div>
@@ -109,7 +111,7 @@ const Footer = () => {
             >
               <span className="font-semibold text-sm">Quick Links</span>
               <div className={`transform transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${expandedSection === 'links' ? 'rotate-180' : 'rotate-0'}`}>
-                <FaChevronDown size={14} />
+                <FontAwesomeIcon icon={faChevronDown} size="sm" />
               </div>
             </button>
             
@@ -150,19 +152,19 @@ const Footer = () => {
               </p>
               <div className="flex space-x-4">
                 <a href="#" aria-label="Twitter" className="text-white/80 hover:text-white transition">
-                  <FaTwitter size={18} />
+                  <FontAwesomeIcon icon={faTwitter} size="lg" />
                 </a>
                 <a href="#" aria-label="Facebook" className="text-white/80 hover:text-white transition">
-                  <FaFacebook size={18} />
+                  <FontAwesomeIcon icon={faFacebook} size="lg" />
                 </a>
                 <a href="#" aria-label="LinkedIn" className="text-white/80 hover:text-white transition">
-                  <FaLinkedin size={18} />
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" />
                 </a>
                 <a href="#" aria-label="Instagram" className="text-white/80 hover:text-white transition">
-                  <FaInstagram size={18} />
+                  <FontAwesomeIcon icon={faInstagram} size="lg" />
                 </a>
                 <a href="#" aria-label="YouTube" className="text-white/80 hover:text-white transition">
-                  <FaYoutube size={18} />
+                  <FontAwesomeIcon icon={faYoutube} size="lg" />
                 </a>
               </div>
             </div>

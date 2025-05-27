@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import { useState, useEffect } from 'react';
-import { FaClock } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
 
 // Define BlogPost type for client component
@@ -192,7 +193,7 @@ export default function ClientBlogPage({
                           </time>
                           <span className="mx-2">•</span>
                           <span className="flex items-center">
-                            <FaClock className="w-3 h-3 mr-1" />
+                            <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
                             {post.readingTimeMinutes || calculateReadingTime(post.content)} min read
                           </span>
                         </div>
@@ -259,7 +260,7 @@ export default function ClientBlogPage({
                           </time>
                         </div>
                         <div className="flex items-center text-sm text-gray-500">
-                          <FaClock className="w-3 h-3 mr-1" />
+                          <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
                           <span>{post.readingTimeMinutes || calculateReadingTime(post.content)} min</span>
                         </div>
                       </div>

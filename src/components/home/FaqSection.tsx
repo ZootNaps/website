@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Script from 'next/script';
 
 const FaqSection = () => {
@@ -113,7 +114,7 @@ const FaqSection = () => {
               >
                 <span className="font-bold">{item.question}</span>
                 <div className={`transform transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${activeIndex === index ? 'rotate-180' : 'rotate-0'}`}>
-                  <FaChevronDown className={activeIndex === index ? "text-secondary" : "text-gray-dark"} />
+                  <FontAwesomeIcon icon={faChevronDown} className={activeIndex === index ? "text-secondary" : "text-gray-dark"} />
                 </div>
               </button>
               

@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { FaTimes, FaBars } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import { scrollToElement } from '@/utils/scrollUtils';
 
 const Header = () => {
@@ -221,16 +222,18 @@ const Header = () => {
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             <div className="relative flex items-center justify-center w-6 h-6 overflow-hidden">
-              <FaBars 
-                size={20} 
+              <FontAwesomeIcon 
+                icon={faBars} 
+                size="lg" 
                 className={`absolute transition-all duration-300 ease-[cubic-bezier(0.4,0.0,0.2,1)] ${
                   mobileMenuOpen 
                     ? 'opacity-0 rotate-90 scale-0' 
                     : 'opacity-100 rotate-0 scale-100'
                 }`} 
               />
-              <FaTimes 
-                size={20} 
+              <FontAwesomeIcon 
+                icon={faTimes} 
+                size="lg" 
                 className={`absolute text-secondary transition-all duration-300 ease-[cubic-bezier(0.4,0.0,0.2,1)] ${
                   mobileMenuOpen 
                     ? 'opacity-100 rotate-0 scale-100' 

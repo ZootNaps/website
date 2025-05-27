@@ -1,6 +1,7 @@
 'use client';
 
-import { FaRocket, FaUserCheck, FaLightbulb, FaHandshake, FaNetworkWired, FaMicrophone } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRocket, faUserCheck, faLightbulb, faHandshake, faNetworkWired, faMicrophone } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 const FeaturesSection = () => {
@@ -19,7 +20,7 @@ const FeaturesSection = () => {
           <div className="p-8 border border-gray-200 rounded-lg hover:shadow-lg transition duration-300">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0 pt-1">
-                <FaRocket className="text-secondary text-3xl" />
+                <FontAwesomeIcon icon={faRocket} className="text-secondary text-3xl" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight mb-3">Unparalleled Response Rates</h3>
@@ -33,7 +34,7 @@ const FeaturesSection = () => {
           <div className="p-8 border border-gray-200 rounded-lg hover:shadow-lg transition duration-300">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0 pt-1">
-                <FaUserCheck className="text-secondary text-3xl" />
+                <FontAwesomeIcon icon={faUserCheck} className="text-secondary text-3xl" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight mb-3">Customer Qualification</h3>
@@ -47,7 +48,7 @@ const FeaturesSection = () => {
           <div className="p-8 border border-gray-200 rounded-lg hover:shadow-lg transition duration-300">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0 pt-1">
-                <FaLightbulb className="text-secondary text-3xl" />
+                <FontAwesomeIcon icon={faLightbulb} className="text-secondary text-3xl" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight mb-3">Seamless Discovery</h3>
@@ -61,7 +62,7 @@ const FeaturesSection = () => {
           <div className="p-8 border border-gray-200 rounded-lg hover:shadow-lg transition duration-300">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0 pt-1">
-                <FaHandshake className="text-secondary text-3xl" />
+                <FontAwesomeIcon icon={faHandshake} className="text-secondary text-3xl" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight mb-3">Impactful Conversations</h3>
@@ -75,7 +76,7 @@ const FeaturesSection = () => {
           <div className="p-8 border border-gray-200 rounded-lg hover:shadow-lg transition duration-300">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0 pt-1">
-                <FaNetworkWired className="text-secondary text-3xl" />
+                <FontAwesomeIcon icon={faNetworkWired} className="text-secondary text-3xl" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight mb-3">Dozens of Touchpoints</h3>
@@ -89,7 +90,7 @@ const FeaturesSection = () => {
           <div className="p-8 border border-gray-200 rounded-lg hover:shadow-lg transition duration-300">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0 pt-1">
-                <FaMicrophone className="text-secondary text-3xl" />
+                <FontAwesomeIcon icon={faMicrophone} className="text-secondary text-3xl" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight mb-3">World-Class Production Quality</h3>

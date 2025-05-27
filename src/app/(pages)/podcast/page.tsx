@@ -1,7 +1,8 @@
 import MainLayout from '@/components/layout/MainLayout';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaSpotify, FaApple } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpotify, faApple } from '@fortawesome/free-brands-svg-icons';
 import { getPodcastEpisodes } from '@/lib/contentful/client';
 import Script from 'next/script';
 
@@ -172,7 +173,7 @@ export default async function PodcastPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaSpotify className="mr-2" /> Spotify
+                  <FontAwesomeIcon icon={faSpotify} className="mr-2" /> Spotify
                 </a>
                 <a 
                   href="https://podcasts.apple.com/us/podcast/founder-facing/id1778559614" 
@@ -180,7 +181,7 @@ export default async function PodcastPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaApple className="mr-2" /> Apple Podcasts
+                  <FontAwesomeIcon icon={faApple} className="mr-2" /> Apple Podcasts
                 </a>
               </div>
             </div>

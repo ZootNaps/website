@@ -1,6 +1,7 @@
 'use client';
 
-import { FaCheck } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const PricingSection = () => {
   // Format price with comma for thousands
@@ -111,7 +112,7 @@ const PricingSection = () => {
                   <ul className="mb-8 space-y-4">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
-                        <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                        <FontAwesomeIcon icon={faCheck} className="text-green-500 mt-1 mr-3 flex-shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
