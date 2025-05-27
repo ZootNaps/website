@@ -13,12 +13,12 @@ import {
   faMapMarkerAlt,
   faBars,
   faTimes,
-  faRocket,
   faUserCheck,
-  faLightbulb,
   faHandshake,
-  faNetworkWired,
-  faMicrophone
+  faMicrophone,
+  faEnvelopeOpenText,
+  faClipboardQuestion,
+  faHexagonNodes
 } from '@fortawesome/free-solid-svg-icons';
 
 // Import brand icons
@@ -48,12 +48,12 @@ library.add(
   faMapMarkerAlt,
   faBars,
   faTimes,
-  faRocket,
   faUserCheck,
-  faLightbulb,
   faHandshake,
-  faNetworkWired,
   faMicrophone,
+  faEnvelopeOpenText,
+  faClipboardQuestion,
+  faHexagonNodes,
   
   // Brand icons
   faTwitter,
