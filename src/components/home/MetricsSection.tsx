@@ -36,65 +36,56 @@ export default function MetricsSection() {
           <Typography variant="body-lg" className="max-w-2xl mx-auto">
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
+          <Typography variant="h3" className="max-w-2xl mx-auto mt-6 mb-4 text-primary">
+            Placeholder text
+          </Typography>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* First metric card */}
+          {/* First metric card - UPDATED */}
           <div className="p-8 bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
             <div className="flex flex-col items-center text-center">
               <Typography 
-                variant="h3" 
+                variant="h4" // Changed from h3 for textual content
                 color="primary" 
-                className="text-4xl md:text-5xl font-bold mb-4"
+                className="font-semibold mb-3" // Adjusted styling
               >
-                $800,000+
+                Build your sales pipeline, guaranteed
               </Typography>
-              <Typography variant="subheading" color="secondary" className="mb-2">
-                Direct Revenue Generated
-              </Typography>
-              <Typography variant="body" color="gray">
-                Our podcasts have generated over $200k for our clients in less than 3 months.
+              <Typography variant="body" color="gray" className="mb-2">
+                Placeholder text
               </Typography>
             </div>
           </div>
           
-          {/* Second metric card */}
+          {/* Second metric card - UPDATED */}
           <div className="p-8 bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
             <div className="flex flex-col items-center text-center">
               <Typography 
-                variant="h3" 
+                variant="h4" // Changed from h3 for textual content
                 color="primary" 
-                className="text-5xl md:text-6xl font-bold mb-4"
+                className="font-semibold mb-3" // Adjusted styling
               >
-                2-3x
+                1 hour / week
               </Typography>
-              <Typography variant="subheading" color="secondary" className="mb-2">
-                Faster Sales Cycles
-              </Typography>
-              <Typography variant="body" color="gray">
-                Build trust, credibility, and close deals faster.
+              <Typography variant="body" color="gray" className="mb-2">
+                Placeholder text
               </Typography>
             </div>
           </div>
           
-          {/* Third metric card */}
+          {/* Third metric card - UPDATED */}
           <div className="p-8 bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
             <div className="flex flex-col items-center text-center">
               <Typography 
-                variant="h3" 
+                variant="h4" // Changed from h3 for textual content
                 color="primary" 
-                className="text-5xl md:text-6xl font-bold mb-4"
+                className="font-semibold mb-3" // Adjusted styling
               >
-                10x
+                Expert podcast post-production
               </Typography>
-              <Typography variant="subheading" color="secondary" className="mb-1">
-                Higher Response Rates
-              </Typography>
-              <Typography variant="small" color="gray" className="mb-2 italic">
-                (vs. cold email)
-              </Typography>
-              <Typography variant="body" color="gray">
-                Connect with executives and desicion makers directly.
+              <Typography variant="body" color="gray" className="mb-2">
+                Placeholder text
               </Typography>
             </div>
           </div>

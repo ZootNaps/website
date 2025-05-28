@@ -74,15 +74,15 @@ export default function ClientLogoSection() {
         <div className="flex flex-col md:flex-row justify-around items-center text-center mb-10 md:mb-16 gap-8 md:gap-4 px-4">
           <div className="text-white">
             <p className="text-4xl lg:text-5xl font-bold text-secondary">$800,000+</p>
-            <p className="text-base lg:text-lg mt-1 opacity-90">Client Revenue Generated</p>
+            <p className="text-base lg:text-lg mt-1 text-slate-200">Client Revenue Generated</p>
           </div>
           <div className="text-white">
             <p className="text-4xl lg:text-5xl font-bold text-secondary">2-3x</p>
-            <p className="text-base lg:text-lg mt-1 opacity-90">Faster Sales Cycles</p>
+            <p className="text-base lg:text-lg mt-1 text-slate-200">Faster Sales Cycles</p>
           </div>
           <div className="text-white">
             <p className="text-4xl lg:text-5xl font-bold text-secondary">10x</p>
-            <p className="text-base lg:text-lg mt-1 opacity-90">Higher Response Rates <span className="block text-xs opacity-70">(vs. Cold Email)</span></p>
+            <p className="text-base lg:text-lg mt-1 text-slate-200">Higher Response Rates <span className="block text-xs opacity-70">(vs. Cold Email)</span></p>
           </div>
         </div>
         
