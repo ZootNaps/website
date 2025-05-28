@@ -2,6 +2,8 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const PricingSection = () => {
   // Format price with comma for thousands
@@ -69,28 +71,38 @@ const PricingSection = () => {
   return (
     <section id="pricing" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Packages and Pricing</h2>
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Packages and Pricing</h2>
           <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
             Choose the plan that's right for you.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative rounded-lg border ${
+              className={`relative rounded-2xl border-2 ${
                 plan.isPopular 
-                  ? 'border-secondary shadow-xl' 
+                  ? 'border-secondary shadow-xl bg-white' 
                   : plan.isBestValue 
-                    ? 'border-primary shadow-xl' 
-                    : 'border-gray-200 shadow-sm hover:border-gray-300 hover:-translate-y-1'
-              } transition-all duration-300 flex flex-col h-full`}
+                    ? 'border-primary shadow-xl bg-white' 
+                    : 'border-gray-200 shadow-sm hover:border-gray-300 bg-white'
+              } transition-all duration-300 flex flex-col h-full hover:-translate-y-2`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
               {plan.isPopular && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <span className="bg-secondary text-white text-xs font-semibold py-1 px-4 rounded-full">
+                  <span className="bg-secondary text-white text-xs font-semibold py-2 px-6 rounded-full shadow-lg">
                     Most Popular
                   </span>
                 </div>
@@ -98,7 +110,7 @@ const PricingSection = () => {
               
               {plan.isBestValue && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <span className="bg-primary text-white text-xs font-semibold py-1 px-4 rounded-full">
+                  <span className="bg-primary text-white text-xs font-semibold py-2 px-6 rounded-full shadow-lg">
                     Best Value
                   </span>
                 </div>
@@ -106,45 +118,58 @@ const PricingSection = () => {
               
               <div className="p-8 flex-grow flex flex-col">
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-primary">{plan.name}</h3>
                   <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
                   
                   <div className="mb-6">
-                    <div className="text-3xl sm:text-4xl font-bold">${formatPrice(plan.price)}<span className="text-xl text-gray-500 font-medium">/mo</span></div>
+                    <div className="text-3xl sm:text-4xl font-bold text-primary">
+                      ${formatPrice(plan.price)}
+                      <span className="text-xl text-gray-500 font-medium">/mo</span>
+                    </div>
                   </div>
                   
                   <ul className="mb-8 space-y-4">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
-                        <FontAwesomeIcon icon={faCheck} className="text-green-500 mt-1 mr-3 flex-shrink-0" />
-                        <span>{feature}</span>
+                        <FontAwesomeIcon icon={faCheck} className="text-secondary mt-1 mr-3 flex-shrink-0" />
+                        <span className="text-gray">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 
                 <div className="mt-auto">
-                  <a
-                    href={plan.buttonLink}
-                    className={`block w-full py-3 px-6 text-center rounded-md font-medium transition ${
-                      plan.isPopular
-                        ? 'bg-secondary hover:bg-opacity-90 text-white'
-                        : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
-                    }`}
-                  >
-                    {plan.buttonText}
-                  </a>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Link
+                      href={plan.buttonLink}
+                      className={`block w-full py-4 px-6 text-center rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 ${
+                        plan.isPopular
+                          ? 'bg-secondary hover:bg-secondary-dark text-white focus:ring-secondary/50'
+                          : plan.isBestValue
+                            ? 'bg-primary hover:bg-primary-dark text-white focus:ring-primary/50'
+                            : 'bg-gray-100 hover:bg-gray-200 text-primary border-2 border-gray-200 hover:border-primary/30 focus:ring-gray/50'
+                      }`}
+                    >
+                      {plan.buttonText}
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         
-        <div className="mt-12 text-center">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <p className="text-gray leading-relaxed">
-            Not sure what to choose? <a className="text-secondary font-medium" href="/contact">Contact us</a> for a personalized recommendation.
+            Not sure what to choose? <Link href="/contact" className="text-secondary font-semibold hover:text-secondary-dark transition-colors duration-300">Contact us</Link> for a personalized recommendation.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

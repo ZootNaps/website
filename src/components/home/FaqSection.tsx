@@ -87,7 +87,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-light">
+    <section id="faq" className="py-20 bg-gradient-to-br from-primary-50 via-bg-light to-white">
       <Script 
         id="faq-schema"
         type="application/ld+json"
@@ -144,7 +144,7 @@ const FaqSection = () => {
           </p>
           <a 
             href="/contact" 
-            className="inline-block bg-secondary hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all duration-300 active:scale-98 hover:shadow-lg"
+            className="inline-block bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-8 rounded-md transition-all duration-300 active:scale-98 hover:shadow-lg"
           >
             Contact Us
           </a>

@@ -33,10 +33,10 @@ Allow: /
 # *
 User-agent: *
 Disallow: /admin
-Disallow: /tmp/
 
 # Host
 Host: https://southlamarstudios.com
 
 # Sitemaps
 Sitemap: https://southlamarstudios.com/sitemap.xml
+Sitemap: https://southlamarstudios.com/server-sitemap.xml

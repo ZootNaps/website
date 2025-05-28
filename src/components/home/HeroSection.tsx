@@ -2,81 +2,180 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { scrollToElement } from '@/utils/scrollUtils';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-24 pb-20 relative overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-bg via-bg to-white opacity-90 z-0"></div>
+    <section id="home" className="pt-24 pb-20 relative overflow-hidden bg-gradient-to-br from-primary-50 via-bg-light to-primary-100">
+      {/* Enhanced background with dynamic gradient overlay */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/3 to-primary/8 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      ></motion.div>
       
-      {/* Decorative elements */}
-      <div className="absolute right-0 top-20 w-64 h-64 bg-secondary opacity-5 rounded-full blur-3xl z-0"></div>
-      <div className="absolute left-10 bottom-10 w-40 h-40 bg-primary opacity-5 rounded-full blur-2xl z-0"></div>
+      {/* Enhanced decorative elements with subtle animations */}
+      <motion.div 
+        className="absolute right-0 top-20 w-64 h-64 bg-secondary/8 rounded-full blur-3xl z-0"
+        animate={{ 
+          scale: [1, 1.1, 1],
+          opacity: [0.05, 0.1, 0.05]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      ></motion.div>
+      <motion.div 
+        className="absolute left-10 bottom-10 w-40 h-40 bg-primary/8 rounded-full blur-2xl z-0"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.12, 0.05]
+        }}
+        transition={{ 
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+      ></motion.div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 mb-12 lg:mb-0">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          <motion.div 
+            className="lg:w-1/2 mb-12 lg:mb-0"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <div className="relative">
-              {/* Small accent element */}
-              <div className="absolute -left-6 -top-6 w-12 h-12 rounded-full bg-secondary opacity-10"></div>
+              {/* Enhanced accent element */}
+              <motion.div 
+                className="absolute -left-6 -top-6 w-12 h-12 rounded-full bg-secondary/15 border-2 border-secondary/20"
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              ></motion.div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary relative z-10">
-                Podcasts that <span className="text-secondary">sell.</span>
+                Podcasts that{' '}
+                <motion.span 
+                  className="text-secondary relative"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                >
+                  sell.
+                  {/* Animated underline */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-1 bg-secondary/30 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 0.6, delay: 1.2 }}
+                  ></motion.div>
+                </motion.span>
               </h1>
             </div>
-            {/* <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-primary">
-              Zero audience required.
-            </h2> */}
-            {/*Our end-to-end B2B Podcast solution gives you 1 on 1 facetime with decision makers at your most sought-after clients. Connect, impress, and convert with our proven Podcast for Sales system.*/}
-            <p className="text-lg md:text-xl text-gray leading-relaxed mb-8 max-w-xl border-l-4 border-secondary/20 pl-4 mt-6">
+            
+            {/* Enhanced subtitle with visual element for "zero audience required" */}
+            <motion.div 
+              className="flex items-center gap-4 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              <div className="flex items-center gap-2 bg-white/70 rounded-full px-4 py-2 border border-primary/10">
+                <div className="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
+                <span className="text-lg font-semibold text-primary">Zero audience required</span>
+              </div>
+            </motion.div>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-gray leading-relaxed mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
               An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <Link 
-                href="/contact" 
-                className="bg-secondary hover:bg-opacity-80 text-white font-semibold py-3 px-10 rounded-lg text-lg text-center transition shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50"
-              >
-                Get Started
-              </Link>
-              <button 
-                onClick={() => {
-                  scrollToElement('features');
-                }}
-                className="text-primary hover:text-secondary font-medium py-3 px-6 rounded-md text-center transition hover:underline"
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link 
+                  href="/contact" 
+                  className="group bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg text-center transition-all duration-300 shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/50 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary/50 flex items-center gap-2"
+                >
+                  Get Started
+                  <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </motion.div>
+              <motion.button 
+                onClick={() => scrollToElement('features')}
+                className="group text-primary hover:text-secondary font-medium py-3 px-6 rounded-md text-center transition-all duration-300 hover:bg-white/50 flex items-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Learn More
-              </button>
-            </div>
-          </div>
-          <div className="lg:w-1/2 relative w-full">
-            {/* Image container with enhanced visual treatment */}
-            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-lg shadow-xl">
-              {/* Replace with the actual image file name */}
+                <motion.div
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  ↓
+                </motion.div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
+          
+          <motion.div 
+            className="lg:w-1/2 relative w-full"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {/* Enhanced image container with split-screen concept */}
+            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
               <Image 
                 src="/images/hero-image.png"
                 alt="B2B podcast sales solution helping businesses connect with and sell to their top customers"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-700 hover:scale-105"
                 quality={85}
               />
-              {/* Overlay gradient for better text contrast if needed */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-50"></div>
+              {/* Enhanced overlay with better visual hierarchy */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-secondary/20"></div>
             </div>
             
-            {/* Client attribution caption */}
-            <div className="mt-3 flex items-center">
-              <div className="h-px flex-grow bg-gray-200 mr-3"></div>
-              <p className="text-sm text-gray-600 font-medium italic">
-                <span className="text-primary font-semibold not-italic">Brian Blum</span> - Co-Host of "Sweat Equity"
+            {/* Enhanced client attribution with better visual treatment - removed quote and box */}
+            <motion.div 
+              className="mt-4 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.8 }}
+            >
+              <p className="text-sm text-gray-600">
+                Brian Blum - Co-Host of "Sweat Equity"
               </p>
-            </div>
+            </motion.div>
             
-            {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-bg border-4 border-white rounded-lg -z-10"></div>
-          </div>
+            {/* Enhanced decorative element */}
+            {/* <motion.div 
+              className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-bg to-white border-4 border-white rounded-2xl shadow-lg -z-10"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 2 }}
+            ></motion.div> */}
+          </motion.div>
         </div>
       </div>
     </section>

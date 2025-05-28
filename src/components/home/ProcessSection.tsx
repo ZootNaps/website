@@ -133,7 +133,7 @@ const ProcessSection = () => {
   }, [activeTab, isTransitioning, isMounted]);
 
   return (
-    <section id="process" className="py-20 bg-light border border-gray-200 rounded-lg shadow-md">
+    <section id="process" className="py-20 bg-gradient-to-br from-bg-light via-white to-primary-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary"> Built for Your Business.
@@ -149,7 +149,7 @@ const ProcessSection = () => {
           
           {/* Desktop progress indicator - hidden on mobile */}
           <div className="hidden md:flex justify-between items-center mb-12 px-8">
-            {tabs.map((tab, index) => (
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}

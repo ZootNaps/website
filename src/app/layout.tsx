@@ -121,7 +121,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased bg-bg`}>
         {/* Google Tag Manager (noscript part is inside this component too) */}
         <Suspense fallback={null}>
           <GoogleTagManager GTM_ID={process.env.NEXT_PUBLIC_GTM_ID} />
