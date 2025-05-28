@@ -7,6 +7,7 @@ import { faChevronDown, faChevronUp, faEnvelope, faMapMarkerAlt } from '@fortawe
 import { faTwitter, faFacebook, faLinkedin, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
+  const companyTagline = "Successful podcasts for your business - no audience required.";
   const currentYear = new Date().getFullYear();
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [aboutHeight, setAboutHeight] = useState(0);
@@ -92,7 +93,7 @@ const Footer = () => {
             >
               <div ref={aboutContentRef} className="pb-3 px-1 text-xs text-white/90 leading-relaxed">
                 <p className="mb-2">
-                  Empowering brands through innovative podcast production and strategic audio content solutions.
+                  {companyTagline}
                 </p>
                 <p className="flex items-start gap-2">
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-1 flex-shrink-0" />
@@ -148,7 +149,7 @@ const Footer = () => {
             <div className="col-span-2">
               <h3 className="text-lg font-bold mb-3">South Lamar Studios</h3>
               <p className="mb-4 text-white/90 max-w-md leading-relaxed">
-                Empowering brands through innovative podcast production and strategic audio content solutions.
+                {companyTagline}
               </p>
               <div className="flex space-x-4">
                 <a href="#" aria-label="Twitter" className="text-white/80 hover:text-white transition">
