@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faChevronLeft, faChevronRight, faSearch, faUserCheck, faPodcast, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ProcessSection = () => {
   const [activeTab, setActiveTab] = useState<string>('discovery-strategy');
@@ -14,10 +14,10 @@ const ProcessSection = () => {
   const visibleTime = 5000; // Time content is fully visible in milliseconds
   
   const tabs = [
-    { id: 'discovery-strategy', step: 'ONE', name: 'Discovery & Strategy' },
-    { id: 'guest-sourcing-qualification', step: 'TWO', name: 'Guest Prospecting & Qualification' },
-    { id: 'interview-content-production', step: 'THREE', name: 'Interview & Content Production' },
-    { id: 'distribution-sales-handoff', step: 'FOUR', name: 'Distribution & Sales Handoff' }
+    { id: 'discovery-strategy', step: 'ONE', name: 'Discovery & Strategy', icon: faSearch },
+    { id: 'guest-sourcing-qualification', step: 'TWO', name: 'Guest Prospecting & Qualification', icon: faUserCheck },
+    { id: 'interview-content-production', step: 'THREE', name: 'Interview & Content Production', icon: faPodcast },
+    { id: 'distribution-sales-handoff', step: 'FOUR', name: 'Distribution & Sales Handoff', icon: faShareAlt }
   ];
   
   const tabContent = {
@@ -138,7 +138,7 @@ const ProcessSection = () => {
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary"> Built for Your Business.
           </h2>
-          <p className="text-lg text-gray max-w-2xl mx-auto">
+          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
             Every aspect of our podcast process is designed with your most valuable customers in mind. We work closely with each of our partners to ensure your success every step of the way.</p>
         </div>
         
@@ -153,17 +153,18 @@ const ProcessSection = () => {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
-                className="text-center font-medium flex-1"
+                className="text-center font-medium flex-1 group"
               >
                 <span 
-                  className={`transition-all duration-1000 ease-in-out flex items-center justify-center min-h-[48px] ${
-                    activeTab === tab.id ? 'text-secondary font-bold' : 'text-primary'
+                  className={`transition-all duration-1000 ease-in-out flex flex-col items-center justify-center min-h-[48px] ${
+                    activeTab === tab.id ? 'text-secondary font-bold' : 'text-primary group-hover:text-secondary/80'
                   }`}
                 >
+                  <FontAwesomeIcon icon={tab.icon} className="mb-2 text-xl" />
                   {tab.name}
                 </span>
                 <div className={`h-1 mt-2 rounded transition-all duration-1000 ease-in-out ${
-                  activeTab === tab.id ? 'bg-secondary' : 'bg-gray-200'
+                  activeTab === tab.id ? 'bg-secondary' : 'bg-gray-200 group-hover:bg-secondary/30'
                 }`}></div>
               </button>
             ))}
@@ -204,11 +205,12 @@ const ProcessSection = () => {
                   </button>
                 </div>
                 
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-primary">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-primary flex items-center">
+                  <FontAwesomeIcon icon={tabs.find(t => t.id === activeTab)!.icon} className="mr-3 text-secondary opacity-80 text-2xl" />
                   {tabContent[activeTab as keyof typeof tabContent].title}
                 </h3>
                 
-                <p className="text-gray mb-6">
+                <p className="text-gray leading-relaxed mb-6">
                   {tabContent[activeTab as keyof typeof tabContent].description}
                 </p>
                 

@@ -6,7 +6,7 @@ import { scrollToElement } from '@/utils/scrollUtils';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-28 pb-20 relative overflow-hidden">
+    <section id="home" className="pt-24 pb-20 relative overflow-hidden">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-bg via-bg to-white opacity-90 z-0"></div>
       
@@ -29,13 +29,13 @@ const HeroSection = () => {
               Zero audience required.
             </h2> */}
             {/*Our end-to-end B2B Podcast solution gives you 1 on 1 facetime with decision makers at your most sought-after clients. Connect, impress, and convert with our proven Podcast for Sales system.*/}
-            <p className="text-lg md:text-xl text-gray mb-8 max-w-xl border-l-4 border-secondary/20 pl-4 mt-6">
+            <p className="text-lg md:text-xl text-gray leading-relaxed mb-8 max-w-xl border-l-4 border-secondary/20 pl-4 mt-6">
               An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <Link 
                 href="/contact" 
-                className="bg-secondary hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md text-center transition shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transform hover:-translate-y-1"
+                className="bg-secondary hover:bg-opacity-80 text-white font-semibold py-3 px-10 rounded-lg text-lg text-center transition shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50"
               >
                 Get Started
               </Link>
@@ -43,7 +43,7 @@ const HeroSection = () => {
                 onClick={() => {
                   scrollToElement('features');
                 }}
-                className="border border-secondary text-secondary hover:bg-secondary/5 font-medium py-3 px-8 rounded-md text-center transition"
+                className="text-primary hover:text-secondary font-medium py-3 px-6 rounded-md text-center transition hover:underline"
               >
                 Learn More
               </button>

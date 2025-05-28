@@ -96,7 +96,7 @@ const FaqSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray max-w-2xl mx-auto">
+          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
             Find answers to common questions about our services and how we can help your business.
           </p>
         </div>
@@ -131,7 +131,7 @@ const FaqSection = () => {
                   }}
                   className="px-6 pb-6"
                 >
-                  <p className="text-gray">{item.answer}</p>
+                  <p className="text-gray leading-relaxed">{item.answer}</p>
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@ const FaqSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-gray mb-4">
+          <p className="text-gray leading-relaxed mb-4">
             Still have questions? We are here to help.
           </p>
           <a 

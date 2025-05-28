@@ -63,7 +63,7 @@ const FeaturesSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
             Built for <span className="text-secondary">Sales</span> - Not Marketing.
           </h2>
-          <p className="text-lg text-gray max-w-2xl mx-auto">
+          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
             Every step of our process is purpose built for sales - creating valuable touchpoints and customer interactions that drive real revenue.</p>
         </div>
         
@@ -78,8 +78,8 @@ const FeaturesSection = () => {
               
               <div className="flex items-start h-full">
                 <div className="mr-5 flex-shrink-0 pt-1">
-                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary transition-all duration-300">
-                    <FontAwesomeIcon icon={feature.icon} className="text-2xl" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
+                    <FontAwesomeIcon icon={feature.icon} className="text-3xl transition-colors duration-300" aria-hidden="true" />
                   </div>
                 </div>
                 <div className="flex-1">

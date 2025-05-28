@@ -65,10 +65,29 @@ export default function ClientLogoSection() {
         <Typography 
           variant="h2" 
           color="white" 
-          className="text-center mb-8"
+          className="text-center mb-8 md:mb-12"
         >
-          Trusted by Industry Leaders
+          Driving Real Results for Industry Leaders
         </Typography>
+
+        {/* Key Metrics Section */}
+        <div className="flex flex-col md:flex-row justify-around items-center text-center mb-10 md:mb-16 gap-8 md:gap-4 px-4">
+          <div className="text-white">
+            <p className="text-4xl lg:text-5xl font-bold text-secondary">$800,000+</p>
+            <p className="text-base lg:text-lg mt-1 opacity-90">Client Revenue Generated</p>
+          </div>
+          <div className="text-white">
+            <p className="text-4xl lg:text-5xl font-bold text-secondary">2-3x</p>
+            <p className="text-base lg:text-lg mt-1 opacity-90">Faster Sales Cycles</p>
+          </div>
+          <div className="text-white">
+            <p className="text-4xl lg:text-5xl font-bold text-secondary">10x</p>
+            <p className="text-base lg:text-lg mt-1 opacity-90">Higher Response Rates <span className="block text-xs opacity-70">(vs. Cold Email)</span></p>
+          </div>
+        </div>
+        
+        {/* Divider line */}
+        <div className="my-8 md:my-10 border-t border-white/20 max-w-xl mx-auto"></div>
         
         <div className="mb-8 -mx-4 md:-mx-8 lg:-mx-16 xl:-mx-24">
           <LogoCarousel 
@@ -78,6 +97,22 @@ export default function ClientLogoSection() {
             className="[&_img]:brightness-0 [&_img]:invert px-4 md:px-8"
           />
         </div>
+
+        {/* 
+          Testimonial Section - Commented out for now
+          <div className="mt-12 md:mt-16 pt-10 md:pt-12 border-t border-white/20 max-w-3xl mx-auto">
+            <blockquote className="text-center">
+              <p className="text-xl md:text-2xl font-medium italic text-gray-200 leading-relaxed opacity-95">
+                {"South Lamar Studios didn't just produce a podcast for us; they crafted a high-performance sales asset. The strategic approach and quality are outstanding."} 
+              </p>
+              <footer className="mt-6 md:mt-8">
+                <p className="text-lg font-semibold text-secondary">Sarah Chen</p>
+                <p className="text-sm text-gray-400 uppercase tracking-wider">CMO, Tech Innovators Inc.</p>
+              </footer>
+            </blockquote>
+          </div>
+        */}
+
       </div>
     </Section>
   );

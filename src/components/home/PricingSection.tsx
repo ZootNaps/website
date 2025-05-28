@@ -71,7 +71,7 @@ const PricingSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Packages and Pricing</h2>
-          <p className="text-lg text-gray max-w-2xl mx-auto">
+          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
             Choose the plan that's right for you.
           </p>
         </div>
@@ -103,7 +103,7 @@ const PricingSection = () => {
               <div className="p-8 flex-grow flex flex-col">
                 <div>
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <p className="text-gray mb-6">{plan.description}</p>
+                  <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
                   
                   <div className="mb-6">
                     <div className="text-4xl font-bold">${formatPrice(plan.price)}<span className="text-xl text-gray-500 font-medium">/mo</span></div>
@@ -137,7 +137,7 @@ const PricingSection = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <p className="text-gray">
+          <p className="text-gray leading-relaxed">
             Not sure what to choose? <a className="text-secondary font-medium" href="/contact">Contact us</a> for a personalized recommendation.
           </p>
         </div>
