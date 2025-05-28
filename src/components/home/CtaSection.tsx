@@ -7,7 +7,7 @@ const CtaSection = () => {
   return (
     <section className="py-20 bg-primary text-white relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-primary opacity-90"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-primary via-primary-dark to-primary opacity-90"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/15 rounded-full blur-2xl"></div>
       
@@ -42,7 +42,7 @@ const CtaSection = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+                className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-secondary/50"
               >
                 Get Started
               </Link>
@@ -50,7 +50,7 @@ const CtaSection = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 href="/blog"
-                className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-white/50"
               >
                 Learn More
               </Link>

@@ -8,10 +8,10 @@ import { scrollToElement } from '@/utils/scrollUtils';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-24 pb-20 relative overflow-hidden bg-gradient-to-br from-primary-50 via-bg-light to-primary-100">
+    <section id="home" className="pt-24 pb-20 relative overflow-hidden bg-linear-to-br from-primary-50 via-bg-light to-primary-100">
       {/* Enhanced background with dynamic gradient overlay */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/3 to-primary/8 z-0"
+        className="absolute inset-0 bg-linear-to-br from-primary/5 via-secondary/3 to-primary/8 z-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -112,7 +112,7 @@ const HeroSection = () => {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link 
                   href="/contact" 
-                  className="group bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg text-center transition-all duration-300 shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/50 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary/50 flex items-center gap-2"
+                  className="group bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg text-center transition-all duration-300 shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/50 transform hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-secondary/50 flex items-center gap-2"
                 >
                   Get Started
                   <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -153,7 +153,7 @@ const HeroSection = () => {
                 quality={85}
               />
               {/* Enhanced overlay with better visual hierarchy */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-secondary/20"></div>
+              <div className="absolute inset-0 bg-linear-to-tr from-primary/40 via-transparent to-secondary/20"></div>
             </div>
             
             {/* Enhanced client attribution with better visual treatment - removed quote and box */}
@@ -170,7 +170,7 @@ const HeroSection = () => {
             
             {/* Enhanced decorative element */}
             {/* <motion.div 
-              className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-bg to-white border-4 border-white rounded-2xl shadow-lg -z-10"
+              className="absolute -bottom-8 -right-8 w-32 h-32 bg-linear-to-br from-bg to-white border-4 border-white rounded-2xl shadow-lg -z-10"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 2 }}

@@ -57,7 +57,7 @@ export default function ContactPage() {
                     name="name" 
                     required 
                     placeholder="Your name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-secondary focus:border-transparent"
                   />
                 </div>
                 
@@ -69,7 +69,7 @@ export default function ContactPage() {
                     name="email" 
                     required 
                     placeholder="email@example.com"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-secondary focus:border-transparent"
                   />
                 </div>
                 
@@ -81,7 +81,7 @@ export default function ContactPage() {
                     rows={5} 
                     required 
                     placeholder="Enter your message"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-secondary focus:border-transparent"
                   ></textarea>
                 </div>
                 

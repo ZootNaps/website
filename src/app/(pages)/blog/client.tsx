@@ -111,7 +111,7 @@ export default function ClientBlogPage({
       />
       
       {/* Blog Header with Gradient Background */}
-      <section className="pt-28 pb-12 bg-gradient-to-b from-bg to-white">
+      <section className="pt-28 pb-12 bg-linear-to-b from-bg to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">Insights & Resources</h1>

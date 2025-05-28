@@ -113,7 +113,7 @@ export default function ClientLogoSection() {
   };
 
   return (
-    <Section className="bg-gradient-to-br from-primary via-primary-dark to-primary-light relative overflow-hidden" spacing="md">
+    <Section className="bg-linear-to-br from-primary via-primary-dark to-primary-light relative overflow-hidden" spacing="md">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-40 h-40 bg-secondary rounded-full blur-3xl"></div>
@@ -184,7 +184,7 @@ export default function ClientLogoSection() {
           animate={isInView ? { scaleX: 1 } : {}}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent max-w-xl mx-auto"></div>
+          <div className="h-px bg-linear-to-r from-transparent via-white/30 to-transparent max-w-xl mx-auto"></div>
           <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2">
             <div className="w-3 h-3 bg-secondary rounded-full"></div>
           </div>

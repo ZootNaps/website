@@ -133,7 +133,7 @@ const ProcessSection = () => {
   }, [activeTab, isTransitioning, isMounted]);
 
   return (
-    <section id="process" className="py-20 bg-gradient-to-br from-bg-light via-white to-primary-50">
+    <section id="process" className="py-20 bg-linear-to-br from-bg-light via-white to-primary-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary"> Built for Your Business.

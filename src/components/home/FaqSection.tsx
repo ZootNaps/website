@@ -87,7 +87,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-br from-primary-50 via-bg-light to-white">
+    <section id="faq" className="py-20 bg-linear-to-br from-primary-50 via-bg-light to-white">
       <Script 
         id="faq-schema"
         type="application/ld+json"
@@ -109,7 +109,7 @@ const FaqSection = () => {
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left font-medium flex justify-between items-center focus:outline-none active:bg-gray-50 transition-colors duration-200"
+                className="w-full px-6 py-4 text-left font-medium flex justify-between items-center focus:outline-hidden active:bg-gray-50 transition-colors duration-200"
                 aria-expanded={activeIndex === index}
               >
                 <span className="font-bold">{item.question}</span>

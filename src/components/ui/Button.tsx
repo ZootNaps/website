@@ -29,7 +29,7 @@ export default function Button({
   type = 'button',
 }: ButtonProps) {
   // Base classes that apply to all buttons
-  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.97] transform shadow-sm hover:shadow-md';
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus:outline-hidden focus:ring-2 focus:ring-offset-2 active:scale-[0.97] transform shadow-sm hover:shadow-md';
   
   // Size classes
   const sizeClasses = {

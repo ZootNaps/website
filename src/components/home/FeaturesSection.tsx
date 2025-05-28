@@ -74,138 +74,110 @@ const FeaturesSection = () => {
   };
 
   return (
-    <section id="features" className="py-20 md:py-28 relative bg-gradient-to-b from-white via-primary-50 to-white overflow-hidden">
-      {/* Enhanced background decorative elements */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent"></div>
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-      
-      {/* Enhanced background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" 
-           style={{ 
-             backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(42, 61, 69, 0.05) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(231, 111, 81, 0.05) 0%, transparent 50%)',
-           }}>
-      </div>
+    <section id="features" className="py-20 md:py-28 relative bg-linear-to-b from-white via-primary-50 to-white overflow-hidden">
+      {/* Decorative gradient lines */}
+      <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-secondary/20 to-transparent"></div>
+      <div className="absolute bottom-0 inset-x-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"></div>
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
-        <motion.div 
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: -30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div 
-            className="inline-block mb-6"
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <span className="px-4 py-2 bg-gradient-to-r from-secondary/10 to-tertiary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
-              Our Approach
-            </span>
-          </motion.div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-primary leading-tight">
-            Built for <span className="font-extrabold bg-gradient-to-r from-secondary via-secondary-dark to-secondary-light bg-clip-text text-transparent drop-shadow-sm">Sales</span> - Not Marketing.
-          </h2>
-          {/* Debug: Test gradient text with standard colors */}
-          <div className="text-center mb-4 opacity-50">
-            <span className="text-sm">Debug: </span>
-            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">Standard Colors</span>
-            <span className="text-sm"> vs </span>
-            <span className="bg-gradient-to-r from-secondary to-secondary-dark bg-clip-text text-transparent font-bold">Custom Colors</span>
-          </div>
-          <p className="text-xl text-gray leading-relaxed max-w-3xl mx-auto">
-            Every step of our process is purpose built for sales - creating valuable touchpoints and customer interactions that drive real revenue.
-          </p>
-        </motion.div>
         
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
-              className="group relative"
-              variants={itemVariants}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm p-8 border-2 border-gray-100 rounded-2xl hover:border-secondary/30 hover:shadow-strong transition-all duration-500 h-full flex flex-col relative overflow-hidden">
-                {/* Enhanced accent gradient border with animation */}
-                <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${feature.color} transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 rounded-t-2xl`}></div>
-                
-                {/* Background gradient on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-                
-                <div className="flex items-start h-full relative z-10">
-                  <div className="mr-6 flex-shrink-0 pt-1">
-                    <motion.div 
-                      className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-secondary group-hover:text-white transition-all duration-500 shadow-md opacity-20 group-hover:opacity-100`}
-                      whileHover={{ rotate: 5, scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <FontAwesomeIcon icon={feature.icon} className="text-2xl transition-colors duration-500" aria-hidden="true" />
-                    </motion.div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-display font-bold text-primary leading-tight mb-4 group-hover:text-primary-dark transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray leading-relaxed text-base group-hover:text-gray-dark transition-colors duration-300">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Decorative corner element */}
-                <div className="absolute bottom-4 right-4 w-8 h-8 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Header Section with enhanced visual hierarchy */}
+        <div className="text-center mb-20">
+          <div className="relative inline-block mb-6">
+            {/* Enhanced badge with gradient background */}
+            <div className="inline-flex items-center gap-2 mb-8">
+              <div className="flex items-center gap-2">
+                <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-tertiary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
+                  🎯 Sales-First Approach
+                </span>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-        
-        <motion.div 
-          className="mt-20 md:mt-24 text-center relative py-12"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          {/* Enhanced decorative divider */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-secondary to-tertiary"></div>
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-3 h-3 bg-secondary rounded-full"></div>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
+              Built for <span className="font-extrabold bg-linear-to-r from-secondary via-secondary-dark to-secondary-light bg-clip-text text-transparent drop-shadow-sm">Sales</span> - Not Marketing.
+            </h2>
+            
+            {/* Example comparison for clarity */}
+            <div className="inline-flex items-center gap-6 text-sm font-medium mb-6">
+              <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">Standard Colors</span>
+              <span className="text-gray-400">vs</span>
+              <span className="bg-linear-to-r from-secondary to-secondary-dark bg-clip-text text-transparent font-bold">Custom Colors</span>
+            </div>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 text-primary max-w-4xl mx-auto leading-tight">
-            B2B Podcasts - <span className="font-extrabold bg-gradient-to-r from-secondary via-tertiary-dark to-secondary-dark bg-clip-text text-transparent drop-shadow-sm">Reimagined</span>.
-          </h2>
-          <p className="text-xl text-gray max-w-3xl mx-auto mb-10 leading-relaxed">
-            Our sales-first approach prioritizes what salespeople care about - and what most agencies miss. Want to see it in action? 
+          <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">
+            This isn't just another marketing podcast. Our system is designed specifically to generate qualified leads, 
+            nurture relationships with potential clients, and convert conversations into revenue.
           </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link 
-              href="/contact" 
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-secondary to-secondary-dark hover:from-secondary-dark hover:to-secondary text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-strong hover:shadow-glow transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+        </div>
+
+        {/* Features Grid with enhanced cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="group relative bg-white rounded-2xl p-8 border border-gray-100 hover:border-secondary/20 transition-all duration-500 hover:shadow-xl hover:shadow-secondary/10 hover:-translate-y-2"
             >
-              Book a Demo Today
-              <motion.svg 
-                className="w-5 h-5" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              {/* Animated top border */}
+              <div className={`absolute inset-x-0 top-0 h-1 bg-linear-to-r ${feature.color} transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 rounded-t-2xl`}></div>
+              
+              {/* Background gradient overlay on hover */}
+              <div className={`absolute inset-0 bg-linear-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+              
+              {/* Icon with enhanced styling */}
+              <div 
+                className={`w-16 h-16 rounded-2xl bg-linear-to-br ${feature.color} flex items-center justify-center text-secondary group-hover:text-white transition-all duration-500 shadow-md opacity-20 group-hover:opacity-100`}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </motion.svg>
-            </Link>
-          </motion.div>
-        </motion.div>
+                <FontAwesomeIcon icon={feature.icon} className="w-8 h-8" />
+              </div>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-4 text-primary group-hover:text-primary-dark transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-gray leading-relaxed mb-4">
+                  {feature.description}
+                </p>
+              </div>
+              
+              {/* Decorative element */}
+              <div className="absolute bottom-4 right-4 w-8 h-8 bg-linear-to-br from-gray-100 to-gray-200 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Enhanced Bottom CTA Section with better visual separation */}
+        <div className="relative">
+          {/* Decorative top line */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-px bg-linear-to-r from-secondary to-tertiary"></div>
+          
+          <div className="bg-white rounded-3xl border border-gray-100 p-12 text-center shadow-xl relative overflow-hidden">
+            {/* Enhanced headline */}
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
+              B2B Podcasts - <span className="font-extrabold bg-linear-to-r from-secondary via-tertiary-dark to-secondary-dark bg-clip-text text-transparent drop-shadow-sm">Reimagined</span>.
+            </h3>
+            
+            <p className="text-lg text-gray mb-8 max-w-2xl mx-auto leading-relaxed">
+              Stop treating podcasting like a marketing experiment. Start using it as a sophisticated sales tool that generates measurable ROI from day one.
+            </p>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link 
+                href="/contact"
+                className="inline-flex items-center gap-3 bg-linear-to-r from-secondary to-secondary-dark hover:from-secondary-dark hover:to-secondary text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-strong hover:shadow-glow transform hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-secondary/50"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12l4 4 4-4m0-6l-4-4-4 4" />
+                </svg>
+                Start Building Your Sales Machine
+              </Link>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

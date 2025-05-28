@@ -217,7 +217,7 @@ const Header = () => {
 
           {/* Mobile menu toggle */}
           <button 
-            className="md:hidden text-primary focus:outline-none relative h-10 w-10 flex items-center justify-center"
+            className="md:hidden text-primary focus:outline-hidden relative h-10 w-10 flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >

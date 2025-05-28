@@ -87,7 +87,7 @@ export default function MetricsSection() {
   return (
     <Section background="white" spacing="lg" className="relative">
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-50"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-secondary/5 opacity-50"></div>
       <div className="absolute inset-0" style={{
         backgroundImage: `radial-gradient(circle at 25% 25%, rgba(42, 61, 69, 0.1) 0%, transparent 50%),
                           radial-gradient(circle at 75% 75%, rgba(231, 111, 81, 0.1) 0%, transparent 50%)`
@@ -135,11 +135,11 @@ export default function MetricsSection() {
             variants={itemVariants}
           >
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
-                className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                className="w-16 h-16 bg-linear-to-br from-primary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -167,7 +167,7 @@ export default function MetricsSection() {
               </Typography>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           </motion.div>
           
@@ -177,11 +177,11 @@ export default function MetricsSection() {
             variants={itemVariants}
           >
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
-                className="w-16 h-16 bg-gradient-to-br from-secondary to-secondary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                className="w-16 h-16 bg-linear-to-br from-secondary to-secondary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -209,7 +209,7 @@ export default function MetricsSection() {
               </Typography>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-secondary to-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           </motion.div>
           
@@ -219,11 +219,11 @@ export default function MetricsSection() {
             variants={itemVariants}
           >
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
-                className="w-16 h-16 bg-gradient-to-br from-primary via-secondary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                className="w-16 h-16 bg-linear-to-br from-primary via-secondary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -251,7 +251,7 @@ export default function MetricsSection() {
               </Typography>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           </motion.div>
         </motion.div>
@@ -264,7 +264,7 @@ export default function MetricsSection() {
         >
           <motion.button 
             onClick={scrollToProcess}
-            className="group inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="group inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-primary/50"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
