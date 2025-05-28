@@ -85,8 +85,8 @@ const PricingSection = () => {
                   ? 'border-secondary shadow-xl' 
                   : plan.isBestValue 
                     ? 'border-primary shadow-xl' 
-                    : 'border-gray-200 shadow-sm'
-              } transition-all hover:shadow-lg flex flex-col h-full`}
+                    : 'border-gray-200 shadow-sm hover:border-gray-300 hover:-translate-y-1'
+              } transition-all duration-300 flex flex-col h-full`}
             >
               {plan.isPopular && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
