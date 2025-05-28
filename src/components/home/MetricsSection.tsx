@@ -37,7 +37,7 @@ export default function MetricsSection() {
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
           <Typography variant="h3" className="max-w-2xl mx-auto mt-6 mb-4 text-primary">
-            Placeholder text
+            End-to-end podcast production for your business.
           </Typography>
         </div>
         
