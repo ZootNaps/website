@@ -31,16 +31,20 @@ const FaqSection = () => {
   
   const faqItems = [
     {
-      question: "What is a \"Podcast for Sales\" vs. a regular B2B podcast?",
-      answer: "Our \"Podcast for Sales\" is a B2B client acquisition tool. Unlike typical podcasts, it uses executive interviews for direct outreach and lead qualification, effective even without a large audience. We turn conversations into qualified leads."
+      question: "What kind of ROI can we expect?",
+      answer: "ROI is measured by qualified leads, shorter sales cycles, and new revenue. With a focus on high-value B2B deals (e.g., $15k+ ACV), even a few conversions deliver significant returns."
+    },
+    {
+      question: "Do I need a large audience for this to work?",
+      answer: "No. The primary value comes from strategic interactions with guests (potential clients) and using the content in direct sales engagement, making it effective even with zero initial listeners."
     },
     {
       question: "We tried podcasting, but it didn't generate leads. How are you different?",
       answer: "Many podcasts lack sales integration. Our proprietary \"B2B Podcast for Sales\" system aligns podcasting directly with your sales process, from guest strategy to using content for targeted outreach, ensuring a clear ROI."
     },
     {
-      question: "Do I need a large audience for this to work?",
-      answer: "No. The primary value comes from strategic interactions with guests (potential clients) and using the content in direct sales engagement, making it effective even with zero initial listeners."
+      question: "What is a \"Podcast for Sales\" vs. a regular B2B podcast?",
+      answer: "Our \"Podcast for Sales\" is a B2B client acquisition tool. Unlike typical podcasts, it uses executive interviews for direct outreach and lead qualification, effective even without a large audience. We turn conversations into qualified leads."
     },
     {
       question: "What's involved in your system? What do you handle vs. what do we do?",
@@ -57,10 +61,6 @@ const FaqSection = () => {
     {
       question: "How much of my team's time will this take per week/month?",
       answer: "Minimal. After initial setup (a few hours total), expect ~2-4 hours/month for 2 episodes, or ~4-8 hours/month for 4 episodes, mainly for interview prep and recording. We handle the rest."
-    },
-    {
-      question: "What kind of ROI can we expect?",
-      answer: "ROI is measured by qualified leads, shorter sales cycles, and new revenue. With a focus on high-value B2B deals (e.g., $15k+ ACV), even a few conversions deliver significant returns."
     },
     {
       question: "How long until we see results from this podcast lead generation service?",
@@ -95,9 +95,9 @@ const FaqSection = () => {
       />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
-            Find answers to common questions about our services and how we can help your business.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary inline-block pb-2 border-b-2 border-secondary">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto mt-4">
+            Got questions? We've got answers. Discover how our podcast system directly addresses your business needs.
           </p>
         </div>
         
@@ -140,7 +140,7 @@ const FaqSection = () => {
         
         <div className="text-center mt-12">
           <p className="text-gray leading-relaxed mb-4">
-            Still have questions? We are here to help.
+            Need more help? Get in touch and our team will reach out.
           </p>
           <a 
             href="/contact" 

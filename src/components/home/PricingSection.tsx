@@ -81,7 +81,11 @@ const PricingSection = () => {
             <div
               key={index}
               className={`relative rounded-lg border ${
-                plan.isPopular ? 'border-secondary shadow-xl' : 'border-gray-200 shadow-sm'
+                plan.isPopular 
+                  ? 'border-secondary shadow-xl' 
+                  : plan.isBestValue 
+                    ? 'border-primary shadow-xl' 
+                    : 'border-gray-200 shadow-sm'
               } transition-all hover:shadow-lg flex flex-col h-full`}
             >
               {plan.isPopular && (
@@ -106,7 +110,7 @@ const PricingSection = () => {
                   <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
                   
                   <div className="mb-6">
-                    <div className="text-4xl font-bold">${formatPrice(plan.price)}<span className="text-xl text-gray-500 font-medium">/mo</span></div>
+                    <div className="text-3xl sm:text-4xl font-bold">${formatPrice(plan.price)}<span className="text-xl text-gray-500 font-medium">/mo</span></div>
                   </div>
                   
                   <ul className="mb-8 space-y-4">
