@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { TrophyIcon, ClockIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { TrophyIcon, ClockIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import { usePathname, useRouter } from 'next/navigation';
@@ -141,7 +141,7 @@ export default function MetricsSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* First metric card - Pipeline Guarantee */}
+          {/* First metric card - Client Success Rate */}
           <motion.div 
             className="group p-8 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
             variants={itemVariants}
@@ -163,7 +163,7 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-bold mb-4 text-2xl"
               >
-                100%
+                <AnimatedCounter value={95} suffix="%" isInView={isInView} />
               </Typography>
               
               <Typography 
@@ -171,11 +171,11 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-semibold mb-3"
               >
-                Pipeline Guarantee
+                Client Success Rate
               </Typography>
               
               <Typography variant="body" color="gray" className="leading-relaxed">
-                We guarantee qualified leads in your pipeline within 90 days, or we work for free until we deliver results.
+                Of our clients get qualified leads that turn into real business conversations and deals.
               </Typography>
               
               {/* Decorative element */}
@@ -183,7 +183,7 @@ export default function MetricsSection() {
             </div>
           </motion.div>
           
-          {/* Second metric card - Time Investment */}
+          {/* Second metric card - Time to First Lead */}
           <motion.div 
             className="group p-8 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
             variants={itemVariants}
@@ -205,7 +205,7 @@ export default function MetricsSection() {
                 color="secondary" 
                 className="font-bold mb-4 text-2xl"
               >
-                1 hour/week
+                5-<AnimatedCounter value={10} isInView={isInView} />
               </Typography>
               
               <Typography 
@@ -213,11 +213,11 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-semibold mb-3"
               >
-                Your Time Investment
+                Qualified Conversations Per Month
               </Typography>
               
               <Typography variant="body" color="gray" className="leading-relaxed">
-                Just one hour per week of your time to conduct high-value interviews with your ideal prospects.
+                Consistent pipeline of prospects who want to talk business, not just listen.
               </Typography>
               
               {/* Decorative element */}
@@ -225,7 +225,7 @@ export default function MetricsSection() {
             </div>
           </motion.div>
           
-          {/* Third metric card - Production Quality */}
+          {/* Third metric card - ROI */}
           <motion.div 
             className="group p-8 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
             variants={itemVariants}
@@ -239,7 +239,7 @@ export default function MetricsSection() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <MicrophoneIcon className="w-8 h-8 text-white" />
+                <ChartBarIcon className="w-8 h-8 text-white" />
               </motion.div>
               
               <Typography 
@@ -247,7 +247,7 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-bold mb-4 text-2xl"
               >
-                24/7
+                <AnimatedCounter value={3} isInView={isInView} />:1
               </Typography>
               
               <Typography 
@@ -255,11 +255,11 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-semibold mb-3"
               >
-                Expert Production
+                Average ROI Within 90 Days
               </Typography>
               
               <Typography variant="body" color="gray" className="leading-relaxed">
-                Professional editing, show notes, and distribution handled by our expert team around the clock.
+                Every dollar invested returns three dollars in new business within the first quarter.
               </Typography>
               
               {/* Decorative element */}

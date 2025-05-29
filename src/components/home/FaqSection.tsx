@@ -40,11 +40,11 @@ const FaqSection = () => {
     },
     {
       question: "We tried podcasting, but it didn't generate leads. How are you different?",
-      answer: "Many podcasts lack sales integration. Our proprietary \"B2B Podcast for Sales\" system aligns podcasting directly with your sales process, from guest strategy to using content for targeted outreach, ensuring a clear ROI."
+      answer: "Many podcasts lack sales integration. Our proprietary \"B2B Podcast for Sales\" system is designed to fit within your existing sales process and marketing funnels. From guest outreach strategy, interview strategy, and post-interview nurture campaigns."
     },
     {
       question: "What is a \"Podcast for Sales\" vs. a regular B2B podcast?",
-      answer: "Our \"Podcast for Sales\" is a B2B client acquisition tool. Unlike typical podcasts, it uses executive interviews for direct outreach and lead qualification, effective even without a large audience. We turn conversations into qualified leads."
+      answer: "Our \"Podcast for Sales\" is a B2B client acquisition tool. Unlike typical podcasts, it uses executive interviews for direct outreach and lead qualification, effective even without a large audience."
     },
     {
       question: "What's involved in your system? What do you handle vs. what do we do?",
