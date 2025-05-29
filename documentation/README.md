@@ -72,7 +72,7 @@ South Lamar Studios is a B2B podcast production service that specializes in turn
 - B2B lead generation focus through podcast production
 - Prospect-as-guest strategy for relationship building
 - Full-service production with sales integration
-- Pipeline guarantee and minimal client time investment
+- 95% client success rate with 3:1 ROI within 90 days
 - Professional content creation and distribution
 
 **Technical Highlights:**

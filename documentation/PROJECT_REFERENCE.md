@@ -3,7 +3,9 @@
 ## Business Overview
 South Lamar Studios is a B2B podcast production service that specializes in turning podcasts into powerful lead generation engines. Unlike traditional podcast services that focus on audience building, South Lamar Studios helps businesses use podcasting as a sales tool to generate qualified leads and drive revenue directly.
 
-The company's unique "Podcast for Sales" approach involves inviting ideal prospects as guests on client podcasts, creating valuable content while simultaneously building sales relationships. This strategy eliminates the need for large audiences and focuses on high-value, targeted conversations with potential customers.
+The company's proprietary "B2B Podcast for Sales" system is designed to fit within existing sales processes and marketing funnels. From guest outreach strategy and interview strategy to post-interview nurture campaigns, this approach involves inviting ideal prospects as guests on client podcasts, creating valuable content while simultaneously building sales relationships. This strategy eliminates the need for large audiences and focuses on high-value, targeted conversations with potential customers.
+
+With a 95% client success rate and proven 3:1 ROI within 90 days, South Lamar Studios delivers 5-10 qualified conversations per month that turn into real business opportunities.
 
 ## Target Audience
 The website is targeting:
@@ -18,14 +20,15 @@ The website is targeting:
 2. **Prospect-as-Guest Strategy**: Unique approach of inviting ideal customers as podcast guests
 3. **Full-Service Production**: End-to-end podcast creation, editing, and distribution
 4. **Sales Integration**: Seamless handoff from podcast conversations to sales processes
-5. **Pipeline Guarantee**: 100% guarantee of qualified leads within 90 days
-6. **Minimal Time Investment**: Only 1 hour per week required from clients
-7. **Professional Content Creation**: Blog posts, social media content, and marketing assets from each episode
-8. **Contact Form & Lead Capture**: Optimized for B2B lead generation
-9. **SEO Optimization**: Targeting B2B podcast and lead generation keywords
-10. **Responsive Design**: Professional presentation across all devices
-11. **Content Management**: Easy updates via Contentful CMS for case studies and testimonials
-12. **Analytics Tracking**: Monitoring lead generation performance and user behavior
+5. **95% Client Success Rate**: Proven track record of clients getting qualified leads that turn into real business conversations and deals
+6. **Consistent Pipeline Delivery**: 5-10 qualified conversations per month with prospects who want to talk business, not just listen
+7. **Proven ROI**: 3:1 average return on investment within 90 days - every dollar invested returns three dollars in new business
+8. **Professional Content Creation**: Blog posts, social media content, and marketing assets from each episode
+9. **Contact Form & Lead Capture**: Optimized for B2B lead generation
+10. **SEO Optimization**: Targeting B2B podcast and lead generation keywords
+11. **Responsive Design**: Professional presentation across all devices with enhanced mobile experience
+12. **Content Management**: Easy updates via Contentful CMS for case studies and testimonials
+13. **Analytics Tracking**: Monitoring lead generation performance and user behavior
 
 ## Brand Elements
 Based on the current implementation, the brand uses:
