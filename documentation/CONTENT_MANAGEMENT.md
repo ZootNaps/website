@@ -25,7 +25,32 @@ The blog post content model includes:
 | metaDescription | Short text | SEO description |
 | focusKeyword | Short text | Primary SEO keyword |
 | tags | Short text (multiple) | Related topics |
-| status | Short text | Publication status |
+| isFeatured | Boolean | Whether to display in featured section |
+| readingTimeMinutes | Number | Estimated reading time (optional) |
+
+**Publication Status**: The system automatically uses Contentful's built-in publication status. Only published entries will appear on the website.
+
+### Podcast Episode
+
+The podcast episode content model includes:
+
+| Field Name | Type | Description |
+|------------|------|-------------|
+| title | Short text | Episode title |
+| slug | Short text | URL-friendly identifier (must be unique) |
+| description | Long text | Episode description |
+| summary | Short text | Brief episode summary |
+| keyTopics | Short text (multiple) | Main topics covered |
+| publishDate | Date & time | Publication date |
+| duration | Short text | Episode length |
+| guest | Short text | Guest name |
+| guestTitle | Short text | Guest's title/position |
+| episodeNumber | Short text | Episode number |
+| spotifyEmbedUrl | Short text | Spotify embed URL |
+| fullTranscript | Rich text | Complete episode transcript |
+| pullQuotes | Reference (multiple) | Featured quotes |
+| resourcesMentioned | Reference (multiple) | Links and resources |
+| coverArt | Media | Episode cover image |
 
 ### Other Content Types
 

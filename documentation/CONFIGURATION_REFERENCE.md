@@ -354,27 +354,63 @@ Vercel deployment is configured in `vercel.json`:
 
 ## Contentful Configuration
 
-The Contentful client is configured in `src/lib/contentful.ts`:
+The Contentful client is configured in `src/lib/contentful/client.ts`:
 
 ```typescript
-// src/lib/contentful.ts
+// src/lib/contentful/client.ts
 import { createClient } from 'contentful';
 
-const client = createClient({
+// Client configuration
+export const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 });
 
-export const previewClient = createClient({
+export const contentfulPreviewClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
-  accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN!,
+  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN!,
   host: 'preview.contentful.com',
 });
 
-export const getClient = (preview: boolean = false) => {
-  return preview ? previewClient : client;
-};
+export function getClient(preview = false) {
+  return preview ? contentfulPreviewClient : contentfulClient;
+}
 ```
+
+### Required Environment Variables
+
+The following environment variables must be configured:
+
+```bash
+# Contentful CMS Configuration
+CONTENTFUL_SPACE_ID=your_space_id_here
+CONTENTFUL_ACCESS_TOKEN=your_delivery_api_token_here
+CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_api_token_here
+
+# Optional: For content import/management scripts
+CONTENTFUL_MANAGEMENT_TOKEN=your_management_token_here
+```
+
+### Content Types Supported
+
+The current Contentful setup supports:
+
+1. **Blog Posts** (`blogPost`)
+   - All standard blog fields including SEO metadata
+   - Featured post capability
+   - Category filtering
+   - Reading time estimation
+
+2. **Podcast Episodes** (`podcastEpisode`) 
+   - Complete episode information
+   - Transcript support
+   - Pull quotes and resources
+   - Guest information
+
+3. **Supporting Content Types**
+   - `pullQuote` - For featured quotes
+   - `resource` - For links and references
+   - `author` - For blog post authors
 
 ## Configuration Best Practices
 

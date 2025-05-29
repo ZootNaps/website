@@ -105,16 +105,16 @@ While not exposed as public endpoints, the application uses internal helper func
 #### Get Blog Posts
 
 ```typescript
-import { getAllBlogPosts } from '@/lib/contentful';
+import { getBlogPosts } from '@/lib/contentful/client';
 
 // Usage in a Server Component
-const posts = await getAllBlogPosts();
+const posts = await getBlogPosts();
 ```
 
 #### Get Blog Post by Slug
 
 ```typescript
-import { getBlogPostBySlug } from '@/lib/contentful';
+import { getBlogPostBySlug } from '@/lib/contentful/client';
 
 // Usage in a Server Component
 const post = await getBlogPostBySlug('example-post');

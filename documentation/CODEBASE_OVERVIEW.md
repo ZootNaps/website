@@ -14,7 +14,7 @@ The website serves as both a lead generation platform and educational resource, 
 - **Deployment**: Vercel (based on configuration)
 - **Image Optimization**: Sharp, Next.js Image component
 - **Analytics**: Vercel Analytics and Speed Insights
-- **SEO**: Next Sitemap for sitemap generation
+- **SEO**: Next Sitemap for sitemap generation, RSS feeds, structured data
 - **Email**: Nodemailer for contact form
 - **Icons**: Font Awesome 6 (FontAwesome SVG Core) - upgraded from v5
 - **Animations**: Framer Motion for enhanced UI interactions and micro-animations
@@ -79,8 +79,11 @@ The website serves as both a lead generation platform and educational resource, 
 - `src/middleware.ts` - Request middleware for security headers
 
 ### Content Management
-- `src/lib/contentful/client.ts` - Contentful client and content fetching functions
-- `src/lib/contentful/` - Contentful models and utilities for blog and podcast content
+- `src/lib/contentful/client.ts` - Unified Contentful client and content fetching functions
+- **Blog Post Functions**: `getBlogPosts()`, `getBlogPostBySlug()`
+- **Podcast Episode Functions**: `getPodcastEpisodes()`, `getPodcastEpisodeBySlug()`
+- **Type Definitions**: Complete TypeScript interfaces for all content types
+- **Error Handling**: Graceful fallbacks for CMS connectivity issues
 
 ### Icon and Animation Libraries
 - `src/lib/fontawesome.ts` - Font Awesome 6 icon library configuration with tree-shaking
@@ -109,8 +112,10 @@ Components are organized by feature/section with shared components separated.
 ## Build Process
 - Development: `npm run dev` - runs Next.js dev server with Turbopack
 - Build: `npm run build` - builds the Next.js application
-- Post-build: `next-sitemap` - generates sitemap
+- Post-build: `next-sitemap` - generates sitemap and RSS feeds
 - Start: `npm run start` - starts the production server
+- **RSS Generation**: Automatic RSS feed creation during build process
+- **Sitemap Updates**: Dynamic content inclusion from Contentful
 - Lint: `npm run lint` - runs Next.js linting
 
 ## Dependencies
@@ -170,6 +175,8 @@ Components are organized by feature/section with shared components separated.
 - **Enhanced Animation Performance**: Framer Motion with useInView for scroll-triggered animations
 - **Optimized Icon Loading**: Font Awesome 6 with tree-shaking and SVG optimization
 - **Animated Counters**: Custom hooks for smooth number animations without layout shift
+- **RSS Feed Caching**: 1-hour cache control for RSS endpoints
+- **Sitemap Optimization**: Proper priority and change frequency settings
 
 ## Code Organization Principles
 - Feature-based organization for components (home/, blog/, contact/, etc.)
@@ -181,3 +188,5 @@ Components are organized by feature/section with shared components separated.
 - **Design System Architecture**: Comprehensive @theme directive implementation
 - **Animation Patterns**: Consistent Framer Motion usage with reusable variants
 - **Icon Management**: Centralized Font Awesome configuration with selective imports
+- **Content Management**: Unified Contentful integration with proper error boundaries
+- **SEO Strategy**: Structured data implementation and RSS feed generation

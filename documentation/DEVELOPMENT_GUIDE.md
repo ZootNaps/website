@@ -240,11 +240,11 @@ bg-bg, bg-bg-dark, bg-bg-light
 
 ### Contentful Data
 
-Use the Contentful helper functions in `src/lib/contentful.ts`:
+Use the Contentful helper functions in `src/lib/contentful/client.ts`:
 
 ```tsx
 // In a Server Component
-import { getBlogPosts } from '@/lib/contentful';
+import { getBlogPosts } from '@/lib/contentful/client';
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();
@@ -281,7 +281,7 @@ export async function POST(request: Request) {
 
 1. Create the content model in Contentful
 2. Add TypeScript interfaces in `src/lib/contentful/types.ts`
-3. Create fetching functions in `src/lib/contentful.ts`
+3. Create fetching functions in `src/lib/contentful/client.ts`
 4. Implement components to display the content
 
 ### Blog Posts
@@ -290,7 +290,7 @@ Blog posts are fetched from Contentful and rendered using the rich text renderer
 
 ```tsx
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { getBlogPostBySlug } from '@/lib/contentful';
+import { getBlogPostBySlug } from '@/lib/contentful/client';
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug);

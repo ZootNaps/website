@@ -12,6 +12,35 @@ The primary SEO objectives for the website are:
 4. Optimize conversion paths for visitors
 5. Build domain authority through quality content
 
+## Recent SEO Improvements (2024-2025)
+
+### RSS Feed Implementation
+- **Blog RSS Feed**: `/blog-rss.xml` with proper XML structure and caching
+- **Content Syndication**: Enables content distribution across RSS readers and aggregators
+- **SEO Benefits**: Improved content discovery and faster indexing
+
+### Enhanced Sitemap Generation
+- **Comprehensive Coverage**: Both blog posts and podcast episodes included
+- **Dynamic Generation**: Real-time content from Contentful CMS
+- **Proper Prioritization**: Strategic priority values for different content types
+
+### Expanded Keyword Targeting
+Recent keyword additions include:
+- podcast for sales
+- b2b podcast agency 
+- podcast production austin
+- business development podcast
+- podcast roi measurement
+- strategic podcast consulting
+- podcast guest booking
+- b2b sales podcast
+- podcast monetization
+
+### FAQ Schema Implementation
+- **Rich Snippets**: FAQ structured data for enhanced search results
+- **Homepage Integration**: FAQ section optimized for search engines
+- **Improved CTR**: Better visibility in search results
+
 ## Technical SEO Implementation
 
 ### Server-Side Rendering
@@ -34,7 +63,20 @@ Meta tags are implemented in the following ways:
        template: '%s | South Lamar Studios',
      },
      description: 'Default description...',
-     // Other default metadata
+     keywords: [
+       // Expanded keyword list (20+ terms)
+       "b2b podcast production",
+       "podcast for sales", 
+       "b2b podcast agency",
+       "podcast production austin",
+       "business development podcast",
+       "podcast roi measurement",
+       "strategic podcast consulting",
+       "podcast guest booking",
+       "b2b sales podcast",
+       "podcast monetization"
+       // ... additional keywords
+     ]
    };
    ```
 
@@ -49,8 +91,9 @@ Meta tags are implemented in the following ways:
 
 ### Structured Data (Schema.org)
 
-JSON-LD structured data is implemented in the root layout for organization information:
+JSON-LD structured data is implemented throughout the site:
 
+**Organization Schema** (root layout):
 ```tsx
 <script
   type="application/ld+json"
@@ -67,17 +110,26 @@ JSON-LD structured data is implemented in the root layout for organization infor
 />
 ```
 
-Additional structured data is added for specific content types such as:
+**FAQ Schema** (homepage):
+```tsx
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Question text",
+      "acceptedAnswer": {
+        "@type": "Answer", 
+        "text": "Answer text"
+      }
+    }
+    // Additional FAQ items
+  ]
+};
+```
 
-- Blog posts with `BlogPosting` schema
-- Blog collection page with `Blog` schema
-- Podcast episodes with `PodcastEpisode` schema
-- Podcast series page with `PodcastSeries` schema
-- Local business information
-
-Implementation examples:
-
-**Blog Schema:**
+**Blog Schema** (blog listing page):
 ```tsx
 const blogSchema = {
   "@context": "https://schema.org",
@@ -97,11 +149,36 @@ const blogSchema = {
     "@type": "WebPage",
     "@id": metadata.openGraph?.url
   },
-  "blogPost": [] // Populated dynamically
+  "blogPost": [] // Populated dynamically with real Contentful data
 };
 ```
 
-**Podcast Series Schema:**
+**BlogPosting Schema** (individual blog posts):
+```tsx
+const blogPostSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.metaDescription || post.excerpt,
+  "image": post.featuredImage?.url,
+  "datePublished": post.publishDate,
+  "dateModified": post.publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": "South Lamar Studios"
+  },
+  "publisher": {
+    "@type": "Organization", 
+    "name": "South Lamar Studios",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+    }
+  }
+};
+```
+
+**Podcast Series Schema** (podcast listing page):
 ```tsx
 const podcastSeriesSchema = {
   "@context": "https://schema.org",
@@ -123,38 +200,93 @@ const podcastSeriesSchema = {
 
 ### Sitemap Generation
 
-The website generates a dynamic XML sitemap using:
+The website generates comprehensive XML sitemaps using:
 
-1. `next-sitemap` package for static routes
-2. Custom dynamic sitemap generation for content from Contentful:
+1. **Static Sitemap** (`src/app/sitemap.ts`):
    ```tsx
-   // src/app/sitemap.ts or similar
-   export async function generateSitemap() {
-     const baseUrl = process.env.SITE_URL || 'https://southlamarstudios.com';
+   import { getBlogPosts, getPodcastEpisodes } from '@/lib/contentful/client';
+
+   export default async function sitemap() {
+     const baseUrl = 'https://southlamarstudios.com';
      
-     // Get all blog posts
-     const posts = await getAllBlogPosts();
+     // Fetch real content from Contentful
+     const blogPosts = await getBlogPosts();
+     const podcastEpisodes = await getPodcastEpisodes();
      
-     // Generate sitemap entries
-     const entries = [
+     const routes = [
        {
          url: baseUrl,
          lastModified: new Date(),
          changeFrequency: 'weekly',
          priority: 1.0,
        },
-       // Additional static routes
-       ...posts.map(post => ({
+       // Static pages
+       // Blog posts
+       ...blogPosts.map(post => ({
          url: `${baseUrl}/blog/${post.slug}`,
          lastModified: new Date(post.publishDate),
          changeFrequency: 'monthly',
-         priority: 0.8,
+         priority: 0.6,
        })),
+       // Podcast episodes  
+       ...podcastEpisodes.map(episode => ({
+         url: `${baseUrl}/podcast/${episode.slug}`,
+         lastModified: new Date(episode.publishDate),
+         changeFrequency: 'monthly', 
+         priority: 0.7,
+       }))
      ];
      
-     return entries;
+     return routes;
    }
    ```
+
+2. **Server Sitemap** (`src/app/api/server-sitemap.xml/route.ts`):
+   - Dynamic generation with real Contentful data
+   - Proper caching headers (1-hour cache control)
+   - Error handling for CMS connectivity issues
+
+### RSS Feed Implementation
+
+**Blog RSS Feed** (`src/app/blog-rss.xml/route.ts`):
+```tsx
+import { getBlogPosts } from '@/lib/contentful/client';
+
+export async function GET() {
+  const posts = await getBlogPosts();
+  
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
+      <channel>
+        <title>South Lamar Studios Blog</title>
+        <description>B2B Podcast Production and Content Marketing Insights</description>
+        <link>https://southlamarstudios.com/blog</link>
+        <language>en-us</language>
+        <managingEditor>hello@southlamarstudios.com (South Lamar Studios)</managingEditor>
+        <webMaster>hello@southlamarstudios.com (South Lamar Studios)</webMaster>
+        <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+        <atom:link href="https://southlamarstudios.com/blog-rss.xml" rel="self" type="application/rss+xml"/>
+        ${posts.map(post => `
+          <item>
+            <title><![CDATA[${post.title}]]></title>
+            <description><![CDATA[${post.excerpt}]]></description>
+            <link>https://southlamarstudios.com/blog/${post.slug}</link>
+            <guid isPermaLink="true">https://southlamarstudios.com/blog/${post.slug}</guid>
+            <pubDate>${new Date(post.publishDate).toUTCString()}</pubDate>
+            ${post.category ? `<category><![CDATA[${post.category}]]></category>` : ''}
+          </item>
+        `).join('')}
+      </channel>
+    </rss>`;
+
+  return new Response(rss, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600', // 1 hour cache
+    },
+  });
+}
+```
 
 ### robots.txt Configuration
 
