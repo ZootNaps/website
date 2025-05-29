@@ -12,37 +12,49 @@ const features = [
     icon: faEnvelopeOpenText,
     title: "Unparalleled Response Rates",
     description: "Industry-leading outreach that C Suite Executives are excited to respond to. Get your foot in the door, and get the conversation started.",
-    color: "from-secondary to-secondary-dark"
+    color: "secondary",
+    bgColor: "bg-secondary/10",
+    borderColor: "border-secondary/20"
   },
   {
     icon: faUserCheck,
     title: "Customer Qualification",
     description: "Multiple qualification steps ensure every guest is a qualified decision maker - and that they're ready to buy.",
-    color: "from-tertiary to-tertiary-dark"
+    color: "primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-primary/20"
   },
   {
     icon: faClipboardQuestion,
     title: "Seamless Discovery",
     description: "Tailored interview questions that uncover your guests' exact pain points - and show how your product can help.",
-    color: "from-primary to-primary-dark"
+    color: "tertiary",
+    bgColor: "bg-tertiary/10",
+    borderColor: "border-tertiary/20"
   },
   {
     icon: faHandshake,
     title: "Impactful Conversations",
     description: "Hour long conversations that create lasting business relationships - and position you as a trusted advisor.",
-    color: "from-secondary to-secondary-dark"
+    color: "secondary",
+    bgColor: "bg-secondary/10",
+    borderColor: "border-secondary/20"
   },
   {
     icon: faHexagonNodes,
     title: "Dozens of Touchpoints",
     description: "Our process creates dozens of touchpoints that keep you top of mind for months after the interview.",
-    color: "from-tertiary to-tertiary-dark"
+    color: "primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-primary/20"
   },
   {
     icon: faMicrophone,
     title: "World-Class Production Quality",
     description: "High-quality assets that strengthen your brand, and clips that you (and your guests) are proud to share on social.",
-    color: "from-primary to-primary-dark"
+    color: "tertiary",
+    bgColor: "bg-tertiary/10",
+    borderColor: "border-tertiary/20"
   }
 ];
 
@@ -94,7 +106,7 @@ const FeaturesSection = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
-              Built for <span className="font-extrabold bg-linear-to-r from-secondary via-secondary-dark to-secondary-light bg-clip-text text-transparent drop-shadow-sm">Sales</span> - Not Marketing.
+              Built for <span className="font-extrabold text-secondary">Sales</span> - Not Marketing.
             </h2>
           </div>
           
@@ -109,17 +121,33 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl p-8 border border-gray-100 hover:border-secondary/20 transition-all duration-500 hover:shadow-xl hover:shadow-secondary/10 hover:-translate-y-2"
+              className={`group relative bg-white rounded-2xl p-8 border border-gray-100 hover:${feature.borderColor} transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
+              style={{
+                '--hover-shadow': `rgba(${
+                  feature.color === 'secondary' ? '231, 111, 81' : 
+                  feature.color === 'primary' ? '42, 61, 69' : 
+                  '88, 164, 176'
+                }, 0.1)`
+              } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                const shadowColor = feature.color === 'secondary' ? 'rgba(231, 111, 81, 0.1)' : 
+                                  feature.color === 'primary' ? 'rgba(42, 61, 69, 0.1)' : 
+                                  'rgba(88, 164, 176, 0.1)';
+                e.currentTarget.style.boxShadow = `0 25px 50px -12px ${shadowColor}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '';
+              }}
             >
               {/* Animated top border */}
-              <div className={`absolute inset-x-0 top-0 h-1 bg-linear-to-r ${feature.color} transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 rounded-t-2xl`}></div>
+              <div className={`absolute inset-x-0 top-0 h-1 bg-${feature.color} transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 rounded-t-2xl`}></div>
               
-              {/* Background gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-linear-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
+              {/* Background subtle overlay on hover */}
+              <div className={`absolute inset-0 ${feature.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
               
-              {/* Icon with enhanced styling */}
+              {/* Icon with clean styling */}
               <div 
-                className={`w-16 h-16 rounded-2xl bg-linear-to-br ${feature.color} flex items-center justify-center text-secondary group-hover:text-white transition-all duration-500 shadow-md opacity-20 group-hover:opacity-100`}
+                className={`w-16 h-16 rounded-2xl ${feature.bgColor} border ${feature.borderColor} flex items-center justify-center text-${feature.color} transition-all duration-500 shadow-sm mb-6`}
               >
                 <FontAwesomeIcon icon={feature.icon} className="w-8 h-8" />
               </div>
@@ -133,9 +161,6 @@ const FeaturesSection = () => {
                   {feature.description}
                 </p>
               </div>
-              
-              {/* Decorative element */}
-              <div className="absolute bottom-4 right-4 w-8 h-8 bg-linear-to-br from-gray-100 to-gray-200 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
@@ -148,7 +173,7 @@ const FeaturesSection = () => {
           <div className="bg-white rounded-3xl border border-gray-100 p-12 text-center shadow-xl relative overflow-hidden">
             {/* Enhanced headline */}
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-              B2B Podcasts - <span className="font-extrabold bg-linear-to-r from-secondary via-tertiary-dark to-secondary-dark bg-clip-text text-transparent drop-shadow-sm">Reimagined</span>.
+              B2B Podcasts - <span className="font-extrabold text-secondary">Reimagined</span>.
             </h3>
             
             <p className="text-lg text-gray mb-8 max-w-2xl mx-auto leading-relaxed">

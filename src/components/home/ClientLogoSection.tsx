@@ -1,11 +1,64 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { StarIcon } from '@heroicons/react/24/solid';
 import LogoCarousel from '@/components/LogoCarousel';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
+
+// Custom hook for animated counter (same as MetricsSection)
+const useAnimatedCounter = (targetValue: number, isInView: boolean, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTimestamp: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * targetValue));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [targetValue, isInView, duration]);
+
+  return count;
+};
+
+// Counter component for different metric types
+const AnimatedCounter = ({ 
+  value, 
+  suffix = '', 
+  prefix = '', 
+  isInView,
+  type = 'number'
+}: { 
+  value: number; 
+  suffix?: string; 
+  prefix?: string; 
+  isInView: boolean;
+  type?: 'number' | 'currency' | 'percentage' | 'multiplier';
+}) => {
+  const count = useAnimatedCounter(value, isInView);
+  
+  if (type === 'currency') {
+    return <span>${count.toLocaleString()}+</span>;
+  }
+  
+  if (type === 'percentage') {
+    return <span>{count}%</span>;
+  }
+  
+  if (type === 'multiplier') {
+    return <span>{count}x</span>;
+  }
+  
+  return <span>{prefix}{count}{suffix}</span>;
+};
 
 // Client logos configuration
 const clientLogos = [
@@ -137,42 +190,47 @@ export default function ClientLogoSection() {
 
         {/* Enhanced Key Metrics Section */}
         <motion.div 
-          className="flex flex-col md:flex-row justify-around items-center text-center mb-10 md:mb-16 gap-8 md:gap-4 px-4"
+          className="flex flex-col md:flex-row justify-around items-stretch text-center mb-10 md:mb-16 gap-8 md:gap-4 px-4"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div 
-            className="text-white group"
+            className="text-white group flex-1"
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300">
-              <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">$800,000+</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300 h-full flex flex-col justify-center min-h-[120px]">
+              <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">
+                <AnimatedCounter value={800000} isInView={isInView} type="currency" />
+              </p>
               <p className="text-base lg:text-lg mt-2 text-slate-200">Client Revenue Generated</p>
             </div>
           </motion.div>
           
           <motion.div 
-            className="text-white group"
+            className="text-white group flex-1"
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300">
-              <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">2-3x</p>
-              <p className="text-base lg:text-lg mt-2 text-slate-200">Faster Sales Cycles</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300 h-full flex flex-col justify-center min-h-[120px]">
+              <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">
+                <AnimatedCounter value={20} isInView={isInView} type="percentage" />
+              </p>
+              <p className="text-base lg:text-lg mt-2 text-slate-200">Shorter Sales Cycles</p>
             </div>
           </motion.div>
           
           <motion.div 
-            className="text-white group"
+            className="text-white group flex-1"
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300">
-              <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">10x</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300 h-full flex flex-col justify-center min-h-[120px]">
+              <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">
+                <AnimatedCounter value={5} isInView={isInView} type="multiplier" />
+              </p>
               <p className="text-base lg:text-lg mt-2 text-slate-200">Higher Response Rates</p>
-              <p className="text-xs opacity-70 mt-1">(vs. Cold Email)</p>
             </div>
           </motion.div>
         </motion.div>
@@ -205,7 +263,8 @@ export default function ClientLogoSection() {
           />
         </motion.div>
 
-        {/* Testimonials Section */}
+        {/* Testimonials Section - Commented out until real customer quotes are available */}
+        {/*
         <motion.div 
           className="mt-12 md:mt-16 pt-10 md:pt-12 border-t border-white/20"
           initial={{ opacity: 0, y: 50 }}
@@ -223,7 +282,6 @@ export default function ClientLogoSection() {
                 whileHover={{ y: -2 }}
               >
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/30 transition-all duration-300 h-full">
-                  {/* Star Rating */}
                   <div className="flex items-center justify-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <StarIcon key={i} className="w-4 h-4 text-secondary" />
@@ -246,6 +304,7 @@ export default function ClientLogoSection() {
             ))}
           </div>
         </motion.div>
+        */}
 
       </div>
     </Section>

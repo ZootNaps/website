@@ -111,7 +111,7 @@ export default function MetricsSection() {
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
           <motion.div
-            className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-10 py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-secondary/30 transition-all duration-300 relative"
+            className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-10 py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-bg-dark transition-all duration-300 relative"
             initial={{ scale: 0, opacity: 0 }}
             animate={isInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -119,7 +119,7 @@ export default function MetricsSection() {
           >
             {/* Connecting line behind text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-full max-w-[calc(100%-80px)] h-px bg-linear-to-r from-secondary/30 via-primary/20 to-tertiary/30"></div>
+              <div className="w-full max-w-[calc(100%-80px)] h-px bg-bg-dark"></div>
             </div>
             
             <motion.div 
@@ -162,7 +162,7 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-bold mb-4 text-2xl"
               >
-                <AnimatedCounter value={100} suffix="%" isInView={isInView} />
+                100%
               </Typography>
               
               <Typography 
@@ -178,7 +178,7 @@ export default function MetricsSection() {
               </Typography>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-bg-dark transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           </motion.div>
           
@@ -204,7 +204,7 @@ export default function MetricsSection() {
                 color="secondary" 
                 className="font-bold mb-4 text-2xl"
               >
-                <AnimatedCounter value={1} isInView={isInView} /> hour/week
+                1 hour/week
               </Typography>
               
               <Typography 
@@ -220,7 +220,7 @@ export default function MetricsSection() {
               </Typography>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-secondary to-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-bg-dark transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           </motion.div>
           
@@ -234,7 +234,7 @@ export default function MetricsSection() {
             
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
-                className="w-16 h-16 bg-linear-to-br from-primary via-secondary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                className="w-16 h-16 bg-tertiary rounded-2xl flex items-center justify-center mb-6 shadow-lg"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -246,7 +246,7 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-bold mb-4 text-2xl"
               >
-                <AnimatedCounter value={24} isInView={isInView} />/7
+                24/7
               </Typography>
               
               <Typography 
@@ -262,7 +262,7 @@ export default function MetricsSection() {
               </Typography>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-bg-dark transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           </motion.div>
         </motion.div>

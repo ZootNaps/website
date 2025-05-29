@@ -179,7 +179,7 @@ const ProcessSection = () => {
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
-            Built for Your <span className="font-extrabold bg-linear-to-r from-secondary via-secondary-dark to-secondary-light bg-clip-text text-transparent drop-shadow-sm">Business</span>.
+            Built for Your <span className="font-extrabold text-secondary">Business</span>.
           </h2>
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-3xl mx-auto">
             Every aspect of our podcast process is designed with your most valuable customers in mind. We work closely with each of our partners to ensure your success every step of the way.
@@ -208,7 +208,7 @@ const ProcessSection = () => {
             <div className="absolute top-8 left-0 right-0 h-1 bg-gray-200 rounded-full"></div>
             {/* Animated progress line */}
             <motion.div 
-              className="absolute top-8 left-0 h-1 bg-linear-to-r from-secondary to-tertiary rounded-full"
+              className="absolute top-8 left-0 h-1 bg-secondary rounded-full"
               initial={{ width: "0%" }}
               animate={{ 
                 width: `${((tabs.findIndex(tab => tab.id === activeTab) + 1) / tabs.length) * 100}%` 
@@ -320,7 +320,7 @@ const ProcessSection = () => {
                       <h3 className="text-2xl md:text-3xl font-bold text-primary">
                         {tabContent[activeTab as keyof typeof tabContent].title}
                       </h3>
-                      <div className="w-16 h-1 bg-linear-to-r from-secondary to-tertiary rounded-full mt-2"></div>
+                      <div className="w-16 h-1 bg-secondary rounded-full mt-2"></div>
                     </div>
                   </div>
                   
@@ -341,7 +341,7 @@ const ProcessSection = () => {
                       whileHover={{ scale: 1.01 }}
                     >
                       <motion.div
-                        className="w-6 h-6 rounded-full bg-linear-to-br from-secondary to-tertiary flex items-center justify-center mr-4 flex-shrink-0 mt-0.5"
+                        className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center mr-4 flex-shrink-0 mt-0.5"
                         whileHover={{ scale: 1.03 }}
                       >
                         <FontAwesomeIcon icon={faCheck} className="text-white text-xs" />
