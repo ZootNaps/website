@@ -1,0 +1,151 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# South Lamar Studios Website - Cursor AI Rules
+
+## Project Context
+This is a B2B podcast production service website built with Next.js 15.3.1, React 19, TypeScript, and Tailwind CSS v4. The site helps businesses generate leads through strategic podcasting.
+
+## Technology Stack
+- **Framework**: Next.js 15.3.1 with App Router
+- **React**: v19.0.0
+- **TypeScript**: v5+ (strict mode)
+- **Styling**: Tailwind CSS v4 with @theme directive
+- **CMS**: Contentful headless CMS
+- **Deployment**: Vercel
+- **Icons**: Font Awesome 6 (SVG Core)
+- **Animations**: Framer Motion
+- **Analytics**: Vercel Analytics, Google Tag Manager
+
+## Project Structure Rules
+- Pages go in `src/app/(pages)/` using App Router
+- Components organized by feature in `src/components/`
+- Shared UI components in `src/components/ui/`
+- Utilities in `src/utils/`, external integrations in `src/lib/`
+- Documentation is comprehensive and located in `/documentation/`
+
+## Development Standards
+
+### TypeScript Requirements
+- Use TypeScript for ALL new code
+- Avoid `any` type - use proper typing
+- Use interfaces for complex data structures
+- Follow existing type patterns in `src/lib/contentful/client.ts`
+
+### Component Patterns
+- Use 'use client' directive ONLY when client-side features are needed
+- Prefer Server Components for data fetching
+- Follow this structure:
+```tsx
+'use client'; // Only if needed
+
+import { useState } from 'react';
+import { motion } from 'framer-motion'; // If animations needed
+
+interface ComponentProps {
+  // Define prop types
+}
+
+export default function Component({ prop1, prop2 }: ComponentProps) {
+  // Component logic
+  return (
+    // JSX with Tailwind classes
+  );
+}
+```
+
+### Styling Guidelines
+- Use Tailwind CSS v4 with @theme directive (see `src/app/globals.css`)
+- Follow design system colors: `primary`, `secondary`, `tertiary`, `bg`
+- Use design system utilities: `.btn`, `.card`, `.section`, `.shadow-soft`
+- Responsive design: mobile-first approach
+- Custom animations with Framer Motion following existing patterns
+
+### Content Management
+- All content fetched from Contentful CMS
+- Use functions in `src/lib/contentful/client.ts`
+- Blog posts and podcast episodes are the main content types
+- Always handle loading states and errors for Contentful data
+
+### SEO & Performance
+- Use Next.js Image component with optimization
+- Implement proper metadata for all pages
+- Follow structured data patterns (JSON-LD)
+- Use server-side rendering for SEO benefits
+
+## Common Tasks & Documentation References
+
+### Adding New Pages
+- Reference: `documentation/DEVELOPMENT_GUIDE.md`
+- Use App Router in `src/app/(pages)/`
+- Include proper metadata and SEO
+- Follow existing layout patterns
+
+### Styling Changes
+- Reference: `documentation/CONFIGURATION_REFERENCE.md` (CSS section)
+- Use design system defined in `src/app/globals.css`
+- Check `/styleguide` page for component examples
+- Follow Tailwind v4 @theme directive patterns
+
+### Content Updates
+- Reference: `documentation/CONTENT_MANAGEMENT.md`
+- All content comes from Contentful CMS
+- Use existing content fetching patterns
+- Handle rich text with `@contentful/rich-text-react-renderer`
+
+### Animation Implementation
+- Use Framer Motion following patterns in `src/components/home/`
+- Implement `useInView` for scroll-triggered animations
+- Respect `prefers-reduced-motion` for accessibility
+- Follow existing animation variants patterns
+
+### Icon Usage
+- Use Font Awesome 6 icons from configured library in `src/lib/fontawesome.ts`
+- Import: `import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'`
+- Available icons are pre-configured in the library
+
+### Form Handling
+- Reference contact form in `src/app/(pages)/contact/page.tsx`
+- Use Web3Forms for form submissions
+- Include proper validation and error handling
+
+### Image Optimization
+- Always use Next.js Image component
+- Use utility functions in `src/utils/imageUtils.ts` for Contentful images
+- Follow responsive image patterns with proper `sizes` attribute
+
+## Code Quality Rules
+- Follow existing file naming conventions (kebab-case for files, PascalCase for components)
+- Use semantic HTML elements
+- Implement proper accessibility (ARIA labels, keyboard navigation)
+- Handle loading and error states
+- Use environment variables for configuration
+- Follow existing import organization patterns
+
+## Deployment & Environment
+- Deployment through Vercel (automatic on main branch push)
+- Environment variables defined in `documentation/CONFIGURATION_REFERENCE.md`
+- Check `documentation/DEPLOYMENT_GUIDE.md` for deployment processes
+
+## Documentation Priority
+When making changes, always reference the relevant documentation:
+1. `DEVELOPMENT_GUIDE.md` - Development workflow and standards
+2. `CODEBASE_OVERVIEW.md` - Architecture and structure
+3. `CONFIGURATION_REFERENCE.md` - All configuration options
+4. `CONTENT_MANAGEMENT.md` - Contentful CMS usage
+5. `TROUBLESHOOTING.md` - Common issues and solutions
+
+## Business Context
+- B2B podcast production focused on lead generation
+- Target audience: businesses wanting to use podcasts for sales
+- Key value proposition: "podcasts that sell" without needing large audience
+- Content strategy focuses on sales-first approach vs traditional marketing
+
+## Restrictions
+- Never use localStorage/sessionStorage (not supported in some environments)
+- Always optimize images and implement lazy loading
+- Maintain accessibility standards (WCAG compliance)
+- Follow security headers defined in `src/middleware.ts`
+- Respect copyright - never reproduce large content chunks from external sources
