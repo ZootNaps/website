@@ -244,7 +244,6 @@ export default function ClientLogoSection() {
         >
           <div className="h-px bg-linear-to-r from-transparent via-white/30 to-transparent max-w-xl mx-auto"></div>
           <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-3 h-3 bg-secondary rounded-full"></div>
           </div>
         </motion.div>
         
@@ -258,7 +257,6 @@ export default function ClientLogoSection() {
           <LogoCarousel 
             logos={clientLogos} 
             monochrome={false} 
-            background="primary"
             className="[&_img]:brightness-0 [&_img]:invert [&_img]:opacity-80 hover:[&_img]:opacity-100 [&_img]:transition-all [&_img]:duration-300 px-4 md:px-8"
           />
         </motion.div>

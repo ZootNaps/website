@@ -127,7 +127,8 @@ export default function StyleGuidePage() {
                 logos={clientLogos} 
                 title="Trusted by industry leaders" 
                 description="We've helped these companies achieve impressive results through strategic podcasting." 
-                background="white"
+                titleClassName="text-primary"
+                descriptionClassName="text-gray"
               />
             </div>
           </div>
@@ -138,7 +139,7 @@ export default function StyleGuidePage() {
               <LogoCarousel 
                 logos={clientLogos} 
                 title="Our clients include" 
-                background="white"
+                titleClassName="text-primary"
                 monochrome={true}
               />
             </div>
@@ -150,7 +151,7 @@ export default function StyleGuidePage() {
               <LogoCarousel 
                 logos={clientLogos} 
                 title="Featured in" 
-                background="secondary"
+                titleClassName="text-white"
               />
             </div>
           </div>

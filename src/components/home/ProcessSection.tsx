@@ -174,7 +174,7 @@ const ProcessSection = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 mb-6">
-            <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-tertiary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
+          <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-secondary-50 text-dark text-sm font-semibold rounded-full border border-secondary/20">
               🎯 Our Proven Process
             </span>
           </div>

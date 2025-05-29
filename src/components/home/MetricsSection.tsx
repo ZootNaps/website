@@ -105,7 +105,7 @@ export default function MetricsSection() {
             color="primary" 
             className="mb-6"
           >
-            Zero Audience Required.
+            No Audience? No Problem.
           </Typography>
           <Typography variant="body-lg" color="gray" className="max-w-3xl mx-auto mb-8">
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.

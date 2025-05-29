@@ -3,8 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
-import Section from './ui/Section';
-import Typography from './ui/Typography';
 
 interface Logo {
   src: string;
@@ -18,18 +16,20 @@ interface LogoCarouselProps {
   logos: Logo[];
   title?: string;
   description?: string;
-  background?: 'white' | 'light' | 'primary' | 'secondary';
   monochrome?: boolean;
   className?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 }
 
 export default function LogoCarousel({
   logos,
   title,
   description,
-  background = 'white',
   monochrome = false,
   className = '',
+  titleClassName = '',
+  descriptionClassName = '',
 }: LogoCarouselProps) {
   // Ensure smooth looping by duplicating logos
   // We'll duplicate it multiple times to ensure there's enough content for continuous scrolling
@@ -40,29 +40,17 @@ export default function LogoCarousel({
   const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
   
   return (
-    <Section 
-      background={background} 
-      spacing="md" 
-      className={twMerge('overflow-hidden', className)}
-    >
+    <div className={twMerge('overflow-hidden', className)}>
       {title && (
-        <Typography 
-          variant="h3" 
-          color={background === 'white' || background === 'light' ? 'primary' : 'white'}
-          className="text-center mb-2"
-        >
+        <h3 className={twMerge('text-center mb-2 text-2xl md:text-3xl font-bold', titleClassName)}>
           {title}
-        </Typography>
+        </h3>
       )}
       
       {description && (
-        <Typography 
-          variant="body" 
-          color={background === 'white' || background === 'light' ? 'default' : 'white'}
-          className="text-center mb-8 max-w-2xl mx-auto"
-        >
+        <p className={twMerge('text-center mb-8 max-w-2xl mx-auto text-base md:text-lg', descriptionClassName)}>
           {description}
-        </Typography>
+        </p>
       )}
       
       <div className="relative px-4 sm:px-6 lg:px-8">
@@ -110,6 +98,6 @@ export default function LogoCarousel({
           </div>
         </div>
       </div>
-    </Section>
+    </div>
   );
 } 

@@ -53,14 +53,6 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative">
-              {/* Enhanced accent element */}
-              <motion.div 
-                className="absolute -left-6 -top-6 w-12 h-12 rounded-full bg-secondary/15 border-2 border-secondary/20"
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              ></motion.div>
-              
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary relative z-10">
                 Podcasts that{' '}
                 <motion.span 
@@ -88,9 +80,24 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <div className="flex items-center gap-2 bg-white/70 rounded-full px-4 py-2 border border-primary/10">
-                <div className="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
-                <span className="text-lg font-semibold text-primary">Zero audience required</span>
+              <div className="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2.5 rounded-lg">
+                <motion.div 
+                  className="w-2.5 h-2.5 bg-red-500 rounded-full shadow-lg shadow-red-500/50"
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    boxShadow: [
+                      "0 0 0 0 rgba(239, 68, 68, 0.4)",
+                      "0 0 0 8px rgba(239, 68, 68, 0)",
+                      "0 0 0 0 rgba(239, 68, 68, 0.4)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                ></motion.div>
+                <span className="text-xl font-semibold text-primary">No audience necessary.</span>
               </div>
             </motion.div>
             
@@ -100,7 +107,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              An end-to-end podcast system that turns executive interviews into qualified leads and direct sales revenue.
+              End-to-end podcast production that turns executive interviews into qualified leads and direct sales revenue.
             </motion.p>
             
             <motion.div 
@@ -158,7 +165,7 @@ const HeroSection = () => {
             
             {/* Enhanced client attribution with better visual treatment - removed quote and box */}
             <motion.div 
-              className="mt-4 text-center"
+              className="mt-4 text-right"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.8 }}

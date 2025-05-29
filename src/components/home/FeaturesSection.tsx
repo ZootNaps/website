@@ -99,8 +99,8 @@ const FeaturesSection = () => {
             {/* Enhanced badge with gradient background */}
             <div className="inline-flex items-center gap-2 mb-8">
               <div className="flex items-center gap-2">
-                <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-tertiary/10 text-secondary text-sm font-semibold rounded-full border border-secondary/20">
-                  🎯 Sales-First Approach
+                <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-secondary-50 text-dark text-sm font-semibold rounded-full border border-secondary/20">
+                  🎯 Sales First Approach
                 </span>
               </div>
             </div>
