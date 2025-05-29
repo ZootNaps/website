@@ -109,7 +109,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
                 <Link 
                   href="/contact" 
                   className="group bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg text-center transition-all duration-300 shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/50 transform hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-secondary/50 flex items-center gap-2"
@@ -121,7 +121,7 @@ const HeroSection = () => {
               <motion.button 
                 onClick={() => scrollToElement('features')}
                 className="group text-primary hover:text-secondary font-medium py-3 px-6 rounded-md text-center transition-all duration-300 hover:bg-white/50 flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Learn More

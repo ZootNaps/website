@@ -115,7 +115,7 @@ export default function MetricsSection() {
             initial={{ scale: 0, opacity: 0 }}
             animate={isInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.01 }}
           >
             {/* Connecting line behind text */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -124,31 +124,12 @@ export default function MetricsSection() {
             
             <motion.div 
               className="w-4 h-4 bg-secondary rounded-full shadow-sm relative z-10"
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
             />
             <Typography variant="subheading" as="span" className="font-semibold text-primary whitespace-nowrap leading-none flex items-center relative z-10 bg-white/90 px-4 rounded-full">
               End-to-end podcast production for your business
             </Typography>
             <motion.div
               className="w-3 h-3 bg-tertiary rounded-full relative z-10"
-              animate={{ 
-                scale: [1, 1.3, 1],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 2,
-                delay: 1,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
             />
           </motion.div>
         </motion.div>
@@ -170,7 +151,7 @@ export default function MetricsSection() {
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
                 className="w-16 h-16 bg-linear-to-br from-primary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <TrophyIcon className="w-8 h-8 text-white" />
@@ -212,7 +193,7 @@ export default function MetricsSection() {
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
                 className="w-16 h-16 bg-linear-to-br from-secondary to-secondary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
-                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <ClockIcon className="w-8 h-8 text-white" />
@@ -254,7 +235,7 @@ export default function MetricsSection() {
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div 
                 className="w-16 h-16 bg-linear-to-br from-primary via-secondary to-primary-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <MicrophoneIcon className="w-8 h-8 text-white" />
@@ -295,7 +276,7 @@ export default function MetricsSection() {
           <motion.button 
             onClick={scrollToProcess}
             className="group inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-primary/50"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
           >
             See Our Process

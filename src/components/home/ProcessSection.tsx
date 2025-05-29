@@ -221,7 +221,7 @@ const ProcessSection = () => {
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
                 className="relative z-10 text-center font-medium group flex flex-col items-center"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div 
@@ -313,11 +313,6 @@ const ProcessSection = () => {
                   <div className="flex items-center justify-center md:justify-start mb-4">
                     <motion.div 
                       className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-linear-to-br from-secondary to-secondary-dark flex items-center justify-center mr-4 shadow-lg"
-                      animate={{ 
-                        scale: [1, 1.05, 1],
-                        rotate: [0, 2, 0]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     >
                       <FontAwesomeIcon icon={tabs.find(t => t.id === activeTab)!.icon} className="text-white text-xl md:text-2xl" />
                     </motion.div>
@@ -343,11 +338,11 @@ const ProcessSection = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1, duration: 0.5 }}
-                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileHover={{ scale: 1.01 }}
                     >
                       <motion.div
                         className="w-6 h-6 rounded-full bg-linear-to-br from-secondary to-tertiary flex items-center justify-center mr-4 flex-shrink-0 mt-0.5"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileHover={{ scale: 1.03 }}
                       >
                         <FontAwesomeIcon icon={faCheck} className="text-white text-xs" />
                       </motion.div>

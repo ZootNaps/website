@@ -39,7 +39,7 @@ const CtaSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 href="/contact"
                 className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-secondary/50"
@@ -47,7 +47,7 @@ const CtaSection = () => {
                 Get Started
               </Link>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
               <Link 
                 href="/blog"
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-white/50"

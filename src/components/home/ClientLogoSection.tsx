@@ -145,7 +145,7 @@ export default function ClientLogoSection() {
           <motion.div 
             className="text-white group"
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300">
               <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">$800,000+</p>
@@ -156,7 +156,7 @@ export default function ClientLogoSection() {
           <motion.div 
             className="text-white group"
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300">
               <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">2-3x</p>
@@ -167,7 +167,7 @@ export default function ClientLogoSection() {
           <motion.div 
             className="text-white group"
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/50 transition-all duration-300">
               <p className="text-4xl lg:text-5xl font-bold text-secondary group-hover:text-secondary-light transition-colors duration-300">10x</p>
@@ -220,7 +220,7 @@ export default function ClientLogoSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -2 }}
               >
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-secondary/30 transition-all duration-300 h-full">
                   {/* Star Rating */}
