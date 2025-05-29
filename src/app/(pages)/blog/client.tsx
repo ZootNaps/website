@@ -34,7 +34,7 @@ type BlogPost = {
   metaDescription?: string;
   focusKeyword?: string;
   tags?: string[];
-  status?: string;
+  status: string;
   isFeatured?: boolean;
   category?: string;
   readingTimeMinutes?: number;
@@ -91,11 +91,11 @@ export default function ClientBlogPage({
     
     // Split into featured and regular posts
     const featured = filtered.filter(post => post.isFeatured);
-    // If no featured posts are available in the current filter, use the first post
-    const featuredToUse = featured.length > 0 ? featured : (filtered.length > 0 ? [filtered[0]] : []);
+    // Only use explicitly featured posts - don't auto-promote the first post
+    const featuredToUse = featured;
     
-    // Regular posts (excluding featured ones)
-    const regular = filtered.filter(post => !featuredToUse.includes(post));
+    // All posts appear in regular section (featured posts can appear in both sections)
+    const regular = filtered;
     
     setFeaturedPosts(featuredToUse);
     setRegularPosts(regular);

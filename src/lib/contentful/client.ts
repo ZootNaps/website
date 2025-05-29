@@ -28,7 +28,7 @@ export interface BlogPost {
   metaDescription?: string;
   focusKeyword?: string;
   tags?: string[];
-  status?: string;
+  status: string; // Now always populated from Contentful's built-in status
   // New fields
   isFeatured?: boolean;
   category?: string;
@@ -105,6 +105,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     
     return entries.items.map(item => {
       const fields = item.fields as any;
+      const sys = item.sys as any;
+      // Use Contentful's built-in publication status
+      const isPublished = !!sys.publishedVersion;
+      
       return {
         title: fields.title,
         slug: fields.slug,
@@ -130,7 +134,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         metaDescription: fields.metaDescription || null,
         focusKeyword: fields.focusKeyword || null,
         tags: fields.tags || [],
-        status: fields.status || 'Published',
+        status: isPublished ? 'Published' : 'Draft',
         // New fields
         isFeatured: fields.isFeatured || false,
         category: fields.category || null,
@@ -156,6 +160,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     }
     
     const fields = entries.items[0].fields as any;
+    const sys = entries.items[0].sys as any;
+    // Use Contentful's built-in publication status
+    const isPublished = !!sys.publishedVersion;
+    
     return {
       title: fields.title,
       slug: fields.slug,
@@ -181,7 +189,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       metaDescription: fields.metaDescription || null,
       focusKeyword: fields.focusKeyword || null,
       tags: fields.tags || [],
-      status: fields.status || 'Published',
+      status: isPublished ? 'Published' : 'Draft',
       // New fields
       isFeatured: fields.isFeatured || false,
       category: fields.category || null,

@@ -55,12 +55,16 @@ export function transformBlogPost(post: any) {
   try {
     // Safely access nested properties
     const fields = post.fields || {};
+    const sys = post.sys || {};
     const featuredImage = fields.featuredImage?.fields?.file?.url 
       ? `https:${fields.featuredImage.fields.file.url}`
       : null;
+    
+    // Use Contentful's built-in publication status
+    const isPublished = !!sys.publishedVersion;
       
     return {
-      id: post.sys?.id || '',
+      id: sys.id || '',
       title: fields.title || '',
       slug: fields.slug || '',
       content: fields.content || {},
@@ -73,7 +77,7 @@ export function transformBlogPost(post: any) {
       metaDescription: fields.metaDescription || '',
       focusKeyword: fields.focusKeyword || '',
       tags: fields.tags || [],
-      status: fields.status || 'Published',
+      status: isPublished ? 'Published' : 'Draft',
     };
   } catch (error) {
     console.error('Error transforming blog post:', error);

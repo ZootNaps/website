@@ -1,9 +1,9 @@
 ---
 # CONTENTFUL FIELD: title
-Stop Wasting Your Mic: How to Turn Your B2B Podcast into a Powerful Sales Tool
+Turn Your B2B Podcast into a Sales Tool
 
 # CONTENTFUL FIELD: slug
-stop-wasting-your-mic-how-to-turn-your-b2b-podcast-into-a-powerful-sales-tool
+turn-your-b2b-podcast-into-a-sales-tool
 
 # CONTENTFUL FIELD: excerpt
 Discover how to transform your B2B podcast from a content piece into a high-performing sales tool. Learn strategies for lead generation and ROI with South Lamar Studios.

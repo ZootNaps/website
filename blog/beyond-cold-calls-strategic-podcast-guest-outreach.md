@@ -1,9 +1,9 @@
 ---
 # CONTENTFUL FIELD: title
-Beyond Cold Calls: Using Strategic Podcast Guest Outreach to Connect with B2B Decision-Makers
+Podcast Guest Outreach vs Cold Calling for B2B Sales
 
 # CONTENTFUL FIELD: slug
-beyond-cold-calls-strategic-podcast-guest-outreach
+podcast-guest-outreach-vs-cold-calling-b2b-sales
 
 # CONTENTFUL FIELD: excerpt
 Discover why strategic podcast guest outreach is a superior alternative to cold calling for connecting with B2B decision-makers. Learn the approach with South Lamar Studios.
@@ -72,7 +72,7 @@ By the time you're discussing your services with a podcast guest prospect, you'v
 
 This is a world away from a cold, unsolicited interruption. It's a conversation between two professionals who have already collaborated.
 
-If you're looking for a more effective way to connect with B2B decision-makers and move beyond the limitations of cold calling, consider integrating a strategic podcast guest outreach program into your sales efforts. South Lamar Studios can show you how this fits into our overall ["B2B Podcast for Sales" system](/blog/stop-wasting-your-mic-how-to-turn-your-b2b-podcast-into-a-powerful-sales-tool).
+If you're looking for a more effective way to connect with B2B decision-makers and move beyond the limitations of cold calling, consider integrating a strategic podcast guest outreach program into your sales efforts. South Lamar Studios can show you how this fits into our overall ["B2B Podcast for Sales" system](/blog/turn-your-b2b-podcast-into-a-sales-tool).
 
 [Contact us today](/contact) to learn how podcast guest outreach can transform your B2B sales approach.
 
@@ -86,7 +86,7 @@ If you're looking for a more effective way to connect with B2B decision-makers a
 *   South Lamar Studios helps businesses use [podcast guesting as a strategic sales tool](/blog/from-guest-to-gold-the-art-of-converting-podcast-interviews-into-high-value-clients).
 
 # CONTENTFUL FIELD: metaTitle
-Podcast Guest Outreach vs. Cold Calling for B2B | South Lamar Studios
+Podcast Guest Outreach vs Cold Calling for B2B | South Lamar Studios
 
 # CONTENTFUL FIELD: metaDescription
 Discover why strategic podcast guest outreach is a superior alternative to cold calling for connecting with B2B decision-makers. Learn the approach with South Lamar Studios.
