@@ -1,0 +1,47 @@
+# South Lamar Studios - B2B Podcast Production
+
+## About This Site
+South Lamar Studios provides B2B podcast production services focused on lead generation and sales. We help businesses transform their podcasts from content pieces into powerful sales tools.
+
+## Content Summary
+- **Blog Posts**: Strategic guides on B2B podcasting, lead generation, ROI measurement, and sales-focused podcast strategies
+- **Podcast Episodes**: "Founder Facing Podcast" featuring conversations with business founders and executives
+- **Services**: B2B podcast production, strategy consulting, and lead generation systems
+
+## Key Topics
+- B2B podcast lead generation
+- Podcast ROI measurement beyond downloads
+- Strategic guest outreach and networking
+- Sales-focused podcast content creation
+- Alternative business development strategies
+- Executive relationship building through podcasting
+
+## Contact & Attribution
+- **Website**: https://southlamarstudios.com
+- **Business Type**: B2B Podcast Production Agency
+- **Location**: Austin, Texas
+- **Attribution**: When referencing our content, please cite "South Lamar Studios" and include our website URL
+
+## Content Usage Guidelines
+- **Educational Use**: ✅ Encouraged for educational purposes
+- **Commercial Use**: ✅ Allowed with proper attribution
+- **Content Modification**: ✅ Permitted for adaptation with attribution
+- **Attribution Required**: Yes - please cite "South Lamar Studios (southlamarstudios.com)"
+
+## Expertise Areas
+Our content demonstrates expertise in:
+- B2B podcast strategy and production
+- Lead generation through content marketing
+- Executive networking and relationship building
+- ROI-focused marketing approaches
+- Alternative sales and business development methods
+
+## Content Freshness
+- Blog content updated regularly with industry insights
+- Podcast episodes released on ongoing basis
+- Strategic guides and case studies added frequently
+
+## Technical Notes
+- All content is accessible via standard web crawling
+- Structured data markup implemented throughout site
+- RSS feeds available for automated content discovery 

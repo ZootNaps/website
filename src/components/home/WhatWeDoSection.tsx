@@ -10,8 +10,8 @@ import Link from 'next/link';
 const whatWeDoItems = [
   {
     icon: faEnvelopeOpenText,
-    title: "Unparalleled Response Rates",
-    description: "Industry-leading outreach that C Suite Executives are excited to respond to. Get your foot in the door, and get the conversation started.",
+    title: "Irresistable Outreach",
+    description: "Your dedicated podcast manager will find and reach out to your ideal prospects - , schedule, and follow up with your prospects. Industry-leading outreach that C Suite Executives are excited to respond to. Get your foot in the door, and get the conversation started.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
@@ -99,20 +99,19 @@ const WhatWeDoSection = () => {
             {/* Enhanced badge with gradient background */}
             <div className="inline-flex items-center gap-2 mb-8">
               <div className="flex items-center gap-2">
-                <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-secondary-50 text-dark text-sm font-semibold rounded-full border border-secondary/20">
-                  🎯 Sales First Podcasts
+                <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-secondary-50 text-dark text-md font-semibold rounded-full border border-secondary/20">
+                  What We Do
                 </span>
               </div>
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
-              Built for <span className="font-extrabold text-secondary">Sales</span> - Not Marketing.
+              Podcasts for <span className="font-extrabold text-secondary">Sales</span> - Not Just Marketing.
             </h2>
           </div>
           
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">
-            Podcasting shouldn't be a marketing experiment. Our system is designed specifically to generate qualified leads, 
-            nurture relationships with potential clients, and convert conversations into revenue.
+            Podcasting shouldn't be a marketing experiment. Our system is designed to help you generate leads and close deals - even if you never post a single clip from your podcast.
           </p>
         </div>
 

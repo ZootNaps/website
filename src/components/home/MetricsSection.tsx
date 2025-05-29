@@ -123,14 +123,32 @@ export default function MetricsSection() {
             </div>
             
             <motion.div 
-              className="w-3 h-3 md:w-4 md:h-4 bg-secondary rounded-full shadow-sm relative z-10 flex-shrink-0"
+              className="w-3 h-3 md:w-4 md:h-4 bg-red-500 rounded-full shadow-sm relative z-10 flex-shrink-0"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [1, 0.8, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             />
             <Typography variant="subheading" as="span" className="font-semibold text-primary text-center md:whitespace-nowrap leading-tight md:leading-none flex items-center relative z-10 bg-white/90 px-3 md:px-4 rounded-full text-sm md:text-base">
-              <span className="md:hidden">End-to-end podcast production</span>
-              <span className="hidden md:inline">End-to-end podcast production for your business</span>
+              <span className="md:hidden">See Our Process in Action.</span>
+              <span className="hidden md:inline">See How Gus Closed 2 Deals from 8 Podcast Interviews</span>
             </Typography>
             <motion.div
-              className="w-2.5 h-2.5 md:w-3 md:h-3 bg-tertiary rounded-full relative z-10 flex-shrink-0"
+              className="w-2.5 h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full relative z-10 flex-shrink-0"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [1, 0.8, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             />
           </motion.div>
         </motion.div>
@@ -217,7 +235,7 @@ export default function MetricsSection() {
               </Typography>
               
               <Typography variant="body" color="gray" className="leading-relaxed">
-                Consistent pipeline of prospects who want to talk business, not just listen.
+                Our podcast outreach strategy gets qualified conversations on your calendar.
               </Typography>
               
               {/* Decorative element */}
@@ -247,7 +265,7 @@ export default function MetricsSection() {
                 color="primary" 
                 className="font-bold mb-4 text-2xl"
               >
-                <AnimatedCounter value={3} isInView={isInView} />:1
+                <AnimatedCounter value={3} isInView={isInView} />x
               </Typography>
               
               <Typography 
