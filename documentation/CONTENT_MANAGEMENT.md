@@ -19,7 +19,7 @@ The blog post content model includes:
 | excerpt | Short text | Brief summary for previews |
 | content | Rich text | Main content body |
 | featuredImage | Media | Main image for the post |
-| category | Short text | Post category |
+| category | Short text | Post category (see categories below) |
 | publishDate | Date & time | Publication date |
 | metaTitle | Short text | SEO title |
 | metaDescription | Short text | SEO description |
@@ -29,6 +29,36 @@ The blog post content model includes:
 | readingTimeMinutes | Number | Estimated reading time (optional) |
 
 **Publication Status**: The system automatically uses Contentful's built-in publication status. Only published entries will appear on the website.
+
+#### Blog Categories
+
+The blog system supports the following categories, each with unique styling and icons:
+
+- **Playbook 📋:** Step-by-step guides and actionable frameworks
+  - Use for: Implementation guides, workflows, checklists
+  - Styling: Emerald green color scheme
+  
+- **Deep Dive 🔍:** In-depth analysis and comprehensive coverage  
+  - Use for: Detailed analysis, comprehensive tutorials, research
+  - Styling: Blue color scheme
+  
+- **Strategy 🎯:** Strategic insights and planning guidance
+  - Use for: Business strategy, planning frameworks, high-level guidance
+  - Styling: Purple color scheme
+  
+- **Case Study 📊:** Real-world examples and success stories
+  - Use for: Client stories, project breakdowns, results analysis
+  - Styling: Orange color scheme
+  
+- **Industry Insights 📈:** Market trends and industry analysis
+  - Use for: Market analysis, trend reports, industry news
+  - Styling: Indigo color scheme
+  
+- **How To 🛠️:** Practical tutorials and implementation guides
+  - Use for: Step-by-step tutorials, technical guides, tool usage
+  - Styling: Green color scheme
+
+Categories are automatically sorted by priority and displayed with unique visual styling including colored badges, icons, and hover effects.
 
 ### Podcast Episode
 

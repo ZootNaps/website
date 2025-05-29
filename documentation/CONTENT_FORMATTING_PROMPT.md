@@ -83,6 +83,19 @@ Please format the following blog content for Contentful CMS rich text editor to 
 4. **Strategic CTAs:** Include 1-2 natural call-to-actions throughout
 5. **Strong Conclusion:** End with actionable next steps
 
+### New Category Guidelines:
+
+When creating content, consider which category best fits your post:
+
+- **Playbook 📋:** Step-by-step guides and actionable frameworks (emerald styling)
+- **Deep Dive 🔍:** In-depth analysis and comprehensive coverage (blue styling)
+- **Strategy 🎯:** Strategic insights and planning guidance (purple styling)  
+- **Case Study 📊:** Real-world examples and success stories (orange styling)
+- **Industry Insights 📈:** Market trends and industry analysis (indigo styling)
+- **How To 🛠️:** Practical tutorials and implementation guides (green styling)
+
+Each category gets its own unique color scheme and icon for better visual organization.
+
 ---
 
 **YOUR RAW CONTENT GOES HERE**

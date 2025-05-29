@@ -2,6 +2,9 @@ import { createClient } from 'contentful';
 
 // This is a temporary file that disables Contentful integration until it's properly set up
 
+// Define blog category types for better type safety
+export type BlogCategory = 'Playbook' | 'Deep Dive' | 'Strategy' | 'Case Study' | 'Industry Insights' | 'How To';
+
 // Types for Contentful blog post entries
 export interface BlogPost {
   title: string;
@@ -31,7 +34,7 @@ export interface BlogPost {
   status: string; // Now always populated from Contentful's built-in status
   // New fields
   isFeatured?: boolean;
-  category?: string;
+  category?: string; // Using string to allow for flexibility, but ideally should be BlogCategory
   readingTimeMinutes?: number;
 }
 

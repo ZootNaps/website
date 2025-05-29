@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCalendar, faTag, faShare } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
+import { getCategoryStyle } from '@/utils/categoryUtils';
 
 import { Metadata } from 'next';
 
@@ -322,6 +323,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         {tag}
                       </span>
                     ))}
+                  </div>
+                )}
+                
+                {/* Enhanced Category Badge */}
+                {post.category && (
+                  <div className="flex justify-center mb-8">
+                    {(() => {
+                      const categoryStyle = getCategoryStyle(post.category);
+                      return (
+                        <div className={`flex items-center gap-3 ${categoryStyle.bgColor} ${categoryStyle.borderColor} border px-6 py-3 rounded-xl`}>
+                          <span className="text-2xl">{categoryStyle.icon}</span>
+                          <div>
+                            <div className={`text-sm font-semibold ${categoryStyle.textColor}`}>
+                              {post.category}
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              {categoryStyle.description}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
                   </div>
                 )}
               </header>

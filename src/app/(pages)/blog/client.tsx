@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { getOptimizedImageUrl, getResponsiveSrcSet } from '@/utils/imageUtils';
+import { getCategoryStyle, sortCategoriesByPriority } from '@/utils/categoryUtils';
 
 // Define BlogPost type for client component
 type BlogPost = {
@@ -75,6 +76,9 @@ export default function ClientBlogPage({
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [regularPosts, setRegularPosts] = useState<BlogPost[]>([]);
   
+  // Sort categories by priority (excluding 'All')
+  const sortedCategories = ['All', ...sortCategoriesByPriority(initialCategories.filter(cat => cat !== 'All'))];
+  
   // Initialize with data from server component
   useEffect(() => {
     filterPosts(activeCategory);
@@ -120,21 +124,33 @@ export default function ClientBlogPage({
             </p>
           </div>
           
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap justify-center mb-12 gap-2">
-            {initialCategories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full border transition-colors duration-300 shadow-sm ${
-                  activeCategory === category 
-                    ? 'bg-primary text-white border-primary' 
-                    : 'bg-white border-gray-200 text-gray-700 hover:bg-primary hover:text-white'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Enhanced Category Filter Tabs */}
+          <div className="flex flex-wrap justify-center mb-12 gap-3">
+            {sortedCategories.map((category, index) => {
+              const categoryStyle = getCategoryStyle(category === 'All' ? undefined : category);
+              const isActive = activeCategory === category;
+              
+              return (
+                <button
+                  key={index}
+                  onClick={() => setActiveCategory(category)}
+                  className={`flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 shadow-sm font-medium ${
+                    isActive
+                      ? category === 'All' 
+                        ? 'bg-primary text-white border-primary shadow-lg'
+                        : `${categoryStyle.color} text-white border-transparent shadow-lg`
+                      : category === 'All'
+                        ? 'bg-white border-gray-200 text-gray-700 hover:bg-primary hover:text-white hover:border-primary'
+                        : `bg-white ${categoryStyle.borderColor} ${categoryStyle.textColor} hover:${categoryStyle.bgColor} hover:border-current`
+                  }`}
+                >
+                  {category !== 'All' && (
+                    <span className="text-lg">{categoryStyle.icon}</span>
+                  )}
+                  <span>{category}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -146,63 +162,68 @@ export default function ClientBlogPage({
             <h2 className="text-2xl font-bold mb-8 text-primary border-b border-gray-200 pb-2">Featured Content</h2>
             
             <div className="grid grid-cols-1 gap-10">
-              {featuredPosts.map((post, index) => (
-                <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
-                  <article className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col md:flex-row">
-                    <div className="md:w-1/2 h-60 md:h-auto relative">
-                      {post.featuredImage ? (
-                        <Image 
-                          src={getOptimizedImageUrl(post.featuredImage.url, {
-                            width: 1200,
-                            format: 'webp',
-                            quality: 80
-                          })}
-                          alt={post.featuredImage.title || post.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover"
-                          priority={index === 0}
-                          quality={80}
-                        />
-                      ) : (
-                        <div className="bg-bg h-full w-full flex items-center justify-center">
-                          <span className="text-gray-400">Featured Image</span>
-                        </div>
-                      )}
-                      {post.category && (
-                        <span className="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">
-                          {post.category}
-                        </span>
-                      )}
-                    </div>
-                    
-                    <div className="p-6 md:w-1/2 flex flex-col justify-between">
-                      <div>
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
-                          {post.title}
-                        </h2>
-                        <p className="text-gray-600 mb-6 line-clamp-3">
-                          {post.excerpt}
-                        </p>
+              {featuredPosts.map((post, index) => {
+                const categoryStyle = getCategoryStyle(post.category);
+                
+                return (
+                  <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
+                    <article className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col md:flex-row">
+                      <div className="md:w-1/2 h-60 md:h-auto relative">
+                        {post.featuredImage ? (
+                          <Image 
+                            src={getOptimizedImageUrl(post.featuredImage.url, {
+                              width: 1200,
+                              format: 'webp',
+                              quality: 80
+                            })}
+                            alt={post.featuredImage.title || post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover"
+                            priority={index === 0}
+                            quality={80}
+                          />
+                        ) : (
+                          <div className="bg-bg h-full w-full flex items-center justify-center">
+                            <span className="text-gray-400">Featured Image</span>
+                          </div>
+                        )}
+                        {post.category && (
+                          <span className={`absolute top-4 left-4 ${categoryStyle.color} text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 shadow-lg`}>
+                            <span>{categoryStyle.icon}</span>
+                            {post.category}
+                          </span>
+                        )}
                       </div>
                       
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <time dateTime={post.publishDate}>
-                            {formatDate(post.publishDate)}
-                          </time>
-                          <span className="mx-2">•</span>
-                          <span className="flex items-center">
-                            <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
-                            {post.readingTimeMinutes || calculateReadingTime(post.content)} min read
-                          </span>
+                      <div className="p-6 md:w-1/2 flex flex-col justify-between">
+                        <div>
+                          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+                            {post.title}
+                          </h2>
+                          <p className="text-gray-600 mb-6 line-clamp-3">
+                            {post.excerpt}
+                          </p>
                         </div>
-                        <span className="text-secondary font-medium group-hover:underline">Read more</span>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-sm text-gray-500">
+                            <time dateTime={post.publishDate}>
+                              {formatDate(post.publishDate)}
+                            </time>
+                            <span className="mx-2">•</span>
+                            <span className="flex items-center">
+                              <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
+                              {post.readingTimeMinutes || calculateReadingTime(post.content)} min read
+                            </span>
+                          </div>
+                          <span className="text-secondary font-medium group-hover:underline">Read more</span>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
+                    </article>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -215,59 +236,64 @@ export default function ClientBlogPage({
           
           {regularPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {regularPosts.map((post, index) => (
-                <Link href={`/blog/${post.slug}`} key={post.slug} className="block h-full">
-                  <article className="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div className="h-48 bg-gray-200 relative">
-                      {post.featuredImage ? (
-                        <Image 
-                          src={getOptimizedImageUrl(post.featuredImage.url, {
-                            width: 800,
-                            format: 'webp',
-                            quality: 80
-                          })}
-                          alt={post.featuredImage.title || post.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover"
-                          loading="lazy"
-                          quality={80}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-gray-500">Featured Image</span>
-                        </div>
-                      )}
-                      {post.category && (
-                        <span className="absolute top-4 left-4 bg-white bg-opacity-90 text-primary px-3 py-1 rounded-full text-xs font-medium">
-                          {post.category}
-                        </span>
-                      )}
-                    </div>
-                    
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h2 className="text-xl font-bold mb-3 text-primary hover:text-secondary transition-colors duration-300 line-clamp-2">
-                        {post.title}
-                      </h2>
-                      <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">
-                        {post.excerpt}
-                      </p>
+              {regularPosts.map((post, index) => {
+                const categoryStyle = getCategoryStyle(post.category);
+                
+                return (
+                  <Link href={`/blog/${post.slug}`} key={post.slug} className="block h-full">
+                    <article className="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                      <div className="h-48 bg-gray-200 relative">
+                        {post.featuredImage ? (
+                          <Image 
+                            src={getOptimizedImageUrl(post.featuredImage.url, {
+                              width: 800,
+                              format: 'webp',
+                              quality: 80
+                            })}
+                            alt={post.featuredImage.title || post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover"
+                            loading="lazy"
+                            quality={80}
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-gray-500">Featured Image</span>
+                          </div>
+                        )}
+                        {post.category && (
+                          <span className={`absolute top-4 left-4 bg-white bg-opacity-95 ${categoryStyle.textColor} px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 shadow-sm`}>
+                            <span>{categoryStyle.icon}</span>
+                            {post.category}
+                          </span>
+                        )}
+                      </div>
                       
-                      <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <time dateTime={post.publishDate}>
-                            {formatDate(post.publishDate)}
-                          </time>
-                        </div>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
-                          <span>{post.readingTimeMinutes || calculateReadingTime(post.content)} min</span>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h2 className="text-xl font-bold mb-3 text-primary hover:text-secondary transition-colors duration-300 line-clamp-2">
+                          {post.title}
+                        </h2>
+                        <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                          {post.excerpt}
+                        </p>
+                        
+                        <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100">
+                          <div className="flex items-center text-sm text-gray-500">
+                            <time dateTime={post.publishDate}>
+                              {formatDate(post.publishDate)}
+                            </time>
+                          </div>
+                          <div className="flex items-center text-sm text-gray-500">
+                            <FontAwesomeIcon icon={faClock} className="w-3 h-3 mr-1" />
+                            <span>{post.readingTimeMinutes || calculateReadingTime(post.content)} min</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
+                    </article>
+                  </Link>
+                );
+              })}
             </div>
           ) : (
             <div className="text-center py-12">
