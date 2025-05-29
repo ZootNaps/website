@@ -2,6 +2,40 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
+  // Handle redirects for old URLs
+  const { pathname } = request.nextUrl;
+  
+  // Redirect patterns from old website that should go to home page
+  const redirectPatterns = [
+    '/services',
+    '/services/',
+    '/services/podcast-production',
+    '/services/b2b-podcast',
+    '/founderfacing-podcast',
+    '/styleguide',
+    '/styleguide/',
+  ];
+  
+  // Check for exact matches
+  if (redirectPatterns.includes(pathname)) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+  
+  // Handle services/* paths (any service subpage)
+  if (pathname.startsWith('/services/')) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+  
+  // Handle any link.southlamarstudios.com URLs that might be hitting the main domain
+  if (pathname.includes('/tmp/workspace/production/common/builder-preview/locales/')) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+  
+  // Handle _preview paths
+  if (pathname.startsWith('/_preview/')) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
   // Clone the response
   const response = NextResponse.next();
 
