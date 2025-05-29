@@ -111,15 +111,45 @@ export default function MetricsSection() {
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
           <motion.div
-            className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-primary/10"
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-10 py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-secondary/30 transition-all duration-300 relative"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            whileHover={{ scale: 1.05 }}
           >
-            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
-            <Typography variant="body" className="font-semibold text-primary">
+            {/* Connecting line behind text */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-full max-w-[calc(100%-80px)] h-px bg-linear-to-r from-secondary/30 via-primary/20 to-tertiary/30"></div>
+            </div>
+            
+            <motion.div 
+              className="w-4 h-4 bg-secondary rounded-full shadow-sm relative z-10"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.8, 1, 0.8]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <Typography variant="subheading" as="span" className="font-semibold text-primary whitespace-nowrap leading-none flex items-center relative z-10 bg-white/90 px-4 rounded-full">
               End-to-end podcast production for your business
             </Typography>
+            <motion.div
+              className="w-3 h-3 bg-tertiary rounded-full relative z-10"
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.6, 1, 0.6]
+              }}
+              transition={{ 
+                duration: 2,
+                delay: 1,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
           </motion.div>
         </motion.div>
         
