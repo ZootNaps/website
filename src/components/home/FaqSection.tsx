@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Script from 'next/script';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FaqSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -118,22 +119,26 @@ const FaqSection = () => {
                 </div>
               </button>
               
-              <div 
-                className="overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.2,0.82,0.2,1)]"
-                style={{ 
-                  maxHeight: activeIndex === index ? `${heights[index]}px` : '0',
-                  opacity: activeIndex === index ? 1 : 0
-                }}
-              >
-                <div 
-                  ref={(el) => {
-                    answerRefs.current[index] = el;
-                  }}
-                  className="px-6 pb-6"
-                >
-                  <p className="text-gray leading-relaxed">{item.answer}</p>
-                </div>
-              </div>
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div 
+                      ref={(el) => {
+                        answerRefs.current[index] = el;
+                      }}
+                      className="px-6 pb-6"
+                    >
+                      <p className="text-gray leading-relaxed">{item.answer}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>

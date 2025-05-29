@@ -26,21 +26,31 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "South Lamar Studios | B2B Podcast Production",
+    default: "South Lamar Studios | B2B Podcast Production & Lead Generation",
     template: "%s | South Lamar Studios",
   },
-  description: "End-to-end B2B podcast production service that transforms executive interviews into qualified leads and sales revenue. Expert production, distribution, and audience growth.",
+  description: "Transform your B2B podcast into a powerful sales engine. South Lamar Studios specializes in podcast production, guest outreach, and lead generation strategies that drive revenue for businesses. No large audience required.",
   keywords: [
     "b2b podcast production", 
-    "executive interview podcast", 
     "podcast lead generation", 
+    "business podcast services", 
+    "podcast guest outreach", 
     "b2b content marketing", 
     "podcast sales funnel", 
-    "business podcast production", 
+    "executive interview podcast", 
     "podcast audience growth", 
     "revenue-generating podcast",
     "podcast marketing strategy",
-    "thought leadership podcast"
+    "thought leadership podcast",
+    "podcast for sales",
+    "b2b podcast agency",
+    "podcast production austin",
+    "business development podcast",
+    "podcast roi measurement",
+    "strategic podcast consulting",
+    "podcast guest booking",
+    "b2b sales podcast",
+    "podcast monetization"
   ],
   authors: [{ name: "Gus Joseph" }],
   creator: "South Lamar Studios",
@@ -53,24 +63,29 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://southlamarstudios.com",
-    title: "South Lamar Studios | B2B Podcast Production",
-    description: "End-to-end B2B podcast production service that transforms executive interviews into qualified leads and sales revenue. Expert production, distribution, and audience growth.",
+    title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
+    description: "Transform your B2B podcast into a powerful sales engine. Expert podcast production, guest outreach, and lead generation strategies that drive revenue for businesses.",
     siteName: "South Lamar Studios",
     images: [
       {
         url: "https://southlamarstudios.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "South Lamar Studios B2B Podcast Production",
+        alt: "South Lamar Studios B2B Podcast Production & Lead Generation",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "South Lamar Studios | B2B Podcast Production",
-    description: "End-to-end B2B podcast production service that transforms executive interviews into qualified leads and sales revenue. Expert production, distribution, and audience growth.",
+    title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
+    description: "Transform your B2B podcast into a powerful sales engine. Expert podcast production, guest outreach, and lead generation strategies that drive revenue for businesses.",
     creator: "@southlamarstudios",
     images: ["https://southlamarstudios.com/images/twitter-image.jpg"],
+  },
+  alternates: {
+    types: {
+      'application/rss+xml': 'https://southlamarstudios.com/blog-rss.xml',
+    },
   },
 };
 
