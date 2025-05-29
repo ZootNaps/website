@@ -1,7 +1,9 @@
 # Codebase Overview
 
 ## Project Description
-This project is a modern website built with Next.js that appears to be for South Lamar Studios, based on the identified URLs. The site includes a blog, contact functionality, and possibly other business-related content.
+This project is a modern B2B website built with Next.js for South Lamar Studios, a podcast production service that specializes in turning podcasts into powerful lead generation engines. The site focuses on helping businesses use podcasting as a sales tool rather than traditional audience-building, featuring a unique "Podcast for Sales" approach that invites ideal prospects as guests.
+
+The website serves as both a lead generation platform and educational resource, showcasing how podcasting can drive direct business results through strategic guest selection and professional production services.
 
 ## Technology Stack
 - **Frontend Framework**: Next.js 15.3.1 (with App Router)
@@ -14,9 +16,10 @@ This project is a modern website built with Next.js that appears to be for South
 - **Analytics**: Vercel Analytics and Speed Insights
 - **SEO**: Next Sitemap for sitemap generation
 - **Email**: Nodemailer for contact form
-- **Icons**: Font Awesome 6 (FontAwesome SVG Core)
-- **Animations**: Framer Motion for enhanced UI interactions
+- **Icons**: Font Awesome 6 (FontAwesome SVG Core) - upgraded from v5
+- **Animations**: Framer Motion for enhanced UI interactions and micro-animations
 - **Utilities**: tailwind-merge for conditional class names
+- **Intersection Observer**: react-intersection-observer for scroll-triggered animations
 
 ## Directory Structure
 
@@ -64,20 +67,24 @@ This project is a modern website built with Next.js that appears to be for South
 
 ### Configuration Files
 - `next.config.ts` - Next.js configuration
-- `tailwind.config.js` - Tailwind CSS configuration
+- `tailwind.config.js` - Tailwind CSS configuration (simplified for v4)
 - `postcss.config.mjs` - PostCSS configuration
 - `tsconfig.json` - TypeScript configuration
 - `next-sitemap.config.js` - Sitemap generation configuration
 - `vercel.json` - Vercel deployment configuration
 
 ### Entry Points
-- `src/app/layout.tsx` - Root layout component
-- `src/app/page.tsx` - Home page
+- `src/app/layout.tsx` - Root layout component with Font Awesome configuration
+- `src/app/page.tsx` - Home page showcasing B2B podcast services
 - `src/middleware.ts` - Request middleware for security headers
 
 ### Content Management
-- `src/lib/contentful.ts` - Contentful client and content fetching functions
-- `src/lib/contentful/` - Contentful models and utilities
+- `src/lib/contentful/client.ts` - Contentful client and content fetching functions
+- `src/lib/contentful/` - Contentful models and utilities for blog and podcast content
+
+### Icon and Animation Libraries
+- `src/lib/fontawesome.ts` - Font Awesome 6 icon library configuration with tree-shaking
+- Framer Motion components integrated throughout for professional animations
 
 ## Architecture Patterns
 
@@ -116,14 +123,15 @@ Components are organized by feature/section with shared components separated.
 - `@contentful/rich-text-react-renderer` - Renders Contentful rich text (v16.0.1)
 - `@contentful/rich-text-types` - Rich text type definitions (v17.0.0)
 - `next-mdx-remote` - Processes MDX content (v5.0.0)
-- `tailwindcss` - Utility-first CSS framework (v4)
+- `tailwindcss` - Utility-first CSS framework (v4) - **UPGRADED**
 - `tailwind-merge` - Utility for merging Tailwind classes (v3.2.0)
 - `nodemailer` - Email sending (v7.0.3)
 - `next-sitemap` - Sitemap generation (v4.2.3)
 - `@vercel/analytics` & `@vercel/speed-insights` - Vercel analytics
-- `framer-motion` - Animation library for React (v12.15.0)
+- `framer-motion` - Animation library for React (v12.15.0) - **ENHANCED USAGE**
 - `react-intersection-observer` - Intersection Observer API wrapper (v9.16.0)
-- `@fortawesome/fontawesome-svg-core` & related packages - Font Awesome 6 icon library
+- **Font Awesome 6 (UPGRADED)**:
+  - `@fortawesome/fontawesome-svg-core` (v6.7.2)
   - `@fortawesome/free-solid-svg-icons` (v6.7.2)
   - `@fortawesome/free-brands-svg-icons` (v6.7.2) 
   - `@fortawesome/free-regular-svg-icons` (v6.7.2)
@@ -140,7 +148,7 @@ Components are organized by feature/section with shared components separated.
   - `@types/react` (v19.1.5)
   - `@types/react-dom` (v19.1.5)
 - `autoprefixer` - CSS prefixing (v10.4.21)
-- `@tailwindcss/postcss` - Tailwind CSS PostCSS plugin (v4.1.5)
+- `@tailwindcss/postcss` - Tailwind CSS PostCSS plugin (v4.1.5) - **NEW FOR V4**
 
 ## Security Implementations
 - Content Security Policy (CSP) headers
@@ -154,15 +162,22 @@ Components are organized by feature/section with shared components separated.
 ## Performance Optimizations
 - Next.js Image component with Sharp for image optimization
 - Vercel Speed Insights for performance monitoring
-- Tailwind CSS for efficient styling
+- Tailwind CSS v4 with @theme directive for efficient styling and design system
 - Support for modern image formats (AVIF, WebP)
 - Custom image optimization utilities for Contentful images
 - Dynamic image quality and format selection
 - Responsive image loading with appropriate sizing
+- **Enhanced Animation Performance**: Framer Motion with useInView for scroll-triggered animations
+- **Optimized Icon Loading**: Font Awesome 6 with tree-shaking and SVG optimization
+- **Animated Counters**: Custom hooks for smooth number animations without layout shift
 
 ## Code Organization Principles
-- Feature-based organization for components
-- Separation of concerns (UI components, data fetching, etc.)
-- TypeScript for type safety
-- Server components for data fetching
+- Feature-based organization for components (home/, blog/, contact/, etc.)
+- Separation of concerns (UI components, data fetching, animations)
+- TypeScript for type safety across all components
+- Server components for data fetching and SEO
+- Client components only when interactivity is required
 - Middleware for security headers
+- **Design System Architecture**: Comprehensive @theme directive implementation
+- **Animation Patterns**: Consistent Framer Motion usage with reusable variants
+- **Icon Management**: Centralized Font Awesome configuration with selective imports

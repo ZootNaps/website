@@ -1,0 +1,75 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Documentation Review and Update Prompt
+
+## Overview
+Please perform a comprehensive review and update of the project documentation based on recent code changes.
+
+## Step 1: Documentation Analysis
+**Read through ALL documentation files in this directory completely and thoroughly.** Pay attention to:
+- Current documentation structure and organization
+- File purposes and target audiences
+- Existing content depth and coverage
+- Cross-references between documents
+
+## Step 2: Recent Changes Analysis
+Use one of these methods to identify recent changes:
+
+**Primary Method:**
+- Use `@Git` to analyze working changes and recent branch differences
+- Focus on changes that affect user-facing functionality, APIs, configuration, or architecture
+
+**Alternative Method (if @Git is insufficient):**
+- Run `git log --oneline --since="2 weeks ago"` to get recent commits
+- Run `git show <commit-hash>` for commits that appear to have significant changes
+- Focus on the last 5-10 meaningful commits
+
+**Filter changes by significance:**
+- ✅ Include: New features, API changes, configuration updates, breaking changes, user-facing modifications
+- ❌ Skip: Minor refactoring, code formatting, internal implementation details that don't affect usage
+
+## Step 3: Documentation Updates
+For each significant change identified:
+
+1. **Determine the appropriate documentation file** based on the change type:
+   - API changes → `api-reference.md` or similar
+   - New features → Feature-specific guides or main documentation
+   - Configuration → Setup/configuration documentation
+   - Architecture changes → System overview documents
+   - SEO-related → `seo-strategy.md` or dedicated SEO documentation
+
+2. **Update existing sections** rather than creating duplicate content
+3. **Ensure consistency** with existing documentation style and depth
+4. **Add cross-references** where relevant
+5. **Keep documentation practical and actionable** for AI agents working on the codebase
+
+## Step 4: Length Management
+- Prioritize the most impactful changes if documentation would become excessive
+- Focus on information that helps AI agents understand current system state
+- Maintain balance between comprehensiveness and usability within context windows
+- Target detailed but scannable documentation (use headers, bullet points, code examples)
+
+## Step 5: New File Suggestions
+If changes don't fit existing documentation structure, **suggest** a new file with:
+- Proposed filename and purpose
+- Rationale for why existing files aren't suitable
+- Outline of proposed content structure
+
+**Do NOT create new files without explicit approval.**
+
+## Output Format
+After completing all updates, provide a summary including:
+- **Files Modified**: List of documentation files updated
+- **Key Changes Added**: Brief description of main documentation additions/updates
+- **Files Analyzed**: Number of commits/changes reviewed
+- **Suggested New Files**: Any recommendations for new documentation (if applicable)
+
+## Success Criteria
+- All existing documentation reflects current codebase state
+- No conflicting or outdated information remains
+- Documentation supports AI agents with clear, actionable information
+- Changes are integrated into existing structure rather than duplicated
+- Documentation remains comprehensive but within reasonable context limits

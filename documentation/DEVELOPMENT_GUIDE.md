@@ -53,20 +53,36 @@ The project follows the Next.js App Router structure:
 
 ### Icons and UI Elements
 
-The project uses Font Awesome 6 for icons with enhanced tree-shaking:
+The project uses Font Awesome 6 for icons with enhanced tree-shaking and optimized SVG rendering:
 
 ```tsx
 // Importing the icon component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faChevronDown, faUserCheck, faHandshake } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
+// Icons are pre-configured in src/lib/fontawesome.ts - no need to import individual icons
+// Available solid icons: faCheck, faChevronDown, faChevronUp, faChevronLeft, faChevronRight, 
+// faClock, faEnvelope, faMapMarkerAlt, faBars, faTimes, faUserCheck, faHandshake, 
+// faMicrophone, faEnvelopeOpenText, faClipboardQuestion, faHexagonNodes
+
+// Available brand icons: faTwitter, faFacebook, faLinkedin, faInstagram, 
+// faYoutube, faSpotify, faApple
 
 // Using in a component
-<FontAwesomeIcon icon={faCheck} className="text-green-500 mr-2" />
-<FontAwesomeIcon icon={faUserCheck} className="w-8 h-8 text-secondary" />
+<FontAwesomeIcon icon="check" className="text-green-500 mr-2" />
+<FontAwesomeIcon icon="user-check" className="w-8 h-8 text-secondary" />
+<FontAwesomeIcon icon={['fab', 'twitter']} className="text-blue-500" />
 ```
 
-Font Awesome is automatically configured with global CSS imports in the root layout. The library supports both solid and brand icons with optimized SVG rendering.
+**Font Awesome 6 Configuration:**
+- Icons are centrally configured in `src/lib/fontawesome.ts`
+- Tree-shaking is enabled to include only used icons
+- SVG rendering provides better performance than web fonts
+- CSS auto-addition is disabled for manual control
+
+**Adding New Icons:**
+1. Import the icon in `src/lib/fontawesome.ts`
+2. Add it to the library.add() call
+3. Use the icon name string in components
 
 ### Styling
 
@@ -86,14 +102,22 @@ Font Awesome is automatically configured with global CSS imports in the root lay
   >
   ```
 
+**Tailwind CSS v4 Features:**
+- `@theme` directive for design token definition
+- Enhanced color palette with full shade ranges (50-900)
+- Built-in design system utilities (`.btn`, `.card`, `.section`)
+- Comprehensive shadow system (`.shadow-soft`, `.shadow-medium`, `.shadow-strong`)
+- Animation utilities (`.animate-scroll`, `.animate-float`, `.animate-pulse-soft`)
+
 ### Animation and Interactions
 
-The project uses Framer Motion for enhanced animations and interactions:
+The project uses Framer Motion for enhanced animations and interactions with performance optimization:
 
 ```tsx
 import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
-// Basic motion component
+// Basic motion component with hover and tap animations
 <motion.div
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
@@ -102,7 +126,7 @@ import { motion, useInView } from 'framer-motion';
   Click me
 </motion.div>
 
-// Scroll-triggered animations
+// Scroll-triggered animations with useInView hook
 const ref = useRef(null);
 const isInView = useInView(ref, { once: true });
 
@@ -117,15 +141,58 @@ const containerVariants = {
   }
 };
 
+const itemVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 <motion.div
   ref={ref}
   variants={containerVariants}
   initial="hidden"
   animate={isInView ? "visible" : "hidden"}
 >
-  {/* Animated content */}
+  <motion.div variants={itemVariants}>
+    Animated content
+  </motion.div>
 </motion.div>
+
+// Animated counters for metrics
+const useAnimatedCounter = (targetValue: number, isInView: boolean, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTimestamp: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * targetValue));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [targetValue, isInView, duration]);
+
+  return count;
+};
 ```
+
+**Animation Best Practices:**
+- Use `useInView` for scroll-triggered animations to improve performance
+- Implement `prefers-reduced-motion` support (handled in globals.css)
+- Use consistent animation variants across components
+- Leverage `will-change` property for smooth animations
+- Implement staggered animations for lists and grids
 
 ### CSS Architecture
 
@@ -142,6 +209,26 @@ Key utility classes available:
 - `.animate-scroll`, `.animate-float`, `.animate-pulse-soft`
 - `.text-gradient`, `.text-gradient-primary`, `.text-gradient-vibrant`
 - `.section-spacing`, `.section-spacing-sm`, `.section-spacing-lg`
+- `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-outline`
+- `.card`, `.card-elevated`
+
+**Design System Colors:**
+```css
+/* Primary colors (deep teal) */
+bg-primary, text-primary, border-primary
+bg-primary-50 through bg-primary-900
+
+/* Secondary colors (warm orange) */
+bg-secondary, text-secondary, border-secondary
+bg-secondary-50 through bg-secondary-900
+
+/* Tertiary colors (light blue) */
+bg-tertiary, text-tertiary, border-tertiary
+bg-tertiary-50 through bg-tertiary-900
+
+/* Background colors */
+bg-bg, bg-bg-dark, bg-bg-light
+```
 
 ## State Management
 

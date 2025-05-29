@@ -9,7 +9,7 @@ This directory contains comprehensive documentation for the South Lamar Studios 
 | Document | Description |
 |----------|-------------|
 | [CODEBASE_OVERVIEW.md](./CODEBASE_OVERVIEW.md) | Technical overview of the project architecture, structure, and components |
-| [PROJECT_REFERENCE.md](./PROJECT_REFERENCE.md) | Business context, target audience, and project goals |
+| [PROJECT_REFERENCE.md](./PROJECT_REFERENCE.md) | Business context, B2B podcast production service details, and project goals |
 | [SETUP_GUIDE.md](./SETUP_GUIDE.md) | Instructions for setting up the development environment |
 | [DEVELOPMENT_GUIDE.md](./DEVELOPMENT_GUIDE.md) | Guidelines for development workflow and coding standards |
 | [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) | Instructions for deploying the website to production |
@@ -22,6 +22,7 @@ This directory contains comprehensive documentation for the South Lamar Studios 
 | [CONTENT_MANAGEMENT.md](./CONTENT_MANAGEMENT.md) | Instructions for managing content in Contentful CMS |
 | [ANALYTICS_TRACKING.md](./ANALYTICS_TRACKING.md) | Details on analytics implementation and tracking |
 | [SEO_STRATEGY.md](./SEO_STRATEGY.md) | SEO optimization strategies and implementation |
+| [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) | Comprehensive design system with Tailwind CSS v4 and Framer Motion |
 
 ### Operational Documentation
 
@@ -53,19 +54,34 @@ The South Lamar Studios website is built with:
 
 - **Frontend Framework**: Next.js 15.3.1 with App Router
 - **UI Library**: React 19.0.0
-- **Styling**: Tailwind CSS 4 with @theme directive
+- **Styling**: Tailwind CSS 4 with @theme directive and comprehensive design system
 - **Language**: TypeScript 5
 - **CMS**: Contentful headless CMS
 - **Deployment**: Vercel
 - **Analytics**: Vercel Analytics and Google Tag Manager
-- **Icons**: Font Awesome 6 (SVG Core)
-- **Animations**: Framer Motion
+- **Icons**: Font Awesome 6 (SVG Core) with tree-shaking optimization
+- **Animations**: Framer Motion with scroll-triggered animations
 - **Image Optimization**: Sharp with Next.js Image component
 - **Utilities**: tailwind-merge for conditional classes
 
 ## Project Overview
 
-South Lamar Studios appears to be a business focused on creative services. The website serves as both a portfolio showcase and a business development tool with blog content and contact capabilities.
+South Lamar Studios is a B2B podcast production service that specializes in turning podcasts into powerful lead generation engines. The website serves as both a lead generation platform and educational resource, showcasing the company's unique "Podcast for Sales" approach.
+
+**Key Business Features:**
+- B2B lead generation focus through podcast production
+- Prospect-as-guest strategy for relationship building
+- Full-service production with sales integration
+- Pipeline guarantee and minimal client time investment
+- Professional content creation and distribution
+
+**Technical Highlights:**
+- Modern React 19 and Next.js 15.3.1 architecture
+- Tailwind CSS v4 with comprehensive design system
+- Font Awesome 6 with optimized SVG rendering
+- Enhanced animations with Framer Motion
+- Server-side rendering for SEO optimization
+- Contentful CMS for flexible content management
 
 ## Getting Help
 
@@ -77,4 +93,10 @@ If you encounter issues not addressed in this documentation:
 
 ## Documentation Maintenance
 
-This documentation set should be reviewed quarterly to ensure it remains accurate and comprehensive as the website evolves. 
+This documentation set should be reviewed quarterly to ensure it remains accurate and comprehensive as the website evolves. Recent updates include:
+
+- **Font Awesome 6 Upgrade**: Enhanced icon system with tree-shaking
+- **Tailwind CSS v4**: New @theme directive and design system
+- **Business Model Clarification**: B2B podcast production for lead generation
+- **Animation Enhancements**: Improved Framer Motion implementation
+- **Performance Optimizations**: Enhanced loading and interaction patterns 
