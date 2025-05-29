@@ -111,25 +111,26 @@ export default function MetricsSection() {
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
           <motion.div
-            className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-10 py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-bg-dark transition-all duration-300 relative"
+            className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-6 md:px-10 py-4 md:py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-bg-dark transition-all duration-300 relative max-w-full"
             initial={{ scale: 0, opacity: 0 }}
             animate={isInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             whileHover={{ scale: 1.01 }}
           >
-            {/* Connecting line behind text */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            {/* Connecting line behind text - hidden on mobile */}
+            <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none">
               <div className="w-full max-w-[calc(100%-80px)] h-px bg-bg-dark"></div>
             </div>
             
             <motion.div 
-              className="w-4 h-4 bg-secondary rounded-full shadow-sm relative z-10"
+              className="w-3 h-3 md:w-4 md:h-4 bg-secondary rounded-full shadow-sm relative z-10 flex-shrink-0"
             />
-            <Typography variant="subheading" as="span" className="font-semibold text-primary whitespace-nowrap leading-none flex items-center relative z-10 bg-white/90 px-4 rounded-full">
-              End-to-end podcast production for your business
+            <Typography variant="subheading" as="span" className="font-semibold text-primary text-center md:whitespace-nowrap leading-tight md:leading-none flex items-center relative z-10 bg-white/90 px-3 md:px-4 rounded-full text-sm md:text-base">
+              <span className="md:hidden">End-to-end podcast production</span>
+              <span className="hidden md:inline">End-to-end podcast production for your business</span>
             </Typography>
             <motion.div
-              className="w-3 h-3 bg-tertiary rounded-full relative z-10"
+              className="w-2.5 h-2.5 md:w-3 md:h-3 bg-tertiary rounded-full relative z-10 flex-shrink-0"
             />
           </motion.div>
         </motion.div>
