@@ -44,7 +44,7 @@ const Header = () => {
   useEffect(() => {
     if (!isMounted || pathname !== '/') return;
 
-    const sections = ['home', 'features', 'process', 'pricing', 'faq'];
+    const sections = ['home', 'what-we-do', 'process', 'pricing', 'faq'];
     
     // Function to find the most centered section in the viewport
     const findCenteredSection = () => {
@@ -170,10 +170,10 @@ const Header = () => {
               Home
             </button>
             <button 
-              onClick={() => scrollToSection('features')}
-              className={`${getNavItemStyle('features')} transition`}
+              onClick={() => scrollToSection('what-we-do')}
+              className={`${getNavItemStyle('what-we-do')} transition`}
             >
-              Features
+              What We Do
             </button>
             <button 
               onClick={() => scrollToSection('process')}
@@ -262,10 +262,10 @@ const Header = () => {
               Home
             </button>
             <button 
-              onClick={() => scrollToSection('features')}
-              className={`${getNavItemStyle('features')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
+              onClick={() => scrollToSection('what-we-do')}
+              className={`${getNavItemStyle('what-we-do')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
-              Features
+              What We Do
             </button>
             <button 
               onClick={() => scrollToSection('process')}

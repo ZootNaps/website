@@ -126,7 +126,7 @@ const HeroSection = () => {
                 </Link>
               </motion.div>
               <motion.button 
-                onClick={() => scrollToElement('features')}
+                onClick={() => scrollToElement('what-we-do')}
                 className="group text-primary hover:text-secondary font-medium py-3 px-6 rounded-md text-center transition-all duration-300 hover:bg-white/50 flex items-center gap-2"
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}

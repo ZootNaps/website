@@ -6,8 +6,8 @@ import { faUserCheck, faHandshake, faMicrophone, faEnvelopeOpenText, faClipboard
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 
-// Feature card data to ensure consistency
-const features = [
+// What We Do items data to ensure consistency
+const whatWeDoItems = [
   {
     icon: faEnvelopeOpenText,
     title: "Unparalleled Response Rates",
@@ -58,7 +58,7 @@ const features = [
   }
 ];
 
-const FeaturesSection = () => {
+const WhatWeDoSection = () => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -86,7 +86,7 @@ const FeaturesSection = () => {
   };
 
   return (
-    <section id="features" className="py-20 md:py-28 relative bg-linear-to-b from-white via-primary-50 to-white overflow-hidden">
+    <section id="what-we-do" className="py-20 md:py-28 relative bg-linear-to-b from-white via-primary-50 to-white overflow-hidden">
       {/* Decorative gradient lines */}
       <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-secondary/20 to-transparent"></div>
       <div className="absolute bottom-0 inset-x-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"></div>
@@ -100,7 +100,7 @@ const FeaturesSection = () => {
             <div className="inline-flex items-center gap-2 mb-8">
               <div className="flex items-center gap-2">
                 <span className="px-4 py-2 bg-linear-to-r from-secondary/10 to-secondary-50 text-dark text-sm font-semibold rounded-full border border-secondary/20">
-                  🎯 Sales First Approach
+                  🎯 Sales First Podcasts
                 </span>
               </div>
             </div>
@@ -111,27 +111,27 @@ const FeaturesSection = () => {
           </div>
           
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">
-            This isn't just another marketing podcast. Our system is designed specifically to generate qualified leads, 
+            Podcasting shouldn't be a marketing experiment. Our system is designed specifically to generate qualified leads, 
             nurture relationships with potential clients, and convert conversations into revenue.
           </p>
         </div>
 
-        {/* Features Grid with enhanced cards */}
+        {/* What We Do Grid with enhanced cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {features.map((feature, index) => (
+          {whatWeDoItems.map((item, index) => (
             <div
               key={index}
-              className={`group relative bg-white rounded-2xl p-8 border border-gray-100 hover:${feature.borderColor} transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
+              className={`group relative bg-white rounded-2xl p-8 border border-gray-100 hover:${item.borderColor} transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
               style={{
                 '--hover-shadow': `rgba(${
-                  feature.color === 'secondary' ? '231, 111, 81' : 
-                  feature.color === 'primary' ? '42, 61, 69' : 
+                  item.color === 'secondary' ? '231, 111, 81' : 
+                  item.color === 'primary' ? '42, 61, 69' : 
                   '88, 164, 176'
                 }, 0.1)`
               } as React.CSSProperties}
               onMouseEnter={(e) => {
-                const shadowColor = feature.color === 'secondary' ? 'rgba(231, 111, 81, 0.1)' : 
-                                  feature.color === 'primary' ? 'rgba(42, 61, 69, 0.1)' : 
+                const shadowColor = item.color === 'secondary' ? 'rgba(231, 111, 81, 0.1)' : 
+                                  item.color === 'primary' ? 'rgba(42, 61, 69, 0.1)' : 
                                   'rgba(88, 164, 176, 0.1)';
                 e.currentTarget.style.boxShadow = `0 25px 50px -12px ${shadowColor}`;
               }}
@@ -140,25 +140,25 @@ const FeaturesSection = () => {
               }}
             >
               {/* Animated top border */}
-              <div className={`absolute inset-x-0 top-0 h-1 bg-${feature.color} transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 rounded-t-2xl`}></div>
+              <div className={`absolute inset-x-0 top-0 h-1 bg-${item.color} transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100 rounded-t-2xl`}></div>
               
               {/* Background subtle overlay on hover */}
-              <div className={`absolute inset-0 ${feature.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
+              <div className={`absolute inset-0 ${item.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
               
               {/* Icon with clean styling */}
               <div 
-                className={`w-16 h-16 rounded-2xl ${feature.bgColor} border ${feature.borderColor} flex items-center justify-center text-${feature.color} transition-all duration-500 shadow-sm mb-6`}
+                className={`w-16 h-16 rounded-2xl ${item.bgColor} border ${item.borderColor} flex items-center justify-center text-${item.color} transition-all duration-500 shadow-sm mb-6`}
               >
-                <FontAwesomeIcon icon={feature.icon} className="w-8 h-8" />
+                <FontAwesomeIcon icon={item.icon} className="w-8 h-8" />
               </div>
               
               {/* Content */}
               <div className="relative z-10">
                 <h3 className="text-xl font-bold mb-4 text-primary group-hover:text-primary-dark transition-colors duration-300">
-                  {feature.title}
+                  {item.title}
                 </h3>
                 <p className="text-gray leading-relaxed mb-4">
-                  {feature.description}
+                  {item.description}
                 </p>
               </div>
             </div>
@@ -173,11 +173,11 @@ const FeaturesSection = () => {
           <div className="bg-white rounded-3xl border border-gray-100 p-12 text-center shadow-xl relative overflow-hidden">
             {/* Enhanced headline */}
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-              B2B Podcasts - <span className="font-extrabold text-secondary">Reimagined</span>.
+              Business Podcasts - <span className="font-extrabold text-secondary">Reimagined</span>.
             </h3>
             
             <p className="text-lg text-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-              Stop treating podcasting like a marketing experiment. Start using it as a sophisticated sales tool that generates measurable ROI from day one.
+              80% of business podcasts fail before their 10th episode. Ours don't.
             </p>
             
             <motion.div
@@ -188,10 +188,7 @@ const FeaturesSection = () => {
                 href="/contact"
                 className="inline-flex items-center gap-3 bg-linear-to-r from-secondary to-secondary-dark hover:from-secondary-dark hover:to-secondary text-white font-semibold py-4 px-10 rounded-xl text-lg transition-all duration-300 shadow-strong hover:shadow-glow transform hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-secondary/50"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12l4 4 4-4m0-6l-4-4-4 4" />
-                </svg>
-                Start Building Your Sales Machine
+                Book a Strategy Call Today
               </Link>
             </motion.div>
           </div>
@@ -201,4 +198,4 @@ const FeaturesSection = () => {
   );
 };
 
-export default FeaturesSection; 
+export default WhatWeDoSection; 
