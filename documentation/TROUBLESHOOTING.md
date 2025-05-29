@@ -181,6 +181,67 @@ Custom colors or styles not applying
 2. Verify that the custom styles are properly defined in the `extend` section
 3. Restart the development server to apply configuration changes
 
+### Tailwind CSS v4 and Design System
+
+**Issue**: CSS custom properties not working with new @theme directive
+```
+CSS variables defined in @theme not applying
+```
+
+**Solution**:
+1. Ensure you're using Tailwind CSS v4 or later
+2. Verify the `@theme` directive is properly placed in `globals.css`
+3. Check that the CSS custom property names follow the correct format:
+   ```css
+   @theme {
+     --color-primary: #2a3d45;  /* Correct */
+     --primary: #2a3d45;        /* Legacy format */
+   }
+   ```
+
+**Issue**: Animation classes not working
+```
+Custom animation utilities like .animate-float not applying
+```
+
+**Solution**:
+1. Check that keyframes are defined in `globals.css`
+2. Verify animation classes are properly defined:
+   ```css
+   .animate-float {
+     animation: float 6s ease-in-out infinite;
+   }
+   ```
+3. Ensure `@media (prefers-reduced-motion: reduce)` is not overriding animations
+
+**Issue**: Shadow utilities not displaying correctly
+```
+Custom shadow classes like .shadow-soft not working
+```
+
+**Solution**:
+1. Verify shadow utilities are defined in the CSS:
+   ```css
+   .shadow-soft {
+     box-shadow: var(--shadow-soft);
+   }
+   ```
+2. Check that CSS custom properties are properly set in the `:root` selector
+3. Inspect element to ensure shadows aren't being overridden by other styles
+
+**Issue**: Color palette inconsistencies
+```
+Colors appearing different than expected
+```
+
+**Solution**:
+1. Use the design system colors consistently:
+   - `bg-primary`, `text-primary` for primary colors
+   - `bg-secondary`, `text-secondary` for accent colors
+   - `bg-tertiary`, `text-tertiary` for additional accents
+2. Check the styleguide page at `/styleguide` for color reference
+3. Verify color values in both `@theme` directive and `:root` selector match
+
 ### Responsive Design
 
 **Issue**: Layout breaks on mobile devices
@@ -363,4 +424,56 @@ If you're unable to resolve an issue using this guide:
 1. Search for similar issues in the Next.js GitHub repository
 2. Check the Contentful documentation for CMS-related issues
 3. Post questions on Stack Overflow with the appropriate tags
-4. Consult the project team for specific implementation details 
+4. Consult the project team for specific implementation details
+
+### Framer Motion Animations
+
+**Issue**: Framer Motion animations not working
+```
+motion components not animating as expected
+```
+
+**Solution**:
+1. Ensure Framer Motion is properly imported:
+   ```tsx
+   import { motion, useInView } from 'framer-motion';
+   ```
+2. Check that the component is wrapped with `motion.div` or similar
+3. Verify animation variants are properly defined:
+   ```tsx
+   const variants = {
+     hidden: { opacity: 0, y: 50 },
+     visible: { opacity: 1, y: 0 }
+   };
+   ```
+
+**Issue**: Scroll-triggered animations not firing
+```
+useInView hook not detecting element visibility
+```
+
+**Solution**:
+1. Ensure the ref is properly attached to the element:
+   ```tsx
+   const ref = useRef(null);
+   const isInView = useInView(ref, { once: true });
+   
+   <motion.div ref={ref}>
+   ```
+2. Check that the element has sufficient height to trigger intersection
+3. Adjust the `threshold` option in `useInView` if needed
+
+**Issue**: Performance issues with animations
+```
+Animations causing lag or stuttering
+```
+
+**Solution**:
+1. Use `will-change: transform` CSS property for animated elements
+2. Prefer animating `transform` and `opacity` properties
+3. Add `layout` prop sparingly as it can be performance-intensive
+4. Consider using `useReducedMotion` for accessibility:
+   ```tsx
+   import { useReducedMotion } from 'framer-motion';
+   const shouldReduceMotion = useReducedMotion();
+   ``` 

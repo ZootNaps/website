@@ -96,13 +96,6 @@ const FeaturesSection = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
               Built for <span className="font-extrabold bg-linear-to-r from-secondary via-secondary-dark to-secondary-light bg-clip-text text-transparent drop-shadow-sm">Sales</span> - Not Marketing.
             </h2>
-            
-            {/* Example comparison for clarity */}
-            <div className="inline-flex items-center gap-6 text-sm font-medium mb-6">
-              <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">Standard Colors</span>
-              <span className="text-gray-400">vs</span>
-              <span className="bg-linear-to-r from-secondary to-secondary-dark bg-clip-text text-transparent font-bold">Custom Colors</span>
-            </div>
           </div>
           
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">

@@ -53,35 +53,95 @@ The project follows the Next.js App Router structure:
 
 ### Icons and UI Elements
 
-The project uses Font Awesome 6 for icons:
+The project uses Font Awesome 6 for icons with enhanced tree-shaking:
 
 ```tsx
 // Importing the icon component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faChevronDown, faUserCheck, faHandshake } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 // Using in a component
 <FontAwesomeIcon icon={faCheck} className="text-green-500 mr-2" />
+<FontAwesomeIcon icon={faUserCheck} className="w-8 h-8 text-secondary" />
 ```
 
-Font Awesome is configured in `src/lib/fontawesome.ts` with commonly used icons to reduce bundle size.
+Font Awesome is automatically configured with global CSS imports in the root layout. The library supports both solid and brand icons with optimized SVG rendering.
 
 ### Styling
 
-- Use Tailwind CSS for styling components
-- Follow the predefined color scheme in `tailwind.config.js`
+- Use Tailwind CSS v4 for styling components
+- Follow the design system defined in `@theme` directive in `globals.css`
+- Use the comprehensive color palette (primary, secondary, tertiary with full shade ranges)
 - Use the `tailwind-merge` utility for conditional class names
-- For complex components, organize classes logically:
+- Leverage CSS custom properties for consistent theming:
   ```tsx
   <div
     className={`
       w-full p-4 rounded-lg 
       bg-primary text-white 
       hover:bg-primary-dark transition-colors
+      shadow-soft hover:shadow-medium
     `}
   >
   ```
+
+### Animation and Interactions
+
+The project uses Framer Motion for enhanced animations and interactions:
+
+```tsx
+import { motion, useInView } from 'framer-motion';
+
+// Basic motion component
+<motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="btn-primary"
+>
+  Click me
+</motion.div>
+
+// Scroll-triggered animations
+const ref = useRef(null);
+const isInView = useInView(ref, { once: true });
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.1
+    }
+  }
+};
+
+<motion.div
+  ref={ref}
+  variants={containerVariants}
+  initial="hidden"
+  animate={isInView ? "visible" : "hidden"}
+>
+  {/* Animated content */}
+</motion.div>
+```
+
+### CSS Architecture
+
+The project now uses a comprehensive design system with:
+
+1. **@theme Directive**: Tailwind v4's new configuration method
+2. **Design Tokens**: Consistent spacing, colors, typography, and shadows
+3. **Accessibility**: Enhanced focus states, reduced motion support, and contrast adjustments
+4. **Animation System**: Predefined keyframes and utilities
+5. **Legacy Compatibility**: Both new format and legacy CSS variables
+
+Key utility classes available:
+- `.shadow-soft`, `.shadow-medium`, `.shadow-strong`, `.shadow-glow`
+- `.animate-scroll`, `.animate-float`, `.animate-pulse-soft`
+- `.text-gradient`, `.text-gradient-primary`, `.text-gradient-vibrant`
+- `.section-spacing`, `.section-spacing-sm`, `.section-spacing-lg`
 
 ## State Management
 
@@ -267,4 +327,12 @@ The site is deployed on Vercel. The deployment process:
 - [Contentful Developer Documentation](https://www.contentful.com/developers/docs/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-- [Vercel Documentation](https://vercel.com/docs) 
+- [Vercel Documentation](https://vercel.com/docs)
+
+## Build Process
+- Development: `npm run dev` - runs Next.js dev server with Turbopack
+- Build: `npm run build` - builds the Next.js application
+- Post-build: `next-sitemap` - generates sitemap
+- Start: `npm run start` - starts the production server
+
+Note: ESLint has been removed from the project as of recent updates. 

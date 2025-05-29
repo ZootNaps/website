@@ -7,13 +7,16 @@ This project is a modern website built with Next.js that appears to be for South
 - **Frontend Framework**: Next.js 15.3.1 (with App Router)
 - **React**: v19.0.0
 - **TypeScript**: v5+
-- **Styling**: Tailwind CSS v4 with PostCSS
+- **Styling**: Tailwind CSS v4 with @theme directive and PostCSS
 - **CMS**: Contentful for content management
 - **Deployment**: Vercel (based on configuration)
 - **Image Optimization**: Sharp, Next.js Image component
 - **Analytics**: Vercel Analytics and Speed Insights
 - **SEO**: Next Sitemap for sitemap generation
 - **Email**: Nodemailer for contact form
+- **Icons**: Font Awesome 6 (FontAwesome SVG Core)
+- **Animations**: Framer Motion for enhanced UI interactions
+- **Utilities**: tailwind-merge for conditional class names
 
 ## Directory Structure
 
@@ -106,23 +109,38 @@ Components are organized by feature/section with shared components separated.
 ## Dependencies
 
 ### Core Dependencies
-- `next` - Next.js framework
-- `react` & `react-dom` - React library
-- `contentful` - Contentful CMS client
-- `contentful-management` - Contentful management API
-- `@contentful/rich-text-react-renderer` - Renders Contentful rich text
-- `next-mdx-remote` - Processes MDX content
-- `tailwindcss` - Utility-first CSS framework
-- `nodemailer` - Email sending
-- `next-sitemap` - Sitemap generation
+- `next` - Next.js framework (v15.3.1)
+- `react` & `react-dom` - React library (v19.0.0)
+- `contentful` - Contentful CMS client (v11.5.23)
+- `contentful-management` - Contentful management API (v11.52.2)
+- `@contentful/rich-text-react-renderer` - Renders Contentful rich text (v16.0.1)
+- `@contentful/rich-text-types` - Rich text type definitions (v17.0.0)
+- `next-mdx-remote` - Processes MDX content (v5.0.0)
+- `tailwindcss` - Utility-first CSS framework (v4)
+- `tailwind-merge` - Utility for merging Tailwind classes (v3.2.0)
+- `nodemailer` - Email sending (v7.0.3)
+- `next-sitemap` - Sitemap generation (v4.2.3)
 - `@vercel/analytics` & `@vercel/speed-insights` - Vercel analytics
-- `@fortawesome/fontawesome-svg-core` & related packages - Icon library
+- `framer-motion` - Animation library for React (v12.15.0)
+- `react-intersection-observer` - Intersection Observer API wrapper (v9.16.0)
+- `@fortawesome/fontawesome-svg-core` & related packages - Font Awesome 6 icon library
+  - `@fortawesome/free-solid-svg-icons` (v6.7.2)
+  - `@fortawesome/free-brands-svg-icons` (v6.7.2) 
+  - `@fortawesome/free-regular-svg-icons` (v6.7.2)
+  - `@fortawesome/react-fontawesome` (v0.2.2)
+- `@heroicons/react` - Heroicons React components (v2.2.0)
+- `sharp` - Image processing (v0.34.1)
+- `dotenv` - Environment variable loading (v16.5.0)
 
 ### Dev Dependencies
-- `typescript` - TypeScript language
+- `typescript` - TypeScript language (v5)
 - `@types/*` - TypeScript type definitions
-- `autoprefixer` - CSS prefixing
-- `@tailwindcss/postcss` - Tailwind CSS PostCSS plugin
+  - `@types/node` (v20.17.50)
+  - `@types/nodemailer` (v6.4.17)
+  - `@types/react` (v19.1.5)
+  - `@types/react-dom` (v19.1.5)
+- `autoprefixer` - CSS prefixing (v10.4.21)
+- `@tailwindcss/postcss` - Tailwind CSS PostCSS plugin (v4.1.5)
 
 ## Security Implementations
 - Content Security Policy (CSP) headers

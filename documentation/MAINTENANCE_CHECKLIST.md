@@ -110,14 +110,16 @@ This document outlines regular maintenance tasks required to keep the South Lama
 
 ### Code Quality Assessment
 
-- [ ] Run linting and type checking on the entire codebase:
+- [ ] Run type checking on the entire codebase:
   ```bash
-  npm run lint
   npx tsc --noEmit
   ```
 - [ ] Review and refactor any problematic code patterns
 - [ ] Update code comments and documentation
 - [ ] Verify that code follows current best practices
+- [ ] Check the styleguide page (`/styleguide`) for design system consistency
+
+Note: ESLint has been removed from the project as of recent updates.
 
 ### Feature Assessment
 

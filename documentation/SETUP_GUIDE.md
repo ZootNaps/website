@@ -114,21 +114,24 @@ If content isn't loading:
 The project includes several helpful tools:
 
 - TypeScript for type checking: `npx tsc --noEmit`
-- ESLint for code linting: `npm run lint`
 - Next.js analytics: Available in the Vercel dashboard after deployment
+- Styleguide: Available at `/styleguide` for design system reference
+
+Note: ESLint has been removed from the project as of recent updates.
 
 ## Editor Setup
 
 For optimal development experience:
 
 - Use Visual Studio Code with the following extensions:
-  - ESLint
-  - Prettier
-  - Tailwind CSS IntelliSense
-  - TypeScript support
+  - Prettier (for code formatting)
+  - Tailwind CSS IntelliSense (for CSS class suggestions)
+  - TypeScript support (built-in)
+  - ES7+ React/Redux/React-Native snippets (for React development)
 
 ## Recommended Configuration
 
 - Enable formatting on save in your editor
 - Configure TypeScript strict checking
-- Use browser developer tools for debugging 
+- Use browser developer tools for debugging
+- Visit `/styleguide` to reference the design system and component library 

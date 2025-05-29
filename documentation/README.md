@@ -53,11 +53,15 @@ The South Lamar Studios website is built with:
 
 - **Frontend Framework**: Next.js 15.3.1 with App Router
 - **UI Library**: React 19.0.0
-- **Styling**: Tailwind CSS 4
-- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4 with @theme directive
+- **Language**: TypeScript 5
 - **CMS**: Contentful headless CMS
 - **Deployment**: Vercel
 - **Analytics**: Vercel Analytics and Google Tag Manager
+- **Icons**: Font Awesome 6 (SVG Core)
+- **Animations**: Framer Motion
+- **Image Optimization**: Sharp with Next.js Image component
+- **Utilities**: tailwind-merge for conditional classes
 
 ## Project Overview
 
