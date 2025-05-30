@@ -105,10 +105,10 @@ export default function MetricsSection() {
             color="primary" 
             className="mb-6"
           >
-            No Audience? No Problem.
+            Results That Matter: Revenue, Not Downloads.
           </Typography>
           <Typography variant="body-lg" color="gray" className="max-w-3xl mx-auto mb-8">
-            We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
+            Our "Podcast for Sales" system delivers measurable business results through strategic relationship building and sales process integration, not vanity metrics.
           </Typography>
           <motion.div
             className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-6 md:px-10 py-4 md:py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-bg-dark transition-all duration-300 relative max-w-full"
@@ -135,8 +135,8 @@ export default function MetricsSection() {
               }}
             />
             <Typography variant="subheading" as="span" className="font-semibold text-primary text-center md:whitespace-nowrap leading-tight md:leading-none flex items-center relative z-10 bg-white/90 px-3 md:px-4 rounded-full text-sm md:text-base">
-              <span className="md:hidden">See Our Process in Action.</span>
-              <span className="hidden md:inline">See How Gus Closed 2 Deals from 8 Podcast Interviews</span>
+              <span className="md:hidden">See Our "Podcast for Sales" Process.</span>
+              <span className="hidden md:inline">See How Our "Podcast for Sales" System Delivered 2 Deals from 8 Interviews</span>
             </Typography>
             <motion.div
               className="w-2.5 h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full relative z-10 flex-shrink-0"

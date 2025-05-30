@@ -26,42 +26,42 @@ const ProcessSection = () => {
   const tabContent = {
     'discovery-strategy': {
       title: 'Discovery & Strategy',
-      description: 'We kick off by deeply understanding your business, ideal client profile, and sales objectives to co-create a podcast strategy laser-focused on generating qualified B2B leads.',
+      description: 'We kick off by deeply understanding your business, ideal client profile, and sales objectives to co-create a "Podcast for Sales" strategy designed to fit seamlessly within your existing sales processes and marketing funnels.',
       points: [
-        'Collaborative B2B podcast strategy workshop',
+        'Collaborative "Podcast for Sales" strategy workshop tailored to your sales process',
         'Ideal Client Persona (ICP) refinement for targeted guest prospecting',
-        'Content and interview planning to maximize lead generation opportunities',
-        'Defining key performance indicators (KPIs) for sales pipeline impact'
+        'Sales-first content and interview planning to maximize lead generation opportunities',
+        'Defining key performance indicators (KPIs) for sales pipeline impact and revenue tracking'
       ]
     },
     'guest-sourcing-qualification': {
       title: 'Guest Prospecting & Qualification',
-      description: 'Our unique approach involves identifying and inviting your ideal prospects to be guests on your show, followed by a qualification call with you to ensure perfect alignment.',
+      description: 'Our unique approach involves identifying and inviting your ideal prospects to be guests on your show, followed by a qualification call with you to ensure perfect alignment and readiness to buy.',
       points: [
-        'Targeted prospect identification mirroring your Ideal Client Profile',
-        'Personalized outreach to invite high-value potential customers as guests',
-        'Facilitated pre-interview qualification call between you and the prospect',
-        'Seamless scheduling and coordination for both you and your future guest'
+        'Strategic prospect identification mirroring your Ideal Client Profile for maximum sales potential',
+        'Personalized outreach campaigns to invite high-value potential customers as guests',
+        'Facilitated pre-interview qualification call to ensure guests are decision-makers ready to buy',
+        'Seamless scheduling and coordination that creates a premium experience for your prospects'
       ]
     },
     'interview-content-production': {
       title: 'Interview & Content Production',
-      description: 'We equip you with proven interview techniques for insightful conversations. After you record, our team expertly transforms the footage into a suite of compelling marketing assets.',
+      description: 'We equip you with proven "soft-sell" interview talk tracks for strategic conversations. After you record, our team creates professional content plus a special thank you package for guests.',
       points: [
-        'Interview preparation: talk tracks for engaging dialogue, pain discovery, and expert positioning',
-        'You host impactful interviews (virtual recording), then hand off the raw footage',
-        'Professional audio & video editing, plus creation of clips, blog posts, LinkedIn content, etc.',
-        'Meticulous quality control for all produced assets to ensure brand excellence'
+        'Custom interview talk tracks designed for soft-sell discovery and expert positioning',
+        'You host strategic interviews (virtual recording) designed to uncover pain points and showcase solutions',
+        'Professional audio & video editing, plus creation of clips, blog posts, and LinkedIn content',
+        'Curated "thank you" content package for guests to strengthen relationships and encourage sharing'
       ]
     },
     'distribution-sales-handoff': {
-      title: 'Distribution, Engagement & Sales Handoff',
-      description: 'We strategically publish your content, empower guest promotion, and provide frameworks for you to seamlessly transition these warm conversations into your sales process.',
+      title: 'Distribution & Sales Handoff',
+      description: 'We strategically publish your content, deliver premium thank you packages to guests, and execute tailored follow-up campaigns to seamlessly transition warm conversations into your sales process.',
       points: [
-        'Multi-platform publication of podcast episodes and all created assets',
-        'Delivery of handcrafted content to guests, encouraging co-promotion and expanding reach',
-        'Strategic follow-up email sequences to nurture guest relationships and initiate sales dialogues',
-        'Clear handoff and actionable insights for your sales team to convert leads'
+        'Multi-platform publication of podcast episodes and all created marketing assets',
+        'Delivery of premium thank you content packages to guests, encouraging co-promotion and relationship building',
+        'Tailored follow-up campaigns with multiple touchpoints to nurture guest relationships and initiate sales conversations',
+        'Clear handoff process and actionable insights for your sales team to convert qualified leads into customers'
       ]
     }
   };

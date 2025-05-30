@@ -7,7 +7,7 @@ import { faChevronDown, faChevronUp, faEnvelope, faMapMarkerAlt } from '@fortawe
 import { faTwitter, faFacebook, faLinkedin, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
-  const companyTagline = "Successful podcasts for your business - no audience required.";
+  const companyTagline = "Our 'Podcast for Sales' system generates revenue through strategic relationships - no audience required.";
   const currentYear = new Date().getFullYear();
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [aboutHeight, setAboutHeight] = useState(0);

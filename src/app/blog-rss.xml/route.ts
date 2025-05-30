@@ -11,7 +11,7 @@ export async function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>South Lamar Studios Blog</title>
-    <description>Expert tips, strategies, and case studies on B2B podcast production, content marketing, and using thought leadership to generate qualified leads and revenue.</description>
+    <description>Expert strategies and insights on our 'Podcast for Sales' system, sales-first podcasting, and using executive interviews to generate qualified leads and drive revenue.</description>
     <link>${baseUrl}/blog</link>
     <language>en-US</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>

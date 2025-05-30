@@ -4,24 +4,22 @@ import ClientBlogPage from './client';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "B2B Podcast & Content Marketing Insights | South Lamar Studios",
-  description: "Expert tips, strategies, and case studies on B2B podcast production, content marketing, and using thought leadership to generate qualified leads and revenue.",
+  title: "Podcast for Sales Insights & B2B Lead Generation Strategies | South Lamar Studios",
+  description: "Expert strategies and insights on our 'Podcast for Sales' system, sales-first podcasting, and using executive interviews to generate qualified leads and drive revenue.",
   keywords: [
-    "b2b podcast insights", 
-    "content marketing strategy", 
-    "podcast production tips", 
-    "lead generation content", 
-    "thought leadership marketing",
-    "b2b content strategy",
-    "podcast ROI",
-    "business podcasting guide"
+    "podcast for sales",
+    "sales-first podcasting",
+    "b2b lead generation",
+    "podcast production tips",
+    "executive interviews",
+    "sales process integration",
+    "qualified lead generation"
   ],
   openGraph: {
-    title: "B2B Podcast & Content Marketing Insights | South Lamar Studios",
-    description: "Expert tips, strategies, and case studies on B2B podcast production, content marketing, and using thought leadership to generate qualified leads and revenue.",
-    url: "https://southlamarstudios.com/blog",
+    title: "Podcast for Sales Insights & B2B Lead Generation Strategies | South Lamar Studios",
+    description: "Expert strategies and insights on our 'Podcast for Sales' system, sales-first podcasting, and using executive interviews to generate qualified leads and drive revenue.",
     type: "website",
-  }
+  },
 };
 
 // Construct Blog schema data

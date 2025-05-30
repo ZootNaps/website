@@ -9,31 +9,21 @@ import Script from 'next/script';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "B2B Podcast Production | South Lamar Studios",
-  description: "Expert B2B podcast production services that help businesses generate leads and drive revenue. Listen to our showcase podcast featuring founders and business leaders sharing insights on growth, strategy, and success.",
+  title: "Podcast for Sales System in Action | South Lamar Studios",
+  description: "See our 'Podcast for Sales' system in action. Listen to executive interviews that demonstrate our sales-first approach to B2B podcasting and lead generation.",
   keywords: [
-    "b2b podcast production", 
-    "business podcast", 
-    "founder interviews", 
-    "executive podcast", 
-    "thought leadership content",
+    "podcast for sales",
+    "b2b podcast production",
+    "sales-first podcasting",
+    "executive interviews",
     "lead generation podcast",
-    "business growth stories"
+    "b2b sales strategy"
   ],
   openGraph: {
-    title: "B2B Podcast Production | South Lamar Studios",
-    description: "Expert B2B podcast production services that help businesses generate leads and drive revenue. Listen to our showcase podcast featuring founders and business leaders.",
-    url: "https://southlamarstudios.com/podcast",
+    title: "Podcast for Sales System in Action | South Lamar Studios",
+    description: "See our 'Podcast for Sales' system in action. Listen to executive interviews that demonstrate our sales-first approach to B2B podcasting and lead generation.",
     type: "website",
-    images: [
-      {
-        url: "https://southlamarstudios.com/images/sls-Founder Facing_cover art.png",
-        width: 500,
-        height: 500,
-        alt: "Founder Facing Podcast Cover Art"
-      }
-    ]
-  }
+  },
 };
 
 // Construct PodcastSeries schema

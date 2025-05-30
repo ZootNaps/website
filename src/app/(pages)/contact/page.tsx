@@ -62,9 +62,9 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Get in Touch</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Ready to Generate Revenue?</h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Ready to get started? Or want to learn more? Send us a message and our team will get back to you within a few hours.
+              Schedule a free "Podcast for Sales" strategy consultation. Our team will show you how our system fits within your existing sales processes to generate qualified leads and drive revenue.
             </p>
           </motion.div>
           

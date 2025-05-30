@@ -49,7 +49,7 @@ const PricingSection = () => {
     },
     {
       name: 'Sales + Marketing',
-      description: "Maximize your podcast impact with premium content marketing for social, SEO, and more.",
+      description: "Scale your success with additional episodes and enhanced guest experience packages for maximum relationship building.",
       price: 16999,
       features: [
         'All Sales Premium features',
@@ -78,9 +78,9 @@ const PricingSection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Packages and Pricing</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Invest in Revenue Growth</h2>
           <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
-            Choose the plan that's right for you.
+            Choose your "Podcast for Sales" package. Average 3x ROI within 90 days with 95% client success rate.
           </p>
         </motion.div>
         

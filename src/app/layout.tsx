@@ -26,31 +26,35 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "South Lamar Studios | B2B Podcast Production & Lead Generation",
-    template: "%s | South Lamar Studios",
+    default: "South Lamar Studios | Podcast for Sales System & B2B Lead Generation",
+    template: "%s | South Lamar Studios"
   },
-  description: "Transform your B2B podcast into a powerful sales engine. South Lamar Studios specializes in podcast production, guest outreach, and lead generation strategies that drive revenue for businesses. No large audience required.",
+  description: "Our proprietary 'Podcast for Sales' system fits seamlessly within your existing sales processes. 95% client success rate, 3x ROI in 90 days. No large audience required - focus on qualified leads and revenue.",
   keywords: [
-    "b2b podcast production", 
-    "podcast lead generation", 
-    "business podcast services", 
-    "podcast guest outreach", 
-    "b2b content marketing", 
-    "podcast sales funnel", 
-    "executive interview podcast", 
-    "podcast audience growth", 
-    "revenue-generating podcast",
-    "podcast marketing strategy",
-    "thought leadership podcast",
     "podcast for sales",
+    "b2b podcast production",
+    "sales-first podcasting",
+    "business podcast services",
+    "podcast lead generation",
+    "no audience required",
+    "podcast audience growth",
+    "sales process integration",
+    "podcast marketing strategy",
+    "qualified lead generation",
+    "b2b sales tool",
     "b2b podcast agency",
     "podcast production austin",
-    "business development podcast",
-    "podcast roi measurement",
+    "executive interviews",
+    "soft-sell strategy",
+    "b2b content marketing",
+    "podcast guest outreach",
+    "b2b podcast for sales",
+    "podcast monetization",
     "strategic podcast consulting",
     "podcast guest booking",
-    "b2b sales podcast",
-    "podcast monetization"
+    "b2b podcast for sales",
+    "podcast roi measurement",
+    "thought leadership podcast"
   ],
   authors: [{ name: "Gus Joseph" }],
   creator: "South Lamar Studios",
@@ -60,27 +64,26 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    title: "South Lamar Studios | Podcast for Sales System & B2B Lead Generation",
+    description: "Our proprietary 'Podcast for Sales' system fits seamlessly within your existing sales processes. 95% client success rate, 3x ROI in 90 days.",
     url: "https://southlamarstudios.com",
-    title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
-    description: "Transform your B2B podcast into a powerful sales engine. Expert podcast production, guest outreach, and lead generation strategies that drive revenue for businesses.",
     siteName: "South Lamar Studios",
+    locale: "en_US",
+    type: "website",
     images: [
       {
-        url: "https://southlamarstudios.com/images/og-image.jpg",
+        url: "/images/sls-logos/sls-logo-og.png",
         width: 1200,
         height: 630,
-        alt: "South Lamar Studios B2B Podcast Production & Lead Generation",
-      }
+        alt: "South Lamar Studios Podcast for Sales System & B2B Lead Generation",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
-    description: "Transform your B2B podcast into a powerful sales engine. Expert podcast production, guest outreach, and lead generation strategies that drive revenue for businesses.",
-    creator: "@southlamarstudios",
-    images: ["https://southlamarstudios.com/images/twitter-image.jpg"],
+    title: "South Lamar Studios | Podcast for Sales System & B2B Lead Generation",
+    description: "Our proprietary 'Podcast for Sales' system fits seamlessly within your existing sales processes. 95% client success rate, 3x ROI in 90 days.",
+    images: ["/images/sls-logos/sls-logo-og.png"],
   },
   alternates: {
     types: {
@@ -107,14 +110,37 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   "name": "South Lamar Studios",
-                  "url": "https://www.southlamarstudios.com",
-                  "logo": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png",
-                  "description": "South Lamar Studios\' B2B podcast for sales service turns your show into a powerful lead generation engine, helping you connect with executives and drive revenue.",
+                  "alternateName": "SLS",
+                  "url": "https://southlamarstudios.com",
+                  "logo": "https://southlamarstudios.com/images/sls-logos/sls-logo.png",
                   "sameAs": [
-                    "https://www.linkedin.com/company/southlamarstudios"
-                    // Add other official social profiles here from existing if accurate:
-                    // e.g., "https://twitter.com/southlamarstudios",
-                    // "https://www.facebook.com/southlamarstudios"
+                    "https://linkedin.com/company/south-lamar-studios"
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+1-512-555-0123",
+                    "contactType": "customer service",
+                    "availableLanguage": "en"
+                  },
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Austin",
+                    "addressRegion": "TX",
+                    "addressCountry": "US"
+                  },
+                  "description": "South Lamar Studios' proprietary 'Podcast for Sales' system helps B2B companies generate qualified leads and drive revenue through strategic executive interviews and sales process integration.",
+                  "founder": {
+                    "@type": "Person",
+                    "name": "Gus Joseph"
+                  },
+                  "foundingDate": "2023",
+                  "numberOfEmployees": "2-10",
+                  "knowsAbout": [
+                    "Podcast for Sales",
+                    "B2B Lead Generation", 
+                    "Sales-First Podcasting",
+                    "Executive Interviews",
+                    "Sales Process Integration"
                   ]
                 },
                 {
@@ -130,6 +156,17 @@ export default function RootLayout({
                       "url": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png"
                     }
                   }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Podcast for Sales System",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "South Lamar Studios"
+                  },
+                  "description": "Proprietary 'Podcast for Sales' system that integrates seamlessly with existing B2B sales processes to generate qualified leads through strategic executive interviews and relationship building.",
+                  "serviceType": "B2B Lead Generation",
+                  "areaServed": "United States"
                 }
               ]
             })

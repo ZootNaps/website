@@ -107,7 +107,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              End-to-end podcast production that turns executive interviews into qualified leads and direct sales revenue.
+              Our proprietary "Podcast for Sales" system fits seamlessly within your existing sales processes, turning executive interviews into qualified leads and direct revenue.
             </motion.p>
             
             <motion.div 

@@ -10,48 +10,48 @@ import Link from 'next/link';
 const whatWeDoItems = [
   {
     icon: faEnvelopeOpenText,
-    title: "Irresistable Outreach",
-    description: "Your dedicated podcast manager will find and reach out to your ideal prospects - , schedule, and follow up with your prospects. Industry-leading outreach that C Suite Executives are excited to respond to. Get your foot in the door, and get the conversation started.",
+    title: "Sales-First Outreach",
+    description: "Your dedicated podcast manager identifies and reaches out to your ideal prospects with industry-leading outreach that C-Suite executives are excited to respond to. Every guest is strategically selected to attract your ideal customers.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
   },
   {
     icon: faUserCheck,
-    title: "Customer Qualification",
-    description: "Multiple qualification steps ensure every guest is a qualified decision maker - and that they're ready to buy.",
+    title: "Qualified Guest Selection",
+    description: "Multiple qualification steps ensure every guest is a qualified decision maker ready to buy. No dud interviews - every conversation is strategically built to uncover pain points and position your solution.",
     color: "primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/20"
   },
   {
     icon: faClipboardQuestion,
-    title: "Seamless Discovery",
-    description: "Tailored interview questions that uncover your guests' exact pain points - and show how your product can help.",
+    title: "Soft-Sell Interview Strategy",
+    description: "We create custom interview talk tracks that enable seamless discovery and soft-sell positioning. Uncover your guests' exact pain points while naturally showcasing how your product can help.",
     color: "tertiary",
     bgColor: "bg-tertiary/10",
     borderColor: "border-tertiary/20"
   },
   {
     icon: faHandshake,
-    title: "Impactful Conversations",
-    description: "Hour long conversations that create lasting business relationships - and position you as a trusted advisor.",
+    title: "Incredible Guest Experience",
+    description: "We're obsessed with creating an amazing guest experience. From seamless interview coordination to high-quality thank you content packages that strengthen your relationship with potential customers.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
   },
   {
     icon: faHexagonNodes,
-    title: "Dozens of Touchpoints",
-    description: "Our process creates dozens of touchpoints that keep you top of mind for months after the interview.",
+    title: "Tailored Follow-Up Campaigns",
+    description: "Structured follow-up campaigns create multiple touchpoints to keep you top of mind. From post-interview thank you to publication updates and content delivery - keeping your sales cycle active.",
     color: "primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/20"
   },
   {
     icon: faMicrophone,
-    title: "World-Class Production Quality",
-    description: "High-quality assets that strengthen your brand, and clips that you (and your guests) are proud to share on social.",
+    title: "Professional Production Quality",
+    description: "High-quality assets that strengthen your brand, plus curated content packages for guests to share. Professional production that both you and your prospects are proud to associate with.",
     color: "tertiary",
     bgColor: "bg-tertiary/10",
     borderColor: "border-tertiary/20"
@@ -111,7 +111,7 @@ const WhatWeDoSection = () => {
           </div>
           
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">
-            Podcasting shouldn't be a marketing experiment. Our system is designed to help you generate leads and close deals - even if you never post a single clip from your podcast.
+            Our "Podcast for Sales" system isn't a marketing experiment - it's a sales tool designed to generate leads and close deals. The primary value comes from strategic guest interactions and relationship building, effective even if you never publish a single episode.
           </p>
         </div>
 

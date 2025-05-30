@@ -33,43 +33,43 @@ const FaqSection = () => {
   const faqItems = [
     {
       question: "What kind of ROI can we expect?",
-      answer: "ROI is measured by qualified leads, shorter sales cycles, and new revenue. With a focus on high-value B2B deals (e.g., $15k+ ACV), even a few conversions deliver significant returns."
+      answer: "Our clients average 3x ROI within 90 days with a 95% success rate. ROI is measured by qualified leads, shorter sales cycles, and new revenue. With our sales-first approach targeting high-value B2B deals, even a few conversions deliver significant returns."
     },
     {
       question: "Do I need a large audience for this to work?",
-      answer: "No. The primary value comes from strategic interactions with guests (potential clients) and using the content in direct sales engagement, making it effective even with zero initial listeners."
+      answer: "Absolutely not. Our 'Podcast for Sales' system works without any audience. The primary value comes from strategic interactions with guests (your potential clients) and the relationship-building process itself, not downloads or listener numbers."
     },
     {
       question: "We tried podcasting, but it didn't generate leads. How are you different?",
-      answer: "Many podcasts lack sales integration. Our proprietary \"B2B Podcast for Sales\" system is designed to fit within your existing sales process and marketing funnels. From guest outreach strategy, interview strategy, and post-interview nurture campaigns."
+      answer: "Most podcasts focus on audience-building and content marketing. Our proprietary 'Podcast for Sales' system is designed specifically to fit within your existing sales processes with three key differentiators: sales-first interview strategy with soft-sell talk tracks, obsessive focus on guest experience including thank you content packages, and tailored follow-up campaigns that keep prospects engaged."
     },
     {
-      question: "What is a \"Podcast for Sales\" vs. a regular B2B podcast?",
-      answer: "Our \"Podcast for Sales\" is a B2B client acquisition tool. Unlike typical podcasts, it uses executive interviews for direct outreach and lead qualification, effective even without a large audience."
+      question: "What exactly is your 'Podcast for Sales' system?",
+      answer: "Our 'Podcast for Sales' system is a sales-first approach that uses executive interviews for direct prospect outreach and relationship building. Unlike traditional podcasting, it's designed to integrate seamlessly with your existing sales processes and marketing funnels, effective even with zero audience."
     },
     {
       question: "What's involved in your system? What do you handle vs. what do we do?",
-      answer: "We offer a done-for-you service: strategy, guest identification support, prep, professional recording/editing, and sales leverage guidance. Your main role is approving guests and conducting interviews."
+      answer: "We provide a comprehensive done-for-you service: sales-first strategy development, prospect identification and outreach, interview preparation with soft-sell talk tracks, professional recording/editing, guest thank you content packages, and tailored follow-up campaigns. Your main role is approving qualified prospects and conducting the strategic interviews."
     },
     {
-      question: "Who is an ideal guest for a \"Podcast for Sales\"?",
-      answer: "Decision-makers at companies fitting your ideal customer profile (e.g., CEOs, CMOs in B2B SaaS). We help you target these executives, making the interview a key sales touchpoint."
+      question: "Who is an ideal guest for a 'Podcast for Sales' approach?",
+      answer: "Decision-makers at companies fitting your ideal customer profile (e.g., CEOs, CMOs in B2B SaaS). We help you target these executives strategically, making the interview a key sales touchpoint and relationship-building opportunity with qualified prospects."
     },
     {
       question: "How do you help turn podcast guests into clients?",
-      answer: "We structure interviews to build rapport and uncover needs. The high-quality content then serves as a powerful, non-salesy follow-up, creating a warm foundation for sales conversations with promising guests."
+      answer: "We structure interviews with soft-sell talk tracks to build rapport and uncover needs naturally. Then we create premium thank you content packages that serve as powerful, non-salesy follow-up tools, combined with tailored follow-up campaigns that keep you top-of-mind and create multiple touchpoints for your sales process."
     },
     {
       question: "How much of my team's time will this take per week/month?",
-      answer: "Minimal. After initial setup (a few hours total), expect ~2-4 hours/month for 2 episodes, or ~4-8 hours/month for 4 episodes, mainly for interview prep and recording. We handle the rest."
+      answer: "Minimal time investment. After initial strategy setup (a few hours total), expect ~2-4 hours/month for 2 episodes, or ~4-8 hours/month for 4 episodes, mainly for interview prep and recording. We handle all prospect outreach, content production, and follow-up campaigns."
     },
     {
-      question: "How long until we see results from this podcast lead generation service?",
-      answer: "Expect positive signals (e.g., better engagement from target accounts) within 2-3 months post-launch. Converting leads to sales depends on your typical sales cycle."
+      question: "How long until we see results from this approach?",
+      answer: "With our sales-first approach, expect positive signals (e.g., better engagement from target accounts, warmer prospect relationships) within 2-3 months post-launch. Converting leads to sales depends on your typical sales cycle, but the relationship foundation is built immediately."
     },
     {
-      question: "We're a B2B SaaS company. How does a podcast help our business development?",
-      answer: "It's a powerful way to connect with C-level executives in target accounts, showcase thought leadership, build relationships, and create authentic content that's more effective than cold outreach."
+      question: "We're a B2B SaaS company. How does this help our sales process?",
+      answer: "Our 'Podcast for Sales' system is perfect for B2B SaaS. It provides a compelling reason to connect with C-level executives in target accounts, showcases thought leadership naturally, builds authentic relationships, and creates premium content that's far more effective than cold outreach in moving prospects through your sales funnel."
     }
   ];
 
