@@ -36,32 +36,48 @@ const FaqSection = () => {
       answer: "Our clients average 3x ROI within 90 days with a 95% success rate. ROI is measured by qualified leads, shorter sales cycles, and new revenue. With our sales-first approach targeting high-value B2B deals, even a few conversions deliver significant returns."
     },
     {
+      question: "Wait, so this is sales outreach disguised as podcasting?",
+      answer: "We're completely transparent about our methodology. This is a sales development system that uses the vehicle of podcast interviews to secure strategic conversations with executives. The value exchange is real - prospects get to share their expertise on a professional platform, and you get qualified sales meetings. Both parties benefit genuinely."
+    },
+    {
+      question: "What if they realize this is a sales process?",
+      answer: "They should! The best relationships are built on transparency and mutual value. We're upfront that you're looking to connect with industry leaders, and they're getting a valuable platform to share their expertise. The conversation is structured as a genuine interview first - any sales discussions happen naturally afterward if there's mutual interest."
+    },
+    {
+      question: "How is this different from hiring SDRs?",
+      answer: "Traditional SDRs get 2-5% response rates with interruption-based cold outreach. Our executive access system gets 40-60% meeting acceptance rates by leading with value. Instead of hiring, training, and managing SDR turnover (avg $75K+ per SDR annually), you get immediate deployment with our experienced team for $9-17K/month."
+    },
+    {
       question: "Do I need a large audience for this to work?",
-      answer: "Absolutely not. Our 'Podcast for Sales' system works without any audience. The primary value comes from strategic interactions with guests (your potential clients) and the relationship-building process itself, not downloads or listener numbers."
+      answer: "Absolutely not. Our sales development system works without any audience. The primary value comes from strategic interactions with prospects (your potential clients) and the relationship-building process itself, not downloads or listener numbers."
     },
     {
       question: "We tried podcasting, but it didn't generate leads. How are you different?",
-      answer: "Most podcasts focus on audience-building and content marketing. Our proprietary 'Podcast for Sales' system is designed specifically to fit within your existing sales processes with three key differentiators: sales-first interview strategy with soft-sell talk tracks, obsessive focus on guest experience including thank you content packages, and tailored follow-up campaigns that keep prospects engaged."
+      answer: "Most podcasts focus on audience-building and content marketing. Our proprietary sales development system is designed specifically to fit within your existing sales processes with three key differentiators: sales-first conversation strategy with soft-sell frameworks, obsessive focus on prospect experience including thank you content packages, and tailored follow-up campaigns that keep prospects engaged."
     },
     {
-      question: "What exactly is your 'Podcast for Sales' system?",
-      answer: "Our 'Podcast for Sales' system is a sales-first approach that uses executive interviews for direct prospect outreach and relationship building. Unlike traditional podcasting, it's designed to integrate seamlessly with your existing sales processes and marketing funnels, effective even with zero audience."
+      question: "What exactly is your sales development system?",
+      answer: "Our system is a sales-first approach that uses executive interviews for direct prospect outreach and relationship building. Unlike traditional podcasting, it's designed to integrate seamlessly with your existing sales processes and CRM workflows, effective even with zero audience."
     },
     {
       question: "What's involved in your system? What do you handle vs. what do we do?",
-      answer: "We provide a comprehensive done-for-you service: sales-first strategy development, prospect identification and outreach, interview preparation with soft-sell talk tracks, professional recording/editing, guest thank you content packages, and tailored follow-up campaigns. Your main role is approving qualified prospects and conducting the strategic interviews."
+      answer: "We provide a comprehensive done-for-you service: sales-first strategy development, prospect identification and outreach, meeting preparation with soft-sell frameworks, professional recording/editing, prospect thank you content packages, and tailored follow-up campaigns. Your main role is approving qualified prospects and conducting the strategic sales conversations."
     },
     {
-      question: "Who is an ideal guest for a 'Podcast for Sales' approach?",
+      question: "Who is an ideal prospect for this approach?",
       answer: "Decision-makers at companies fitting your ideal customer profile (e.g., CEOs, CMOs in B2B SaaS). We help you target these executives strategically, making the interview a key sales touchpoint and relationship-building opportunity with qualified prospects."
     },
     {
-      question: "How do you help turn podcast guests into clients?",
-      answer: "We structure interviews with soft-sell talk tracks to build rapport and uncover needs naturally. Then we create premium thank you content packages that serve as powerful, non-salesy follow-up tools, combined with tailored follow-up campaigns that keep you top-of-mind and create multiple touchpoints for your sales process."
+      question: "How do you help turn prospects into clients?",
+      answer: "We structure conversations with soft-sell frameworks to build rapport and uncover needs naturally. Then we create premium thank you content packages that serve as powerful, non-salesy follow-up tools, combined with tailored follow-up campaigns that keep you top-of-mind and create multiple touchpoints for your sales process."
     },
     {
       question: "How much of my team's time will this take per week/month?",
-      answer: "Minimal time investment. After initial strategy setup (a few hours total), expect ~2-4 hours/month for 2 episodes, or ~4-8 hours/month for 4 episodes, mainly for interview prep and recording. We handle all prospect outreach, content production, and follow-up campaigns."
+      answer: "Minimal time investment. After initial strategy setup (a few hours total), expect ~2-4 hours/month for 2 conversations, or ~4-8 hours/month for 4 conversations, mainly for meeting prep and conducting the strategic sales conversations. We handle all prospect outreach, content production, and follow-up campaigns."
+    },
+    {
+      question: "How do you ensure prospects don't feel 'tricked' or manipulated?",
+      answer: "By leading with genuine value and being transparent about intentions. We position this as 'connecting with industry leaders for valuable conversations' - which is exactly what it is. The interview provides real value to them (platform, content, networking), and any business discussions happen naturally if there's mutual fit. It's relationship-building, not manipulation."
     },
     {
       question: "How long until we see results from this approach?",
@@ -69,7 +85,7 @@ const FaqSection = () => {
     },
     {
       question: "We're a B2B SaaS company. How does this help our sales process?",
-      answer: "Our 'Podcast for Sales' system is perfect for B2B SaaS. It provides a compelling reason to connect with C-level executives in target accounts, showcases thought leadership naturally, builds authentic relationships, and creates premium content that's far more effective than cold outreach in moving prospects through your sales funnel."
+      answer: "Our sales development system is perfect for B2B SaaS. It provides a compelling reason to connect with C-level executives in target accounts, showcases thought leadership naturally, builds authentic relationships, and creates premium content that's far more effective than cold outreach in moving prospects through your sales funnel."
     }
   ];
 

@@ -24,7 +24,7 @@ const CtaSection = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Let&apos;s Get Started
+            Let&apos;s Get Your Pipeline Moving
           </motion.h2>
           <motion.p 
             className="text-lg md:text-xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto"
@@ -33,7 +33,7 @@ const CtaSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Let&apos;s get your new favorite sales tool on the air. Send us your questions, or schedule a free strategy call now.
+            Stop making cold calls that get ignored. Start having strategic conversations with decision-makers who are excited to participate. Send us your questions, or schedule a free strategy call now.
           </motion.p>
           
           <motion.div 

@@ -1,49 +1,54 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { scrollToElement } from '@/utils/scrollUtils';
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
+
+const scrollToElement = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
 const HeroSection = () => {
   return (
-    <section id="home" className="pt-24 pb-20 relative overflow-hidden bg-linear-to-br from-primary-50 via-bg-light to-primary-100">
-      {/* Enhanced background with dynamic gradient overlay */}
-      <motion.div 
-        className="absolute inset-0 bg-linear-to-br from-primary/5 via-secondary/3 to-primary/8 z-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      ></motion.div>
-      
-      {/* Enhanced decorative elements with subtle animations */}
-      <motion.div 
-        className="absolute right-0 top-20 w-64 h-64 bg-secondary/8 rounded-full blur-3xl z-0"
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.1, 0.05]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      ></motion.div>
-      <motion.div 
-        className="absolute left-10 bottom-10 w-40 h-40 bg-primary/8 rounded-full blur-2xl z-0"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.05, 0.12, 0.05]
-        }}
-        transition={{ 
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      ></motion.div>
-      
+    <section id="home" className="relative min-h-[60vh] md:min-h-[85vh] bg-linear-to-br from-bg via-white to-primary-50 overflow-hidden pt-24 md:pt-0 flex items-center">
+      {/* Enhanced background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Main background gradient */}
+        <div className="absolute inset-0 bg-linear-to-br from-bg via-white to-primary-50"></div>
+        
+        {/* Floating geometric elements */}
+        <motion.div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        ></motion.div>
+        <motion.div 
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-tertiary/8 rounded-full blur-2xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.4, 0.6, 0.4]
+          }}
+          transition={{ 
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        ></motion.div>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <motion.div 
@@ -54,14 +59,14 @@ const HeroSection = () => {
           >
             <div className="relative">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary relative z-10">
-                Podcasts that{' '}
+                Turn Your Toughest Prospects{' '}
                 <motion.span 
                   className="text-secondary relative"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  sell.
+                  Into Eager Participants.
                   {/* Animated underline */}
                   <motion.div
                     className="absolute bottom-0 left-0 h-1 bg-secondary/30 rounded-full"
@@ -107,7 +112,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              Our proprietary "Podcast for Sales" system fits seamlessly within your existing sales processes, turning executive interviews into qualified leads and direct revenue.
+              Get strategic 45-minute conversations with decision-makers who normally ignore your calls. Our sales development system uses podcasting as the vehicle to secure meetings, build relationships, and advance deals through your pipeline.
             </motion.p>
             
             <motion.div 
@@ -152,7 +157,7 @@ const HeroSection = () => {
             <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
               <Image 
                 src="/images/hero-image.png"
-                alt="B2B podcast sales solution helping businesses connect with and sell to their top customers"
+                alt="Sales development system helping businesses connect with and sell to their top customers through strategic podcast conversations"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"

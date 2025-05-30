@@ -10,48 +10,48 @@ import Link from 'next/link';
 const whatWeDoItems = [
   {
     icon: faEnvelopeOpenText,
-    title: "Sales-First Outreach",
-    description: "Your dedicated podcast manager identifies and reaches out to your ideal prospects with industry-leading outreach that C-Suite executives are excited to respond to. Every guest is strategically selected to attract your ideal customers.",
+    title: "Executive Outreach & Meeting Booking",
+    description: "Your dedicated sales development manager identifies and reaches out to your ideal prospects with industry-leading outreach that gets C-Suite executives to say YES to strategic conversations. Every interaction is strategically designed to secure qualified sales meetings.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
   },
   {
     icon: faUserCheck,
-    title: "Qualified Guest Selection",
-    description: "Multiple qualification steps ensure every guest is a qualified decision maker ready to buy. No dud interviews - every conversation is strategically built to uncover pain points and position your solution.",
+    title: "Strategic Sales Conversations & Content Creation",
+    description: "Multiple qualification steps ensure every guest is a qualified decision maker ready to buy. We coach you on soft-sell interview techniques that naturally uncover pain points while positioning your solutions - creating valuable content as a byproduct.",
     color: "primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/20"
   },
   {
     icon: faClipboardQuestion,
-    title: "Soft-Sell Interview Strategy",
-    description: "We create custom interview talk tracks that enable seamless discovery and soft-sell positioning. Uncover your guests' exact pain points while naturally showcasing how your product can help.",
+    title: "Research & Prospect Intelligence",
+    description: "We research your exact ideal prospects and create custom conversation roadmaps that enable seamless discovery. Know exactly who you're talking to and what challenges you should explore before every strategic conversation.",
     color: "tertiary",
     bgColor: "bg-tertiary/10",
     borderColor: "border-tertiary/20"
   },
   {
     icon: faHandshake,
-    title: "Incredible Guest Experience",
-    description: "We're obsessed with creating an amazing guest experience. From seamless interview coordination to high-quality thank you content packages that strengthen your relationship with potential customers.",
+    title: "Premium Follow-Up Content & Relationship Building",
+    description: "We create premium thank you content packages that strengthen your relationship with potential customers. High-quality assets that both you and your prospects are proud to associate with, opening doors for continued conversations.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
   },
   {
     icon: faHexagonNodes,
-    title: "Tailored Follow-Up Campaigns",
-    description: "Structured follow-up campaigns create multiple touchpoints to keep you top of mind. From post-interview thank you to publication updates and content delivery - keeping your sales cycle active.",
+    title: "Systematic Nurture & Deal Advancement",
+    description: "Structured follow-up campaigns create multiple touchpoints to keep you top of mind and advance prospects through your sales pipeline. From post-conversation thank you to publication updates - keeping your sales cycle active.",
     color: "primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/20"
   },
   {
     icon: faMicrophone,
-    title: "Professional Production Quality",
-    description: "High-quality assets that strengthen your brand, plus curated content packages for guests to share. Professional production that both you and your prospects are proud to associate with.",
+    title: "Professional Content Publishing (Bonus)",
+    description: "As a bonus, we publish your strategic conversations as a professional podcast. This positions you as a thought leader while providing additional touchpoints with prospects and referral sources - but the primary value is the sales conversations themselves.",
     color: "tertiary",
     bgColor: "bg-tertiary/10",
     borderColor: "border-tertiary/20"
@@ -106,12 +106,12 @@ const WhatWeDoSection = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
-              Podcasts for <span className="font-extrabold text-secondary">Sales</span> - Not Just Marketing.
+              Sales Development System <span className="font-extrabold text-secondary">Disguised as Podcasting</span>.
             </h2>
           </div>
           
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">
-            Our "Podcast for Sales" system isn't a marketing experiment - it's a sales tool designed to generate leads and close deals. The primary value comes from strategic guest interactions and relationship building, effective even if you never publish a single episode.
+            Our system gets you strategic sales meetings with decision-makers who normally ignore your calls. We systematically research, approach, and nurture your ideal prospects until they're ready to buy. The podcast is just the vehicle - the primary value is executive access and relationship building.
           </p>
         </div>
 
@@ -172,11 +172,11 @@ const WhatWeDoSection = () => {
           <div className="bg-white rounded-3xl border border-gray-100 p-12 text-center shadow-xl relative overflow-hidden">
             {/* Enhanced headline */}
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-              Business Podcasts - <span className="font-extrabold text-secondary">Reimagined</span>.
+              Executive Access - <span className="font-extrabold text-secondary">Without the Gatekeepers</span>.
             </h3>
             
             <p className="text-lg text-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-              80% of business podcasts fail before their 10th episode. Ours don't.
+              While others make cold calls and get ignored, you'll be having strategic conversations with your toughest prospects.
             </p>
             
             <motion.div

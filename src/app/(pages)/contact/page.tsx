@@ -62,9 +62,9 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Ready to Generate Revenue?</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Ready to Generate Pipeline?</h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Schedule a free "Podcast for Sales" strategy consultation. Our team will show you how our system fits within your existing sales processes to generate qualified leads and drive revenue.
+              Schedule a free sales development strategy consultation. Our team will show you how our system secures strategic meetings with decision-makers who normally ignore your calls, and how it integrates with your existing sales processes to advance deals through your pipeline.
             </p>
           </motion.div>
           

@@ -14,42 +14,44 @@ const PricingSection = () => {
   const plans = [
     {
       name: 'Sales Core',
-      description: 'Essential "Podcast for Sales" system for consistent lead generation',
+      description: 'Essential sales development system for consistent qualified meetings',
       price: 8999,
       features: [
-        'Dedicated outreach manager',
-        '2 podcast episodes per month',
-        'Guest prospecting & qualification',
-        'Custom interview talk tracks',
-        'Professional audio/video production',
+        'Dedicated sales development manager',
+        '2 strategic sales conversations per month',
+        'Prospect research & qualification',
+        'Custom conversation frameworks',
+        'Professional recording & content creation',
         'Basic thank you content packages',
         'Email support & onboarding',
-        'Monthly performance reports'
+        'Monthly pipeline reports'
       ],
       isPopular: false,
       isBestValue: false,
       buttonText: 'Get Started',
-      buttonLink: '/contact'
+      buttonLink: '/contact',
+      roi: 'Break-even with 1 deal every 2-3 months'
     },
     {
       name: 'Sales Premium',
-      description: 'Advanced system with enhanced prospecting and premium guest experience',
+      description: 'Advanced system with enhanced prospecting and premium relationship building',
       price: 11999,
       features: [
         'All Sales Core features',
-        '4 podcast episodes per month',
+        '4 strategic sales conversations per month',
         'Advanced prospecting with higher success rates',
-        'Premium guest experience coordination',
+        'Premium relationship coordination',
         'Enhanced thank you content packages',
         'Tailored follow-up email campaigns',
         'Priority support & dedicated success manager',
-        'Advanced analytics & CRM integration',
-        'LinkedIn content creation from episodes'
+        'Advanced pipeline analytics & CRM integration',
+        'LinkedIn content creation from conversations'
       ],
       isPopular: true,
       isBestValue: false,
       buttonText: 'Get Started',
-      buttonLink: '/contact'
+      buttonLink: '/contact',
+      roi: 'Average 3x ROI - pays for itself with 1 deal per month'
     },
     {
       name: 'Sales + Scale',
@@ -57,7 +59,7 @@ const PricingSection = () => {
       price: 16999,
       features: [
         'All Sales Premium features',
-        '6+ podcast episodes per month',
+        '6+ strategic sales conversations per month',
         'Enterprise prospect research & targeting',
         'Custom sales process integration',
         'Premium content packages + social assets',
@@ -70,7 +72,8 @@ const PricingSection = () => {
       isPopular: false,
       isBestValue: true,
       buttonText: 'Contact Sales',
-      buttonLink: '/contact'
+      buttonLink: '/contact',
+      roi: 'Designed for 6-figure monthly pipeline impact'
     }
   ];
 
@@ -84,10 +87,34 @@ const PricingSection = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Invest in Revenue Growth</h2>
-          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
-            Choose your "Podcast for Sales" package. Average 3x ROI within 90 days with 95% client success rate.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Invest in Pipeline Growth</h2>
+          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto mb-6">
+            Choose your sales development package. Average 3x ROI within 90 days with 95% client success rate.
           </p>
+          
+          {/* ROI Calculation Example */}
+          <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-2xl p-6 max-w-4xl mx-auto border border-secondary/20">
+            <h3 className="text-xl font-bold text-primary mb-4">Simple ROI Math</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="text-2xl font-bold text-secondary mb-2">2-4</div>
+                <div className="text-sm text-gray">Qualified Deals Per Month</div>
+              </div>
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="text-2xl font-bold text-primary mb-2">25%</div>
+                <div className="text-sm text-gray">Close Rate (Conservative)</div>
+              </div>
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="text-2xl font-bold text-secondary mb-2">$50K+</div>
+                <div className="text-sm text-gray">Average Contract Value</div>
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <span className="text-sm text-gray">Result: </span>
+              <span className="text-lg font-bold text-primary">$25K+ monthly revenue from just 1 close</span>
+              <span className="text-sm text-gray"> vs. $12K investment</span>
+            </div>
+          </div>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -127,11 +154,21 @@ const PricingSection = () => {
                   <h3 className="text-2xl font-bold mb-2 text-primary">{plan.name}</h3>
                   <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
                   
-                  <div className="mb-6">
-                    <div className="text-3xl sm:text-4xl font-bold text-primary">
-                      ${formatPrice(plan.price)}
-                      <span className="text-xl text-gray-500 font-medium">/mo</span>
+                  {/* ROI Information */}
+                  <div className="bg-gradient-to-r from-secondary/5 to-primary/5 rounded-lg p-4 mb-6">
+                    <div className="text-xs font-semibold text-secondary uppercase tracking-wide mb-1">
+                      Expected ROI
                     </div>
+                    <div className="text-sm font-medium text-gray">
+                      {plan.roi}
+                    </div>
+                  </div>
+                  
+                  <div className="text-center mb-6">
+                    <span className="text-4xl md:text-5xl font-bold text-primary">
+                      ${formatPrice(plan.price)}
+                    </span>
+                    <span className="text-gray-500 text-lg">/month</span>
                   </div>
                   
                   <ul className="mb-8 space-y-4">
@@ -175,6 +212,52 @@ const PricingSection = () => {
           <p className="text-gray leading-relaxed">
             Not sure what to choose? <Link href="/contact" className="text-secondary font-semibold hover:text-secondary-dark transition-colors duration-300">Contact us</Link> for a personalized recommendation.
           </p>
+        </motion.div>
+
+        {/* Enhanced Bottom Section with Sales Development Comparison */}
+        <motion.div 
+          className="mt-16 bg-linear-to-r from-primary/5 to-secondary/5 rounded-3xl p-8 md:p-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
+            Traditional Sales Development vs. Our System
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-gray-100 rounded-xl p-6">
+              <h4 className="font-bold text-gray-600 mb-4">Traditional SDR Approach</h4>
+              <ul className="text-left space-y-2 text-sm text-gray-600">
+                <li>• 2-5% response rates on cold outreach</li>
+                <li>• $75K+ annual salary + benefits per SDR</li>
+                <li>• 3-6 months ramp-up time</li>
+                <li>• Constant interruption-based approach</li>
+                <li>• High turnover and training costs</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 border-2 border-secondary/20">
+              <h4 className="font-bold text-secondary mb-4">Our Executive Access System</h4>
+              <ul className="text-left space-y-2 text-sm text-gray">
+                <li>• 40-60% meeting acceptance rates</li>
+                <li>• Starting at $8,999/month - all inclusive</li>
+                <li>• Immediate deployment with our team</li>
+                <li>• Value-first, relationship-building approach</li>
+                <li>• No hiring, training, or turnover concerns</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-8">
+            <Link 
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-secondary hover:bg-secondary-dark text-white font-semibold py-4 px-8 rounded-xl text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Calculate Your ROI
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
