@@ -14,15 +14,17 @@ const PricingSection = () => {
   const plans = [
     {
       name: 'Sales Core',
-      description: 'The complete Podcast for Sales system',
+      description: 'Essential "Podcast for Sales" system for consistent lead generation',
       price: 8999,
       features: [
-        'Dedicated customer outreach manager',
-        '2 podcast episodes / month',
-        'Email support',
-        'Basic reporting',
-        'Up to 5 users',
-        '5GB storage'
+        'Dedicated outreach manager',
+        '2 podcast episodes per month',
+        'Guest prospecting & qualification',
+        'Custom interview talk tracks',
+        'Professional audio/video production',
+        'Basic thank you content packages',
+        'Email support & onboarding',
+        'Monthly performance reports'
       ],
       isPopular: false,
       isBestValue: false,
@@ -31,16 +33,18 @@ const PricingSection = () => {
     },
     {
       name: 'Sales Premium',
-      description: 'More episodes, more outreach, and more opportunities to close',
+      description: 'Advanced system with enhanced prospecting and premium guest experience',
       price: 11999,
       features: [
         'All Sales Core features',
-        'Priority support',
-        'Advanced reporting',
-        'Up to 20 users',
-        '25GB storage',
-        'API access',
-        'Custom integrations'
+        '4 podcast episodes per month',
+        'Advanced prospecting with higher success rates',
+        'Premium guest experience coordination',
+        'Enhanced thank you content packages',
+        'Tailored follow-up email campaigns',
+        'Priority support & dedicated success manager',
+        'Advanced analytics & CRM integration',
+        'LinkedIn content creation from episodes'
       ],
       isPopular: true,
       isBestValue: false,
@@ -48,18 +52,20 @@ const PricingSection = () => {
       buttonLink: '/contact'
     },
     {
-      name: 'Sales + Marketing',
-      description: "Scale your success with additional episodes and enhanced guest experience packages for maximum relationship building.",
+      name: 'Sales + Scale',
+      description: "Enterprise-level system with maximum volume and custom sales integration",
       price: 16999,
       features: [
         'All Sales Premium features',
-        '24/7 premium support',
-        'Comprehensive reporting',
-        'Unlimited users',
-        'Unlimited storage',
-        'Advanced security',
+        '6+ podcast episodes per month',
+        'Enterprise prospect research & targeting',
+        'Custom sales process integration',
+        'Premium content packages + social assets',
+        'Multi-touch follow-up campaign sequences',
+        '24/7 priority support',
+        'Custom reporting & sales attribution',
         'Dedicated account manager',
-        'Custom development'
+        'Team training & onboarding'
       ],
       isPopular: false,
       isBestValue: true,
