@@ -36,56 +36,40 @@ const FaqSection = () => {
       answer: "Our clients average 3x ROI within 90 days with a 95% success rate. ROI is measured by qualified leads, shorter sales cycles, and new revenue. With our sales-first approach targeting high-value B2B deals, even a few conversions deliver significant returns."
     },
     {
+      question: "How does this compare to traditional appointment setting services?",
+      answer: "Traditional services get 3% response rates with 5-minute defensive conversations. We achieve 30% response rates with 45-minute strategic discussions. While others charge $5,500-$9,500 for cold calling, we provide premium executive access that positions you as a thought leader, not just another vendor."
+    },
+    {
       question: "Wait, so this is sales outreach disguised as podcasting?",
-      answer: "We're completely transparent about our methodology. This is a sales development system that uses the vehicle of podcast interviews to secure strategic conversations with executives. The value exchange is real - prospects get to share their expertise on a professional platform, and you get qualified sales meetings. Both parties benefit genuinely."
+      answer: "We're completely transparent about our methodology. This is a sales development system that uses the vehicle of podcast interviews to secure strategic conversations with decision-makers. The podcasting format provides premium positioning that executives prefer over cold calls—it's collaborative rather than disruptive, educational rather than purely transactional."
     },
     {
       question: "What if they realize this is a sales process?",
-      answer: "They should! The best relationships are built on transparency and mutual value. We're upfront that you're looking to connect with industry leaders, and they're getting a valuable platform to share their expertise. The conversation is structured as a genuine interview first - any sales discussions happen naturally afterward if there's mutual interest."
+      answer: "They absolutely know it's business development—we're transparent about that from the start. The key difference is that our approach provides genuine value first. Executives appreciate the strategic conversation format, the professional content creation, and the thought leadership positioning. It's consultative selling at its finest."
     },
     {
-      question: "How is this different from hiring SDRs?",
-      answer: "Traditional SDRs get 2-5% response rates with interruption-based cold outreach. Our executive access system gets 40-60% meeting acceptance rates by leading with value. Instead of hiring, training, and managing SDR turnover (avg $75K+ per SDR annually), you get immediate deployment with our experienced team for $9-17K/month."
+      question: "How is this different from hiring SDRs or using sales engagement platforms?",
+      answer: "SDRs cost $60K+ annually plus management overhead, and platforms like Outreach or Salesloft require $10K-$20K monthly plus internal resources. We provide a complete done-for-you system with premium positioning. While internal teams struggle with 1-2% email response rates, our approach generates 30% response rates with executive-level strategic conversations."
     },
     {
-      question: "Do I need a large audience for this to work?",
-      answer: "Absolutely not. Our sales development system works without any audience. The primary value comes from strategic interactions with prospects (your potential clients) and the relationship-building process itself, not downloads or listener numbers."
+      question: "Why not just use ABM platforms like Demandbase or Terminus?",
+      answer: "ABM platforms cost $8K-$15K monthly and focus on digital touchpoints—ads, emails, web personalization. They're technology-heavy but relationship-light. We provide what those platforms can't: actual 45-minute strategic conversations with decision-makers. We're the human relationship layer that turns digital engagement into real business relationships."
     },
     {
-      question: "We tried podcasting, but it didn't generate leads. How are you different?",
-      answer: "Most podcasts focus on audience-building and content marketing. Our proprietary sales development system is designed specifically to fit within your existing sales processes with three key differentiators: sales-first conversation strategy with soft-sell frameworks, obsessive focus on prospect experience including thank you content packages, and tailored follow-up campaigns that keep prospects engaged."
+      question: "How do you get executives to say yes to podcast interviews?",
+      answer: "Three key factors: (1) We position it as thought leadership, not sales, (2) Executives appreciate being recognized as industry experts, and (3) We provide premium follow-up content packages. Most executives rarely get opportunities to share their strategic insights in a professional format—we make them the star of the conversation."
     },
     {
-      question: "What exactly is your sales development system?",
-      answer: "Our system is a sales-first approach that uses executive interviews for direct prospect outreach and relationship building. Unlike traditional podcasting, it's designed to integrate seamlessly with your existing sales processes and CRM workflows, effective even with zero audience."
+      question: "What happens after the interview?",
+      answer: "Our systematic follow-up process includes: professional content packages, strategic nurturing sequences, and ongoing relationship development. We don't just hand you a contact—we help advance the relationship through your sales process until they're ready to buy. This isn't lead generation; it's relationship acceleration."
     },
     {
-      question: "What's involved in your system? What do you handle vs. what do we do?",
-      answer: "We provide a comprehensive done-for-you service: sales-first strategy development, prospect identification and outreach, meeting preparation with soft-sell frameworks, professional recording/editing, prospect thank you content packages, and tailored follow-up campaigns. Your main role is approving qualified prospects and conducting the strategic sales conversations."
+      question: "Do we need an existing audience for this to work?",
+      answer: "No audience necessary—this is our key differentiator. While others require established podcast audiences, we're targeting prospects directly. The interview itself is the relationship-building vehicle, not audience building. We're doing sales development, not content marketing."
     },
     {
-      question: "Who is an ideal prospect for this approach?",
-      answer: "Decision-makers at companies fitting your ideal customer profile (e.g., CEOs, CMOs in B2B SaaS). We help you target these executives strategically, making the interview a key sales touchpoint and relationship-building opportunity with qualified prospects."
-    },
-    {
-      question: "How do you help turn prospects into clients?",
-      answer: "We structure conversations with soft-sell frameworks to build rapport and uncover needs naturally. Then we create premium thank you content packages that serve as powerful, non-salesy follow-up tools, combined with tailored follow-up campaigns that keep you top-of-mind and create multiple touchpoints for your sales process."
-    },
-    {
-      question: "How much of my team's time will this take per week/month?",
-      answer: "Minimal time investment. After initial strategy setup (a few hours total), expect ~2-4 hours/month for 2 conversations, or ~4-8 hours/month for 4 conversations, mainly for meeting prep and conducting the strategic sales conversations. We handle all prospect outreach, content production, and follow-up campaigns."
-    },
-    {
-      question: "How do you ensure prospects don't feel 'tricked' or manipulated?",
-      answer: "By leading with genuine value and being transparent about intentions. We position this as 'connecting with industry leaders for valuable conversations' - which is exactly what it is. The interview provides real value to them (platform, content, networking), and any business discussions happen naturally if there's mutual fit. It's relationship-building, not manipulation."
-    },
-    {
-      question: "How long until we see results from this approach?",
-      answer: "With our sales-first approach, expect positive signals (e.g., better engagement from target accounts, warmer prospect relationships) within 2-3 months post-launch. Converting leads to sales depends on your typical sales cycle, but the relationship foundation is built immediately."
-    },
-    {
-      question: "We're a B2B SaaS company. How does this help our sales process?",
-      answer: "Our sales development system is perfect for B2B SaaS. It provides a compelling reason to connect with C-level executives in target accounts, showcases thought leadership naturally, builds authentic relationships, and creates premium content that's far more effective than cold outreach in moving prospects through your sales funnel."
+      question: "How quickly can we start seeing results?",
+      answer: "Most clients see first strategic conversations within 30 days, with deal advancement typically occurring within 60-90 days. Unlike ABM platforms that require months of setup or cold calling that delivers immediate rejection, our approach provides both quick strategic access and long-term relationship value."
     }
   ];
 

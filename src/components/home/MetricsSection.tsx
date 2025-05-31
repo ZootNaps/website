@@ -112,9 +112,30 @@ export default function MetricsSection() {
             Results That Matter: <span className="font-extrabold text-secondary">Revenue, Not Downloads</span>.
           </h2>
           <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-8 text-white/90">
-            Our sales development system delivers measurable business results through strategic relationship building and sales process integration, not vanity metrics. While others chase downloads, we focus on deal advancement.
+            Our sales development system delivers measurable business results through strategic relationship building. Compare our approach to traditional cold calling and generic outreach methods.
           </p>
           
+          {/* Competitive Comparison Bar */}
+          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6 mb-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-red-300 text-sm font-medium mb-1">Traditional Cold Calling</div>
+                <div className="text-white/70 text-lg">3% Response Rate</div>
+                <div className="text-white/60 text-sm">5-minute defensive conversations</div>
+              </div>
+              <div>
+                <div className="text-yellow-300 text-sm font-medium mb-1">Email Automation</div>
+                <div className="text-white/70 text-lg">1-2% Open Rates</div>
+                <div className="text-white/60 text-sm">Generic, easily ignored</div>
+              </div>
+              <div>
+                <div className="text-secondary text-sm font-medium mb-1">Our Strategic Approach</div>
+                <div className="text-white text-xl font-bold">30% Response Rate</div>
+                <div className="text-secondary text-sm font-medium">45-minute strategic conversations</div>
+              </div>
+            </div>
+          </div>
+
           {/* Success metrics with sales context */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto mb-12">
             <motion.div 

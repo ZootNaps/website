@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faChevronLeft, faChevronRight, faSearch, faUserCheck, faPodcast, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faChevronLeft, faChevronRight, faSearch, faUserCheck, faPodcast, faShareAlt, faUser, faLightbulb, faChartLine, faEnvelope, faHandshake, faCheckCircle, faMicrophone, faVideo, faGift, faRocket, faChartBar, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { motion, useInView, PanInfo } from 'framer-motion';
 
 const ProcessSection = () => {
@@ -26,43 +26,91 @@ const ProcessSection = () => {
   const tabContent = {
     'discovery-strategy': {
       title: 'Prospect Intelligence & Sales Strategy',
-      description: 'We start by deeply understanding your business, ideal client profile, and sales objectives to co-create a sales development strategy designed to fit seamlessly within your existing sales processes and CRM workflows.',
-      points: [
-        'Collaborative sales development strategy workshop tailored to your existing sales process',
-        'Ideal Client Persona (ICP) refinement for targeted prospect identification and outreach',
-        'Sales-first conversation planning and talk tracks to maximize qualified meeting outcomes',
-        'Defining key performance indicators (KPIs) for sales pipeline impact and revenue tracking'
-      ]
+      description: 'We collaborate with your team to identify your ideal prospects and develop a comprehensive sales strategy that positions you for premium conversations, not commodity outreach.',
+      features: [
+        { 
+          icon: faUser, 
+          title: 'Ideal Prospect Mapping', 
+          description: 'Unlike generic lead lists, we create detailed prospect profiles of C-suite executives who fit your exact ideal customer profile and have decision-making authority.'
+        },
+        { 
+          icon: faLightbulb, 
+          title: 'Strategic Conversation Framework', 
+          description: 'We develop talk tracks that position you as a strategic partner, not just another vendor—the key difference between our 30% response rate vs. traditional 3% cold calling rates.'
+        },
+        { 
+          icon: faChartLine, 
+          title: 'Sales Process Integration', 
+          description: 'We map our executive access system directly into your existing CRM and sales processes, ensuring seamless lead handoff and pipeline tracking.'
+        }
+      ],
+      competitive_advantage: "While others use generic outreach lists, we target decision-makers with strategic positioning that executives actually want to engage with."
     },
     'guest-sourcing-qualification': {
       title: 'Executive Outreach & Meeting Booking',
-      description: 'Our unique approach involves identifying and securing meetings with your ideal prospects by positioning conversations as valuable executive interviews, followed by qualification to ensure perfect alignment and readiness to buy.',
-      points: [
-        'Strategic prospect identification and research targeting your Ideal Client Profile for maximum sales potential',
-        'Personalized outreach campaigns that get executives to say YES to strategic conversations',
-        'Pre-meeting qualification process to ensure prospects are decision-makers with budget and authority',
-        'Seamless scheduling and meeting coordination that creates a premium experience for your prospects'
-      ]
+      description: 'Our experienced sales development team conducts targeted outreach to secure strategic meetings with your ideal prospects using our premium positioning approach.',
+      features: [
+        { 
+          icon: faEnvelope, 
+          title: 'Premium Executive Outreach', 
+          description: 'We position podcast interviews as thought leadership opportunities, giving executives a compelling reason to say yes—achieving 30% response rates vs. 3% for cold calls.'
+        },
+        { 
+          icon: faHandshake, 
+          title: 'Strategic Meeting Booking', 
+          description: 'We schedule 45-minute strategic conversations, not quick sales pitches. This format allows for relationship building and genuine value exchange with decision-makers.'
+        },
+        { 
+          icon: faCheckCircle, 
+          title: 'Qualification & Preparation', 
+          description: 'Every booked meeting includes prospect research, conversation preparation, and strategic talking points to maximize your success in these executive conversations.'
+        }
+      ],
+      competitive_advantage: "Traditional appointment setters get defensive 5-minute calls. We secure 45-minute strategic conversations with executives who are excited to participate."
     },
     'interview-content-production': {
       title: 'Strategic Sales Conversations & Content Creation',
-      description: 'We equip you with proven soft-sell conversation frameworks for strategic sales meetings. You conduct relationship-building conversations while our team creates professional content plus special thank you packages for prospects.',
-      points: [
-        'Custom conversation frameworks designed for soft-sell discovery and expert positioning',
-        'You host strategic sales conversations (virtual meetings) designed to uncover pain points and showcase solutions',
-        'Professional recording, editing, and creation of clips, blog posts, and LinkedIn content as follow-up assets',
-        'Curated "thank you" content packages for prospects to strengthen relationships and encourage sharing'
-      ]
+      description: 'You conduct strategic sales conversations with qualified prospects while we handle all the professional content production and relationship advancement.',
+      features: [
+        { 
+          icon: faMicrophone, 
+          title: 'Executive Strategic Conversations', 
+          description: 'Conduct 45-minute strategic discussions with C-suite executives using our proven conversation frameworks that naturally uncover needs and build relationships.'
+        },
+        { 
+          icon: faVideo, 
+          title: 'Professional Content Production', 
+          description: 'We handle all recording, editing, and content creation—providing professional podcast episodes that position you as a thought leader in your industry.'
+        },
+        { 
+          icon: faGift, 
+          title: 'Premium Thank You Packages', 
+          description: 'Each guest receives a professional content package including video highlights, quote graphics, and social media assets—creating ongoing goodwill and relationship value.'
+        }
+      ],
+      competitive_advantage: "While others interrupt with cold calls, we create valuable experiences that prospects appreciate and remember—building relationships, not resistance."
     },
     'distribution-sales-handoff': {
       title: 'Systematic Follow-up & Deal Advancement',
-      description: 'We strategically publish your content, deliver premium thank you packages to prospects, and execute tailored follow-up campaigns to seamlessly transition warm conversations into your sales pipeline and advance deals.',
-      points: [
-        'Multi-platform publication of conversation content and all created marketing assets for thought leadership',
-        'Delivery of premium thank you content packages to prospects, encouraging co-promotion and continued engagement',
-        'Tailored follow-up campaigns with multiple touchpoints to nurture prospect relationships and advance sales conversations',
-        'Clear handoff process and actionable insights for your sales team to convert qualified prospects into customers'
-      ]
+      description: 'We manage ongoing relationship nurturing and systematic follow-up to advance prospects through your sales pipeline until they\'re ready to buy.',
+      features: [
+        { 
+          icon: faRocket, 
+          title: 'Tailored Follow-up Campaigns', 
+          description: 'Custom nurturing sequences based on conversation insights, keeping prospects engaged and moving them through your sales pipeline with strategic touchpoints.'
+        },
+        { 
+          icon: faChartBar, 
+          title: 'Pipeline Integration & Tracking', 
+          description: 'Full CRM integration with detailed prospect scoring, conversation insights, and pipeline tracking to measure relationship advancement and conversion opportunities.'
+        },
+        { 
+          icon: faTrophy, 
+          title: 'Sales Process Optimization', 
+          description: 'Continuous refinement of messaging, targeting, and conversation strategies based on performance data to maximize your conversion rates and deal advancement.'
+        }
+      ],
+      competitive_advantage: "Traditional lead gen stops at the handoff. We continue nurturing relationships until prospects are ready to buy—providing true sales development, not just lead generation."
     }
   };
 
@@ -377,25 +425,44 @@ const ProcessSection = () => {
                 
                 {/* Enhanced feature points - Mobile-first grid */}
                 <div className="space-y-4 md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
-                  {tabContent[activeTab as keyof typeof tabContent].points.map((point, index) => (
+                  {tabContent[activeTab as keyof typeof tabContent].features.map((feature, index) => (
                     <motion.div 
                       key={index}
-                      className="flex items-start p-4 md:p-5 bg-white/90 rounded-xl border border-gray-100 hover:border-secondary/20 hover:shadow-md transition-all duration-300"
+                      className="flex items-start gap-3 bg-white/50 backdrop-blur-sm p-3 rounded-lg border border-white/30"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      whileHover={{ scale: 1.01 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                      <motion.div
-                        className="w-7 h-7 md:w-6 md:h-6 rounded-full bg-secondary flex items-center justify-center mr-4 flex-shrink-0 mt-0.5"
+                      <motion.div 
+                        className="mt-1 w-6 h-6 bg-secondary rounded-full flex items-center justify-center shadow-lg"
                         whileHover={{ scale: 1.1 }}
                       >
-                        <FontAwesomeIcon icon={faCheck} className="text-white text-sm md:text-xs" />
+                        <FontAwesomeIcon icon={feature.icon} className="text-white text-sm md:text-xs" />
                       </motion.div>
-                      <span className="text-primary leading-relaxed font-medium text-sm md:text-base">{point}</span>
+                      <span className="text-primary leading-relaxed font-medium text-sm md:text-base">{feature.description}</span>
                     </motion.div>
                   ))}
                 </div>
+                
+                {/* Competitive Advantage Highlight */}
+                <motion.div
+                  className="mt-6 bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 rounded-lg p-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-white text-xs font-bold">🎯</span>
+                    </div>
+                    <div>
+                      <h4 className="text-primary font-semibold text-sm mb-1">Competitive Advantage</h4>
+                      <p className="text-gray-700 text-sm leading-relaxed">
+                        {tabContent[activeTab as keyof typeof tabContent].competitive_advantage}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>

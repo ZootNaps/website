@@ -58,62 +58,35 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary relative z-10">
-                Turn Your Toughest Prospects{' '}
-                <motion.span 
-                  className="text-secondary relative"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                >
-                  Into Eager Participants.
-                  {/* Animated underline */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 h-1 bg-secondary/30 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 0.6, delay: 1.2 }}
-                  ></motion.div>
-                </motion.span>
-              </h1>
+              <motion.h1 
+                className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <span className="block text-primary mb-2">Turn Your Toughest Prospects</span>
+                <span className="block text-secondary font-extrabold">Into Strategic Partners</span>
+              </motion.h1>
             </div>
             
-            {/* Enhanced subtitle with visual element for "zero audience required" */}
-            <motion.div 
-              className="flex items-center gap-4 mb-6"
+            <motion.div
+              className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed max-w-4xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2.5 rounded-lg">
-                <motion.div 
-                  className="w-2.5 h-2.5 bg-red-500 rounded-full shadow-lg shadow-red-500/50"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    boxShadow: [
-                      "0 0 0 0 rgba(239, 68, 68, 0.4)",
-                      "0 0 0 8px rgba(239, 68, 68, 0)",
-                      "0 0 0 0 rgba(239, 68, 68, 0.4)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                ></motion.div>
-                <span className="text-xl font-semibold text-primary">No audience necessary.</span>
+              <p className="mb-4">
+                <span className="font-semibold text-primary">Skip the cold calling chaos.</span> Our sales development system gets you 45-minute strategic conversations with C-suite executives who normally ignore your outreach—using podcasting as the premium vehicle.
+              </p>
+              <div className="bg-gradient-to-r from-secondary/10 to-primary/10 p-4 rounded-lg border border-secondary/20 mb-4">
+                <p className="font-medium text-gray-800">
+                  ✅ <span className="font-semibold">No audience required</span> • ✅ <span className="font-semibold">30% higher response rates than cold calling</span> • ✅ <span className="font-semibold">Premium positioning that executives prefer</span>
+                </p>
               </div>
+              <p className="text-base text-gray-600">
+                <span className="italic">While others send 100+ emails hoping for 5-minute calls,</span> we secure strategic meetings that advance real deals.
+              </p>
             </motion.div>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-gray leading-relaxed mb-8 max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              Get strategic 45-minute conversations with decision-makers who normally ignore your calls. Our sales development system uses podcasting as the vehicle to secure meetings, build relationships, and advance deals through your pipeline.
-            </motion.p>
             
             <motion.div 
               className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"

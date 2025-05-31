@@ -24,7 +24,7 @@ const CtaSection = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Let&apos;s Get Your Pipeline Moving
+            Stop Competing on Cold Calls—Start Leading Strategic Conversations
           </motion.h2>
           <motion.p 
             className="text-lg md:text-xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto"
@@ -33,14 +33,30 @@ const CtaSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Stop making cold calls that get ignored. Start having strategic conversations with decision-makers who are excited to participate. Send us your questions, or schedule a free strategy call now.
+            While your competitors are stuck with 3% response rates and defensive 5-minute calls, you'll be having 45-minute strategic conversations with C-suite executives. Ready to transform your sales development approach?
           </motion.p>
           
+          {/* Urgency Element */}
+          <motion.div
+            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-white/90 text-sm mb-2">
+              <span className="font-semibold text-secondary">⚡ Limited Q1 Availability:</span> We're accepting only 8 new clients this quarter to maintain our premium service quality.
+            </p>
+            <p className="text-white/80 text-xs">
+              While others scale with quantity, we focus on quality results. Book your strategy call today.
+            </p>
+          </motion.div>
+
           <motion.div 
             className="flex flex-col sm:flex-row justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>

@@ -92,28 +92,56 @@ const PricingSection = () => {
             Choose your sales development package. Average 3x ROI within 90 days with 95% client success rate.
           </p>
           
+          {/* Competitive Cost Comparison */}
+          <div className="bg-gradient-to-r from-red-50 to-yellow-50 border border-red-200 rounded-lg p-6 mb-8 max-w-4xl mx-auto">
+            <h3 className="text-lg font-bold text-gray-800 mb-4">Compare Your Investment Options:</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+              <div className="text-center p-3 bg-white rounded border">
+                <div className="font-semibold text-red-600">Hiring SDRs</div>
+                <div className="text-gray-600">$60K-$80K annually</div>
+                <div className="text-xs text-gray-500">+ benefits & management</div>
+              </div>
+              <div className="text-center p-3 bg-white rounded border">
+                <div className="font-semibold text-orange-600">Sales Platforms</div>
+                <div className="text-gray-600">$10K-$20K/month</div>
+                <div className="text-xs text-gray-500">+ internal resources</div>
+              </div>
+              <div className="text-center p-3 bg-white rounded border">
+                <div className="font-semibold text-yellow-600">ABM Platforms</div>
+                <div className="text-gray-600">$8K-$15K/month</div>
+                <div className="text-xs text-gray-500">+ setup & management</div>
+              </div>
+              <div className="text-center p-3 bg-gradient-to-br from-secondary/20 to-primary/20 rounded border border-secondary">
+                <div className="font-semibold text-primary">Our System</div>
+                <div className="text-gray-800 font-bold">$8K-$12K/month</div>
+                <div className="text-xs text-secondary font-medium">Complete done-for-you</div>
+              </div>
+            </div>
+            <p className="text-center text-sm text-gray-600 mt-4 italic">
+              Get premium executive access for less than the cost of one SDR
+            </p>
+          </div>
+          
           {/* ROI Calculation Example */}
-          <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-2xl p-6 max-w-4xl mx-auto border border-secondary/20">
-            <h3 className="text-xl font-bold text-primary mb-4">Simple ROI Math</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-center">
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <div className="text-2xl font-bold text-secondary mb-2">2-4</div>
-                <div className="text-sm text-gray">Qualified Deals Per Month</div>
+          <div className="bg-gradient-to-r from-secondary/10 to-primary/10 p-6 rounded-lg border border-secondary/20 mb-8 max-w-3xl mx-auto">
+            <h3 className="text-xl font-bold text-primary mb-4">ROI Reality Check</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="text-2xl font-bold text-secondary">$10K</div>
+                <div className="text-sm text-gray-600">Monthly Investment</div>
               </div>
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <div className="text-2xl font-bold text-primary mb-2">25%</div>
-                <div className="text-sm text-gray">Close Rate (Conservative)</div>
+              <div>
+                <div className="text-2xl font-bold text-primary">4-6</div>
+                <div className="text-sm text-gray-600">Strategic Conversations</div>
               </div>
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <div className="text-2xl font-bold text-secondary mb-2">$50K+</div>
-                <div className="text-sm text-gray">Average Contract Value</div>
+              <div>
+                <div className="text-2xl font-bold text-green-600">$150K+</div>
+                <div className="text-sm text-gray-600">Pipeline Value (1 deal)</div>
               </div>
             </div>
-            <div className="mt-4 text-center">
-              <span className="text-sm text-gray">Result: </span>
-              <span className="text-lg font-bold text-primary">$25K+ monthly revenue from just 1 close</span>
-              <span className="text-sm text-gray"> vs. $12K investment</span>
-            </div>
+            <p className="text-center text-sm text-gray-700 mt-4">
+              <span className="font-semibold">Break-even with just 1 strategic conversation conversion.</span> Most clients see 3x ROI within first quarter.
+            </p>
           </div>
         </motion.div>
         
