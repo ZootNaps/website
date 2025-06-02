@@ -74,7 +74,7 @@ const HeroSection = () => {
             </div>
             
             {/* Enhanced subtitle with visual element for "sales-first podcasting" */}
-            <motion.div 
+            {/* <motion.div 
               className="flex items-center gap-4 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const HeroSection = () => {
                 ></motion.div>
                 <span className="text-xl font-semibold text-primary">With a Sales-First Podcast</span>
               </div>
-            </motion.div>
+            </motion.div> */}
             
             <motion.p 
               className="text-lg md:text-xl text-gray leading-relaxed mb-8 max-w-xl"
