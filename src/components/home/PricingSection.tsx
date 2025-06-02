@@ -29,8 +29,7 @@ const PricingSection = () => {
       isPopular: false,
       isBestValue: false,
       buttonText: 'Get Started',
-      buttonLink: '/contact',
-      roi: 'Break-even with 1 deal every 2-3 months'
+      buttonLink: '/contact'
     },
     {
       name: 'Sales Premium',
@@ -50,8 +49,7 @@ const PricingSection = () => {
       isPopular: true,
       isBestValue: false,
       buttonText: 'Get Started',
-      buttonLink: '/contact',
-      roi: 'Average 3x ROI - pays for itself with 1 deal per month'
+      buttonLink: '/contact'
     },
     {
       name: 'Sales + Scale',
@@ -72,8 +70,7 @@ const PricingSection = () => {
       isPopular: false,
       isBestValue: true,
       buttonText: 'Contact Sales',
-      buttonLink: '/contact',
-      roi: 'Designed for 6-figure monthly pipeline impact'
+      buttonLink: '/contact'
     }
   ];
 
@@ -154,16 +151,6 @@ const PricingSection = () => {
                 <div>
                   <h3 className="text-2xl font-bold mb-2 text-primary">{plan.name}</h3>
                   <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
-                  
-                  {/* ROI Information */}
-                  <div className="bg-gradient-to-r from-secondary/5 to-primary/5 rounded-lg p-4 mb-6">
-                    <div className="text-xs font-semibold text-secondary uppercase tracking-wide mb-1">
-                      Expected ROI
-                    </div>
-                    <div className="text-sm font-medium text-gray">
-                      {plan.roi}
-                    </div>
-                  </div>
                   
                   <div className="text-center mb-6">
                     <span className="text-4xl md:text-5xl font-bold text-primary">
