@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://southlamarstudios.com",
-    title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
+    title: "B2B Podcast Production & Lead Generation | South Lamar Studios",
     description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
     siteName: "South Lamar Studios",
     images: [
@@ -79,13 +79,13 @@ export const metadata: Metadata = {
         url: "https://southlamarstudios.com/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "South Lamar Studios B2B Podcast Production & Lead Generation",
+        alt: "B2B Podcast Production & Lead Generation South Lamar Studios ",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
+    title: "B2B Podcast Production & Lead Generation | South Lamar Studios",
     description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
     creator: "@southlamarstudios",
     images: ["https://southlamarstudios.com/images/twitter-image.jpg"],
@@ -117,7 +117,7 @@ export default function RootLayout({
                   "name": "South Lamar Studios",
                   "url": "https://www.southlamarstudios.com",
                   "logo": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png",
-                  "description": "South Lamar Studios\' B2B podcast for sales service turns your show into a powerful lead generation engine, helping you connect with executives and drive revenue.",
+                  "description": "South Lamar Studios\' The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
                   "sameAs": [
                     "https://www.linkedin.com/company/southlamarstudios"
                     // Add other official social profiles here from existing if accurate:
@@ -129,7 +129,7 @@ export default function RootLayout({
                   "@type": "WebSite",
                   "url": "https://www.southlamarstudios.com",
                   "name": "South Lamar Studios",
-                  "description": "Official website for South Lamar Studios. We provide B2B podcast for sales services designed to generate leads and drive revenue.",
+                  "description": "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
                   "publisher": {
                     "@type": "Organization",
                     "name": "South Lamar Studios",
