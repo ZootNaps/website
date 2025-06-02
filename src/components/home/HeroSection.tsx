@@ -107,7 +107,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              Get strategic 45-minute conversations with decision-makers who normally ignore your calls. Our sales development system uses podcasting as the vehicle to secure meetings, build relationships, and advance deals through your pipeline.
+              Get strategic 45-minute conversations with decision-makers who normally ignore your calls. Our 'Podcast for Sales' system uses podcasting to secure meetings, build relationships, and advance deals through your pipeline.
             </motion.p>
             
             <motion.div 
