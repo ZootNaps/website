@@ -29,7 +29,15 @@ export const metadata: Metadata = {
     default: "South Lamar Studios | B2B Podcast Production & Lead Generation",
     template: "%s | South Lamar Studios",
   },
-  description: "Transform your B2B podcast into a powerful sales engine. South Lamar Studios specializes in podcast production, guest outreach, and lead generation strategies that drive revenue for businesses. No large audience required.",
+  description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon.png',
+  },
   keywords: [
     "b2b podcast production", 
     "podcast lead generation", 
@@ -64,7 +72,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://southlamarstudios.com",
     title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
-    description: "Transform your B2B podcast into a powerful sales engine. Expert podcast production, guest outreach, and lead generation strategies that drive revenue for businesses.",
+    description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
     siteName: "South Lamar Studios",
     images: [
       {
@@ -78,7 +86,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "South Lamar Studios | B2B Podcast Production & Lead Generation",
-    description: "Transform your B2B podcast into a powerful sales engine. Expert podcast production, guest outreach, and lead generation strategies that drive revenue for businesses.",
+    description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
     creator: "@southlamarstudios",
     images: ["https://southlamarstudios.com/images/twitter-image.jpg"],
   },
