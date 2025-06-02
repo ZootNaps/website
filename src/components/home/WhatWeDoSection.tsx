@@ -10,48 +10,48 @@ import Link from 'next/link';
 const whatWeDoItems = [
   {
     icon: faEnvelopeOpenText,
-    title: "Irresistable Outreach",
-    description: "Your dedicated podcast manager will find and reach out to your ideal prospects - , schedule, and follow up with your prospects. Industry-leading outreach that C Suite Executives are excited to respond to. Get your foot in the door, and get the conversation started.",
+    title: "Executive Outreach & Meeting Booking",
+    description: "Your dedicated sales development manager identifies and reaches out to your ideal prospects with industry-leading outreach that gets C-Suite executives to say YES to strategic conversations. Every interaction is strategically designed to secure qualified sales meetings.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
   },
   {
     icon: faUserCheck,
-    title: "Customer Qualification",
-    description: "Multiple qualification steps ensure every guest is a qualified decision maker - and that they're ready to buy.",
+    title: "Strategic Sales Conversations & Content Creation",
+    description: "Multiple qualification steps ensure every guest is a qualified decision maker ready to buy. We coach you on soft-sell interview techniques that naturally uncover pain points while positioning your solutions - creating valuable content as a byproduct.",
     color: "primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/20"
   },
   {
     icon: faClipboardQuestion,
-    title: "Seamless Discovery",
-    description: "Tailored interview questions that uncover your guests' exact pain points - and show how your product can help.",
+    title: "Custom Interview Preparation & Talk Tracks",
+    description: "We research each prospect thoroughly and create custom conversation frameworks tailored to their specific challenges. You'll know exactly what to discuss and have proven talk tracks that naturally uncover pain points while positioning your solutions.",
     color: "tertiary",
     bgColor: "bg-tertiary/10",
     borderColor: "border-tertiary/20"
   },
   {
     icon: faHandshake,
-    title: "Impactful Conversations",
-    description: "Hour long conversations that create lasting business relationships - and position you as a trusted advisor.",
+    title: "Premium Follow-Up Content & Relationship Building",
+    description: "We create premium thank you content packages that strengthen your relationship with potential customers. High-quality assets that both you and your prospects are proud to associate with, opening doors for continued conversations.",
     color: "secondary",
     bgColor: "bg-secondary/10",
     borderColor: "border-secondary/20"
   },
   {
     icon: faHexagonNodes,
-    title: "Dozens of Touchpoints",
-    description: "Our process creates dozens of touchpoints that keep you top of mind for months after the interview.",
+    title: "Systematic Nurture & Deal Advancement",
+    description: "Structured follow-up campaigns create multiple touchpoints to keep you top of mind and advance prospects through your sales pipeline. From post-conversation thank you to publication updates - keeping your sales cycle active.",
     color: "primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/20"
   },
   {
     icon: faMicrophone,
-    title: "World-Class Production Quality",
-    description: "High-quality assets that strengthen your brand, and clips that you (and your guests) are proud to share on social.",
+    title: "Professional Content Publishing (Bonus)",
+    description: "As a bonus, we publish your strategic conversations as a professional podcast. This positions you as a thought leader while providing additional touchpoints with prospects and referral sources - but the primary value is the sales conversations themselves.",
     color: "tertiary",
     bgColor: "bg-tertiary/10",
     borderColor: "border-tertiary/20"
@@ -106,12 +106,12 @@ const WhatWeDoSection = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
-              Podcasts for <span className="font-extrabold text-secondary">Sales</span> - Not Just Marketing.
+              Podcast-Powered <span className="font-extrabold text-secondary">Business Development</span>.
             </h2>
           </div>
           
           <p className="text-lg md:text-xl text-gray leading-relaxed max-w-4xl mx-auto">
-            Podcasting shouldn't be a marketing experiment. Our system is designed to help you generate leads and close deals - even if you never post a single clip from your podcast.
+            Our system gets you strategic sales meetings with decision-makers who normally ignore your calls. We systematically research, approach, and nurture your ideal prospects until they're ready to buy. The podcast is just the vehicle - the primary value is executive access and relationship building.
           </p>
         </div>
 
@@ -164,6 +164,43 @@ const WhatWeDoSection = () => {
           ))}
         </div>
 
+        {/* SDR Comparison Section */}
+        <motion.div 
+          className="mt-16 mb-16 bg-linear-to-r from-primary/5 to-secondary/5 rounded-3xl p-8 md:p-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
+            Traditional Sales Development vs. Our System
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-gray-100 rounded-xl p-6">
+              <h4 className="font-bold text-gray-600 mb-4">Traditional SDR Approach</h4>
+              <ul className="text-left space-y-2 text-sm text-gray-600">
+                <li>• 2-5% response rates on cold outreach</li>
+                <li>• $75K+ annual salary + benefits per SDR</li>
+                <li>• 3-6 months ramp-up time</li>
+                <li>• Constant interruption-based approach</li>
+                <li>• High turnover and training costs</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white rounded-xl p-6 border-2 border-secondary/20">
+              <h4 className="font-bold text-secondary mb-4">Our Executive Access System</h4>
+              <ul className="text-left space-y-2 text-sm text-gray">
+                <li>• 40-60% meeting acceptance rates</li>
+                <li>• Starting at $8,999/month - all inclusive</li>
+                <li>• Immediate deployment with our team</li>
+                <li>• Value-first, relationship-building approach</li>
+                <li>• No hiring, training, or turnover concerns</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Enhanced Bottom CTA Section with better visual separation */}
         <div className="relative">
           {/* Decorative top line */}
@@ -172,11 +209,11 @@ const WhatWeDoSection = () => {
           <div className="bg-white rounded-3xl border border-gray-100 p-12 text-center shadow-xl relative overflow-hidden">
             {/* Enhanced headline */}
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-              Business Podcasts - <span className="font-extrabold text-secondary">Reimagined</span>.
+              Executive Access - <span className="font-extrabold text-secondary">Guaranteed</span>.
             </h3>
             
             <p className="text-lg text-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-              80% of business podcasts fail before their 10th episode. Ours don't.
+              While others make cold calls and get ignored, you'll be having strategic conversations with your toughest prospects.
             </p>
             
             <motion.div
