@@ -32,11 +32,12 @@ export const metadata: Metadata = {
   description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
   icons: {
     icon: [
-      { url: '/favicon.ico' },
+      { url: '/favicon.ico', sizes: '32x32' },
       { url: '/favicon.png', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.png',
+    apple: [
+      { url: '/favicon.png', type: 'image/png' },
+    ],
   },
   keywords: [
     "b2b podcast production", 
