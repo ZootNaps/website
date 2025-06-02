@@ -93,14 +93,41 @@ Generates a dynamic XML sitemap for search engines.
 The sitemap is dynamically generated based on available routes and content from Contentful. It includes:
 
 - Static pages
-- Blog posts
-- Other dynamic content
+- Blog posts from Contentful CMS
+- Podcast episodes from Contentful CMS
+- Proper priority and changeFrequency values
+
+### Blog RSS Feed
+
+#### Generate Blog RSS Feed
+
+Generates an RSS feed for blog content syndication.
+
+**URL**: `/blog-rss.xml`
+
+**Method**: `GET`
+
+**Success Response**:
+
+- **Code**: 200 OK
+- **Content-Type**: `application/xml`
+- **Cache-Control**: `s-maxage=3600, stale-while-revalidate`
+- **Content**: XML formatted RSS 2.0 feed
+
+**Implementation Notes**:
+
+The RSS feed is dynamically generated from published blog posts in Contentful. Features include:
+
+- RSS 2.0 format compliance
+- Proper categories and descriptions
+- 1-hour cache control for performance
+- Graceful error handling for Contentful connectivity issues
 
 ## Internal API Helpers
 
 ### Contentful API
 
-While not exposed as public endpoints, the application uses internal helper functions to interact with the Contentful API:
+The application uses a unified Contentful client module (`src/lib/contentful/client.ts`) with comprehensive helper functions:
 
 #### Get Blog Posts
 
@@ -109,6 +136,7 @@ import { getBlogPosts } from '@/lib/contentful/client';
 
 // Usage in a Server Component
 const posts = await getBlogPosts();
+// Returns: BlogPost[] with complete type safety
 ```
 
 #### Get Blog Post by Slug
@@ -118,9 +146,34 @@ import { getBlogPostBySlug } from '@/lib/contentful/client';
 
 // Usage in a Server Component
 const post = await getBlogPostBySlug('example-post');
+// Returns: BlogPost | null with complete metadata
 ```
 
-These functions communicate with Contentful's Content Delivery API and transform the responses into structured data for the application.
+#### Get Podcast Episodes
+
+```typescript
+import { getPodcastEpisodes } from '@/lib/contentful/client';
+
+// Usage in a Server Component
+const episodes = await getPodcastEpisodes();
+// Returns: PodcastEpisode[] with complete type safety
+```
+
+#### Get Podcast Episode by Slug
+
+```typescript
+import { getPodcastEpisodeBySlug } from '@/lib/contentful/client';
+
+// Usage in a Server Component
+const episode = await getPodcastEpisodeBySlug('example-episode');
+// Returns: PodcastEpisode | null with complete metadata
+```
+
+**Enhanced Features:**
+- **Unified Error Handling**: Consistent error responses across all functions
+- **Complete TypeScript Support**: Full type definitions for all content types
+- **Performance Optimized**: Efficient content fetching with proper caching
+- **Production Ready**: Graceful fallbacks for CMS connectivity issues
 
 ## Error Handling
 

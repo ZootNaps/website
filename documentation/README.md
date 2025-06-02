@@ -23,6 +23,7 @@ This directory contains comprehensive documentation for the South Lamar Studios 
 | [ANALYTICS_TRACKING.md](./ANALYTICS_TRACKING.md) | Details on analytics implementation and tracking |
 | [SEO_STRATEGY.md](./SEO_STRATEGY.md) | SEO optimization strategies and implementation |
 | [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) | Comprehensive design system with Tailwind CSS v4 and Framer Motion |
+| [CONTENT_FORMATTING_PROMPT.md](./CONTENT_FORMATTING_PROMPT.md) | AI-assisted content formatting guidelines for enhanced blog design |
 
 ### Operational Documentation
 
@@ -31,6 +32,12 @@ This directory contains comprehensive documentation for the South Lamar Studios 
 | [CONFIGURATION_REFERENCE.md](./CONFIGURATION_REFERENCE.md) | Reference for all configuration options and environment variables |
 | [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | Common issues and solutions |
 | [MAINTENANCE_CHECKLIST.md](./MAINTENANCE_CHECKLIST.md) | Regular maintenance tasks and schedules |
+
+### SEO & Performance Documentation
+
+| Document | Description |
+|----------|-------------|
+| [SEO_AUDIT_RESULTS.md](../SEO_AUDIT_RESULTS.md) | Comprehensive SEO audit results and implemented improvements |
 
 ## How to Use This Documentation
 
@@ -95,6 +102,12 @@ If you encounter issues not addressed in this documentation:
 
 This documentation set should be reviewed quarterly to ensure it remains accurate and comprehensive as the website evolves. Recent updates include:
 
+- **Enhanced Blog System**: New category utilities with automatic styling and filtering
+- **RSS Feed Implementation**: Blog RSS feed with proper caching and syndication
+- **SEO Audit Completion**: Comprehensive SEO improvements including sitemap enhancements
+- **Unified Contentful Client**: Consolidated content management with improved error handling
+- **Contact Page Redesign**: Enhanced design system integration with Framer Motion
+- **Metadata Optimization**: Expanded keyword targeting and improved SEO alignment
 - **Font Awesome 6 Upgrade**: Enhanced icon system with tree-shaking
 - **Tailwind CSS v4**: New @theme directive and design system
 - **Business Model Clarification**: B2B podcast production for lead generation

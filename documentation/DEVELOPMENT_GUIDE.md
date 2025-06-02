@@ -84,6 +84,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 2. Add it to the library.add() call
 3. Use the icon name string in components
 
+### Content Management and Categories
+
+The project uses an enhanced blog category system with automatic styling:
+
+```tsx
+// Using category utilities
+import { getCategoryStyle, getAllCategories, isValidCategory } from '@/utils/categoryUtils';
+
+// Get styling for a category
+const categoryStyle = getCategoryStyle('Playbook');
+// Returns: { color, textColor, bgColor, borderColor, description, icon }
+
+// Use in components
+<span className={`px-3 py-1 rounded-full ${categoryStyle.color} ${categoryStyle.textColor}`}>
+  {categoryStyle.icon} {category}
+</span>
+
+// Available categories with automatic styling:
+// - Playbook 📋 (emerald)
+// - Deep Dive 🔍 (blue) 
+// - Strategy 🎯 (purple)
+// - Case Study 📊 (orange)
+// - Industry Insights 📈 (indigo)
+// - How To 🛠️ (green)
+```
+
+**Category System Features:**
+- **Automatic Styling**: Each category has predefined colors, icons, and descriptions
+- **Type Safety**: TypeScript support for all category operations
+- **Priority Sorting**: Categories are sorted by importance for consistent display
+- **Responsive Design**: Styling adapts to mobile and desktop layouts
+- **Filter Functionality**: Enhanced filtering on blog pages
+
 ### Styling
 
 - Use Tailwind CSS v4 for styling components
