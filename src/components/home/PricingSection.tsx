@@ -14,57 +14,66 @@ const PricingSection = () => {
   const plans = [
     {
       name: 'Sales Core',
-      description: 'The complete Podcast for Sales system',
+      description: 'Essential sales development system for consistent qualified meetings',
       price: 8999,
       features: [
-        'Dedicated customer outreach manager',
-        '2 podcast episodes / month',
-        'Email support',
-        'Basic reporting',
-        'Up to 5 users',
-        '5GB storage'
+        'Dedicated sales development manager',
+        '2 strategic sales conversations per month',
+        'Prospect research & qualification',
+        'Custom conversation frameworks',
+        'Professional recording & content creation',
+        'Basic thank you content packages',
+        'Email support & onboarding',
+        'Monthly pipeline reports'
       ],
       isPopular: false,
       isBestValue: false,
       buttonText: 'Get Started',
-      buttonLink: '/contact'
+      buttonLink: '/contact',
+      roi: 'Break-even with 1 deal every 2-3 months'
     },
     {
       name: 'Sales Premium',
-      description: 'More episodes, more outreach, and more opportunities to close',
+      description: 'Advanced system with enhanced prospecting and premium relationship building',
       price: 11999,
       features: [
         'All Sales Core features',
-        'Priority support',
-        'Advanced reporting',
-        'Up to 20 users',
-        '25GB storage',
-        'API access',
-        'Custom integrations'
+        '4 strategic sales conversations per month',
+        'Advanced prospecting with higher success rates',
+        'Premium relationship coordination',
+        'Enhanced thank you content packages',
+        'Tailored follow-up email campaigns',
+        'Priority support & dedicated success manager',
+        'Advanced pipeline analytics & CRM integration',
+        'LinkedIn content creation from conversations'
       ],
       isPopular: true,
       isBestValue: false,
       buttonText: 'Get Started',
-      buttonLink: '/contact'
+      buttonLink: '/contact',
+      roi: 'Average 3x ROI - pays for itself with 1 deal per month'
     },
     {
-      name: 'Sales + Marketing',
-      description: "Maximize your podcast impact with premium content marketing for social, SEO, and more.",
+      name: 'Sales + Scale',
+      description: "Enterprise-level system with maximum volume and custom sales integration",
       price: 16999,
       features: [
         'All Sales Premium features',
-        '24/7 premium support',
-        'Comprehensive reporting',
-        'Unlimited users',
-        'Unlimited storage',
-        'Advanced security',
+        '6+ strategic sales conversations per month',
+        'Enterprise prospect research & targeting',
+        'Custom sales process integration',
+        'Premium content packages + social assets',
+        'Multi-touch follow-up campaign sequences',
+        '24/7 priority support',
+        'Custom reporting & sales attribution',
         'Dedicated account manager',
-        'Custom development'
+        'Team training & onboarding'
       ],
       isPopular: false,
       isBestValue: true,
       buttonText: 'Contact Sales',
-      buttonLink: '/contact'
+      buttonLink: '/contact',
+      roi: 'Designed for 6-figure monthly pipeline impact'
     }
   ];
 
@@ -79,9 +88,34 @@ const PricingSection = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">Packages and Pricing</h2>
-          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto">
-            Choose the plan that's right for you.
+          <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto mb-6">
+            Choose your sales development package. Average 3x ROI within 90 days with 95% client success rate.
           </p>
+          
+          {/* ROI Calculation Example - COMMENTED OUT FOR FUTURE USE
+          <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-2xl p-6 max-w-4xl mx-auto border border-secondary/20">
+            <h3 className="text-xl font-bold text-primary mb-4">Simple ROI Math</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="text-2xl font-bold text-secondary mb-2">2-4</div>
+                <div className="text-sm text-gray">Qualified Deals Per Month</div>
+              </div>
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="text-2xl font-bold text-primary mb-2">25%</div>
+                <div className="text-sm text-gray">Close Rate (Conservative)</div>
+              </div>
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="text-2xl font-bold text-secondary mb-2">$50K+</div>
+                <div className="text-sm text-gray">Average Contract Value</div>
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <span className="text-sm text-gray">Result: </span>
+              <span className="text-lg font-bold text-primary">$25K+ monthly revenue from just 1 close</span>
+              <span className="text-sm text-gray"> vs. $12K investment</span>
+            </div>
+          </div>
+          */}
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -121,11 +155,21 @@ const PricingSection = () => {
                   <h3 className="text-2xl font-bold mb-2 text-primary">{plan.name}</h3>
                   <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
                   
-                  <div className="mb-6">
-                    <div className="text-3xl sm:text-4xl font-bold text-primary">
-                      ${formatPrice(plan.price)}
-                      <span className="text-xl text-gray-500 font-medium">/mo</span>
+                  {/* ROI Information */}
+                  <div className="bg-gradient-to-r from-secondary/5 to-primary/5 rounded-lg p-4 mb-6">
+                    <div className="text-xs font-semibold text-secondary uppercase tracking-wide mb-1">
+                      Expected ROI
                     </div>
+                    <div className="text-sm font-medium text-gray">
+                      {plan.roi}
+                    </div>
+                  </div>
+                  
+                  <div className="text-center mb-6">
+                    <span className="text-4xl md:text-5xl font-bold text-primary">
+                      ${formatPrice(plan.price)}
+                    </span>
+                    <span className="text-gray-500 text-lg">/month</span>
                   </div>
                   
                   <ul className="mb-8 space-y-4">
