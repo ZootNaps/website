@@ -100,13 +100,9 @@ export default function MetricsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <Typography 
-            variant="h2" 
-            color="primary" 
-            className="mb-6"
-          >
-            No Audience? No Problem.
-          </Typography>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary">
+            Optimized for <span className="text-secondary">Revenue, Not Downloads</span>.
+          </h2>
           <Typography variant="body-lg" color="gray" className="max-w-3xl mx-auto mb-8">
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
