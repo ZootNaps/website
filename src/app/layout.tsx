@@ -26,7 +26,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "South Lamar Studios | B2B Podcast Production & Lead Generation",
+    default: "B2B Podcast Production & Lead Generation | South Lamar Studios",
     template: "%s | South Lamar Studios",
   },
   description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
