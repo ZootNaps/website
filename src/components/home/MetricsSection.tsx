@@ -106,7 +106,7 @@ export default function MetricsSection() {
           <Typography variant="body-lg" color="gray" className="max-w-3xl mx-auto mb-8">
             We measure success in deals, not downloads. Our Podcast for Sales System delivers tangible business results without relying on audience size.
           </Typography>
-          <motion.div
+          {/* <motion.div
             className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-6 md:px-10 py-4 md:py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-bg-dark transition-all duration-300 relative max-w-full"
             initial={{ scale: 0, opacity: 0 }}
             animate={isInView ? { scale: 1, opacity: 1 } : {}}
@@ -114,7 +114,7 @@ export default function MetricsSection() {
             whileHover={{ scale: 1.01 }}
           >
             {/* Connecting line behind text - hidden on mobile */}
-            <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none">
+            {/* <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none">
               <div className="w-full max-w-[calc(100%-80px)] h-px bg-bg-dark"></div>
             </div>
             
@@ -146,7 +146,7 @@ export default function MetricsSection() {
                 ease: "easeInOut"
               }}
             />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
         
         <motion.div 
