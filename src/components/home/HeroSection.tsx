@@ -61,7 +61,7 @@ const HeroSection = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  Into Eager Participants.
+                  Into Engaged Podcast Guests.
                   {/* Animated underline */}
                   <motion.div
                     className="absolute bottom-0 left-0 h-1 bg-secondary/30 rounded-full"
@@ -97,7 +97,7 @@ const HeroSection = () => {
                     ease: "easeInOut"
                   }}
                 ></motion.div>
-                <span className="text-xl font-semibold text-primary">Through Sales-First Podcasting</span>
+                <span className="text-xl font-semibold text-primary">With a Sales-First Podcast</span>
               </div>
             </motion.div>
             
