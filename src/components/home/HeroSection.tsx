@@ -54,14 +54,14 @@ const HeroSection = () => {
           >
             <div className="relative">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary relative z-10">
-                Podcasts that{' '}
+                Turn Your Toughest Prospects{' '}
                 <motion.span 
                   className="text-secondary relative"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  sell.
+                  Into Eager Participants.
                   {/* Animated underline */}
                   <motion.div
                     className="absolute bottom-0 left-0 h-1 bg-secondary/30 rounded-full"
@@ -73,7 +73,7 @@ const HeroSection = () => {
               </h1>
             </div>
             
-            {/* Enhanced subtitle with visual element for "zero audience required" */}
+            {/* Enhanced subtitle with visual element for "sales-first podcasting" */}
             <motion.div 
               className="flex items-center gap-4 mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -97,7 +97,7 @@ const HeroSection = () => {
                     ease: "easeInOut"
                   }}
                 ></motion.div>
-                <span className="text-xl font-semibold text-primary">No audience necessary.</span>
+                <span className="text-xl font-semibold text-primary">Through Sales-First Podcasting</span>
               </div>
             </motion.div>
             
@@ -107,7 +107,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              End-to-end podcast production that turns executive interviews into qualified leads and direct sales revenue.
+              Get strategic 45-minute conversations with decision-makers who normally ignore your calls. Our sales development system uses podcasting as the vehicle to secure meetings, build relationships, and advance deals through your pipeline.
             </motion.p>
             
             <motion.div 
@@ -152,7 +152,7 @@ const HeroSection = () => {
             <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
               <Image 
                 src="/images/hero-image.png"
-                alt="B2B podcast sales solution helping businesses connect with and sell to their top customers"
+                alt="Sales development system helping businesses connect with and sell to their top customers through strategic podcast conversations"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
