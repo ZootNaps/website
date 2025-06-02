@@ -17,51 +17,51 @@ const ProcessSection = () => {
   const visibleTime = 8000; // Longer visible time on mobile
   
   const tabs = [
-    { id: 'discovery-strategy', step: 'ONE', name: 'Discovery & Strategy', shortName: 'Discovery', icon: faSearch },
-    { id: 'guest-sourcing-qualification', step: 'TWO', name: 'Guest Prospecting & Qualification', shortName: 'Prospecting', icon: faUserCheck },
-    { id: 'interview-content-production', step: 'THREE', name: 'Interview & Content Production', shortName: 'Production', icon: faPodcast },
-    { id: 'distribution-sales-handoff', step: 'FOUR', name: 'Distribution & Sales Handoff', shortName: 'Distribution', icon: faShareAlt }
+    { id: 'discovery-strategy', step: 'ONE', name: 'Prospect Intelligence & Sales Strategy', shortName: 'Strategy', icon: faSearch },
+    { id: 'guest-sourcing-qualification', step: 'TWO', name: 'Executive Outreach & Meeting Booking', shortName: 'Outreach', icon: faUserCheck },
+    { id: 'interview-content-production', step: 'THREE', name: 'Strategic Sales Conversations & Content Creation', shortName: 'Conversations', icon: faPodcast },
+    { id: 'distribution-sales-handoff', step: 'FOUR', name: 'Systematic Follow-up & Deal Advancement', shortName: 'Follow-up', icon: faShareAlt }
   ];
   
   const tabContent = {
     'discovery-strategy': {
-      title: 'Discovery & Strategy',
-      description: 'We kick off by deeply understanding your business, ideal client profile, and sales objectives to co-create a podcast strategy laser-focused on generating qualified B2B leads.',
+      title: 'Prospect Intelligence & Sales Strategy',
+      description: 'We start by deeply understanding your business, ideal client profile, and sales objectives to co-create a sales development strategy designed to fit seamlessly within your existing sales processes and CRM workflows.',
       points: [
-        'Collaborative B2B podcast strategy workshop',
-        'Ideal Client Persona (ICP) refinement for targeted guest prospecting',
-        'Content and interview planning to maximize lead generation opportunities',
-        'Defining key performance indicators (KPIs) for sales pipeline impact'
+        'Collaborative sales development strategy workshop tailored to your existing sales process',
+        'Ideal Client Persona (ICP) refinement for targeted prospect identification and outreach',
+        'Sales-first conversation planning and talk tracks to maximize qualified meeting outcomes',
+        'Defining key performance indicators (KPIs) for sales pipeline impact and revenue tracking'
       ]
     },
     'guest-sourcing-qualification': {
-      title: 'Guest Prospecting & Qualification',
-      description: 'Our unique approach involves identifying and inviting your ideal prospects to be guests on your show, followed by a qualification call with you to ensure perfect alignment.',
+      title: 'Executive Outreach & Meeting Booking',
+      description: 'Our unique approach involves identifying and securing meetings with your ideal prospects by positioning conversations as valuable executive interviews, followed by qualification to ensure perfect alignment and readiness to buy.',
       points: [
-        'Targeted prospect identification mirroring your Ideal Client Profile',
-        'Personalized outreach to invite high-value potential customers as guests',
-        'Facilitated pre-interview qualification call between you and the prospect',
-        'Seamless scheduling and coordination for both you and your future guest'
+        'Strategic prospect identification and research targeting your Ideal Client Profile for maximum sales potential',
+        'Personalized outreach campaigns that get executives to say YES to strategic conversations',
+        'Pre-meeting qualification process to ensure prospects are decision-makers with budget and authority',
+        'Seamless scheduling and meeting coordination that creates a premium experience for your prospects'
       ]
     },
     'interview-content-production': {
-      title: 'Interview & Content Production',
-      description: 'We equip you with proven interview techniques for insightful conversations. After you record, our team expertly transforms the footage into a suite of compelling marketing assets.',
+      title: 'Strategic Sales Conversations & Content Creation',
+      description: 'We equip you with proven soft-sell conversation frameworks for strategic sales meetings. You conduct relationship-building conversations while our team creates professional content plus special thank you packages for prospects.',
       points: [
-        'Interview preparation: talk tracks for engaging dialogue, pain discovery, and expert positioning',
-        'You host impactful interviews (virtual recording), then hand off the raw footage',
-        'Professional audio & video editing, plus creation of clips, blog posts, LinkedIn content, etc.',
-        'Meticulous quality control for all produced assets to ensure brand excellence'
+        'Custom conversation frameworks designed for soft-sell discovery and expert positioning',
+        'You host strategic sales conversations (virtual meetings) designed to uncover pain points and showcase solutions',
+        'Professional recording, editing, and creation of clips, blog posts, and LinkedIn content as follow-up assets',
+        'Curated "thank you" content packages for prospects to strengthen relationships and encourage sharing'
       ]
     },
     'distribution-sales-handoff': {
-      title: 'Distribution, Engagement & Sales Handoff',
-      description: 'We strategically publish your content, empower guest promotion, and provide frameworks for you to seamlessly transition these warm conversations into your sales process.',
+      title: 'Systematic Follow-up & Deal Advancement',
+      description: 'We strategically publish your content, deliver premium thank you packages to prospects, and execute tailored follow-up campaigns to seamlessly transition warm conversations into your sales pipeline and advance deals.',
       points: [
-        'Multi-platform publication of podcast episodes and all created assets',
-        'Delivery of handcrafted content to guests, encouraging co-promotion and expanding reach',
-        'Strategic follow-up email sequences to nurture guest relationships and initiate sales dialogues',
-        'Clear handoff and actionable insights for your sales team to convert leads'
+        'Multi-platform publication of conversation content and all created marketing assets for thought leadership',
+        'Delivery of premium thank you content packages to prospects, encouraging co-promotion and continued engagement',
+        'Tailored follow-up campaigns with multiple touchpoints to nurture prospect relationships and advance sales conversations',
+        'Clear handoff process and actionable insights for your sales team to convert qualified prospects into customers'
       ]
     }
   };
@@ -185,14 +185,14 @@ const ProcessSection = () => {
         >
           <div className="inline-flex items-center gap-2 mb-4 md:mb-6">
             <span className="px-3 py-1.5 md:px-4 md:py-2 bg-linear-to-r from-secondary/10 to-secondary-50 text-dark text-xs md:text-sm font-semibold rounded-full border border-secondary/20">
-              🎯 Our Proven Process
+              🎯 Our Proven Sales Process
             </span>
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary leading-tight">
-            Built for Your <span className="font-extrabold text-secondary">Business</span>.
+            Built for Your <span className="font-extrabold text-secondary">Sales Pipeline</span>.
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray leading-relaxed max-w-3xl mx-auto px-4 md:px-0">
-            Every aspect of our podcast process is designed with your most valuable customers in mind. We work closely with each of our partners to ensure your success every step of the way.
+            Every aspect of our sales development process is designed to secure meetings with your most valuable prospects. We work closely with each client to ensure qualified conversations that advance deals through your pipeline.
           </p>
         </motion.div>
         
@@ -296,7 +296,7 @@ const ProcessSection = () => {
                         className="absolute left-0 top-0 h-full bg-linear-to-r from-secondary to-secondary-dark rounded-full"
                         initial={{ width: "0%" }}
                         animate={{ 
-                          width: `${((tabs.findIndex(tab => tab.id === activeTab) + 1) / tabs.length) * 100}%` 
+                          width: `${((tabs.findIndex(tab => tab.id === activeTab) + 1) / tabs.length) * 100}%`
                         }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                       />
