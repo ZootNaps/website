@@ -1,11 +1,17 @@
 # Project Reference
 
 ## Business Overview
-South Lamar Studios is a B2B podcast production service that specializes in turning podcasts into powerful lead generation engines. Unlike traditional podcast services that focus on audience building, South Lamar Studios helps businesses use podcasting as a sales tool to generate qualified leads and drive revenue directly.
+South Lamar Studios is a B2B podcast production agency that specializes in turning podcasts into powerful lead generation and sales tools. Unlike traditional podcast services that focus on marketing and audience building, South Lamar Studios helps businesses use podcasting as a sales tool to generate qualified leads and drive revenue directly.
 
-The company's proprietary "B2B Podcast for Sales" system is designed to fit within existing sales processes and marketing funnels. From guest outreach strategy and interview strategy to post-interview nurture campaigns, this approach involves inviting ideal prospects as guests on client podcasts, creating valuable content while simultaneously building sales relationships. This strategy eliminates the need for large audiences and focuses on high-value, targeted conversations with potential customers.
+The company's proprietary "Podcast for Sales" system is designed to fit within existing sales processes and marketing funnels. It encompasses a full-service podcast production agency, and offers podcast strategy and production services - this includes guest outreach and scheduling, interview preparation, full-service video and audio post production, and podcast content publication. 
 
-With a 95% client success rate and proven 3:1 ROI within 90 days, South Lamar Studios delivers 5-10 qualified conversations per month that turn into real business opportunities.
+However, South Lamar Studios stands out from traditional agencies in 3 distinct ways:
+
+1. The "Podcast for Sales" process is a sales first system, and optimizes every part of a client's podcast is strategically built to attract the client's ideal customers. It also ensures the interview guests are qualified (no dud interviews that feel like a waste of time), and creates intro call and interview "talk tracks" to "soft sell" the client's product or services.
+2. We are obsessed with creating an incredible guest experience. As the goal of a client's podcast is to convert their guest into a customer, we ensure that the guest experience is second to none. Not only is the interview process seamless and enjoyable (thanks to intensive customer communication), we also produce a "thank you" package of high-quality content for the guest to post, further strengthening the relationship with the client/interviewer.
+3. We craft tailored follow-up campaigns to create multiple touchpoints between the client and guest to attempt to kick off the client's true sales cycle. This ensures each guest stays engaged long after the interview has concluded. The follow-up includes post-interview thank you, status updates around podcast publication dates, the "thank you" content package when the episode goes live, and other ways to nurture the guest, and keep the client top of mind.
+
+With a 95% client success rate and proven 3x ROI within 90 days, South Lamar Studios delivers 5-10 qualified conversations per month that turn into real business opportunities.
 
 ## Target Audience
 The website is targeting:
