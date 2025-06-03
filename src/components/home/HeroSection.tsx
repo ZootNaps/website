@@ -5,8 +5,26 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { scrollToElement } from '@/utils/scrollUtils';
+import { useState, useEffect } from 'react';
 
 const HeroSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+
+    // Check initially
+    checkIsMobile();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIsMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   return (
     <section id="home" className="pt-24 pb-20 relative overflow-hidden bg-linear-to-br from-primary-50 via-bg-light to-primary-100">
       {/* Enhanced background with dynamic gradient overlay */}
@@ -154,7 +172,7 @@ const HeroSection = () => {
                 src="/images/hero-image.png"
                 alt="Sales development system helping businesses connect with and sell to their top customers through strategic podcast conversations"
                 fill
-                loading="lazy"
+                loading={isMobile ? "lazy" : "eager"}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 quality={75}
