@@ -120,12 +120,12 @@ const HeroSection = () => {
             </motion.div> */}
             
             <motion.p 
-              className="text-lg md:text-xl text-gray leading-relaxed mb-8 max-w-xl"
+              className="text-base md:text-lg text-gray leading-relaxed mb-8 max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              Get strategic 45-minute conversations with decision-makers who normally ignore your calls. Our 'Podcast for Sales' system uses podcasting to secure meetings, build relationships, and advance deals through your pipeline.
+              Get strategic 45-minute conversations with your most elusive decision-makers. Our 'Podcast for Sales' system uses podcasting to secure meetings, build relationships, and advance deals through your pipeline.
             </motion.p>
             
             <motion.div 
