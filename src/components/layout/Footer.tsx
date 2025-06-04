@@ -125,7 +125,7 @@ const Footer = () => {
             >
               <div ref={linksContentRef} className="pb-3 grid grid-cols-2 gap-y-2 gap-x-2 text-center">
                 <Link href="/" className="text-xs hover:text-secondary py-1 px-1 transition-all duration-300 active:scale-95 text-white">Home</Link>
-                <Link href="/blog" className="text-xs hover:text-secondary py-1 px-1 transition-all duration-300 active:scale-95 text-white">Blog</Link>
+                <Link href="/blog" className="text-xs hover:text-secondary py-1 px-1 transition-all duration-300 active:scale-95 text-white">Learn</Link>
                 <Link href="/podcast" className="text-xs hover:text-secondary py-1 px-1 transition-all duration-300 active:scale-95 text-white">Podcast</Link>
                 <Link href="/contact" className="text-xs hover:text-secondary py-1 px-1 transition-all duration-300 active:scale-95 text-white">Contact</Link>
                 <Link href="/privacy-policy" className="text-xs hover:text-secondary py-1 px-1 transition-all duration-300 active:scale-95 text-white">Privacy</Link>
@@ -181,7 +181,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="/blog" className="text-white hover:text-secondary transition">
-                    Blog
+                    Learn
                   </Link>
                 </li>
                 <li>
