@@ -120,7 +120,7 @@ const HeroSection = () => {
             </motion.div> */}
             
             <motion.p 
-              className="text-base md:text-lg text-gray leading-relaxed mb-8 max-w-xl"
+              className="text-lg md:text-xl text-black leading-relaxed mb-8 max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
