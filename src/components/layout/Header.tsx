@@ -197,7 +197,7 @@ const Header = () => {
               href="/blog" 
               className={`${getLinkStyle('/blog')} transition`}
             >
-              Blog
+              Learn
             </Link>
             <Link 
               href="/podcast" 
@@ -289,7 +289,7 @@ const Header = () => {
               href="/blog" 
               className={`${getLinkStyle('/blog')} text-center transition-all duration-300 py-2 text-base border-b border-gray-100`}
             >
-              Blog
+              Learn
             </Link>
             <Link 
               href="/podcast" 
