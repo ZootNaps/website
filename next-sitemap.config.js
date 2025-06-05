@@ -4,7 +4,12 @@ module.exports = {
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
-      { userAgent: '*', allow: '/' },
+      // Consolidated wildcard user agent with disallow rules
+      { 
+        userAgent: '*', 
+        disallow: ['/admin'] 
+      },
+      // AI crawlers that should be explicitly allowed
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'ChatGPT-User', allow: '/' },
       { userAgent: 'Anthropic-AI', allow: '/' },
@@ -12,7 +17,6 @@ module.exports = {
       { userAgent: 'Google-Extended', allow: '/' },
       { userAgent: 'Bingbot', allow: '/' },
       { userAgent: 'CCBot', allow: '/' },
-      { userAgent: '*', disallow: '/admin' }
     ],
     additionalSitemaps: [
       'https://southlamarstudios.com/server-sitemap.xml',
@@ -20,4 +24,4 @@ module.exports = {
   },
   // Add any custom paths to exclude from sitemap
   exclude: ['/admin'],
-} 
+}
