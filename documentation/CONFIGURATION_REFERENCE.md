@@ -1,29 +1,41 @@
 # Configuration Reference
 
-This document provides a comprehensive reference for all configuration options in the South Lamar Studios website.
+This document outlines all configuration options and environment variables used in the South Lamar Studios website.
 
 ## Environment Variables
 
 ### Required Environment Variables
 
-These variables are required for the site to function properly:
+**Contentful Integration:**
+```bash
+CONTENTFUL_SPACE_ID=your_space_id_here
+CONTENTFUL_ACCESS_TOKEN=your_access_token_here
+CONTENTFUL_MANAGEMENT_TOKEN=your_management_token_here
+CONTENTFUL_ENVIRONMENT=master
+```
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `CONTENTFUL_SPACE_ID` | Contentful space identifier | `abc123xyz` |
-| `CONTENTFUL_ACCESS_TOKEN` | Content Delivery API token | `abcdef123456...` |
-| `CONTENTFUL_PREVIEW_TOKEN` | Content Preview API token | `abcdef123456...` |
-| `SITE_URL` | Production site URL (for sitemap) | `https://southlamarstudios.com` |
+**Analytics & Tracking:**
+```bash
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX  # Optional if using GTM only
+```
+
+**Form Handling:**
+```bash
+WEB3FORMS_ACCESS_KEY=your_web3forms_key
+```
 
 ### Optional Environment Variables
 
-These variables enable additional functionality:
+**Development:**
+```bash
+NODE_ENV=development|production
+```
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `CONTENTFUL_MANAGEMENT_TOKEN` | Content Management API token (for scripts) | `abcdef123456...` |
-| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager ID | `GTM-XXXXXXX` |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics ID | `G-XXXXXXXXXX` |
+**Sitemap Generation:**
+```bash
+SITE_URL=https://southlamarstudios.com  # Used for sitemap generation
+```
 
 ## Next.js Configuration
 
@@ -34,8 +46,19 @@ The Next.js configuration is defined in `next.config.ts`:
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  eslint: {
+    // ESLint is disabled as it has been removed from the project
+    ignoreDuringBuilds: true,
+  },
   images: {
-    domains: ['images.ctfassets.net'], // Allow Contentful images
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   reactStrictMode: true,
@@ -49,7 +72,7 @@ export default nextConfig;
 
 | Option | Value | Description |
 |--------|-------|-------------|
-| `images.domains` | `['images.ctfassets.net']` | Authorized domains for the Next.js Image component |
+| `images.remotePatterns` | `['https://images.ctfassets.net/**']` | Authorized domains for the Next.js Image component |
 | `images.formats` | `['image/avif', 'image/webp']` | Modern image formats supported |
 | `reactStrictMode` | `true` | Enables React's strict mode for development |
 | `poweredByHeader` | `false` | Disables the X-Powered-By header for security |
@@ -629,5 +652,193 @@ import '../lib/fontawesome';
 ```
 
 ### Image Configuration
+
+**Dynamic Loading Strategy:**
+Images can be configured for dynamic loading based on viewport size:
+
+```typescript
+// In components (e.g., HeroSection)
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const checkIsMobile = () => {
+    setIsMobile(window.innerWidth < 1024); // lg breakpoint
+  };
+  checkIsMobile();
+  window.addEventListener('resize', checkIsMobile);
+  return () => window.removeEventListener('resize', checkIsMobile);
+}, []);
+
+// Usage in Image component
+<Image
+  src="/hero-image.png"
+  loading={isMobile ? "lazy" : "eager"}
+  priority={!isMobile}
+  sizes="(max-width: 768px) 100vw, 50vw"
+/>
+```
+
+**Content Image Guidelines:**
+- Featured/Hero Images: 1600px × 900px (16:9 aspect ratio)
+- Blog Post Thumbnails: 800px × 450px (16:9 aspect ratio)
+- Automatic WebP conversion for modern browsers
+- Responsive image loading with appropriate `sizes` attribute
+
+## SEO Configuration
+
+### Centralized SEO Settings (`src/utils/seo-config.ts`)
+
+**Site Information:**
+```typescript
+export const SEO_CONFIG = {
+  siteName: "South Lamar Studios",
+  siteUrl: "https://southlamarstudios.com",
+  defaultTitle: "B2B Podcast Production & Lead Generation | South Lamar Studios",
+  defaultDescription: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
+  
+  // Organization Schema data
+  organization: {
+    name: "South Lamar Studios",
+    url: "https://southlamarstudios.com",
+    description: "...",
+    foundingDate: "2020",
+    logo: "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+  },
+  
+  // Social media integration
+  social: {
+    twitter: "@southlamarstudios",
+    linkedin: "https://www.linkedin.com/company/southlamarstudios"
+  },
+
+  // Comprehensive keyword targeting
+  keywords: [
+    "b2b podcast production", 
+    "podcast lead generation", 
+    "business podcast services", 
+    "podcast guest outreach", 
+    "b2b content marketing", 
+    "podcast sales funnel", 
+    "executive interview podcast", 
+    "podcast audience growth", 
+    "revenue-generating podcast",
+    "podcast marketing strategy",
+    "thought leadership podcast",
+    "podcast for sales",
+    "b2b podcast agency",
+    "podcast production austin",
+    "business development podcast",
+    "podcast roi measurement",
+    "strategic podcast consulting",
+    "podcast guest booking",
+    "b2b sales podcast",
+    "podcast monetization"
+  ]
+}
+```
+
+**Usage in Pages:**
+```typescript
+import { generateSEOMetadata } from '@/utils/seo-config';
+
+// Default metadata
+export const metadata = generateSEOMetadata();
+
+// Custom page metadata
+export const metadata = generateSEOMetadata({
+  title: "Contact Us",
+  description: "Custom page description",
+  canonical: "https://southlamarstudios.com/contact"
+});
+
+// Article metadata
+export const metadata = generateSEOMetadata({
+  title: post.title,
+  description: post.excerpt,
+  canonical: `https://southlamarstudios.com/blog/${post.slug}`,
+  type: "article",
+  publishedTime: post.publishedAt,
+  modifiedTime: post.updatedAt
+});
+```
+
+## Build Configuration
+
+### Package.json Scripts
+
+```json
+{
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "next-sitemap"
+  }
+}
+```
+
+**Note**: ESLint has been removed from the project to simplify the development workflow. Code quality is maintained through TypeScript strict mode and consistent development patterns.
+
+### Next.js Configuration (`next.config.ts`)
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  eslint: {
+    // ESLint is disabled as it has been removed from the project
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    formats: ['image/avif', 'image/webp'],
+  },
+  // Additional configuration options...
+};
+
+export default nextConfig;
+```
+
+// ... existing code ...
+
+### Image Configuration
+
+**Dynamic Loading Strategy:**
+Images can be configured for dynamic loading based on viewport size:
+
+```typescript
+// In components (e.g., HeroSection)
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const checkIsMobile = () => {
+    setIsMobile(window.innerWidth < 1024); // lg breakpoint
+  };
+  checkIsMobile();
+  window.addEventListener('resize', checkIsMobile);
+  return () => window.removeEventListener('resize', checkIsMobile);
+}, []);
+
+// Usage in Image component
+<Image
+  src="/hero-image.png"
+  loading={isMobile ? "lazy" : "eager"}
+  priority={!isMobile}
+  sizes="(max-width: 768px) 100vw, 50vw"
+/>
+```
+
+**Content Image Guidelines:**
+- Featured/Hero Images: 1600px × 900px (16:9 aspect ratio)
+- Blog Post Thumbnails: 800px × 450px (16:9 aspect ratio)
+- Automatic WebP conversion for modern browsers
+- Responsive image loading with appropriate `sizes` attribute
 
 // ... existing code ... 

@@ -379,7 +379,84 @@ export default async function BlogPost({ params }: { params: { slug: string } })
    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
    ```
 
-4. Follow the image guidelines in `documentation/image-guidelines.md` for content images.
+4. **Dynamic Loading Strategy**: For performance-critical images like hero sections, use conditional loading:
+   ```tsx
+   const [isMobile, setIsMobile] = useState(false);
+
+   useEffect(() => {
+     const checkIsMobile = () => {
+       setIsMobile(window.innerWidth < 1024); // lg breakpoint
+     };
+     checkIsMobile();
+     window.addEventListener('resize', checkIsMobile);
+     return () => window.removeEventListener('resize', checkIsMobile);
+   }, []);
+
+   <Image
+     src="/hero-image.png"
+     alt="Hero image"
+     loading={isMobile ? "lazy" : "eager"}
+     priority={!isMobile}
+     // ... other props
+   />
+   ```
+
+5. Follow the image guidelines in `documentation/image-guidelines.md` for content images.
+
+## SEO and Metadata Management
+
+### Centralized SEO Configuration
+
+The project now uses a centralized SEO configuration system in `src/utils/seo-config.ts` for consistent metadata across all pages:
+
+```tsx
+import { generateSEOMetadata, SEO_CONFIG } from '@/utils/seo-config';
+
+// For page-level metadata
+export const metadata = generateSEOMetadata({
+  title: "Custom Page Title",
+  description: "Custom page description",
+  canonical: "https://southlamarstudios.com/custom-page",
+  type: "article", // or "website"
+  publishedTime: "2023-01-01T00:00:00Z", // for articles
+  modifiedTime: "2023-01-02T00:00:00Z"   // for articles
+});
+
+// For default metadata (uses config defaults)
+export const metadata = generateSEOMetadata();
+```
+
+### Schema.org Structured Data
+
+Use the built-in schema generators for consistent structured data:
+
+```tsx
+import { generateOrganizationSchema, generateWebSiteSchema } from '@/utils/seo-config';
+
+// In layout.tsx or specific pages
+<Script
+  id="schema-org-script"
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        generateOrganizationSchema(),
+        generateWebSiteSchema()
+      ]
+    })
+  }}
+/>
+```
+
+### SEO Configuration Options
+
+The SEO configuration includes:
+- **Site Information**: Name, URL, default titles and descriptions
+- **Organization Data**: Schema.org organization information
+- **Social Media**: Twitter, LinkedIn handles
+- **Keywords**: Comprehensive B2B podcast-related keyword list
+- **Metadata Templates**: Consistent title and description patterns
 
 ## Testing
 
@@ -452,7 +529,7 @@ The site is deployed on Vercel. The deployment process:
 ## Build Process
 - Development: `npm run dev` - runs Next.js dev server with Turbopack
 - Build: `npm run build` - builds the Next.js application
-- Post-build: `next-sitemap` - generates sitemap
+- Post-build: `next-sitemap` - generates sitemap with enhanced URL discovery
 - Start: `npm run start` - starts the production server
 
-Note: ESLint has been removed from the project as of recent updates. 
+**Linting**: ESLint has been removed from the project. Code quality is maintained through TypeScript strict mode and consistent development patterns. 

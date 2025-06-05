@@ -230,3 +230,180 @@ curl -X POST https://southlamarstudios.com/api/contact \
 2. Set the appropriate HTTP method
 3. Add required headers and body content
 4. Send the request and review the response 
+
+## SEO and Metadata Utilities
+
+### SEO Configuration (`src/utils/seo-config.ts`)
+
+Centralized SEO configuration system for consistent metadata generation across the site.
+
+#### Configuration Object
+
+```typescript
+export const SEO_CONFIG = {
+  siteName: "South Lamar Studios",
+  siteUrl: "https://southlamarstudios.com",
+  defaultTitle: "B2B Podcast Production & Lead Generation | South Lamar Studios",
+  defaultDescription: "The only B2B podcast agency focused on sales results...",
+  
+  organization: {
+    name: "South Lamar Studios",
+    url: "https://southlamarstudios.com",
+    description: "...",
+    foundingDate: "2020",
+    logo: "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
+  },
+  
+  social: {
+    twitter: "@southlamarstudios",
+    linkedin: "https://www.linkedin.com/company/southlamarstudios"
+  },
+
+  keywords: [
+    "b2b podcast production",
+    "podcast lead generation",
+    // ... comprehensive keyword list
+  ]
+}
+```
+
+#### generateSEOMetadata()
+
+Generates consistent Next.js metadata objects for pages.
+
+**Parameters:**
+```typescript
+interface SEOProps {
+  title?: string;           // Custom page title (will be suffixed with site name)
+  description?: string;     // Custom description (defaults to SEO_CONFIG.defaultDescription)
+  canonical?: string;       // Canonical URL for the page
+  type?: 'website' | 'article';  // OpenGraph type
+  publishedTime?: string;   // ISO date string for articles
+  modifiedTime?: string;    // ISO date string for articles
+}
+```
+
+**Usage:**
+```typescript
+import { generateSEOMetadata } from '@/utils/seo-config';
+
+// Basic usage with defaults
+export const metadata = generateSEOMetadata();
+
+// Custom page metadata
+export const metadata = generateSEOMetadata({
+  title: "Contact Us",
+  description: "Get in touch with South Lamar Studios for your B2B podcast needs",
+  canonical: "https://southlamarstudios.com/contact"
+});
+
+// Article metadata
+export const metadata = generateSEOMetadata({
+  title: post.title,
+  description: post.excerpt,
+  canonical: `https://southlamarstudios.com/blog/${post.slug}`,
+  type: "article",
+  publishedTime: post.publishedAt,
+  modifiedTime: post.updatedAt
+});
+```
+
+**Returns:**
+Next.js Metadata object with:
+- `title` - Formatted with site name template
+- `description` - SEO-optimized description
+- `keywords` - Comprehensive keyword array
+- `openGraph` - Complete OpenGraph metadata
+- `twitter` - Twitter Card metadata
+- `alternates.canonical` - Canonical URL (if provided)
+- `robots` - Search engine directives
+
+#### generateOrganizationSchema()
+
+Generates Schema.org Organization structured data.
+
+**Usage:**
+```typescript
+import { generateOrganizationSchema } from '@/utils/seo-config';
+
+const orgSchema = generateOrganizationSchema();
+```
+
+**Returns:**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://southlamarstudios.com/#organization",
+  "name": "South Lamar Studios",
+  "url": "https://southlamarstudios.com",
+  "logo": "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png",
+  "description": "...",
+  "foundingDate": "2020",
+  "sameAs": ["https://www.linkedin.com/company/southlamarstudios"]
+}
+```
+
+#### generateWebSiteSchema()
+
+Generates Schema.org WebSite structured data.
+
+**Usage:**
+```typescript
+import { generateWebSiteSchema } from '@/utils/seo-config';
+
+const websiteSchema = generateWebSiteSchema();
+```
+
+**Returns:**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://southlamarstudios.com/#website",
+  "url": "https://southlamarstudios.com",
+  "name": "B2B Podcast Production & Lead Generation | South Lamar Studios",
+  "description": "...",
+  "publisher": {
+    "@id": "https://southlamarstudios.com/#organization"
+  }
+}
+```
+
+#### Implementation Example
+
+**In layout.tsx:**
+```tsx
+import { generateSEOMetadata, generateOrganizationSchema, generateWebSiteSchema } from '@/utils/seo-config';
+
+export const metadata = {
+  ...generateSEOMetadata(),
+  title: {
+    default: "B2B Podcast Production & Lead Generation | South Lamar Studios",
+    template: "%s | South Lamar Studios",
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        <Script
+          id="schema-org-script"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                generateOrganizationSchema(),
+                generateWebSiteSchema()
+              ]
+            })
+          }}
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+``` 

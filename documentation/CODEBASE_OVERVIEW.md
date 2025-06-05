@@ -14,7 +14,7 @@ The website serves as both a lead generation platform and educational resource, 
 - **Deployment**: Vercel (based on configuration)
 - **Image Optimization**: Sharp, Next.js Image component
 - **Analytics**: Vercel Analytics and Speed Insights
-- **SEO**: Next Sitemap for sitemap generation, RSS feeds, structured data
+- **SEO**: Next Sitemap for sitemap generation, RSS feeds, structured data, centralized SEO configuration
 - **Email**: Nodemailer for contact form
 - **Icons**: Font Awesome 6 (FontAwesome SVG Core) - upgraded from v5
 - **Animations**: Framer Motion for enhanced UI interactions and micro-animations
@@ -61,6 +61,7 @@ The website serves as both a lead generation platform and educational resource, 
 - `scrollUtils.ts` - Utility functions for scrolling behavior
 - `gtm.ts` - Google Tag Manager integration
 - `imageUtils.ts` - Image optimization utilities for Contentful images
+- `seo-config.ts` - Centralized SEO configuration and metadata generation utilities
 - Other utility files
 
 ## Key Files
@@ -86,6 +87,13 @@ The website serves as both a lead generation platform and educational resource, 
 - **Error Handling**: Graceful fallbacks for CMS connectivity issues
 - **Enhanced Blog Categories**: Six predefined categories with unique styling and icons
 - **Category Management**: `src/utils/categoryUtils.ts` for consistent category styling and sorting
+
+### SEO and Metadata Management
+- **Centralized SEO Configuration**: `src/utils/seo-config.ts` provides unified metadata generation
+- **Schema.org Integration**: Automated structured data for Organization and WebSite schemas
+- **Consistent Metadata**: Template-based title and description generation across all pages
+- **Enhanced Social Sharing**: OpenGraph and Twitter Card optimization with dedicated images
+- **Favicon System**: Modern favicon.ico with multiple format support
 
 ### RSS and Content Syndication
 - **Blog RSS Feed**: `/blog-rss.xml` with proper XML structure and caching
@@ -184,6 +192,8 @@ Components are organized by feature/section with shared components separated.
 - **Animated Counters**: Custom hooks for smooth number animations without layout shift
 - **RSS Feed Caching**: 1-hour cache control for RSS endpoints
 - **Sitemap Optimization**: Proper priority and change frequency settings
+- **Dynamic Image Loading**: Mobile-specific loading strategies for hero images
+- **Centralized SEO Management**: Reduced redundancy in metadata generation
 
 ## Code Organization Principles
 - Feature-based organization for components (home/, blog/, contact/, etc.)
@@ -197,3 +207,5 @@ Components are organized by feature/section with shared components separated.
 - **Icon Management**: Centralized Font Awesome configuration with selective imports
 - **Content Management**: Unified Contentful integration with proper error boundaries
 - **SEO Strategy**: Structured data implementation and RSS feed generation
+- **Centralized Configuration**: Unified SEO, metadata, and schema management
+- **Performance-First**: Mobile-responsive image loading and lazy loading strategies
