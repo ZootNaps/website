@@ -9,17 +9,12 @@ import FaqSection from '@/components/home/FaqSection';
 import CtaSection from '@/components/home/CtaSection';
 
 import type { Metadata } from "next";
+import { generateSEOMetadata } from '@/utils/seo-config';
 
-export const metadata: Metadata = {
-  title: "Podcasts that Sell: Podcast Driven Lead Gen | South Lamar Studios",
-  description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-  openGraph: {
-    title: "Podcasts that Sell: Podcast Driven Lead Gen | South Lamar Studios",
-    description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-    url: "https://southlamarstudios.com",
-    type: "website",
-  }
-};
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Podcasts that Sell: Podcast Driven Lead Gen",
+  canonical: "https://southlamarstudios.com"
+});
 
 export default function Home() {
   return (

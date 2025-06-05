@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from 'next/script';
 import { GoogleTagManager } from '@/utils/gtm';
 import { Suspense } from 'react';
+import { generateSEOMetadata, generateOrganizationSchema, generateWebSiteSchema } from '@/utils/seo-config';
 
 // Import FontAwesome styles and config
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -25,54 +26,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  ...generateSEOMetadata(), // Uses default title and description from config
   title: {
     default: "B2B Podcast Production & Lead Generation | South Lamar Studios",
     template: "%s | South Lamar Studios",
-  },
-  description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-
-  keywords: [
-    "b2b podcast production", 
-    "podcast lead generation", 
-    "business podcast services", 
-    "podcast guest outreach", 
-    "b2b content marketing", 
-    "podcast sales funnel", 
-    "executive interview podcast", 
-    "podcast audience growth", 
-    "revenue-generating podcast",
-    "podcast marketing strategy",
-    "thought leadership podcast",
-    "podcast for sales",
-    "b2b podcast agency",
-    "podcast production austin",
-    "business development podcast",
-    "podcast roi measurement",
-    "strategic podcast consulting",
-    "podcast guest booking",
-    "b2b sales podcast",
-    "podcast monetization"
-  ],
-  authors: [{ name: "Gus Joseph" }],
-  creator: "South Lamar Studios",
-  publisher: "South Lamar Studios",
-  robots: {
-    index: true,
-    follow: true,
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://southlamarstudios.com",
-    title: "B2B Podcast Production & Lead Generation | South Lamar Studios",
-    description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-    siteName: "South Lamar Studios",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "B2B Podcast Production & Lead Generation | South Lamar Studios",
-    description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-    creator: "@southlamarstudios",
   },
   alternates: {
     types: {
@@ -96,33 +53,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@graph": [
-                {
-                  "@type": "Organization",
-                  "name": "South Lamar Studios",
-                  "url": "https://www.southlamarstudios.com",
-                  "logo": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png",
-                  "description": "South Lamar Studios\' The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-                  "sameAs": [
-                    "https://www.linkedin.com/company/southlamarstudios"
-                    // Add other official social profiles here from existing if accurate:
-                    // e.g., "https://twitter.com/southlamarstudios",
-                    // "https://www.facebook.com/southlamarstudios"
-                  ]
-                },
-                {
-                  "@type": "WebSite",
-                  "url": "https://www.southlamarstudios.com",
-                  "name": "South Lamar Studios",
-                  "description": "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-                  "publisher": {
-                    "@type": "Organization",
-                    "name": "South Lamar Studios",
-                    "logo": {
-                      "@type": "ImageObject",
-                      "url": "https://www.southlamarstudios.com/images/sls-logos/sls-logo-default.png"
-                    }
-                  }
-                }
+                generateOrganizationSchema(),
+                generateWebSiteSchema()
               ]
             })
           }}
