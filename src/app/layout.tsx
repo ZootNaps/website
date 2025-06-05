@@ -30,15 +30,7 @@ export const metadata: Metadata = {
     template: "%s | South Lamar Studios",
   },
   description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32' },
-      { url: '/favicon.png', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/favicon.png', type: 'image/png' },
-    ],
-  },
+
   keywords: [
     "b2b podcast production", 
     "podcast lead generation", 
@@ -75,21 +67,12 @@ export const metadata: Metadata = {
     title: "B2B Podcast Production & Lead Generation | South Lamar Studios",
     description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
     siteName: "South Lamar Studios",
-    images: [
-      {
-        url: "https://southlamarstudios.com/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "B2B Podcast Production & Lead Generation South Lamar Studios ",
-      }
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "B2B Podcast Production & Lead Generation | South Lamar Studios",
     description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
     creator: "@southlamarstudios",
-    images: ["https://southlamarstudios.com/images/twitter-image.jpg"],
   },
   alternates: {
     types: {
