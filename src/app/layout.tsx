@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from 'next/script';
 import { GoogleTagManager } from '@/utils/gtm';
 import { Suspense } from 'react';
-import { generateSEOMetadata, generateOrganizationSchema, generateWebSiteSchema } from '@/utils/seo-config';
+import { generateSEOMetadata, generateOrganizationSchema, generateWebSiteSchema, SEO_CONFIG } from '@/utils/seo-config';
 
 // Import FontAwesome styles and config
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -25,10 +25,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  ...generateSEOMetadata(), // Uses default title and description from config
+  ...generateSEOMetadata(),
   title: {
-    default: "B2B Podcast Production & Lead Generation | South Lamar Studios",
-    template: "%s | South Lamar Studios",
+    default: SEO_CONFIG.defaultTitle,
+    template: `%s | ${SEO_CONFIG.siteName}`,
   },
   alternates: {
     types: {

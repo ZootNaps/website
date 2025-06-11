@@ -4,13 +4,13 @@ export const SEO_CONFIG = {
   siteName: "South Lamar Studios",
   siteUrl: "https://southlamarstudios.com",
   defaultTitle: "B2B Podcast Production & Lead Generation | South Lamar Studios", 
-  defaultDescription: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
+  defaultDescription: "The only B2B podcast agency focused on sales results. We help you book executive guests and convert conversations into qualified leads & deals.",
   
   // Schema.org data
   organization: {
     name: "South Lamar Studios",
     url: "https://southlamarstudios.com",
-    description: "The only B2B podcast agency focused on sales results. We help you book executive guests, conduct strategic interviews, and convert conversations into qualified leads.",
+    description: "The only B2B podcast agency focused on sales results. We help you book executive guests and convert conversations into qualified leads & deals.",
     foundingDate: "2020",
     logo: "https://southlamarstudios.com/images/sls-logos/sls-logo-default.png"
   },
@@ -62,11 +62,8 @@ export function generateSEOMetadata({
   publishedTime,
   modifiedTime
 }: SEOProps = {}): Metadata {
-  const fullTitle = title ? `${title} | ${SEO_CONFIG.siteName}` : SEO_CONFIG.defaultTitle;
-  
-  return {
+  const metadata: Metadata = {
     metadataBase: new URL(SEO_CONFIG.siteUrl),
-    title: fullTitle,
     description,
     keywords: SEO_CONFIG.keywords,
     authors: [{ name: "Gus Joseph" }],
@@ -80,18 +77,22 @@ export function generateSEOMetadata({
       type,
       locale: "en_US",
       url: canonical || SEO_CONFIG.siteUrl,
-      title: fullTitle,
       description,
       siteName: SEO_CONFIG.siteName,
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
       description,
       creator: SEO_CONFIG.social.twitter,
     },
     alternates: canonical ? { canonical } : undefined,
   };
+
+  if (title) {
+    metadata.title = `${title} | ${SEO_CONFIG.siteName}`;
+  }
+
+  return metadata;
 }
 
 // Schema.org generation utilities
@@ -115,7 +116,7 @@ export function generateWebSiteSchema() {
     "@type": "WebSite",
     "@id": `${SEO_CONFIG.siteUrl}/#website`,
     url: SEO_CONFIG.siteUrl,
-    name: SEO_CONFIG.defaultTitle, // This fixes the title conflict!
+    name: SEO_CONFIG.siteName,
     description: SEO_CONFIG.defaultDescription,
     publisher: {
       "@id": `${SEO_CONFIG.siteUrl}/#organization`

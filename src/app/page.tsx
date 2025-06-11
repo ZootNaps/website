@@ -12,7 +12,7 @@ import type { Metadata } from "next";
 import { generateSEOMetadata } from '@/utils/seo-config';
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Podcasts that Sell: Podcast Driven Lead Gen",
+  title: "B2B Podcasts for Sales & Lead Gen | South Lamar Studios",
   canonical: "https://southlamarstudios.com"
 });
 
