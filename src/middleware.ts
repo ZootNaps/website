@@ -1,7 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { trackCrawlerVisit } from '@split.dev/analytics/middleware';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  if (process.env.SPLIT_API_KEY) {
+    trackCrawlerVisit(request, {
+      apiKey: process.env.SPLIT_API_KEY,
+    }).catch(console.error);
+  }
+
   // Handle redirects for old URLs
   const { pathname } = request.nextUrl;
   
