@@ -104,7 +104,7 @@ export default function MetricsSection() {
             Optimized for <span className="text-secondary">Revenue, Not Downloads</span>.
           </h2>
           <Typography variant="body-lg" color="gray" className="max-w-3xl mx-auto mb-8">
-            Our podcasts are so much more than a marketing experiment. While other podcast agencies chase vanity metrics, our 'Podcast for Sales' is purpose built to generate leads and close deals.
+            Not just a marketing experiment. While other podcast agencies chase vanity metrics, our podcasts are purpose built to generate leads and close deals.
           </Typography>
           {/* <motion.div
             className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-full px-6 md:px-10 py-4 md:py-5 shadow-lg border border-primary/20 hover:shadow-xl hover:border-bg-dark transition-all duration-300 relative max-w-full"

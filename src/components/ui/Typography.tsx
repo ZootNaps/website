@@ -37,8 +37,8 @@ export default function Typography({
     h3: 'text-2xl md:text-3xl font-semibold leading-snug',
     h4: 'text-xl md:text-2xl font-semibold leading-snug',
     subheading: 'text-lg md:text-xl font-medium leading-normal',
-    'body-lg': 'text-lg leading-relaxed',
-    body: 'text-base leading-relaxed',
+    'body-lg': 'text-lg md:text-xl leading-relaxed',
+    body: 'text-base md:text-lg leading-relaxed',
     small: 'text-sm leading-normal',
   };
   
