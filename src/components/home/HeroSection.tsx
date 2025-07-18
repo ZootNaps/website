@@ -72,14 +72,14 @@ const HeroSection = () => {
           >
             <div className="relative">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-2 text-primary relative z-10">
-                Turn Your Toughest Prospects{' '}
+                Podcasts Built to{' '}
                 <motion.span 
                   className="text-secondary relative"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  Into Engaged Podcast Guests.
+                  Sell.
                   {/* Animated underline */}
                   <motion.div
                     className="absolute bottom-0 left-0 h-1 bg-secondary/30 rounded-full"
@@ -120,12 +120,12 @@ const HeroSection = () => {
             </motion.div> */}
             
             <motion.p 
-              className="text-lg md:text-xl text-black leading-relaxed mb-8 max-w-xl"
+              className="text-xl md:text-2xl text-black leading-relaxed mb-6 max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              Get strategic 45-minute conversations with your most elusive decision-makers. Our 'Podcast for Sales' system uses podcasting to secure meetings, build relationships, and advance deals through your pipeline.
+              Turn cold prospects into loyal customers with a strategic business podcast.
             </motion.p>
             
             <motion.div 
