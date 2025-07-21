@@ -187,7 +187,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 1.8 }}
             >
               <p className="text-sm text-gray-600">
-                Brian Blum - Co-Host of "Sweat Equity"
+                Podcasts Built to Sell
               </p>
             </motion.div>
             
