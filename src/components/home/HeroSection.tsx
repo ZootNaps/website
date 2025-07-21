@@ -166,21 +166,17 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* Enhanced image container with split-screen concept */}
-            <div className="relative w-full h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
-              <Image 
-                src="/images/hero-image.png"
-                alt="Sales development system helping businesses connect with and sell to their top customers through strategic podcast conversations"
+            {/* Enhanced image container for graphic */}
+            <div className="relative w-full aspect-video max-h-[350px] overflow-hidden rounded-2xl shadow-2xl bg-bg-light p-8 md:p-12">
+              <Image
+                src="/images/website-hero-image-transparentpng.png"
+                alt="A graphic showing the process: from Prospect, to Podcast, to Partner."
                 fill
                 loading={isMobile ? "lazy" : "eager"}
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
-                quality={75}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                className="object-contain"
+                quality={90}
               />
-              {/* Enhanced overlay with better visual hierarchy */}
-              <div className="absolute inset-0 bg-linear-to-tr from-primary/40 via-transparent to-secondary/20"></div>
             </div>
             
             {/* Enhanced client attribution with better visual treatment - removed quote and box */}
