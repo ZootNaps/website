@@ -53,8 +53,8 @@ const PricingSection = () => {
       buttonLink: '/contact'
     },
     {
-      name: 'Sales + Scale',
-      description: 'Maximum volume with custom content strategy',
+      name: 'Sales + Content',
+      description: 'Turn your podcast into a B2B content engine on all platforms.',
       price: 17999,
       features: [
         'Everything in Sales Premium, plus:',
