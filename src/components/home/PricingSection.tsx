@@ -6,28 +6,29 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const PricingSection = () => {
-  // Format price with comma for thousands
+  // Format price with comma for thousands, using a specific locale for consistency
   const formatPrice = (price: number) => {
-    return price >= 1000 ? price.toLocaleString() : price;
+    return price.toLocaleString('en-US');
   };
 
   const plans = [
     {
       name: 'Sales Core',
       description: 'See our Podcast for Sales system in action',
-      price: 6999,
+      price: 7999,
       features: [
-        '2 complete podcast episodes per month (audio + video)',
-        '40 strategic prospect outreach messages per month',
-        'Complete strategy workshop (ICP identification, podcast positioning, goal alignment)',
-        'Dedicated podcast producer for recording, scheduling, and guest outreach',
-        'Custom interview & conversation framework for your podcast',
-        'Guest qualification and pre-interview preparation',
-        'Professional audio and video post-production',
-        'Basic follow-up sequence (pre and post-publication nurturing)',
-        'Standard thank you package: 4 video clips + LinkedIn posts + custom cover art',
-        'Show notes and full transcriptions',
-        'Performance tracking and KPI monitoring'
+        { text: '2 complete podcast episodes per month (audio + video)', type: 'highlighted' },
+        { text: '40 strategic prospect outreach messages per month', type: 'highlighted' },
+        { text: 'Basic guest content package (4 clips)', type: 'highlighted' },
+        { text: 'Includes:', type: 'intro' },
+        { text: 'Complete strategy workshop (ICP identification, podcast positioning, goal alignment)', type: 'normal' },
+        { text: 'Dedicated podcast producer for recording, scheduling, and guest outreach', type: 'normal' },
+        { text: 'Custom interview & conversation framework for your podcast', type: 'normal' },
+        { text: 'Guest qualification and pre-interview preparation', type: 'normal' },
+        { text: 'Professional audio and video post-production', type: 'normal' },
+        { text: 'Basic follow-up sequence (pre and post-publication nurturing)', type: 'normal' },
+        { text: 'Show notes and full transcriptions', type: 'normal' },
+        { text: 'Performance tracking and KPI monitoring', type: 'normal' }
       ],
       isPopular: false,
       isBestValue: false,
@@ -39,13 +40,14 @@ const PricingSection = () => {
       description: 'More outreach, interviews, and social distribution',
       price: 11999,
       features: [
-        'Everything in Sales Core, plus:',
-        '4 complete podcast episodes per month (audio + video)',
-        '80 strategic prospect outreach messages per month',
-        'Content distribution LinkedIn & other social platforms',
-        'Monthly performance reporting with detailed analytics',
-        'Enhanced follow-up sequences with advanced prospect nurturing',
-        'Priority scheduling and expedited turnaround times'
+        { text: '4 complete podcast episodes per month (audio + video)', type: 'highlighted' },
+        { text: '80 strategic prospect outreach messages per month', type: 'highlighted' },
+        { text: 'Premium guest content package (4 clips + written posts + custom cover art)', type: 'highlighted' },
+        { text: 'Content distribution LinkedIn & other social platforms', type: 'highlighted' },
+        { text: 'Everything in Sales Core, plus:', type: 'intro' },
+        { text: 'Monthly performance reporting with detailed analytics', type: 'normal' },
+        { text: 'Enhanced follow-up sequences with additional touchpoints', type: 'normal' },
+        { text: 'Priority scheduling and expedited turnaround times', type: 'normal' }
       ],
       isPopular: true,
       isBestValue: false,
@@ -54,15 +56,15 @@ const PricingSection = () => {
     },
     {
       name: 'Sales + Content',
-      description: 'Turn your podcast into a B2B content engine on all platforms.',
+      description: 'Turn your podcast into a B2B content engine on all platforms',
       price: 17999,
       features: [
-        'Everything in Sales Premium, plus:',
-        '120+ strategic prospect outreach messages per month',
-        'Custom content repurposing: SEO-optimized blog posts, newsletters, and more',
-        'Dedicated social media manager for content distribution',
-        'Custom sales process & systems integration',
-        'White-glove onboarding and priority support'
+        { text: '120+ strategic prospect outreach messages per month', type: 'highlighted' },
+        { text: 'Custom content repurposing: SEO-optimized blog posts, newsletters, and more', type: 'highlighted' },
+        { text: 'Dedicated social media manager for content distribution', type: 'highlighted' },
+        { text: 'Everything in Sales Premium, plus:', type: 'intro' },
+        { text: 'Custom sales process & systems integration', type: 'normal' },
+        { text: 'White-glove onboarding and priority support', type: 'normal' }
       ],
       isPopular: false,
       isBestValue: true,
@@ -85,37 +87,12 @@ const PricingSection = () => {
           <p className="text-lg text-gray leading-relaxed max-w-2xl mx-auto mb-6">
             Choose your sales development package. Average 3x ROI within 90 days with 95% client success rate.
           </p>
-          
-          {/* ROI Calculation Example - COMMENTED OUT FOR FUTURE USE
-          <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-2xl p-6 max-w-4xl mx-auto border border-secondary/20">
-            <h3 className="text-xl font-bold text-primary mb-4">Simple ROI Math</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-center">
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <div className="text-2xl font-bold text-secondary mb-2">2-4</div>
-                <div className="text-sm text-gray">Qualified Deals Per Month</div>
-              </div>
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <div className="text-2xl font-bold text-primary mb-2">25%</div>
-                <div className="text-sm text-gray">Close Rate (Conservative)</div>
-              </div>
-              <div className="bg-white rounded-xl p-4 shadow-sm">
-                <div className="text-2xl font-bold text-secondary mb-2">$50K+</div>
-                <div className="text-sm text-gray">Average Contract Value</div>
-              </div>
-            </div>
-            <div className="mt-4 text-center">
-              <span className="text-sm text-gray">Result: </span>
-              <span className="text-lg font-bold text-primary">$25K+ monthly revenue from just 1 close</span>
-              <span className="text-sm text-gray"> vs. $12K investment</span>
-            </div>
-          </div>
-          */}
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <motion.div
-              key={index}
+              key={plan.name}
               className={`relative rounded-2xl border-2 ${
                 plan.isPopular 
                   ? 'border-secondary shadow-xl bg-white' 
@@ -157,12 +134,24 @@ const PricingSection = () => {
                   </div>
                   
                   <ul className="mb-8 space-y-4">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <FontAwesomeIcon icon={faCheck} className="text-secondary mt-1 mr-3 flex-shrink-0" />
-                        <span className="text-gray">{feature}</span>
-                      </li>
-                    ))}
+                    {plan.features.map((feature) => {
+                      if (feature.type === 'intro') {
+                        return (
+                          <li key={feature.text} className="underline text-gray-600 font-medium pt-4 pb-2">
+                            {feature.text}
+                          </li>
+                        );
+                      }
+                      
+                      return (
+                        <li key={feature.text} className="flex items-start">
+                          <FontAwesomeIcon icon={faCheck} className="text-secondary mt-1 mr-3 flex-shrink-0" />
+                          <span className={`text-gray ${feature.type === 'highlighted' ? 'font-bold text-primary' : ''}`}>
+                            {feature.text}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
                 
