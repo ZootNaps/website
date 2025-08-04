@@ -56,7 +56,7 @@ const PricingSection = () => {
     },
     {
       name: 'Sales + Content',
-      description: 'Turn your podcast into a B2B content engine on all platforms',
+      description: 'A B2B content engine for your business',
       price: 17999,
       features: [
         { text: '120+ strategic prospect outreach messages per month', type: 'highlighted' },
