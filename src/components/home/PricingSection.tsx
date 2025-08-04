@@ -14,17 +14,20 @@ const PricingSection = () => {
   const plans = [
     {
       name: 'Sales Core',
-      description: 'Essential sales development system for consistent qualified meetings',
-      price: 8999,
+      description: 'See our Podcast for Sales system in action',
+      price: 6999,
       features: [
-        'Dedicated sales development manager',
-        '2 strategic sales conversations per month',
-        'Prospect research & qualification',
-        'Custom conversation frameworks',
-        'Professional recording & content creation',
-        'Basic thank you content packages',
-        'Email support & onboarding',
-        'Monthly pipeline reports'
+        '2 complete podcast episodes per month (audio + video)',
+        '40 strategic prospect outreach messages per month',
+        'Complete strategy workshop (ICP identification, podcast positioning, goal alignment)',
+        'Dedicated podcast producer for recording, scheduling, and guest outreach',
+        'Custom interview & conversation framework for your podcast',
+        'Guest qualification and pre-interview preparation',
+        'Professional audio and video post-production',
+        'Basic follow-up sequence (pre and post-publication nurturing)',
+        'Standard thank you package: 4 video clips + LinkedIn posts + custom cover art',
+        'Show notes and full transcriptions',
+        'Performance tracking and KPI monitoring'
       ],
       isPopular: false,
       isBestValue: false,
@@ -33,18 +36,16 @@ const PricingSection = () => {
     },
     {
       name: 'Sales Premium',
-      description: 'Advanced system with enhanced prospecting and premium relationship building',
+      description: 'More outreach, interviews, and social distribution',
       price: 11999,
       features: [
-        'All Sales Core features',
-        '4 strategic sales conversations per month',
-        'Advanced prospecting with higher success rates',
-        'Premium relationship coordination',
-        'Enhanced thank you content packages',
-        'Tailored follow-up email campaigns',
-        'Priority support & dedicated success manager',
-        'Advanced pipeline analytics & CRM integration',
-        'LinkedIn content creation from conversations'
+        'Everything in Sales Core, plus:',
+        '4 complete podcast episodes per month (audio + video)',
+        '80 strategic prospect outreach messages per month',
+        'Content distribution LinkedIn & other social platforms',
+        'Monthly performance reporting with detailed analytics',
+        'Enhanced follow-up sequences with advanced prospect nurturing',
+        'Priority scheduling and expedited turnaround times'
       ],
       isPopular: true,
       isBestValue: false,
@@ -53,19 +54,16 @@ const PricingSection = () => {
     },
     {
       name: 'Sales + Scale',
-      description: "Enterprise-level system with maximum volume and custom sales integration",
-      price: 16999,
+      description: 'Maximum volume with custom content strategy',
+      price: 17999,
       features: [
-        'All Sales Premium features',
-        '6+ strategic sales conversations per month',
-        'Enterprise prospect research & targeting',
-        'Custom sales process integration',
-        'Premium content packages + social assets',
-        'Multi-touch follow-up campaign sequences',
-        '24/7 priority support',
-        'Custom reporting & sales attribution',
-        'Dedicated account manager',
-        'Team training & onboarding'
+        'Everything in Sales Premium, plus:',
+        '6 complete podcast episodes per month (audio + video)',
+        '120+ strategic prospect outreach messages per month',
+        'Custom content repurposing: SEO-optimized blog posts, newsletters, and more',
+        'Dedicated social media manager for content distribution',
+        'Custom sales process & systems integration',
+        'White-glove onboarding and priority support'
       ],
       isPopular: false,
       isBestValue: true,
@@ -206,4 +204,4 @@ const PricingSection = () => {
   );
 };
 
-export default PricingSection; 
+export default PricingSection;
