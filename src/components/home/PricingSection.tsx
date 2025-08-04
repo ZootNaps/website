@@ -19,7 +19,7 @@ const PricingSection = () => {
       features: [
         { text: '2 complete podcast episodes per month (audio + video)', type: 'highlighted' },
         { text: '40 strategic prospect outreach messages per month', type: 'highlighted' },
-        { text: 'Basic guest content package (4 clips)', type: 'highlighted' },
+        { text: 'Standard guest content package (4 hand selected podcast clips)', type: 'highlighted' },
         { text: 'Includes:', type: 'intro' },
         { text: 'Complete strategy workshop (ICP identification, podcast positioning, goal alignment)', type: 'normal' },
         { text: 'Dedicated podcast producer for recording, scheduling, and guest outreach', type: 'normal' },
@@ -37,12 +37,12 @@ const PricingSection = () => {
     },
     {
       name: 'Sales Premium',
-      description: 'More outreach, interviews, and social distribution',
+      description: 'More outreach, more interviews, and more deals closed',
       price: 11999,
       features: [
-        { text: '4 complete podcast episodes per month (audio + video)', type: 'highlighted' },
+        { text: '4 podcast episodes per month (2x the customer facetime)', type: 'highlighted' },
         { text: '80 strategic prospect outreach messages per month', type: 'highlighted' },
-        { text: 'Premium guest content package (4 clips + written posts + custom cover art)', type: 'highlighted' },
+        { text: 'Premium guest content package (4 clips + written LI posts + custom episode art)', type: 'highlighted' },
         { text: 'Content distribution LinkedIn & other social platforms', type: 'highlighted' },
         { text: 'Everything in Sales Core, plus:', type: 'intro' },
         { text: 'Monthly performance reporting with detailed analytics', type: 'normal' },
@@ -56,14 +56,15 @@ const PricingSection = () => {
     },
     {
       name: 'Sales + Content',
-      description: 'A B2B content engine for your business',
+      description: 'Full-service sales & marketing for your business',
       price: 17999,
       features: [
+        { text: '4 complete podcast episodes per month (audio + video)', type: 'highlighted' },
         { text: '120+ strategic prospect outreach messages per month', type: 'highlighted' },
-        { text: 'Custom content repurposing: SEO-optimized blog posts, newsletters, and more', type: 'highlighted' },
+        { text: 'Custom content repurposing: SEO-optimized blog posts, newsletters, and LinkedIn posts', type: 'highlighted' },
         { text: 'Dedicated social media manager for content distribution', type: 'highlighted' },
         { text: 'Everything in Sales Premium, plus:', type: 'intro' },
-        { text: 'Custom sales process & systems integration', type: 'normal' },
+        { text: 'CRM & sales system integration', type: 'normal' },
         { text: 'White-glove onboarding and priority support', type: 'normal' }
       ],
       isPopular: false,
