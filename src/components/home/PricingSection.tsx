@@ -58,7 +58,6 @@ const PricingSection = () => {
       price: 17999,
       features: [
         'Everything in Sales Premium, plus:',
-        '6 complete podcast episodes per month (audio + video)',
         '120+ strategic prospect outreach messages per month',
         'Custom content repurposing: SEO-optimized blog posts, newsletters, and more',
         'Dedicated social media manager for content distribution',
