@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
@@ -123,39 +124,64 @@ const PricingSection = () => {
               )}
               
               <div className="p-8 flex-grow flex flex-col">
-                <div>
+                {/* Header */}
+                <div className="mb-6">
                   <h3 className="text-2xl font-bold mb-2 text-primary">{plan.name}</h3>
-                  <p className="text-gray leading-relaxed mb-6">{plan.description}</p>
-                  
-                  <div className="text-center mb-6">
-                    <span className="text-4xl md:text-5xl font-bold text-primary">
-                      ${formatPrice(plan.price)}
-                    </span>
-                    <span className="text-gray-500 text-lg">/month</span>
-                  </div>
-                  
-                  <ul className="mb-8 space-y-4">
-                    {plan.features.map((feature) => {
-                      if (feature.type === 'intro') {
-                        return (
-                          <li key={feature.text} className="underline text-gray-600 font-medium pt-4 pb-2">
-                            {feature.text}
-                          </li>
-                        );
-                      }
-                      
-                      return (
+                  <p className="text-gray leading-relaxed">{plan.description}</p>
+                </div>
+                
+                {/* Price */}
+                <div className="text-center mb-6">
+                  <span className="text-4xl md:text-5xl font-bold text-primary">
+                    ${formatPrice(plan.price)}
+                  </span>
+                  <span className="text-gray-500 text-lg">/month</span>
+                </div>
+                
+                {/* Highlighted Features */}
+                <div className="mb-6" style={{ minHeight: '11rem' }}>
+                  <ul className="space-y-4">
+                    {plan.features
+                      .filter(feature => feature.type === 'highlighted')
+                      .map((feature) => (
                         <li key={feature.text} className="flex items-start">
                           <FontAwesomeIcon icon={faCheck} className="text-secondary mt-1 mr-3 flex-shrink-0" />
-                          <span className={`text-gray ${feature.type === 'highlighted' ? 'font-bold text-primary' : ''}`}>
+                          <span className="text-gray font-bold text-primary leading-relaxed">
                             {feature.text}
                           </span>
                         </li>
-                      );
-                    })}
+                      ))}
                   </ul>
                 </div>
                 
+                {/* Intro Section - This gets aligned! */}
+                <div className="border-t border-gray-200 pt-4 pb-2 mb-6">
+                  {plan.features
+                    .filter(feature => feature.type === 'intro')
+                    .map((feature) => (
+                      <div key={feature.text} className="underline text-gray-600 font-medium">
+                        {feature.text}
+                      </div>
+                    ))}
+                </div>
+                
+                {/* Details Section */}
+                <div className="flex-grow">
+                  <ul className="space-y-4">
+                    {plan.features
+                      .filter(feature => feature.type === 'normal')
+                      .map((feature) => (
+                        <li key={feature.text} className="flex items-start">
+                          <FontAwesomeIcon icon={faCheck} className="text-secondary mt-1 mr-3 flex-shrink-0" />
+                          <span className="text-gray leading-relaxed">
+                            {feature.text}
+                          </span>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+                
+                {/* Button Section */}
                 <div className="mt-auto">
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Link
