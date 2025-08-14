@@ -44,7 +44,7 @@ const PricingSection = () => {
         { text: '4 podcast episodes per month (2x the customer facetime)', type: 'highlighted' },
         { text: '80 strategic prospect outreach messages per month', type: 'highlighted' },
         { text: 'Premium guest content package (4 clips + written LI posts + custom episode art)', type: 'highlighted' },
-        { text: 'Content distribution LinkedIn & other social platforms', type: 'highlighted' },
+        { text: 'Enhanced podcast distribution including titles, descriptions & show notes', type: 'highlighted' },
         { text: 'Everything in Sales Core, plus:', type: 'intro' },
         { text: 'Monthly performance reporting with detailed analytics', type: 'normal' },
         { text: 'Enhanced follow-up sequences with additional touchpoints', type: 'normal' },
