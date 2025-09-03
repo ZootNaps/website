@@ -8,15 +8,15 @@ import Link from 'next/link';
 
 const PricingSection = () => {
   // Format price with comma for thousands, using a specific locale for consistency
-  const formatPrice = (price: number) => {
-    return price.toLocaleString('en-US');
-  };
+  // const formatPrice = (price: number) => {
+  //   return price.toLocaleString('en-US');
+  // };
 
   const plans = [
     {
       name: 'Sales Core',
       description: 'See our Podcast for Sales system in action',
-      price: 7999,
+      // price: 7999,
       features: [
         { text: '2 complete podcast episodes per month (audio + video)', type: 'highlighted' },
         { text: '40 strategic prospect outreach messages per month', type: 'highlighted' },
@@ -39,7 +39,7 @@ const PricingSection = () => {
     {
       name: 'Sales Premium',
       description: 'More outreach, more interviews, and more deals closed',
-      price: 11999,
+      // price: 11999,
       features: [
         { text: '4 podcast episodes per month (2x the customer facetime)', type: 'highlighted' },
         { text: '80 strategic prospect outreach messages per month', type: 'highlighted' },
@@ -58,7 +58,7 @@ const PricingSection = () => {
     {
       name: 'Sales + Content',
       description: 'Full-service sales & marketing for your business',
-      price: 17999,
+      // price: 17999,
       features: [
         { text: '4 complete podcast episodes per month (audio + video)', type: 'highlighted' },
         { text: '120+ strategic prospect outreach messages per month', type: 'highlighted' },
@@ -131,15 +131,15 @@ const PricingSection = () => {
                 </div>
                 
                 {/* Price */}
-                <div className="text-center mb-6">
+                {/* <div className="text-center mb-6">
                   <span className="text-4xl md:text-5xl font-bold text-primary">
                     ${formatPrice(plan.price)}
                   </span>
                   <span className="text-gray-500 text-lg">/month</span>
-                </div>
+                </div> */}
                 
                 {/* Highlighted Features */}
-                <div className="mb-6" style={{ minHeight: '11rem' }}>
+                <div className="mb-6">
                   <ul className="space-y-4">
                     {plan.features
                       .filter(feature => feature.type === 'highlighted')
