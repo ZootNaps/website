@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { type LinkedInPostItem, isTodo } from "../content";
 import ExternalLink from "./ExternalLink";
+import LinkedInEmbed from "./LinkedInEmbed";
 import MetricList from "./MetricList";
 import { TodoBadge } from "./TodoBadge";
 
@@ -14,17 +15,52 @@ function LinkedInGlyph({ className = "h-3.5 w-3.5" }: { className?: string }) {
   );
 }
 
-// A standalone LinkedIn post — work that lives on LinkedIn rather than YouTube
-// (e.g. founder reshares, product launches). Static card: it never fails to render
-// and puts the engagement metrics front and center. Shows a local screenshot if
-// one is provided, otherwise a branded LinkedIn header block.
+// A standalone LinkedIn post. Preferred render is the LIVE embed (the real post,
+// with its own author/copy/engagement). If there's no embed it falls back to the
+// old static card (screenshot or branded placeholder + our metrics + a link), so
+// it never fails to render. `bare` drops the white card wrapper for the editorial
+// layout.
 
-export default function LinkedInPostCard({ post }: { post: LinkedInPostItem }) {
+export default function LinkedInPostCard({
+  post,
+  bare = false,
+}: {
+  post: LinkedInPostItem;
+  bare?: boolean;
+}) {
   const authorLine = [post.authorName, post.authorTitle].filter((s) => s && !isTodo(s)).join(" · ");
+  const hasEmbed = !!post.embed && !isTodo(post.embed.src);
+
+  // ── Live embed: the post itself is the proof. Small caption underneath. ──
+  if (hasEmbed) {
+    return (
+      <div className="flex flex-col gap-3">
+        <LinkedInEmbed embed={post.embed!} title={isTodo(post.title) ? undefined : post.title} />
+        <div className="px-0.5">
+          {isTodo(post.title) ? (
+            <TodoBadge label="Title needed" />
+          ) : (
+            <p className="mb-0 flex items-center gap-1.5 text-sm font-semibold text-primary">
+              <span className="inline-flex shrink-0" style={{ color: LINKEDIN_BLUE }}>
+                <LinkedInGlyph className="h-3 w-3" />
+              </span>
+              {post.title}
+            </p>
+          )}
+          {authorLine && <p className="mb-0 mt-0.5 text-xs text-gray">{authorLine}</p>}
+        </div>
+      </div>
+    );
+  }
+
+  // ── Fallback static card (no embed yet) ──
   const hasScreenshot = !!post.screenshotSrc && !isTodo(post.screenshotSrc);
+  const wrapper = bare
+    ? "flex h-full flex-col"
+    : "flex h-full flex-col rounded-2xl border border-black/5 bg-white p-4 shadow-soft transition-shadow duration-300 hover:shadow-medium";
 
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-black/5 bg-white p-4 shadow-soft transition-shadow duration-300 hover:shadow-medium">
+    <div className={wrapper}>
       {hasScreenshot ? (
         <a
           href={isTodo(post.postUrl) ? undefined : post.postUrl}
@@ -51,7 +87,7 @@ export default function LinkedInPostCard({ post }: { post: LinkedInPostItem }) {
         </div>
       )}
 
-      <div className="flex flex-1 flex-col px-1 pt-4">
+      <div className={`flex flex-1 flex-col pt-4 ${bare ? "" : "px-1"}`}>
         <p className="mb-0 flex items-center gap-1.5 text-xs font-semibold" style={{ color: LINKEDIN_BLUE }}>
           <LinkedInGlyph /> LinkedIn post
         </p>

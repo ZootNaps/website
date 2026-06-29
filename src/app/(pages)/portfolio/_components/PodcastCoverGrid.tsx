@@ -43,11 +43,6 @@ function PodcastCover({ podcast }: { podcast: AudioPodcastItem }) {
         {podcast.description && !isTodo(podcast.description) && (
           <p className="mb-0 mt-0.5 text-xs text-gray">{podcast.description}</p>
         )}
-        {linkIsTodo && !imageIsTodo && (
-          <div className="mt-1.5">
-            <TodoBadge label="Listen link needed" />
-          </div>
-        )}
       </div>
     </div>
   );

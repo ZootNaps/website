@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -22,6 +22,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-plus-jakarta-sans",
+});
+
+// Editorial serif — used ONLY on the unlisted /portfolio page. preload:false keeps
+// it off every other page's critical path; the browser fetches it only when an
+// element actually references font-serif.
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -59,7 +69,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased bg-bg`}>
+      <body className={`${inter.variable} ${plusJakartaSans.variable} ${playfairDisplay.variable} font-sans antialiased bg-bg`}>
         {/* Google Tag Manager (noscript part is inside this component too) */}
         <Suspense fallback={null}>
           <GoogleTagManager GTM_ID={process.env.NEXT_PUBLIC_GTM_ID} />
