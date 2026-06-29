@@ -24,7 +24,7 @@
     "contentful-management": "^11.52.2",
     "dotenv": "^16.5.0",
     "framer-motion": "^12.15.0",
-    "next": "15.3.8",
+    "next": "15.5.19",
     "next-mdx-remote": "^5.0.0",
     "next-sitemap": "^4.2.3",
     "nodemailer": "^7.0.3",
