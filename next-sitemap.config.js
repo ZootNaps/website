@@ -22,6 +22,9 @@ module.exports = {
       'https://southlamarstudios.com/server-sitemap.xml',
     ],
   },
-  // Add any custom paths to exclude from sitemap
-  exclude: ['/admin'],
+  // Add any custom paths to exclude from sitemap.
+  // '/portfolio' is intentionally unlisted (also noindex'd in its layout.tsx and
+  // never linked in the site). Note: `exclude` only removes it from the sitemap —
+  // it does NOT add a robots.txt Disallow, so the URL is not advertised anywhere.
+  exclude: ['/admin', '/portfolio'],
 }
